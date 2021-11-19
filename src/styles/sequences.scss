@@ -1,0 +1,83 @@
+$background: #333;
+$border: 2px solid $background;
+
+$block-width: 180px;
+$block-height: 80px;
+$icon-width: 40px;
+$controls-width: 30px;
+$content-width: $block-width - $icon-width - $controls-width;
+
+$youtube-width: 320px;
+$youtube-height: 180px;
+
+.sequence {
+    width: $block-width;
+    height: $block-height;
+    background-color: white;
+    border: $border;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.12s;
+}
+
+.sequence:hover {
+    box-shadow: 1px 1px 8px rgba(25, 25, 25, 0.5);
+}
+
+.seq-row {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.seq-icon {
+    font-size: 24px;
+    width: $icon-width;
+    height: 100%;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-right: $border;
+}
+
+.seq-icon.seq-youtube {
+    background: red;
+}
+
+.seq-icon.seq-file {
+    background: gray;
+}
+
+.seq-content {
+    width: $content-width;
+    background-color: black;
+    display: flex;
+    align-items: center;
+
+    .thumbnail {
+        width: $content-width;
+    }
+}
+
+.seq-video-controls {
+    width: $controls-width;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: $border;
+    color: black;
+    gap: 2px;
+}
+
+.sequence-line {
+    width: 30px;
+    border-top: 3px dashed #777;
+    // background-color: #777;
+    // height: 3px;
+    margin: 0 4px;
+    // border-radius: 2px;
+}
