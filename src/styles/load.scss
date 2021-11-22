@@ -4,6 +4,7 @@ body {
     background-color: #dadae0;
     height: 100vh;
     margin: 0;
+    overflow-y: hidden;
 }
 
 *, *::before, *::after {
@@ -12,16 +13,4 @@ body {
 
 #root {
     height: 100vh;
-}
-
-.sequences {
-    height: 100%;
-    background-size: 60px 60px;
-    background-image:
-      linear-gradient(to right, #ccc 1px, transparent 1px),
-      linear-gradient(to bottom, #ccc 1px, transparent 1px);
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }

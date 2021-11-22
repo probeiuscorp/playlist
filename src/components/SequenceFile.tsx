@@ -1,7 +1,7 @@
 import React from 'react';
-import Sequence from './Sequence';
+import Sequence, { AdditionalSequenceProps } from './Sequence';
 
-export default class SequenceFile extends React.Component {
+export default class SequenceFile extends React.Component<AdditionalSequenceProps> {
     render() {
         return (
             <Sequence icon={{
