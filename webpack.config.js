@@ -5,7 +5,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.tsx$/,
+                test: /\.tsx?$/,
                 use: 'babel-loader',
                 exclude: /node_modules/
             }, {
@@ -32,3 +32,17 @@ module.exports = {
     devtool: 'source-map',
     watch: true
 }
+
+/**
+ * Living mice
+ * Haggstrom
+ * Fly me to the moon
+ * Chris
+ * Sweden
+ * Cat
+ * Danny
+ */
+
+/**
+ * Thirteen
+ */

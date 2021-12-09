@@ -1,10 +1,11 @@
-@import './vars.scss';
+@use './colors';
 
 body {
-    background-color: #dadae0;
-    height: 100vh;
+    background-color: colors.$bg-dark;
+    color: colors.$text;
     margin: 0;
-    overflow-y: hidden;
+    // font-family: 'Roboto', sans-serif;
+    font-family: system-ui, Ubuntu, "Droid Sans", sans-serif;
 }
 
 *, *::before, *::after {

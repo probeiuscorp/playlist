@@ -10,7 +10,7 @@ let html = '<!DOCTYPE html><html lang="en"><head>';
 // for(const filename of filenames) {
 //     html += `<link rel="stylesheet" href="/public/styles/${filename}">`;
 // }
-html += headerItems.join();
+html += headerItems.join('');
 html += '</head><body><div id="root"></div><script src="/dist/main.bundle.js"></script></body></html>';
 
 // export default function(): string {

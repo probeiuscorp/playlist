@@ -21,14 +21,9 @@ export default class Sequence extends React.Component<SequenceProps> {
     
     render() {
         return (
-            <div className="sequence" onDoubleClick={this.props.handleEdit}>
-                <div className="seq-head">
-                    <div className={`seq-icon seq-${this.props.icon.className}`}>
-                        <i className={`bi bi-${this.props.icon.bsIcon}`}></i>
-                    </div>
-                    <div className="seq-grip">
-                        <i className="bi bi-grip-horizontal"></i>
-                    </div>
+            <div className="sequence source" onDoubleClick={this.props.handleEdit}>
+                <div className={`seq-icon seq-${this.props.icon.className}`}>
+                    <i className={`bi bi-${this.props.icon.bsIcon}`}></i>
                 </div>
                 <div className="seq-content">
                     {this.props.children}

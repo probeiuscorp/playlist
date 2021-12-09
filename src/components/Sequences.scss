@@ -1,0 +1,38 @@
+@use '../styles/colors';
+
+.sequences {
+    background-color: colors.$bg-med;
+    border-left: 1px solid colors.$outline;
+    padding: 5px 25px;
+}
+
+.sequences-sequence {
+    font-size: 18px;
+    padding: 7px;
+    padding-left: 9px;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 2px;
+    margin: 5px 0;
+
+    &:hover {
+        background-color: colors.$bg-light;
+        border-radius: 2px;
+        box-shadow: 0 2px colors.$bg-lighter;
+    }
+
+    i {
+        margin-right: 8px;
+        font-size: 16px;
+    }
+}
+
+.collection-contents {
+    padding-left: 6px;
+    border-left: 2px solid colors.$text-dim;
+    margin-left: 12px;
+    
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

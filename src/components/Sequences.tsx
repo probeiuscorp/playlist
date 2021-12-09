@@ -1,109 +1,49 @@
 import React from 'react';
-import SequenceEnd from './SequenceEnd';
-import SequenceFile from './SequenceFile';
-import SequenceLine from './SequenceLine';
-import SequenceStart from './SequenceStart';
-import SequenceVideo from './SequenceVideo';
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
-import { SequenceHandleProps } from './Sequence';
+import { SequenceFileItem } from '../store';
+import './Sequences.scss';
 
-export type ISequence = ({
-    type: 'video',
-    video: string
-} | {
-    type: 'file'
-}) & {
-    id: string,
-    beingDragged: boolean
+export interface SequenceProps {
+    files: SequenceFileItem[]
 }
 
-interface SequencesState {
-    sequences: ISequence[]
-}
-
-export default class Sequences extends React.Component<{}, SequencesState> {
-    protected static nextId = 0;
-    private id: number;
-
-    constructor(props) {
-        super(props);
-
-        this.id = Sequences.nextId++;
-
-        this.state = {
-            sequences: [
-                {
-                    type: 'video',
-                    video: 'dQw4w9WgXcQ',
-                    id: 'nevergonnagiveyouup',
-                    beingDragged: false
-                }, {
-                    type: 'video',
-                    video: 'rTgj1HxmUbg',
-                    id: 'nevergonnaletyoudown',
-                    beingDragged: false
-                }
-            ]
-        }
-
-        for(let i=0;i<15;i++) {
-            this.state.sequences.push({
-                type: 'file',
-                id: i.toString(),
-                beingDragged: false
-            });
-        }
+export default class Sequences extends React.Component<SequenceProps> {
+    renderCollectionContents = (contents: SequenceFileItem[], line: boolean) => {
+        contents.forEach(console.log);
+        return contents.map((item) => {
+            return (
+                <div
+                    key={item.id}
+                >
+                    {item.type === 'sequence' ? (
+                        <div className="sequences-sequence" draggable onDragStart={e => void e.dataTransfer.setData('text/plain', item.id)}>
+                            <i className={item.main ? "bi bi-star-fill" : "bi bi-play-circle-fill"}></i>
+                            {item.name}
+                        </div>
+                    ) : (
+                        <>
+                        <div className="sequences-sequence" onClick={() => { item.expanded = !item.expanded; this.forceUpdate(); }}>
+                            <i className={item.expanded ? "bi bi-chevron-down" : "bi bi-chevron-up"}></i>
+                            {item.name}
+                        </div>
+                        <div className="collection-contents">
+                            {
+                                item.expanded ? this.renderCollectionContents(Object.keys(item.contents).map(key => item.contents[key]), true) : null
+                            }
+                        </div>
+                        </>
+                    )}
+                </div>
+            )
+        });
     }
-
-    handleDragEnd = (result: DropResult) => {
-        if(!result.destination) return;
-
-        const items = Array.from(this.state.sequences);
-        const [ item ] = items.splice(result.source.index, 1);
-        items.splice(result.destination.index, 0, item);
-
-        this.setState({ sequences: items });
-    }
-
+    
     render() {
         return (
-            <div className="sequence-viewport">
-                <DragDropContext onDragEnd={this.handleDragEnd}>
-                    <Droppable droppableId={`sequences-${this.id}`} direction="horizontal">
-                        {(provided) => (
-                            <div className="sequences" {...provided.droppableProps} ref={provided.innerRef}>
-                                <SequenceStart/>
-                                {/* <SequenceLine key="line-start"/> */}
-                                {
-                                    this.state.sequences.map((sequence, i) => {
-                                        let element: JSX.Element;
-                                        if(sequence.type === 'file') {
-                                            element = <SequenceFile/>;
-                                        } else if(sequence.type === 'video') {
-                                            element = (
-                                                <SequenceVideo
-                                                    video={sequence.video}
-                                                />
-                                            )
-                                        }
-                                        return [
-                                            <Draggable key={sequence.id} draggableId={sequence.id} index={i}>
-                                                {(provided) => (
-                                                    <div {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
-                                                        {element}
-                                                    </div>
-                                                )}
-                                            </Draggable>,
-                                            // <SequenceLine key={`line-${sequence.id}`}/>
-                                        ];
-                                    })
-                                }
-                                {provided.placeholder}
-                                <SequenceEnd/>
-                            </div>
-                        )}
-                    </Droppable>
-                </DragDropContext>
+            <div className="sequences">
+                <h3>Sequences</h3>
+                <div className="sequences-list">
+                    {this.renderCollectionContents(this.props.files, false)}
+                </div>
             </div>
         );
     }
