@@ -5,7 +5,7 @@ import SequenceStart from './SequenceStart';
 import SequenceVideo from './SequenceVideo';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import Mutator from './Mutator';
-import { actions, MutatorUnevaluatedParameters, SequenceID, Sources, store } from '../store';
+import { actions, FileSequencesDirs, MutatorUnevaluatedParameters, SequenceFiles, SequenceID, Sources, store } from '../store';
 
 export type ISequence = ({
     type: 'video',
@@ -19,7 +19,9 @@ export type ISequence = ({
 
 interface ViewportProps {
     sequence: SequenceID,
-    sources: Sources
+    sources: Sources,
+    files: SequenceFiles,
+    dirs: FileSequencesDirs
 }
 
 export default class Viewport extends React.Component<ViewportProps> {
@@ -81,6 +83,8 @@ export default class Viewport extends React.Component<ViewportProps> {
                                                     info={source.info}
                                                     params={source.parameters}
                                                     state={source.state}
+                                                    files={this.props.files}
+                                                    dirs={this.props.dirs}
                                                     update={newState => void this.handleChildRequestedUpdate(i, newState)}
                                                     delete={() => void this.handleChildRequestedDeletion(i)}
                                                 />    

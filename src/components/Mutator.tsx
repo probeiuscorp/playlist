@@ -1,5 +1,6 @@
 import React from 'react'
-import { MutatorUnevaluatedParameters, MutatorInfo, MutatorParameters, Sources, SequenceID, store, actions } from '../store';
+import { MutatorUnevaluatedParameters, MutatorInfo, MutatorParameters, Sources, SequenceID, store, actions, SequenceFiles, FileSequencesDirs, findDir } from '../store';
+import Empty from './Empty';
 import './Mutator.scss';
 import SequenceVideo from './SequenceVideo';
 
@@ -7,6 +8,8 @@ export interface MutatorProps<T extends MutatorParameters> {
     info: MutatorInfo,
     params: T,
     state: MutatorUnevaluatedParameters<T>,
+    files: SequenceFiles,
+    dirs: FileSequencesDirs,
     update: (newState: MutatorUnevaluatedParameters<T>) => void,
     delete: () => void
 }
@@ -38,22 +41,10 @@ export default class Mutator<T extends MutatorParameters> extends React.Componen
         }
     }
 
-    handleDragEnter = (key: keyof T, e: React.DragEvent) => {
-        this.empties[key as string].current.classList.add('dropping');
-        e.preventDefault();
-    }
-
-    handleDragLeave = (key: keyof T, e: React.DragEvent) => {
-        this.empties[key as string].current.classList.remove('dropping');
-    }
-
-    handleDrop = (key: keyof T, e: React.DragEvent) => {
+    set = (key: keyof T, id: SequenceID) => {
         let state = {...this.props.state} as Record<keyof T, SequenceID>;
-        const data = e.dataTransfer.getData('text/plain');
-        if(data.startsWith(''))
-        state[key] = data;
+        state[key] = id;
         this.props.update(state as MutatorUnevaluatedParameters<T>);
-        this.handleDragLeave(key, e);
     }
 
     renderSources = (key: keyof T) => {
@@ -63,22 +54,16 @@ export default class Mutator<T extends MutatorParameters> extends React.Componen
             return (
                 <div className="mutator-link mutator-item" onClick={() => void store.dispatch(actions.viewport.set(sources))}>
                     <i className="bi bi-play-circle-fill"/>
-                    <span className="mutator-link-to">{}</span>
+                    <span className="mutator-link-to">{findDir({ dirs: this.props.dirs, files: this.props.files }, this.props.dirs[sources])[sources].name}</span>
                 </div>
             )
         } else {
             if(sources === null) {
                 return (
-                    <div
-                        className="mutator-empty mutator-item"
-                        ref={this.empties[key as string]}
-                        onDragEnter={e => void this.handleDragEnter(key, e)}
-                        onDragLeave={e => void this.handleDragLeave(key, e)}
-                        onDragOver={e => void e.preventDefault()}
-                        onDrop={e => void this.handleDrop(key, e)}
-                    >
-                        <i className="bi bi-plus-circle-fill"/>
-                    </div>
+                    <Empty
+                        set={id => void this.set(key, id)}
+                        className="mutator-item"
+                    />
                 )
             } else {
                 return (
@@ -114,9 +99,13 @@ export default class Mutator<T extends MutatorParameters> extends React.Componen
                             const { label, type } = this.props.params[key];
                             return (
                                 <div className="mutator-param" key={key}>
-                                    <div className="mutator-reset-param" onClick={() => void this.deleteParam(key)}>
-                                        <i className="bi bi-x-circle-fill"/>
-                                    </div>
+                                    {
+                                        this.props.params[key].type === 'sources' && (
+                                            <div className="mutator-reset-param" onClick={() => void this.deleteParam(key)}>
+                                                <i className="bi bi-x-circle-fill"/>
+                                            </div>
+                                        )
+                                    }
                                     <div className="mutator-param-label">
                                         {label}
                                     </div>

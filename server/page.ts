@@ -11,7 +11,7 @@ let html = '<!DOCTYPE html><html lang="en"><head>';
 //     html += `<link rel="stylesheet" href="/public/styles/${filename}">`;
 // }
 html += headerItems.join('');
-html += '</head><body><div id="root"></div><script src="/dist/main.bundle.js"></script></body></html>';
+html += '</head><body><div id="root"></div><div id="modals"></div><script src="/dist/main.bundle.js"></script></body></html>';
 
 // export default function(): string {
 //     return '<!DOCTYPE html><html>';

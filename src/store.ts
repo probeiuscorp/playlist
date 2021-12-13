@@ -2,7 +2,7 @@ import { configureStore, createAction, createSlice, PayloadAction } from '@redux
 
 const base64 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-+';
 let usedIDs = {};
-function generateID(): SequenceID {
+export function generateID(): SequenceID {
     let s: string;
     
     do {
@@ -12,6 +12,9 @@ function generateID(): SequenceID {
 
     usedIDs[s] = 0;
     return s;
+}
+export function isID(str: string): str is SequenceID {
+    return /^[0-9a-zA-Z-\+]{12}$/.test(str);
 }
 
 export type SequenceID = string & {};
@@ -125,7 +128,8 @@ const sequencesSlice = createSlice({
 type FileCreatePayload = { id: SequenceID, name: string, dirs: SequenceID[], type: 'collection' | 'sequence' };
 type FileRemovePayload = { id: SequenceID };
 type FilePromotePayload = { id: SequenceID, main: boolean };
-type FileExpandPayload = { id: SequenceID, expanded: boolean };
+type FileExpandPayload = { id: SequenceID };
+type FileMovePayload = { id: SequenceID, to?: SequenceID };
 export const actions = {
     sequences: {
         create: createAction<SequencesCreatePayload>('sequences/create'),
@@ -139,8 +143,9 @@ export const actions = {
     },
     files: {
         create: createAction<FileCreatePayload>('files/create'),
-        promite: createAction<FilePromotePayload>('files/promote'),
-        expand: createAction<FileExpandPayload>('files/expand')
+        promote: createAction<FilePromotePayload>('files/promote'),
+        expand: createAction<FileExpandPayload>('files/expand'),
+        move: createAction<FileMovePayload>('files/move')
     }
 };
 
@@ -158,14 +163,35 @@ const viewportSlice = createSlice({
     }
 });
 
+export type FileSequencesDirs = Record<SequenceID, SequenceID[]>;
 export interface FilesState {
     files: SequenceFiles,
-    flat: Record<SequenceID, SequenceFileItem>
+    dirs: FileSequencesDirs
 }
 const filesInitialState: FilesState = {
     files: {},
-    flat: {}
+    dirs: {}
 };
+
+export function findDir(state: FilesState, dirs: SequenceID[]): SequenceFiles {
+    let left = dirs.slice();
+    let dir = state.files;
+    let valid = true;
+    while(left.length > 0 && valid) {
+        const item = dir[left.shift()];
+        if(item.type === 'collection') {
+            dir = item.contents;
+        } else {
+            valid = false;
+        }
+    }
+
+    if(!valid) {
+        return null;
+    }
+    
+    return dir;
+}
 
 const filesSlice = createSlice({
     name: 'files',
@@ -173,18 +199,6 @@ const filesSlice = createSlice({
     reducers: {
         create: (state, action: PayloadAction<FileCreatePayload>) => {
             const { id, name, type, dirs } = action.payload;
-
-            let left = dirs.slice();
-            let dir = state.files;
-            let valid = true;
-            while(left.length > 0 && valid) {
-                const item = dir[left.shift()];
-                if(item.type === 'collection') {
-                    dir = item.contents;
-                } else {
-                    valid = false;
-                }
-            }
 
             let item: SequenceFileItem = null;
                
@@ -204,23 +218,57 @@ const filesSlice = createSlice({
                     main: false
                 };
             }
-            state.flat[id] = item;
+            
+            const dir = findDir(state, dirs);
+            if(!dir) {
+                console.error('[files/create] invalid payload:', action.payload);
+            }
             dir[id] = item;
+            state.dirs[id] = dirs;
             return state;
         },
         promote: (state, action: PayloadAction<FilePromotePayload>) => {
             const { id, main } = action.payload;
-            const item = state.flat[id];
-            if(item.type === 'sequence') {
-                item.main = main;
+            
+            const dir = findDir(state, state.dirs[id]);
+            if(dir) {
+                const item = dir[id];
+                if(item.type === 'sequence') {
+                    item.main = main;
+                    return state;
+                }
             }
+            console.error('[files/promote] invalid payload:', action.payload);
         },
         expand: (state, action: PayloadAction<FileExpandPayload>) => {
-            const { id, expanded } = action.payload;
-            const item = state.flat[id];
-            if(item.type === 'collection') {
-                item.expanded = expanded;
+            const { id } = action.payload;
+            const dir = findDir(state, state.dirs[id]);
+            if(dir) {
+                const item = dir[id];
+                if(item.type === 'collection') {
+                    item.expanded = !item.expanded;
+                    return state;
+                }
             }
+
+            console.error('[files/expand] invalid payload:', action.payload);
+        },
+        move: (state, action: PayloadAction<FileMovePayload>) => {
+            const { id, to } = action.payload;
+            const dirFrom = findDir(state, state.dirs[id]);
+            const copy = { ...dirFrom[id] };
+            delete dirFrom[id];
+            if(to) {
+                const dirsTo = state.dirs[to];
+                const dirTo = findDir(state, dirsTo)[to];
+                if(dirTo.type === 'collection') {
+                    dirTo.contents[id] = copy;
+                    state.dirs[id] = dirsTo;
+                }
+            } else {
+                state.files[id] = copy;
+            }
+            return state;
         }
     }
 })
@@ -236,6 +284,8 @@ export const store = configureStore({
 // TESTING
 
 const sequence = generateID();
+store.dispatch(actions.viewport.set(sequence));
+
 store.dispatch(actions.sequences.create({
     id: sequence,
     name: 'a sequence'
@@ -246,8 +296,29 @@ store.dispatch(actions.files.create({
     name: 'a sequence',
     type: 'sequence'
 }));
-
-store.dispatch(actions.viewport.set(sequence));
+const folderId = generateID();
+store.dispatch(actions.files.create({
+    dirs: [],
+    id: folderId,
+    name: 'Primitives',
+    type: 'collection'
+}));
+store.dispatch(actions.files.create({
+    dirs: [folderId],
+    id: generateID(),
+    name: 'Youtube Video',
+    type: 'sequence'
+}));
+store.dispatch(actions.files.create({
+    dirs: [folderId],
+    id: generateID(),
+    name: 'MP3 File',
+    type: 'sequence'
+}));
+store.dispatch(actions.files.promote({
+    id: sequence,
+    main: true
+}));
 
 store.dispatch(actions.sequences.append({
     sequence,
@@ -289,3 +360,5 @@ store.dispatch(actions.sequences.append({
         id: generateID()        
     }
 }));
+
+(window as any).store = store;

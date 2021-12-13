@@ -1,11 +1,13 @@
 @use './colors';
 
+$font: system-ui, Ubuntu, "Droid Sans", sans-serif;
+
 body {
     background-color: colors.$bg-dark;
     color: colors.$text;
     margin: 0;
     // font-family: 'Roboto', sans-serif;
-    font-family: system-ui, Ubuntu, "Droid Sans", sans-serif;
+    font-family: $font;
 }
 
 *, *::before, *::after {
@@ -14,4 +16,37 @@ body {
 
 #root {
     height: 100vh;
+}
+
+button {
+    color: white;
+    background: linear-gradient(90deg, rgb(14, 99, 156), rgb(5, 83, 136));
+    cursor: pointer;
+    padding: 6px 10px;
+    border: none;
+    font-family: $font;
+    font-size: 16px;
+
+    &:hover {
+        box-shadow: rgb(0 0 0 / 36%) 0px 0px 8px 2px;
+        background: rgb(17, 119, 187);
+    }
+}
+
+input[type="text"] {
+    background-color: #40444b;
+    color: #fff;
+    width: 150px;
+    border: none;
+    font-size: 18px;
+    border: 1px solid #222;
+    padding: 4px 8px;
+    border-radius: 2px;
+    width: 100%;
+    padding: 6px 14px;
+
+    &:focus {
+        border: 1px solid #007fd4;
+        outline: none;
+    }
 }

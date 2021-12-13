@@ -1,0 +1,56 @@
+@use "../styles/colors";
+$animation-time: 280ms;
+
+.modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: opacity $animation-time;
+    opacity: 0;
+    background-color: black;
+
+    &.show {
+        opacity: 0.65;
+        display: block;
+    }
+
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity $animation-time, margin-top $animation-time;
+    opacity: 0;
+    margin-top: -80px;
+    background-color: colors.$bg-light;
+    border: 1px solid colors.$outline;
+    border-radius: 3px;
+    padding: 16px;
+    min-width: 456px;
+
+    &.show {
+        opacity: 1;
+        margin-top: 0;
+        display: block;
+    }
+
+    .modal-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .modal-label {
+        margin-bottom: 6px;
+    }
+
+    .modal-section {
+        margin-bottom: 15px;
+    }
+}
