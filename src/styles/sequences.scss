@@ -14,12 +14,6 @@ $content-height: math.div($youtube-height, $youtube-width) * $block-width;
 
 $line-color: colors.$text-dim;
 
-@mixin center() {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .sequence-viewport {
     width: max-content;
     min-width: 100%;
@@ -33,11 +27,19 @@ $line-color: colors.$text-dim;
 .viewport {
     padding: 0 40px;
     height: 100%;
-    // width: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+}
+
+.source-shadow, .source {
+    &:hover {
+        box-shadow: 2px 2px 12px 5px rgba(25, 25, 25, 1);
+    } 
+}
+
+div[data-rbd-draggable-id] {
+    margin-right: 15px;
 }
 
 .source {
@@ -47,10 +49,6 @@ $line-color: colors.$text-dim;
     cursor: pointer;
     transition: box-shadow 0.12s;
     z-index: 1;
-
-    &:hover {
-        box-shadow: 2px 2px 12px 5px rgba(25, 25, 25, 1);
-    }
 }
 
 .sequence {
@@ -122,4 +120,14 @@ $line-color: colors.$text-dim;
 
 .sequence-end {
     margin-left: 10px;
+}
+
+.empty-source {
+    width: $block-width;
+    height: $block-width;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    border-radius: 8px;
 }

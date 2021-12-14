@@ -27,6 +27,28 @@ register('picker', {
     return [sources[Math.floor(Math.random()*sources.length)]];
 });
 
+register('pickn', {
+    sources: {
+        type: 'sources',
+        label: 'Pick from:'
+    },
+    amount: {
+        type: 'number',
+        label: 'Pick <n> items:'
+    }
+}, ({ sources, amount }) => {
+    let left = amount;
+    let available = sources;
+    let picked = [];
+    while(left > 0 && available.length > 0) {
+        const index = Math.floor(Math.random() * available.length);
+        picked.push(available[index]);
+        available.splice(index, 1);
+        left--;
+    }
+    return picked;
+});
+
 register('randomizer', {
     sources: {
         type: 'sources',
@@ -48,4 +70,21 @@ register('inserter', {
 }, ({ sources, inserted }) => {
     sources.splice(Math.floor(Math.random() * sources.length), 0, ...inserted);
     return sources;
+});
+
+register('repeater', {
+    sources: {
+        type: 'sources',
+        label: 'Repeat:'
+    },
+    amount: {
+        type: 'number',
+        label: '<n> times:'
+    }
+}, ({ sources, amount }) => {
+    let output = [];
+    for(let i=0;i<amount;i++) {
+        output.push(...{...sources});
+    }
+    return output;
 });

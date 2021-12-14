@@ -5,7 +5,8 @@ import SequenceStart from './SequenceStart';
 import SequenceVideo from './SequenceVideo';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import Mutator from './Mutator';
-import { actions, FileSequencesDirs, MutatorUnevaluatedParameters, SequenceFiles, SequenceID, Sources, store } from '../store';
+import { actions, FileSequencesDirs, generateID, MutatorUnevaluatedParameters, SequenceFiles, SequenceID, Sources, store } from '../store';
+import Empty from './Empty';
 
 export type ISequence = ({
     type: 'video',
@@ -65,6 +66,17 @@ export default class Viewport extends React.Component<ViewportProps> {
         }));
     }
 
+    appendItem = (id: SequenceID) => {
+        store.dispatch(actions.sequences.append({
+            sequence: this.props.sequence,
+            source: {
+                primitive: 'video',
+                video: 'dQw4w9WgXcQ',
+                id: generateID()
+            }
+        }));
+    }
+
     render() {
         return (
             <div className="sequence-viewport" ref={this.container}>
@@ -112,6 +124,10 @@ export default class Viewport extends React.Component<ViewportProps> {
                                     })
                                 }
                                 {provided.placeholder}
+                                <Empty
+                                    set={this.appendItem}
+                                    className="empty-source source-shadow"
+                                />
                                 <SequenceEnd/>
                             </div>
                         )}

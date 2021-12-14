@@ -1,5 +1,5 @@
 import React from 'react'
-import { MutatorUnevaluatedParameters, MutatorInfo, MutatorParameters, Sources, SequenceID, store, actions, SequenceFiles, FileSequencesDirs, findDir } from '../store';
+import { MutatorUnevaluatedParameters, MutatorInfo, MutatorParameters, Sources, SequenceID, store, actions, SequenceFiles, FileSequencesDirs, contentsOfDir } from '../store';
 import Empty from './Empty';
 import './Mutator.scss';
 import SequenceVideo from './SequenceVideo';
@@ -54,7 +54,7 @@ export default class Mutator<T extends MutatorParameters> extends React.Componen
             return (
                 <div className="mutator-link mutator-item" onClick={() => void store.dispatch(actions.viewport.set(sources))}>
                     <i className="bi bi-play-circle-fill"/>
-                    <span className="mutator-link-to">{findDir({ dirs: this.props.dirs, files: this.props.files }, this.props.dirs[sources])[sources].name}</span>
+                    <span className="mutator-link-to">{contentsOfDir({ dirs: this.props.dirs, files: this.props.files }, this.props.dirs[sources])[sources].name}</span>
                 </div>
             )
         } else {
@@ -119,6 +119,11 @@ export default class Mutator<T extends MutatorParameters> extends React.Componen
                             );
                         })
                     }
+                </div>
+                <div className="seq-video-controls">
+                    <i className="bi bi-play-fill"></i>
+                    <i className="bi bi-gear-fill"></i>
+                    <i className="bi bi-trash-fill"></i>
                 </div>
             </div>
         )

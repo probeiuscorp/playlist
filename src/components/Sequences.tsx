@@ -64,6 +64,15 @@ export default class Sequences extends React.Component<SequenceProps, SequencesS
         });
     }
 
+    handleDrop = (e: React.DragEvent) => {
+        const id = e.dataTransfer.getData('text/plain');
+        if(isID(id) && (e.target as HTMLDivElement).classList.contains('sequences-list')) {
+            store.dispatch(actions.files.move({
+                id
+            }))
+        }
+    }
+
     openFile = () => {
         this.setState({ nameModalOpen: true });
         this.opened = 'sequence';
@@ -75,25 +84,27 @@ export default class Sequences extends React.Component<SequenceProps, SequencesS
     }
 
     onChange = (value: string) => {
-        const id = generateID();
-        if(this.opened === 'sequence') {
-            store.dispatch(actions.files.create({
-                id,
-                dirs: [],
-                name: value,
-                type: 'sequence'
-            }));
-            store.dispatch(actions.sequences.create({
-                id,
-                name: value
-            }));
-        } else {
-            store.dispatch(actions.files.create({
-                id,
-                dirs: [],
-                name: value,
-                type: 'collection'
-            }));
+        if(value) {
+            const id = generateID();
+            if(this.opened === 'sequence') {
+                store.dispatch(actions.files.create({
+                    id,
+                    dirs: [],
+                    name: value,
+                    type: 'sequence'
+                }));
+                store.dispatch(actions.sequences.create({
+                    id,
+                    name: value
+                }));
+            } else {
+                store.dispatch(actions.files.create({
+                    id,
+                    dirs: [],
+                    name: value,
+                    type: 'collection'
+                }));
+            }
         }
     }
     
@@ -104,7 +115,12 @@ export default class Sequences extends React.Component<SequenceProps, SequencesS
                 <div className="sequences-header">
                     <h3>Sequences</h3>
                 </div>
-                <div className="sequences-list">
+                <div
+                    className="sequences-list"
+                    onDragEnter={e => void e.preventDefault()}
+                    onDragOver={e => void e.preventDefault()}
+                    onDrop={this.handleDrop}
+                >
                     {this.renderCollectionContents(this.props.files)}
                 </div>
                 <div className="sequences-footer">

@@ -173,13 +173,13 @@ const filesInitialState: FilesState = {
     dirs: {}
 };
 
-export function findDir(state: FilesState, dirs: SequenceID[]): SequenceFiles {
+export function contentsOfDir(state: FilesState, dirs: SequenceID[]): SequenceFiles {
     let left = dirs.slice();
     let dir = state.files;
     let valid = true;
     while(left.length > 0 && valid) {
         const item = dir[left.shift()];
-        if(item.type === 'collection') {
+        if(item && item.type === 'collection') {
             dir = item.contents;
         } else {
             valid = false;
@@ -219,7 +219,7 @@ const filesSlice = createSlice({
                 };
             }
             
-            const dir = findDir(state, dirs);
+            const dir = contentsOfDir(state, dirs);
             if(!dir) {
                 console.error('[files/create] invalid payload:', action.payload);
             }
@@ -230,7 +230,7 @@ const filesSlice = createSlice({
         promote: (state, action: PayloadAction<FilePromotePayload>) => {
             const { id, main } = action.payload;
             
-            const dir = findDir(state, state.dirs[id]);
+            const dir = contentsOfDir(state, state.dirs[id]);
             if(dir) {
                 const item = dir[id];
                 if(item.type === 'sequence') {
@@ -242,7 +242,7 @@ const filesSlice = createSlice({
         },
         expand: (state, action: PayloadAction<FileExpandPayload>) => {
             const { id } = action.payload;
-            const dir = findDir(state, state.dirs[id]);
+            const dir = contentsOfDir(state, state.dirs[id]);
             if(dir) {
                 const item = dir[id];
                 if(item.type === 'collection') {
@@ -255,18 +255,35 @@ const filesSlice = createSlice({
         },
         move: (state, action: PayloadAction<FileMovePayload>) => {
             const { id, to } = action.payload;
-            const dirFrom = findDir(state, state.dirs[id]);
+
+            if(id === to) return state;
+
+            const dirsFrom = state.dirs[id];
+            const dirFrom = contentsOfDir(state, dirsFrom);
             const copy = { ...dirFrom[id] };
-            delete dirFrom[id];
-            if(to) {
-                const dirsTo = state.dirs[to];
-                const dirTo = findDir(state, dirsTo)[to];
-                if(dirTo.type === 'collection') {
-                    dirTo.contents[id] = copy;
-                    state.dirs[id] = dirsTo;
-                }
-            } else {
+
+            if(to === undefined) {
+                delete dirFrom[id];
                 state.files[id] = copy;
+                state.dirs[id] = [];
+                return state;
+            }
+
+            const dirsTo = state.dirs[to];
+
+            let isMovingParentIntoChild = false;
+            dirsTo.forEach(item => {
+                if(item === id) isMovingParentIntoChild = true;
+            });
+            if(isMovingParentIntoChild) {
+                return state;
+            }
+            
+            const dirTo = contentsOfDir(state, dirsTo)[to];
+            if(dirTo.type === 'collection') {
+                delete dirFrom[id];
+                dirTo.contents[id] = copy;
+                state.dirs[id] = [ ...dirsTo, to ];
             }
             return state;
         }
@@ -307,7 +324,7 @@ store.dispatch(actions.files.create({
     dirs: [folderId],
     id: generateID(),
     name: 'Youtube Video',
-    type: 'sequence'
+    type: 'collection'
 }));
 store.dispatch(actions.files.create({
     dirs: [folderId],
@@ -362,3 +379,35 @@ store.dispatch(actions.sequences.append({
 }));
 
 (window as any).store = store;
+
+function mapper(files: SequenceFiles, indent: number) {
+    Object.keys(files).map(key => {
+        const item = files[key];
+        console.log('   '.repeat(indent) + '-> ' + item.name);
+        if(item.type === 'collection') {
+            mapper(item.contents, indent+1);
+        }
+    });
+}
+
+function update() {
+    let state = store.getState();
+
+    console.clear();
+    mapper(state.files.files, 0);
+
+    console.log('');
+
+    Object.keys(state.files.dirs).map(key => {
+        const item = state.files.dirs[key];
+        console.log(`${key}: [${item.join(',')}]`);
+    });
+}
+
+let playlist: any = {};
+
+playlist.debug = () => {
+    playlist.interval = setInterval(update, 1000);
+}
+
+(window as any).playlist = playlist;

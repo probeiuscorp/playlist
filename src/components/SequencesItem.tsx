@@ -63,6 +63,8 @@ export default class SequencesItem extends React.Component<SequencesItemProps> {
                 <div
                     className="sequences-sequence"
                     onClick={() => void this.openDir(id)}
+                    draggable
+                    onDragStart={e => void e.dataTransfer.setData('text/plain', id)}
                     onDragEnter={e => void this.handleDragEnter(e, item.id)}
                     onDragLeave={e => void this.handleDragLeave(e, item.id)}
                     onDragOver={e => void e.preventDefault()}
