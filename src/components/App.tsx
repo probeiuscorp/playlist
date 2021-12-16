@@ -14,8 +14,24 @@ export interface AppProps {
 }
 
 class App extends React.Component<AppProps> {
+    private sequences: React.RefObject<HTMLDivElement>;
+
+    constructor(props) {
+        super(props);
+
+        this.sequences = React.createRef();
+    }
+
     componentDidMount() {
         document.title = 'Playlist';
+    }
+
+    handleWheel = (e: React.WheelEvent) => {
+        this.sequences.current.scrollBy({
+            top: 0,
+            left: 180 * e.deltaY / Math.abs(e.deltaY),
+            // behavior: 'smooth'
+        })
     }
     
     render() {
@@ -23,7 +39,7 @@ class App extends React.Component<AppProps> {
             return (
                 <main className="app">
                     <ActionBar/>
-                    <div className="viewports">
+                    <div className="viewports" ref={this.sequences} onWheel={this.handleWheel}>
                         <Viewport
                             sequence={this.props.viewport}
                             sources={this.props.sequences[this.props.viewport].sources}

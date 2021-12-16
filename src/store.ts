@@ -19,6 +19,12 @@ export function isID(str: string): str is SequenceID {
 
 export type SequenceID = string & {};
 
+export interface SequenceFileSequence {
+    type: 'sequence',
+    main: boolean,
+    id: SequenceID,
+    name: string
+}
 export type SequenceFileItem = ({
     type: 'collection',
     contents: SequenceFiles,
@@ -65,9 +71,22 @@ export type MutatorUnevaluatedParameters<T extends MutatorParameters> = {
     [P in keyof T]: T[P]['type'] extends 'number' ? number : Sources | SequenceID;
 }
 
-export const registry: Record<string, MutatorParameters> = {};
-export function register<T extends MutatorParameters>(type: string, parameters: T, transformer: (sources: MutatorEvaluatedParameters<T>) => Sources) {
-    registry[type] = parameters;
+export interface MutatorRegistryEntry {
+    info: MutatorInfo,
+    parameters: MutatorParameters,
+    transformer: (sources: MutatorEvaluatedParameters<any>) => Sources
+}
+
+export const registry: Record<string, MutatorRegistryEntry> = {};
+export function register<T extends MutatorParameters>(type: string, info: Omit<MutatorInfo, 'id'>, parameters: T, transformer: (sources: MutatorEvaluatedParameters<T>) => Sources) {
+    registry[type] = {
+        info: {
+            id: type,
+            ...info
+        },
+        parameters,
+        transformer
+    };
 }
 
 export type SequencesState = Record<SequenceID, {

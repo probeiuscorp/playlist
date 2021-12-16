@@ -19,6 +19,9 @@ function shuffle<T>(array: T[]): T[] {
 }
 
 register('picker', {
+    description: 'Randomly picks one source from a sequence.',
+    display: 'Picker'
+}, {
     sources: {
         type: 'sources',
         label: 'Pick one of:'
@@ -28,6 +31,9 @@ register('picker', {
 });
 
 register('pickn', {
+    description: 'Randomly picks a given number of sources from a sequence.',
+    display: 'Pick <n>'
+}, {
     sources: {
         type: 'sources',
         label: 'Pick from:'
@@ -49,16 +55,22 @@ register('pickn', {
     return picked;
 });
 
-register('randomizer', {
+register('shuffler', {
+    description: 'Randomly reorders <sources>.',
+    display: 'Shuffler'
+}, {
     sources: {
         type: 'sources',
-        label: 'Randomize:'
+        label: 'Shuffle:'
     }
 }, ({ sources }) => {
     return shuffle(sources);
 });
 
 register('inserter', {
+    description: 'Inserts <insert> into a random location in <base>.',
+    display: 'Inserter'
+}, {
     sources: {
         type: 'sources',
         label: 'Base:'
@@ -73,6 +85,9 @@ register('inserter', {
 });
 
 register('repeater', {
+    description: 'Repeats <repeat> <n> times.',
+    display: 'Repeater'
+}, {
     sources: {
         type: 'sources',
         label: 'Repeat:'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { MutatorUnevaluatedParameters, MutatorInfo, MutatorParameters, Sources, SequenceID, store, actions, SequenceFiles, FileSequencesDirs, contentsOfDir } from '../store';
+import { MutatorUnevaluatedParameters, MutatorInfo, MutatorParameters, Sources, SequenceID, store, actions, SequenceFiles, FileSequencesDirs, contentsOfDir, Source, registry } from '../store';
 import Empty from './Empty';
 import './Mutator.scss';
 import SequenceVideo from './SequenceVideo';
@@ -11,7 +11,8 @@ export interface MutatorProps<T extends MutatorParameters> {
     files: SequenceFiles,
     dirs: FileSequencesDirs,
     update: (newState: MutatorUnevaluatedParameters<T>) => void,
-    delete: () => void
+    delete: () => void,
+    requestCreate: () => Promise<Source>
 }
 
 type RefMap<T> = Record<string, React.RefObject<T>>;
@@ -47,6 +48,28 @@ export default class Mutator<T extends MutatorParameters> extends React.Componen
         this.props.update(state as MutatorUnevaluatedParameters<T>);
     }
 
+    requestCreate = (key: keyof T) => {
+        this.props.requestCreate()
+            .then(source => {
+                if(this.props.params[key].type === 'sources') {
+                    console.log(source);
+                    let state = { ...this.props.state };
+                    (state[key] as Sources) = [source];
+                    this.props.update(state);
+                }
+            })
+            .catch(() => {});
+    }
+
+    updateParam = (key: keyof T, state: MutatorUnevaluatedParameters<any>) => {
+        let newState = { ...this.props.state };
+        const item = newState[key];
+        if(this.props.params[key].type === 'sources') {
+            item[0] = state;
+            this.props.update(newState);
+        }
+    }
+
     renderSources = (key: keyof T) => {
         const sources = this.props.state[key] as Sources | SequenceID;
         
@@ -63,11 +86,12 @@ export default class Mutator<T extends MutatorParameters> extends React.Componen
                     <Empty
                         set={id => void this.set(key, id)}
                         className="mutator-item"
+                        onClick={() => void this.requestCreate(key)}
                     />
                 )
             } else {
                 return (
-                    <SequenceVideo video={sources[0].id}/>
+                    <SequenceVideo video={(sources[0] as any).video} delete={() => void this.deleteParam(key)}/>
                 )
             }
         }
@@ -123,7 +147,7 @@ export default class Mutator<T extends MutatorParameters> extends React.Componen
                 <div className="seq-video-controls">
                     <i className="bi bi-play-fill"></i>
                     <i className="bi bi-gear-fill"></i>
-                    <i className="bi bi-trash-fill"></i>
+                    <i className="bi bi-trash-fill" onClick={this.props.delete}/>
                 </div>
             </div>
         )

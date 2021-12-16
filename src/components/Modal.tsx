@@ -83,7 +83,7 @@ export default class Modal extends React.Component<ModalProps> {
         return ReactDOM.createPortal(
             (
                 <>
-                <div className={"modal-background" + classes}/>
+                <div className={"modal-background" + classes} onClick={this.props.onClose}/>
                 <div className={"modal" + classes} ref={this.ref} onKeyDown={this.props.onKeyDown}>
                     {this.props.children}
                 </div>

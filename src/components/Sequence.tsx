@@ -4,7 +4,8 @@ import type { DraggableProvidedDragHandleProps } from 'react-beautiful-dnd';
 
 export type SequenceHandleProps = DraggableProvidedDragHandleProps;
 export interface AdditionalSequenceProps {
-    handleEdit?: React.MouseEventHandler<HTMLDivElement>
+    handleEdit?: React.MouseEventHandler<HTMLDivElement>,
+    delete: () => void
 }
 
 export type SequenceProps = React.PropsWithChildren<{
@@ -31,7 +32,7 @@ export default class Sequence extends React.Component<SequenceProps> {
                 <div className="seq-video-controls">
                     <i className="bi bi-play-fill"></i>
                     <i className="bi bi-gear-fill"></i>
-                    <i className="bi bi-trash-fill"></i>
+                    <i className="bi bi-trash-fill" onClick={this.props.delete}/>
                 </div>
             </div>
         )

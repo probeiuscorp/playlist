@@ -5,8 +5,9 @@ import SequenceStart from './SequenceStart';
 import SequenceVideo from './SequenceVideo';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import Mutator from './Mutator';
-import { actions, FileSequencesDirs, generateID, MutatorUnevaluatedParameters, SequenceFiles, SequenceID, Sources, store } from '../store';
+import { actions, FileSequencesDirs, generateID, MutatorUnevaluatedParameters, SequenceFiles, SequenceID, Source, Sources, store } from '../store';
 import Empty from './Empty';
+import ModalNewItem from './ModalNewItem';
 
 export type ISequence = ({
     type: 'video',
@@ -25,16 +26,33 @@ interface ViewportProps {
     dirs: FileSequencesDirs
 }
 
-export default class Viewport extends React.Component<ViewportProps> {
+interface ViewportState {
+    modal: boolean
+}
+
+export default class Viewport extends React.Component<ViewportProps, ViewportState> {
     static nextId = 0;
     private container: React.RefObject<HTMLDivElement>;
     private id: number;
+    private request: null | ((source: Source | null) => void) = null;
 
     constructor(props) {
         super(props);
         this.id = Viewport.nextId++;
 
         this.container = React.createRef();
+
+        this.state = {
+            modal: false
+        };
+    }
+
+    componentDidMount(): void {
+        document.body.addEventListener('keyup', this.handleKeyDown);
+    }
+
+    componentWillUnmount(): void {
+        document.body.removeEventListener('keyup', this.handleKeyDown);
     }
 
     handleDragEnd = (result: DropResult) => {
@@ -66,6 +84,38 @@ export default class Viewport extends React.Component<ViewportProps> {
         }));
     }
 
+    handleChildRequestedCreate: () => Promise<Source> = () => {
+        this.setState({ modal: true });
+        return new Promise((resolve, reject) => {
+            this.request = (source) => {
+                if(!!source) {
+                    resolve(source);
+                } else {
+                    reject(source);
+                }
+                this.request = null;
+            }
+        });
+    }
+
+    handleKeyDown = (e: KeyboardEvent) => {
+        if(e.key === 'q' && e.ctrlKey) {
+            this.setState({ modal: true });
+            e.preventDefault();
+        }
+    }
+
+    handleModalChange = (source: Source) => {
+        if(!!this.request) {
+            this.request(source);
+        } else {
+            store.dispatch(actions.sequences.append({
+                source,
+                sequence: this.props.sequence
+            }));
+        }
+    }
+
     appendItem = (id: SequenceID) => {
         store.dispatch(actions.sequences.append({
             sequence: this.props.sequence,
@@ -79,11 +129,13 @@ export default class Viewport extends React.Component<ViewportProps> {
 
     render() {
         return (
-            <div className="sequence-viewport" ref={this.container}>
+            <div className="sequence-viewport"
+                ref={this.container}
+            >
                 <DragDropContext onDragEnd={this.handleDragEnd}>
                     <Droppable droppableId={`sequences-${this.id}`} direction="horizontal">
                         {(provided) => (
-                            <div className="viewport" {...provided.droppableProps} ref={provided.innerRef}>
+                            <div id="viewport" className="viewport" {...provided.droppableProps} ref={provided.innerRef}>
                                 <SequenceStart/>
                                 {
                                     this.props.sources.map((source, i) => {
@@ -99,15 +151,21 @@ export default class Viewport extends React.Component<ViewportProps> {
                                                     dirs={this.props.dirs}
                                                     update={newState => void this.handleChildRequestedUpdate(i, newState)}
                                                     delete={() => void this.handleChildRequestedDeletion(i)}
+                                                    requestCreate={this.handleChildRequestedCreate}
                                                 />    
                                             );
                                         } else {
                                             if(source.primitive === 'mp3') {
-                                                element = <SequenceFile/>;
+                                                element = (
+                                                    <SequenceFile
+                                                        delete={() => void this.handleChildRequestedDeletion(i)}
+                                                    />
+                                                );
                                             } else if(source.primitive === 'video') {
                                                 element = (
                                                     <SequenceVideo
                                                         video={source.video}
+                                                        delete={() => void this.handleChildRequestedDeletion(i)}
                                                     />
                                                 )
                                             }
@@ -127,12 +185,18 @@ export default class Viewport extends React.Component<ViewportProps> {
                                 <Empty
                                     set={this.appendItem}
                                     className="empty-source source-shadow"
+                                    onClick={() => void this.setState({ modal: true })}
                                 />
                                 <SequenceEnd/>
                             </div>
                         )}
                     </Droppable>
                 </DragDropContext>
+                <ModalNewItem
+                    show={this.state.modal}
+                    onClose={() => void this.setState({ modal: false})}
+                    onChange={this.handleModalChange}
+                />
             </div>
         );
     }

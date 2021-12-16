@@ -4,7 +4,8 @@ import './Empty.scss';
 
 export interface EmptyProps {
     set: (id: SequenceID) => void,
-    className: string
+    className: string,
+    onClick?: () => void
 }
 
 export default class Empty extends React.Component<EmptyProps> {
@@ -42,6 +43,7 @@ export default class Empty extends React.Component<EmptyProps> {
                 onDragOver={e => void e.preventDefault()}
                 onDrop={this.handleDrop}
                 ref={this.ref}
+                onClick={this.props.onClick}
             >
                 <i className="bi bi-plus-circle-fill"/>
             </div>
