@@ -30,6 +30,10 @@ $line-color: colors.$text-dim;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    & > .empty {
+        font-size: 32px;
+    }
 }
 
 .source-shadow, .source {

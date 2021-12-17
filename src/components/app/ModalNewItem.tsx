@@ -1,6 +1,7 @@
 import React from 'react';
-import { generateID, MutatorUnevaluatedParameters, registry, Source } from '../store';
+import { generateID, MutatorUnevaluatedParameters, registry, Source } from '../../store';
 import Modal from './Modal';
+import { ModalVideo } from './ModalAudioVideo';
 import './ModalNewItem.scss';
 
 export interface ModalNewItemProps {
@@ -58,11 +59,13 @@ const dividers = [{
 
 interface ModalNewItemState {
     selected: number,
-    filter: string
+    filter: string,
+    modal: 'none' | 'video' | 'audio'
 }
 
 export default class ModalNewItem extends React.Component<ModalNewItemProps, ModalNewItemState> {
     private ref: React.RefObject<HTMLInputElement>;
+    private callback: (value: string) => void = null;
 
     constructor(props) {
         super(props);
@@ -71,11 +74,26 @@ export default class ModalNewItem extends React.Component<ModalNewItemProps, Mod
 
         this.state = {
             selected: 0,
-            filter: null
+            filter: null,
+            modal: 'none'
         };
     }
 
-    select = (index: number) => {
+    onChange = (value: string) => {
+        this.callback?.(value);
+    }
+
+    getVideo: () => Promise<string> = () => {
+        this.setState({ modal: 'video' });
+
+        return new Promise((resolve) => {
+            this.callback = (value) => {
+                resolve(value);
+            };
+        });
+    }
+
+    select = async (index: number) => {
         if(this.props.onChange) {
             if(typeof index === 'number') {
                 const id = generateID();
@@ -83,11 +101,14 @@ export default class ModalNewItem extends React.Component<ModalNewItemProps, Mod
 
                 if(selected.type === 'primitive') {
                     if(selected.primitive === 'video') {
+                        const video = await this.getVideo();
+                        if(video === null) return;
+                        
                         this.props.onChange({
                             id,
                             primitive: 'video',
-                            video: 'dQw4w9WgXcQ'
-                        })
+                            video
+                        });
                     } else {
                         this.props.onChange({
                             id,
@@ -195,6 +216,7 @@ export default class ModalNewItem extends React.Component<ModalNewItemProps, Mod
         const regex = this.state.filter && this.regex(this.state.filter);
 
         return (
+            <>
             <Modal
                 show={this.props.show}
                 onClose={this.props.onClose}
@@ -253,6 +275,12 @@ export default class ModalNewItem extends React.Component<ModalNewItemProps, Mod
                     }
                 </div>
             </Modal>
+            <ModalVideo
+                show={this.state.modal === 'video'}
+                onClose={() => void this.setState({ modal: 'none' })}
+                onChange={this.onChange}
+            />
+            </>
         );
     }
 }

@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import './mutators';
-import App from './components/App';
+import App from './components/app/App';
 import './styles/load';
 
 ReactDOM.render(

@@ -1,11 +1,11 @@
 import React from 'react';
-import { isID, SequenceID } from '../store';
+import { generateID, isID, MutatorUnevaluatedParameters, SequenceID, Source } from '../../store';
 import './Empty.scss';
 
 export interface EmptyProps {
-    set: (id: SequenceID) => void,
-    className: string,
-    onClick?: () => void
+    requestCreate: () => Promise<Source>,
+    create: (source: Source) => void,
+    className: string
 }
 
 export default class Empty extends React.Component<EmptyProps> {
@@ -29,9 +29,18 @@ export default class Empty extends React.Component<EmptyProps> {
     handleDrop = (e: React.DragEvent) => {
         const data = e.dataTransfer.getData('text/plain');
         if(isID(data)) {
-            this.props.set(data);
+            this.props.create({
+                id: generateID(),
+                link: data
+            });
         }
         this.handleDragLeave(e);
+    }
+
+    handleClick = () => {
+        this.props.requestCreate()
+            .then(this.props.create)
+            .catch(() => {})
     }
 
     render() {
@@ -43,7 +52,7 @@ export default class Empty extends React.Component<EmptyProps> {
                 onDragOver={e => void e.preventDefault()}
                 onDrop={this.handleDrop}
                 ref={this.ref}
-                onClick={this.props.onClick}
+                onClick={this.handleClick}
             >
                 <i className="bi bi-plus-circle-fill"/>
             </div>

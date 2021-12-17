@@ -1,12 +1,6 @@
-@use "../styles/colors";
+@use "../../styles/colors";
 
 $padding: 12px;
-
-.new-item-heading {
-    margin: 0;
-    margin-bottom: 0.5em;
-    text-align: center;
-}
 
 .new-item-filter {
     margin-bottom: $padding;
@@ -32,7 +26,7 @@ $border-highlight: 2px;
     padding: 10px $el-padding;
     font-family: monospace;
     font-size: 18px;
-    box-shadow: 0 3px 0 colors.$bg-dark;
+    box-shadow: 0 3px 0 colors.$bg-darker;
     transition: box-shadow 120ms, transform 120ms;
     cursor: pointer;
 
@@ -44,7 +38,7 @@ $border-highlight: 2px;
 
     &:hover, &.selected {
         transform: translateY(-2px);
-        box-shadow: 3px 5px 0 0px colors.$bg-dark;
+        box-shadow: 3px 5px 0 0px colors.$bg-darker;
     }
 
     i {

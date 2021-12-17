@@ -1,0 +1,16 @@
+@use "../../styles/colors";
+
+.action-bar {
+    background-color: colors.$bg-med;
+    border-right: 1px solid colors.$outline;
+    font-size: 20px;
+    padding-top: 60px;
+}
+
+.action {
+    padding: 4px 12px;
+
+    i {
+        margin-right: 8px;
+    }
+}

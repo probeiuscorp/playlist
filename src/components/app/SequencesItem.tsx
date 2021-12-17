@@ -1,5 +1,5 @@
 import React from 'react';
-import { actions, isID, SequenceFileItem, SequenceID, store } from '../store';
+import { actions, isID, SequenceFileItem, SequenceID, store } from '../../store';
 
 export interface SequencesItemProps {
     id: SequenceID,

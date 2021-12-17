@@ -1,5 +1,5 @@
-@use "../styles/colors";
-@use "../styles/sequences.scss";
+@use "../../styles/colors";
+@use "../../styles/sequences.scss";
 
 .mutator {
     background-color: colors.$bg-med;
@@ -83,7 +83,7 @@
             }
 
             input {
-                background-color: colors.$bg-dark;
+                background-color: colors.$bg-darker;
                 border: 1px solid colors.$outline;
                 border-radius: 2px;
                 width: 100%;

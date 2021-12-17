@@ -5,9 +5,74 @@ import SequenceStart from './SequenceStart';
 import SequenceVideo from './SequenceVideo';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import Mutator from './Mutator';
-import { actions, FileSequencesDirs, generateID, MutatorUnevaluatedParameters, SequenceFiles, SequenceID, Source, Sources, store } from '../store';
+import { actions, FileSequencesDirs, SequenceFiles, SequenceID, Source, Sources, store } from '../../store';
 import Empty from './Empty';
 import ModalNewItem from './ModalNewItem';
+import SequenceLink from './SequenceLink';
+
+interface RenderSourceParameters {
+    source: Source,
+    onDelete: () => void,
+    onUpdate: (newState: Source) => void,
+    /**
+     * Handler to get a Source from the modal.
+     */
+    onCreate: () => Promise<Source>,
+    empty: {
+        /**
+         * When a new item is made from an empty item.
+         */
+        onCreate: (source: Source) => void
+    }
+}
+export function renderSource({ source, onDelete, onUpdate, onCreate, empty }: RenderSourceParameters): React.ReactNode {
+    if(source === null) {
+        return (
+            <Empty
+                className="mutator-item"
+                requestCreate={onCreate}
+                create={empty.onCreate}
+            />
+        );
+    } else if('type' in source) {
+        return (
+            <Mutator
+                info={source.info}
+                params={source.parameters}
+                state={source.state}
+                update={state => {
+                    let newSource = { ...source };
+                    newSource.state = state;
+                    onUpdate(newSource);
+                }}
+                delete={onDelete}
+                requestCreate={onCreate}
+            />    
+        );
+    } else if('primitive' in source) {
+        if(source.primitive === 'mp3') {
+            return (
+                <SequenceFile
+                    delete={onDelete}
+                />
+            );
+        } else if(source.primitive === 'video') {
+            return (
+                <SequenceVideo
+                    video={source.video}
+                    delete={onDelete}
+                />
+            )
+        }
+    } else {
+        return (
+            <SequenceLink
+                link={source.link}
+                delete={onDelete}
+            />
+        )
+    }
+}
 
 export type ISequence = ({
     type: 'video',
@@ -65,16 +130,13 @@ export default class Viewport extends React.Component<ViewportProps, ViewportSta
         }
     }
 
-    handleChildRequestedUpdate = (index: number, newState: MutatorUnevaluatedParameters<any>) => {
-        const source = {...this.props.sources[index]};
-        if('type' in source) {
-            source.state = newState;
-            store.dispatch(actions.sequences.update({
-                sequence: this.props.sequence,
-                index,
-                updated: source
-            }));
-        }
+    handleChildRequestedUpdate = (index: number, source: Source) => {
+        console.log(source);
+        store.dispatch(actions.sequences.update({
+            sequence: this.props.sequence,
+            index,
+            updated: source
+        }));
     }
 
     handleChildRequestedDeletion = (index: number) => {
@@ -116,14 +178,10 @@ export default class Viewport extends React.Component<ViewportProps, ViewportSta
         }
     }
 
-    appendItem = (id: SequenceID) => {
+    appendItem = (source: Source) => {
         store.dispatch(actions.sequences.append({
             sequence: this.props.sequence,
-            source: {
-                primitive: 'video',
-                video: 'dQw4w9WgXcQ',
-                id: generateID()
-            }
+            source
         }));
     }
 
@@ -139,42 +197,22 @@ export default class Viewport extends React.Component<ViewportProps, ViewportSta
                                 <SequenceStart/>
                                 {
                                     this.props.sources.map((source, i) => {
-                                        let element: JSX.Element;
-
-                                        if('type' in source) {
-                                            element = (
-                                                <Mutator
-                                                    info={source.info}
-                                                    params={source.parameters}
-                                                    state={source.state}
-                                                    files={this.props.files}
-                                                    dirs={this.props.dirs}
-                                                    update={newState => void this.handleChildRequestedUpdate(i, newState)}
-                                                    delete={() => void this.handleChildRequestedDeletion(i)}
-                                                    requestCreate={this.handleChildRequestedCreate}
-                                                />    
-                                            );
-                                        } else {
-                                            if(source.primitive === 'mp3') {
-                                                element = (
-                                                    <SequenceFile
-                                                        delete={() => void this.handleChildRequestedDeletion(i)}
-                                                    />
-                                                );
-                                            } else if(source.primitive === 'video') {
-                                                element = (
-                                                    <SequenceVideo
-                                                        video={source.video}
-                                                        delete={() => void this.handleChildRequestedDeletion(i)}
-                                                    />
-                                                )
-                                            }
-                                        }
+                                        
                                         return (
                                             <Draggable key={source.id} draggableId={source.id} index={i}>
                                                 {(provided) => (
                                                     <div {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
-                                                        {element}
+                                                        {
+                                                            renderSource({
+                                                                source,
+                                                                onDelete: () => void this.handleChildRequestedDeletion(i),
+                                                                onUpdate: source => void this.handleChildRequestedUpdate(i, source),
+                                                                onCreate: this.handleChildRequestedCreate,
+                                                                empty: {
+                                                                    onCreate: null /** Does not apply here */
+                                                                }
+                                                            })
+                                                        }
                                                     </div>
                                                 )}
                                             </Draggable>
@@ -183,9 +221,9 @@ export default class Viewport extends React.Component<ViewportProps, ViewportSta
                                 }
                                 {provided.placeholder}
                                 <Empty
-                                    set={this.appendItem}
+                                    requestCreate={this.handleChildRequestedCreate}
+                                    create={this.appendItem}
                                     className="empty-source source-shadow"
-                                    onClick={() => void this.setState({ modal: true })}
                                 />
                                 <SequenceEnd/>
                             </div>

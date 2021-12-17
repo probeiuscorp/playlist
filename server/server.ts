@@ -13,10 +13,6 @@ export const X = String.fromCharCode(0x2717);
 app.use('/public', express.static(path.join(__dirname, '..', 'public')));
 app.use('/dist', express.static(path.join(__dirname, '..', 'dist')));
 
-app.get('/', (req, res) => {
-    res.send(page());
-});
-
 const FAVICON = fs.readFileSync(path.join(__dirname, '..', 'favicon.ico'));
 
 app.get('/favicon.ico', (req, res) => {
@@ -25,6 +21,10 @@ app.get('/favicon.ico', (req, res) => {
 
 app.listen(3040, () => {
     console.log(chalk.greenBright(CHECK + ' server listening on port 3040'));
+});
+
+app.get('*', (req, res) => {
+    res.send(page());
 });
 
 /*

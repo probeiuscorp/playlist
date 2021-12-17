@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/sequences';
+import '../../styles/sequences';
 import type { DraggableProvidedDragHandleProps } from 'react-beautiful-dnd';
 
 export type SequenceHandleProps = DraggableProvidedDragHandleProps;

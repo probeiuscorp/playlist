@@ -1,4 +1,4 @@
-@use '../styles/colors';
+@use '../../styles/colors';
 
 .sequences {
     background-color: colors.$bg-med;
@@ -16,7 +16,6 @@
         overflow-y: auto;
 
         &.dropping {
-            // background-color: colors.$accent;
             border-radius: 4px;
             box-shadow: 0px 0px 0px 2px colors.$accent;
         }

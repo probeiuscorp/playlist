@@ -50,6 +50,8 @@ export type Source = ({
 } | {
     primitive: 'mp3',
     url: string
+} | {
+    link: SequenceID
 }) & {
     id: string
 };
@@ -68,7 +70,7 @@ export type MutatorEvaluatedParameters<T extends MutatorParameters> = {
     [P in keyof T]: T[P]['type'] extends 'number' ? number : Sources;
 }
 export type MutatorUnevaluatedParameters<T extends MutatorParameters> = {
-    [P in keyof T]: T[P]['type'] extends 'number' ? number : Sources | SequenceID;
+    [P in keyof T]: T[P]['type'] extends 'number' ? number : Source;
 }
 
 export interface MutatorRegistryEntry {
@@ -319,73 +321,23 @@ export const store = configureStore({
 
 // TESTING
 
-const sequence = generateID();
+export const sequence = generateID();
 store.dispatch(actions.viewport.set(sequence));
 
 store.dispatch(actions.sequences.create({
     id: sequence,
-    name: 'a sequence'
+    name: 'Main'
 }));
 store.dispatch(actions.files.create({
     dirs: [],
     id: sequence,
-    name: 'a sequence',
+    name: 'Main',
     type: 'sequence'
 }));
-const folderId = generateID();
-store.dispatch(actions.files.create({
-    dirs: [],
-    id: folderId,
-    name: 'Primitives',
-    type: 'collection'
-}));
-store.dispatch(actions.files.create({
-    dirs: [folderId],
-    id: generateID(),
-    name: 'Youtube Video',
-    type: 'collection'
-}));
-store.dispatch(actions.files.create({
-    dirs: [folderId],
-    id: generateID(),
-    name: 'MP3 File',
-    type: 'sequence'
-}));
+
 store.dispatch(actions.files.promote({
     id: sequence,
     main: true
-}));
-
-store.dispatch(actions.sequences.append({
-    sequence,
-    source: {
-        type: 'inserter',
-        info: {
-            description: 'Inserts an item into something',
-            display: 'Inserter',
-            id: 'inserter'            
-        },
-        state: {
-            base: null,
-            inserted: null,
-            chance: 50
-        },
-        parameters: {
-            base: {
-                type: 'sources',
-                label: 'Base'
-            },
-            inserted: {
-                type: 'sources',
-                label: 'Insert:'
-            },
-            chance: {
-                type: 'number',
-                label: 'Chance:'
-            }
-        },
-        id: generateID()
-    }
 }));
 
 store.dispatch(actions.sequences.append({

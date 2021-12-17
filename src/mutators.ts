@@ -24,7 +24,7 @@ register('picker', {
 }, {
     sources: {
         type: 'sources',
-        label: 'Pick one of:'
+        label: 'Pick one from:'
     }
 }, ({ sources }) => {
     return [sources[Math.floor(Math.random()*sources.length)]];

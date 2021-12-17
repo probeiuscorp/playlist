@@ -6,8 +6,8 @@ export default class SequenceFile extends React.Component<AdditionalSequenceProp
         return (
             <Sequence icon={{
                 bsIcon: 'soundwave',
-                className: 'file'
-            }}>
+                className: 'file',
+            }} delete={this.props.delete}>
 
             </Sequence>
         );

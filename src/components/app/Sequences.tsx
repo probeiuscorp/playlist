@@ -1,5 +1,5 @@
 import React from 'react';
-import { actions, generateID, isID, SequenceFileItem, SequenceFiles, SequenceID, store } from '../store';
+import { actions, generateID, isID, SequenceFileItem, SequenceFiles, SequenceID, store } from '../../store';
 import Modal from './Modal';
 import './Sequences.scss';
 import SequencesItem from './SequencesItem';
