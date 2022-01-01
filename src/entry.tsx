@@ -1,14 +1,23 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { store } from './store';
 import './mutators';
-import App from './components/app/App';
 import './styles/load';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Sequences from './components/create/Sequences';
+import PageCreate from './components/create/PageCreate';
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App/>
-    </Provider>,
+    <BrowserRouter>
+        <Route path="*" render={() => 
+            // <Provider store={store}>
+            //     <App/>
+            // </Provider>}>
+            <PageCreate/>
+        }>
+        </Route>
+    </BrowserRouter>,
     document.getElementById('root')
 );
+
+export type ExtractCallback<T> = (cb: () => T) => void;
+export type ExtractedCallback<T> = () => T;

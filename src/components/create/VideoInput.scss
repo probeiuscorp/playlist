@@ -28,12 +28,12 @@ $amplitude: 3px;
     }
 }
 
-.modal-video-row {
+.video-input-wrapper {
     display: flex;
     gap: 8px;
     align-items: center;
 
-    input.invalid {
+    .video-input.invalid {
         animation: shake 400ms;
         border-color: rgb(248, 128, 112) !important;
     }
@@ -54,11 +54,4 @@ $amplitude: 3px;
             color: colors.$accent;
         }
     }
-}
-
-.modal-video-btns {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
 }

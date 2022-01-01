@@ -1,8 +1,6 @@
-import fs = require('fs');
-import path = require('path');
-
 const headerItems = [
-    '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">'
+    '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">',
+    '<link href="http://fonts.cdnfonts.com/css/gt-pressura-mono" rel="stylesheet">'
 ];
 
 let html = '<!DOCTYPE html><html lang="en"><head>';

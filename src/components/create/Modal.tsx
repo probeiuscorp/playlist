@@ -7,7 +7,8 @@ const modals = document.getElementById('modals');
 export interface ModalProps {
     show: boolean,
     onClose?: () => void,
-    onKeyDown?: React.KeyboardEventHandler
+    onKeyDown?: React.KeyboardEventHandler,
+    onOpen?: () => void
 }
 
 export interface NameProps extends ModalProps {
@@ -27,6 +28,7 @@ export default class Modal extends React.Component<ModalProps> {
         componentDidUpdate(prevProps: Readonly<NameProps>, prevState: Readonly<{}>): void {
             if(this.props.show) {
                 this.ref.current.focus();
+                this.props.onOpen?.();
             }
         }
 

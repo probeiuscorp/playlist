@@ -1,4 +1,6 @@
-import { register } from './store';
+// import { register } from './store';
+
+let register = (() => null) as any;
 
 function shuffle<T>(array: T[]): T[] {
     let m = array.length, t: T, i: number;

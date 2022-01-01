@@ -1,0 +1,16 @@
+@use "../../styles/colors";
+
+.upload-audio {
+    border: 2px dashed colors.$outline;
+    padding: 30px 15px;
+    text-align: center;
+    border-radius: 3px;
+
+    &.invalid {
+        border-color: colors.$yt;
+    }
+
+    &.dropping {
+        border-color: colors.$accent;
+    }
+}

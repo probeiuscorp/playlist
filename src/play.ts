@@ -1,0 +1,55 @@
+/*
+
+https://rr4---sn-nx5s7n76.googlevideo.com/videoplayback
+?expire=1639803388
+&ei=nBW9YZ2nCu-GsfIP6t6igAQ
+&ip=65.129.49.19
+&id=o-AL_MULiElTzDunPuS3mTxJJP-CFBGJzf2-H6xk1Z4Nnm
+&itag=398
+&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C278%2C394%2C395%2C396%2C397%2C398%2C399
+&source=youtube
+&requiressl=yes
+&mh=7c
+&mm=31%2C26
+&mn=sn-nx5s7n76%2Csn-a5msenek
+&ms=au%2Conr
+&mv=m
+&mvi=4
+&pl=20
+&initcwndbps=1076250
+&vprv=1
+&mime=video%2Fmp4
+&ns=7ehaKmg8A-TSzZ87nIuPy8IG
+&gir=yes
+&clen=22755091
+&dur=212.040
+&lmt=1624947952304594
+&mt=1639781325
+&fvip=4
+&keepalive=yes
+&fexp=24001373%2C24007246
+&c=WEB
+&txp=5531432
+&n=coR2mHfB2aW9Ng
+&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt
+&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps
+&lsig=AG3C_xAwRQIgNM595WZmQPIfwwgpnss37NEgVtr7JsPJ9w89B2i9NgUCIQCwRvRP649C5Mt7YLlOI6vM3YAI5OZvMz8Q1sKmBSBd5A%3D%3D
+&alr=yes
+&sig=AOq0QJ8wRgIhAP2dejSNCOwfOYT-rB-mblaVpkzx7hm4hvged2wk3RY6AiEA1utrswkHxC53XhPuoPAV3b_ttw9a0BEBDPi3begU6G0%3D
+&cpn=Z30KI7nmxjqS9zEZ
+&cver=2.20211216.01.02
+&range=0-1235
+&rn=17
+&rbuf=0
+&bbs=CvubemY1wZ6FKjSFXYP5nEeQZwP7PzfHGG1eefCGGsR9cDDaD8zaYj4jmq7B1LdITfX_irtbfgJyGdtA4sXyPVJQADWc0fLomBsD
+
+<iframe
+    width="1275"
+    height="726"
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
+*/

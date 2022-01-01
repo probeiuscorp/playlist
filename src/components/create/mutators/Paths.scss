@@ -1,0 +1,8 @@
+@use "../../../styles/colors";
+
+.paths {
+    width: 100%;
+    height: 100%;
+    stroke: colors.$text-dim;
+    stroke-width: 3px;
+}

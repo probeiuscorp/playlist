@@ -15,6 +15,12 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ]
+            }, {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
             }
         ]
     },
@@ -27,7 +33,10 @@ module.exports = {
         filename: '[name].bundle.js'
     },
     resolve: {
-        extensions: [ '.ts', '.tsx', '.js', '.scss' ]
+        extensions: [ '.ts', '.tsx', '.js', '.scss' ],
+        alias: {
+            '@client': path.join(__dirname, 'src')
+        }
     },
     devtool: 'source-map',
     watch: true

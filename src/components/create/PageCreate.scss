@@ -1,0 +1,55 @@
+@use "../../styles/colors";
+
+.page-create {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+}
+
+.sidebar-main {
+    width: 200px;
+    background-color: darkorange;
+    border-right: 1px solid black;
+}
+
+.sidebar-sequences {
+    width: 300px;
+    background-color: maroon;
+    border-left: 1px solid black;
+}
+
+.create {
+    min-width: 300px;
+    flex-grow: 1;
+}
+
+.create-viewport {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, colors.$bg-med 1px, transparent 1px),
+      linear-gradient(to bottom, colors.$bg-med 1px, transparent 1px);
+    height: 100%;
+    position: relative;
+}
+
+.tabs {
+    display: flex;
+
+    .tab {
+        flex-grow: 1;
+        background-color: colors.$bg-light;
+        text-align: center;
+        padding: 12px;
+        border-bottom: 1px solid colors.$bg-darker;
+        cursor: pointer;
+
+        &.active {
+            background-color: colors.$bg-lightest;
+            border-color: colors.$accent;
+        }
+
+        &:hover:not(.active) {
+            background-color: colors.$bg-lighter;
+        }
+    }
+}

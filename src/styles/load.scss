@@ -1,6 +1,6 @@
 @use './colors';
 
-$font: system-ui, Ubuntu, "Droid Sans", sans-serif;
+$font: 'GT Pressura Mono', monospace;
 
 body {
     background-color: colors.$bg-darker;
@@ -20,25 +20,30 @@ body {
 
 button {
     color: white;
-    background: linear-gradient(90deg, rgb(14, 99, 156), rgb(5, 83, 136));
+    background-color: colors.$accent-dark;
+    border-radius: 4px;
     cursor: pointer;
-    padding: 6px 10px;
+    padding: 6px 13px 8px 13px;
     border: none;
     font-family: $font;
     font-size: 16px;
 
     &:hover {
-        box-shadow: rgb(0 0 0 / 36%) 0px 0px 8px 2px;
-        background: rgb(17, 119, 187);
+        background-color: colors.$accent;
+        box-shadow: 0px 0px 6px -1px black;
     }
 }
 
-input[type="text"] {
+input {
+    font-family: $font;
+}
+
+.textbox {
     background-color: #40444b;
     color: #fff;
     width: 150px;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     border: 1px solid #222;
     padding: 4px 8px;
     border-radius: 2px;
@@ -49,4 +54,24 @@ input[type="text"] {
         border: 1px solid #007fd4;
         outline: none;
     }
+
+    &.invalid {
+        border-color: colors.$yt;
+    }
+}
+
+h3 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.mono {
+    font-family: monospace;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 10px;
 }
