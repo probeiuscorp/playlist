@@ -1,6 +1,9 @@
 const headerItems = [
     '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">',
-    '<link href="http://fonts.cdnfonts.com/css/gt-pressura-mono" rel="stylesheet">'
+    '<link href="http://fonts.cdnfonts.com/css/gt-pressura-mono" rel="stylesheet">',
+    '<link rel="preconnect" href="https://fonts.googleapis.com">',
+    '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
+    '<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">'
 ];
 
 let html = '<!DOCTYPE html><html lang="en"><head>';

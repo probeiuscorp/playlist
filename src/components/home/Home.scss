@@ -1,0 +1,81 @@
+@use "../../styles/colors";
+@use "sass:math";
+
+.home {
+    margin-left: 300px;
+    background-color: colors.$bg-dark;
+    height: 100%;
+}
+
+.title {
+    font-size: 48px;
+    justify-content: center;
+    font-family: 'Ubuntu';
+    display: flex;
+    align-items: center;
+}
+
+.title-emphasis {
+    color: colors.$accent-light;
+    font-size: 64px;
+    padding: 0 18px;
+}
+
+$ratio: math.div(5, 8);
+$scale: 1.05;
+
+.img-group {
+    height: 400px;
+    position: relative;
+    width: max-content;
+    margin: 0 auto;
+
+    .img-group-item {
+        border-radius: 8px;
+        overflow: hidden;
+        position: absolute;
+        width: 400px;
+        height: 400px * $ratio;
+        box-shadow: 0 0 6px black;
+        transition: transform 180ms;
+
+        &:nth-child(1) {
+            z-index: 3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px * $ratio;
+
+            &:hover {
+                transform: translate(-50%, -50%) scale($scale);
+            }
+        }
+
+        &:nth-child(2) {
+            z-index: 2;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+
+            &:hover {
+                transform: translate(50px, -50%) scale($scale);
+            }
+        }
+
+        &:nth-child(3) {
+            z-index: 1;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+
+            &:hover {
+                transform: translate(-50px, -50%) scale($scale);
+            }
+        }
+
+        &:hover {
+            z-index: 4;
+        }
+    }
+}

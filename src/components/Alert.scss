@@ -1,0 +1,36 @@
+@use "../styles/colors";
+
+.alert {
+    border-left: 2px solid black;
+    padding: 16px;
+    font-size: 16px;
+    background-color: colors.$bg-lightest;
+
+    &.error {
+        border-left-color: #e36a56;
+
+        i {
+            color: #e36a56;
+        }
+    }
+
+    &.warn {
+        border-left-color: #bfbf5d;
+
+        i {
+            color: #bfbf5d;
+        }
+    }
+
+    &.ok {
+        border-left-color: #a4cb67;
+        
+        i {
+            color: #a4cb67;
+        }
+    }
+
+    i {
+        padding-right: 0.6em;
+    }
+}

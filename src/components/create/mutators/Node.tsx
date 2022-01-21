@@ -1,43 +1,82 @@
-import { NodeAny, NodeEnd, NodeMutator, NodeSequence } from '@client/types';
+import { Dynalist } from '@client/dynalist/dynalist';
+import { mutators } from '@client/mutators';
+import { Camera, ID, NodeAny, NodeMutator, NodeParam, Point } from '@client/types';
+import { conditional, map, paramsOutputsOf } from '@client/util';
 import React from 'react';
 import './Node.scss';
+import { OnNodesEvent } from './Nodes';
 
-interface MutatorInfo {
-    display: string,
-    params: {
-        label: string,
-        type: 'sequence' | 'number' | 'chance'
-    }[]
-}
-
-const mutators: Record<string, MutatorInfo> = {
-    'shuffle': {
-        display: 'Shuffle',
-        params: [
-            {
-                label: 'Shuffle:',
-                type: 'sequence'
-            }
-        ]
-    }
-};
+export type PositionReport = Record<string, Point>;
+export type UpdateParamsPosition = (params: PositionReport, outputs: PositionReport, id: string) => void;
 
 export interface NodeProps {
-    node: NodeAny
+    node: NodeAny,
+    camera: Camera,
+    updateParamPositions: UpdateParamsPosition,
+    onEvent: OnNodesEvent,
+    id: ID,
+    selected: boolean
 }
 
+type InputRefMap = Record<string, React.RefObject<HTMLDivElement>>;
+
 export default class Node extends React.Component<NodeProps> {
-    renderEnd = (node: NodeEnd) => {
-        return (
-            <>
-            </>
-        );
+    private params: InputRefMap = {};
+    private outputs: InputRefMap = {};
+
+    constructor(props: NodeProps) {
+        super(props);
+
+        const { params, outputs } = paramsOutputsOf(props.node);
+
+        for(const param of params) {
+            this.params[param.id] = React.createRef();
+        }
+        for(const param of outputs) {
+            this.outputs[param.id] = React.createRef();
+        }
     }
 
-    renderSequence = (node: NodeSequence) => {
+    mapper(ref: React.RefObject<HTMLDivElement>): Point {
+        const boundingRect = ref.current.getBoundingClientRect();
+        return {
+            x: boundingRect.x + boundingRect.width / 2,
+            y: boundingRect.y + boundingRect.height / 2
+        }
+    }
+
+    updateParamPositions = () => {
+        this.props.updateParamPositions(map(this.params, this.mapper), map(this.outputs, this.mapper), this.props.node.id)
+    }
+
+    componentDidMount(): void {
+        this.updateParamPositions();
+    }
+
+    componentDidUpdate(prevProps: Readonly<NodeProps>, prevState: Readonly<{}>, snapshot?: any): void {
+        this.updateParamPositions();
+    }
+
+    renderParam = (param: NodeParam, input: boolean) => {
         return (
-            <>
-            </>
+            <div className="node-input" key={param.label}>
+                <div
+                    className={conditional({
+                        "node-input-connection": true,
+                        "connection-sequence": param.type === 'sequence',
+                        "connection-number": param.type === 'number',
+                        "connection-boolean": param.type === 'boolean',
+                        "connection-any": param.type === 'any'
+                    })}
+                    ref={input ? this.params[param.id] : this.outputs[param.id]}
+                    onClick={e => void this.props.onEvent('node.joint.click', {
+                        e: e.stopPropagation() === undefined && e,
+                        node: this.props.id,
+                        target: this.props.node[input ? "params" : "outputs"][param.id]
+                    })}
+                />
+                <div className="node-input-label">{param.label}</div>
+            </div>
         );
     }
 
@@ -50,21 +89,55 @@ export default class Node extends React.Component<NodeProps> {
                 {mutator.display}
             </div>
             <div className="node-body">
-
+                <div className="node-inputs">
+                    {mutator.params.map(p => this.renderParam(p, true))}
+                </div>
+                <div className="spacer"/>
+                <div className="node-outputs">
+                    {mutator.outputs.map(p => this.renderParam(p, false))}
+                </div>
             </div>
             </>
         );
     }
 
     render() {
-        const { node } = this.props;
-        
+        const { node, id, camera: { x, y, zoom } } = this.props;
+        const entry = node.type === 'primitive' && Dynalist.primitives[node.primitive];
+
         return (
-            <div className="node" style={{ top: `${node.y}px`, left: `${node.x}px` }}>
+            <div
+                className={conditional({
+                    "node": true,
+                    "selected": this.props.selected,
+                    ...node.classes
+                })}
+                onMouseDown={e => void this.props.onEvent('node.mousedown', {
+                    e: e.stopPropagation() === undefined && e,
+                    target: id
+                })}
+                onMouseUp={e => void this.props.onEvent('node.mouseup', {
+                    e: e.stopPropagation() === undefined && e,
+                    target: id
+                })}
+                style={{
+                    top: `${node.y}px`,
+                    left: `${node.x}px`,
+                }}
+            >
                 {
-                    node.type === 'end' ? this.renderEnd(node) :
-                    node.type === 'sequences' ? this.renderSequence(node) :
-                    node.type === 'mutator' ? this.renderMutator(node) : null
+                    node.type === 'mutator' ? this.renderMutator(node) : (
+                        <entry.component
+                            node={node}
+                            setState={console.log}
+                            params={
+                                <div className="node-inputs">{entry.info.params.map(p => this.renderParam(p, true))}</div>
+                            }
+                            outputs={
+                                <div className="node-outputs">{entry.info.outputs.map(p => this.renderParam(p, false))}</div>
+                            }
+                        />
+                    )
                 }
             </div>
         );

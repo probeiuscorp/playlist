@@ -5,6 +5,7 @@ import './styles/load';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Sequences from './components/create/Sequences';
 import PageCreate from './components/create/PageCreate';
+import Home from './components/home/Home';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -13,6 +14,7 @@ ReactDOM.render(
             //     <App/>
             // </Provider>}>
             <PageCreate/>
+            // <Home/>
         }>
         </Route>
     </BrowserRouter>,

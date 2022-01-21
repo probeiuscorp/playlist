@@ -1,3 +1,159 @@
+@use "../../../styles/colors";
+
+@keyframes shake {
+    0% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+
+    100% {
+        transform: rotate(-2deg);
+    }
+}
+
+.mutators {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.nodes {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+$radius: 6px;
+
 .node {
     position: absolute;
+    border-radius: 6px;
+    box-shadow: 0px 3px black;
+    border: 1px solid colors.$outline;
+    user-select: none;
+
+    &.selected {
+        border-color: colors.$accent;
+    }
+
+    &.dragging {
+        animation: shake 300ms linear infinite;
+        opacity: 0.8;
+    }
+
+    .node-header {
+        padding: 10px 30px;
+        font-size: 14px;
+        border-bottom: 1px solid colors.$outline;
+        background-color: colors.$bg-light;
+        text-align: center;
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+
+        i {
+            margin-right: 0.6em;
+            color: yellow;
+        }
+    }
+
+    .node-body {
+        font-size: 12px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        background-color: colors.$bg-med;
+        border-bottom-left-radius: $radius;
+        border-bottom-right-radius: $radius;
+
+        &.round-all {
+            border-radius: $radius;
+        }
+    }
+
+    .node-inputs {
+        padding: 15px 0 15px 0;
+
+        .node-input-connection {
+            left: -6px;
+        }
+
+        .node-input-label {
+            margin-left: 12px;
+        }
+    }
+    
+    .node-outputs {
+        padding: 15px 0;
+        
+        .node-input-connection {
+            right: -6px;
+        }
+
+        .node-input-label {
+            margin-right: 12px;
+        }
+    }
+
+    .spacer {
+        flex-grow: 1;
+    }
+
+    .node-input {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .node-input-connection {
+        width: 12px;
+        height: 12px;
+        border-radius: 12px;
+        border: 2px solid black;
+        background-color: colors.$bg-light;
+        position: absolute;
+        cursor: crosshair;
+
+        &.connection-sequence {
+            border-color: #9c4cec;
+
+            &:hover {
+                background-color: #9c4cec;
+            }
+        }
+
+        &.connection-number {
+            border-color: #ca3b3b;
+
+            &:hover {
+                background-color: #ca3b3b;
+            }
+        }
+
+        &.connection-boolean {
+            border-color: #2782dd;
+
+            &:hover {
+                background-color: #2782dd;
+            }
+        }
+
+        &.connection-any {
+            border-color: gray;
+
+            &:hover {
+                background-color: gray;
+            }
+        }
+    }
+
+    .node-input-label {
+        padding-bottom: 1px;
+    }
 }

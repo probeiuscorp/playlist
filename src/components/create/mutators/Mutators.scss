@@ -1,0 +1,19 @@
+@use "../../../styles/colors";
+
+.add-mutators {
+    position: absolute;
+    bottom: 55px;
+    right: 15px;
+    line-height: 0;
+
+    font-size: 42px;
+    border-radius: 100px;
+    color: colors.$accent;
+    box-shadow: 0 0 8px black;
+    transition: color 80ms;
+    cursor: pointer;
+
+    &:hover {
+        color: colors.$accent-light;
+    }
+}
