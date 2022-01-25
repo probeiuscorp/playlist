@@ -81,7 +81,7 @@ Dynalist.onCreate(instance => {
         instance.markDirty();
     });
 
-    instance.when.nodes.joints.click(null, ({ node: nodeId, target }) => {
+    instance.when.nodes.joints.mousedown(null, ({ node: nodeId, target }) => {
         const node = instance.nodes[nodeId];
         if(state) {
             instance.selected.joints = {};
@@ -122,7 +122,7 @@ Dynalist.onCreate(instance => {
         instance.markDirty();
     })
 
-    instance.when.nodes.joints.click({ shift: true }, ({ target }) => {
+    instance.when.nodes.joints.mouseup({ shift: true }, ({ target }) => {
         instance.selected = {
             joints: {
                 [target]: true

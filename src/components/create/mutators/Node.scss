@@ -45,11 +45,11 @@ $radius: 6px;
 
     &.dragging {
         animation: shake 300ms linear infinite;
-        opacity: 0.8;
+        opacity: 0.7;
     }
 
     .node-header {
-        padding: 10px 30px;
+        padding: 6px 18px;
         font-size: 14px;
         border-bottom: 1px solid colors.$outline;
         background-color: colors.$bg-light;

@@ -1,5 +1,5 @@
 import { NodesAny } from '@client/components/create/mutators/Nodes';
-import { Camera, ID, NodePrimitive, ParamSet, ParamValue, ValueType } from '@client/types';
+import { Camera, ID, NodePrimitive, ParamSet, ParamValue, Path, Point, ValueType } from '@client/types';
 import React from 'react';
 
 function modifiersMatch(e: { ctrlKey: boolean, shiftKey: boolean, altKey: boolean }, mods: ModifiersOptions) {
@@ -38,6 +38,15 @@ export interface NodeClickPayload {
     }
 };
 
+export interface JointClickPayload {
+    filter: ModifiersOptions,
+    payload: {
+        target: ID,
+        node: ID,
+        e: React.MouseEvent
+    }
+}
+
 export interface EventPayloadMap {
     "key": {
         filter: {
@@ -62,14 +71,8 @@ export interface EventPayloadMap {
     },
     "node.mousedown": NodeClickPayload,
     "node.mouseup": NodeClickPayload,
-    "node.joint.click": {
-        filter: ModifiersOptions,
-        payload: {
-            target: ID,
-            node: ID,
-            e: React.MouseEvent
-        }
-    },
+    "node.joint.mousedown": JointClickPayload,
+    "node.joint.mouseup": JointClickPayload,
     "body.mousedown": ClickPayload,
     "body.mouseup": ClickPayload
 }
@@ -115,6 +118,8 @@ export class Dynalist {
 
     // ===
 
+    public previewPaths: Path[];
+
     private listeners: {
         [K in keyof EventPayloadMap]?: {
             callback: (payload: EventPayloadMap[K]["payload"]) => void,
@@ -156,10 +161,20 @@ export class Dynalist {
                 mousedown: this.createEventListener('node.mousedown', filter => payload => modifiersMatch(payload.e, filter)),
                 mouseup: this.createEventListener('node.mouseup', filter => payload => modifiersMatch(payload.e, filter)),
                 joints: {
-                    click: this.createEventListener('node.joint.click', filter => payload => modifiersMatch(payload.e, filter))
+                    mousedown: this.createEventListener('node.joint.mousedown', filter => payload => modifiersMatch(payload.e, filter)),
+                    mouseup: this.createEventListener('node.joint.mousedown', filter => payload => modifiersMatch(payload.e, filter))
                 }
             }
         } as const,
+        createPreviewPath: (path: Path) => {
+            return 5;
+        },
+        destroyPreviewPath: (id: number) => {
+
+        },
+        updatePreviewPath: (id: number, path: Path) => {
+
+        },
         on: <K extends keyof WindowEventMap>(e: K, handler: (e: WindowEventMap[K]) => void, passive?: boolean) => {
             this.el.addEventListener(e, handler, { passive });
         },

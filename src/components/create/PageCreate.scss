@@ -16,8 +16,8 @@
 .sidebar-sequences {
     z-index: 10;
     width: 300px;
-    background-color: maroon;
-    border-left: 1px solid black;
+    border-left: 1px solid colors.$bg-darkest;
+    height: 100%;
 }
 
 .create {

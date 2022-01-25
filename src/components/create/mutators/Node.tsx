@@ -69,7 +69,12 @@ export default class Node extends React.Component<NodeProps> {
                         "connection-any": param.type === 'any'
                     })}
                     ref={input ? this.params[param.id] : this.outputs[param.id]}
-                    onClick={e => void this.props.onEvent('node.joint.click', {
+                    onMouseDown={e => void this.props.onEvent('node.joint.mousedown', {
+                        e: e.stopPropagation() === undefined && e,
+                        node: this.props.id,
+                        target: this.props.node[input ? "params" : "outputs"][param.id]
+                    })}
+                    onMouseUp={e => void this.props.onEvent('node.joint.mouseup', {
                         e: e.stopPropagation() === undefined && e,
                         node: this.props.id,
                         target: this.props.node[input ? "params" : "outputs"][param.id]

@@ -151,6 +151,15 @@ export const mutators: Record<string, MutatorInfo> = {
             }
         ]
     },
+    // splice: {
+    //     display: 'Splice',
+    //     description: 'Inserts sequence into a random position in another sequence',
+    //     handler: () => {
+    //         return {
+    //             a: 5
+    //         };
+    //     }
+    // },
     oneIn: {
         display: 'One in',
         description: 'Outputs true one in N times',
