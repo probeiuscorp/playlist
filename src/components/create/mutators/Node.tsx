@@ -1,6 +1,6 @@
 import { Dynalist } from '@client/dynalist/dynalist';
 import { mutators } from '@client/mutators';
-import { Camera, ID, NodeAny, NodeMutator, NodeParam, Point } from '@client/types';
+import { ID, NodeAny, NodeMutator, NodeParam, Point } from '@client/types';
 import { conditional, map, paramsOutputsOf } from '@client/util';
 import React from 'react';
 import './Node.scss';
@@ -11,7 +11,6 @@ export type UpdateParamsPosition = (params: PositionReport, outputs: PositionRep
 
 export interface NodeProps {
     node: NodeAny,
-    camera: Camera,
     updateParamPositions: UpdateParamsPosition,
     onEvent: OnNodesEvent,
     id: ID,
@@ -61,14 +60,7 @@ export default class Node extends React.Component<NodeProps> {
         return (
             <div className="node-input" key={param.label}>
                 <div
-                    className={conditional({
-                        "node-input-connection": true,
-                        "connection-sequence": param.type === 'sequence',
-                        "connection-number": param.type === 'number',
-                        "connection-boolean": param.type === 'boolean',
-                        "connection-any": param.type === 'any'
-                    })}
-                    ref={input ? this.params[param.id] : this.outputs[param.id]}
+                    className="node-input-click-target"
                     onMouseDown={e => void this.props.onEvent('node.joint.mousedown', {
                         e: e.stopPropagation() === undefined && e,
                         node: this.props.id,
@@ -79,7 +71,18 @@ export default class Node extends React.Component<NodeProps> {
                         node: this.props.id,
                         target: this.props.node[input ? "params" : "outputs"][param.id]
                     })}
-                />
+                >
+                    <div
+                        className={conditional({
+                            "node-input-connection": true,
+                            "connection-sequence": param.type === 'sequence',
+                            "connection-number": param.type === 'number',
+                            "connection-boolean": param.type === 'boolean',
+                            "connection-any": param.type === 'any'
+                        })}
+                        ref={input ? this.params[param.id] : this.outputs[param.id]}
+                    />
+                </div>
                 <div className="node-input-label">{param.label}</div>
             </div>
         );
@@ -107,7 +110,7 @@ export default class Node extends React.Component<NodeProps> {
     }
 
     render() {
-        const { node, id, camera: { x, y, zoom } } = this.props;
+        const { node, id } = this.props;
         const entry = node.type === 'primitive' && Dynalist.primitives[node.primitive];
 
         return (

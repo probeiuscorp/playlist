@@ -23,10 +23,10 @@
     }
 
     &.ok {
-        border-left-color: #a4cb67;
+        border-left-color: colors.$success;
         
         i {
-            color: #a4cb67;
+            color: colors.$success;
         }
     }
 

@@ -2,7 +2,7 @@
 
 $amplitude: 3px;
 
-@keyframes shake {
+@keyframes upset {
     0% {
         transform: translateX(0);
     }
@@ -34,7 +34,7 @@ $amplitude: 3px;
     align-items: center;
 
     .video-input.invalid {
-        animation: shake 400ms;
+        animation: upset 400ms;
         border-color: rgb(248, 128, 112) !important;
     }
 

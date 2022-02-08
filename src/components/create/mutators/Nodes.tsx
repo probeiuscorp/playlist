@@ -129,7 +129,6 @@ export default class Nodes extends React.Component<NodesProps> {
                             <Node
                                 node={node}
                                 selected={!!this.props.selected[key]}
-                                camera={this.props.camera}
                                 key={node.id}
                                 updateParamPositions={this.updateParamPositions}
                                 onEvent={this.props.onEvent}

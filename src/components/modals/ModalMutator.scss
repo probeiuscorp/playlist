@@ -1,4 +1,4 @@
-@use "../../../styles/colors";
+@use "../../styles/colors";
 
 .modal-mutator-entries {
     display: flex;
@@ -16,9 +16,14 @@
     cursor: pointer;
     transition: transform 80ms, box-shadow 80ms;
 
-    &:hover {
+    &:hover, &.focused {
         transform: translateY(-1px);
         box-shadow: 1px 4px 0 colors.$bg-dark;
+    }
+
+    &.focused {
+        border-left: 2px solid colors.$accent;
+        padding-left: 10px;
     }
 
 

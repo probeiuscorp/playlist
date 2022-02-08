@@ -2,26 +2,22 @@ import Alert from '@client/components/Alert';
 import { Dynalist } from '@client/dynalist/dynalist';
 import { generateID } from '@client/module/uid';
 import { mutators } from '@client/mutators';
-import { MutatorInfo, NodeAny } from '@client/types';
-import { conditional } from '@client/util';
+import { NodeAny } from '@client/types';
+import { conditional, ModalProps } from '@client/util';
 import Tooltip from 'rc-tooltip';
-import React, { useRef, useState, useCallback } from 'react';
-import Modal from '../Modal';
+import React, { useRef, useState } from 'react';
+import Modal from './Modal';
+import { cancel } from '@client/util';
+import { Modals, useTypedModal } from '@client/module/modal';
 import './ModalMutator.scss';
 
-export interface ModalMutatorProps {
-    show: boolean,
-    onCreate: (node: NodeAny) => void,
-    onClose: () => void
-}
-
-const replaceUnsafeRegex = /[-[\]{}()*+?.,\\^$|#\s]/g;
+const replaceUnsafeCharsRegex = /[-[\]{}()*+?.,\\^$|#\s]/g;
 
 interface Entry {
     title: string,
     description: string,
     type: 'mutator' | 'primitive',
-    createNode: (x: number, y: number) => NodeAny
+    createNode: () => NodeAny
 }
 
 const entries: Entry[] = [
@@ -30,10 +26,10 @@ const entries: Entry[] = [
             title: info.display,
             description: info.description,
             type: 'primitive',
-            createNode: (x, y) => ({
+            createNode: () => ({
                 id: generateID(),
-                x,
-                y,
+                x: 0,
+                y: 0,
                 type: 'primitive',
                 primitive: info.id,
                 params: Object.fromEntries(info.params.map(param => [param.id, generateID()])),
@@ -48,10 +44,10 @@ const entries: Entry[] = [
             title: mutator.display,
             description: mutator.description,
             type: 'mutator',
-            createNode: (x, y) => ({
+            createNode: () => ({
                 id: generateID(),
-                x,
-                y,
+                x: 0,
+                y: 0,
                 mutator: id,
                 params: Object.fromEntries(mutator.params.map(param => [param.id, generateID()])),
                 outputs: Object.fromEntries(mutator.outputs.map(mutator => [mutator.id, null])),
@@ -67,20 +63,42 @@ interface EntryMatch {
     match: string[]
 }
 
-const ModalMutator: React.FC<ModalMutatorProps> = (props) => {
+export namespace MutatorModal {
+    export interface Props extends ModalProps {
+        props: string
+    }
+
+    export type Value = NodeAny;
+}
+
+export default Modals.createModal('mutator/new', () => {
+    const modal = useTypedModal('mutator/new');
     const [ filter, setFilter ] = useState('');
+    const [ current, setCurrent ] = useState(0);
     const input = useRef<HTMLInputElement>(null);
+
+    const handleKey = (e: React.KeyboardEvent) => {
+        if(e.key === 'ArrowUp') {
+            setCurrent(current ? current - 1 : filtered.length - 1);
+        } else if(e.key === 'ArrowDown') {
+            setCurrent((current + 1) % filtered.length);
+        } else if(e.key === 'Enter') {
+            handleEntryClick(filtered[Math.min(current, filtered.length-1)].entry);
+        } else if(e.key === 'Escape') {
+            modal.resolve(null);
+        }
+        e.stopPropagation();
+    }
 
     const handleChange = () => {
         const v = input.current.value;
         if(filter !== v) setFilter(v);
     }
 
-    const regex = new RegExp('^(.*?)('+filter.split('').map(str => str.replace(replaceUnsafeRegex, '\\$&')).join(')(.*?)(')+')(.*?)$', 'i');
+    const regex = new RegExp('^(.*?)('+filter.split('').map(str => str.replace(replaceUnsafeCharsRegex, '\\$&')).join(')(.*?)(')+')(.*?)$', 'i');
 
     const handleEntryClick = (entry: Entry) => {
-        props.onCreate(entry.createNode(100, 100));
-        props.onClose();
+        modal.resolve(entry.createNode());
     }
     
     const filtered = entries
@@ -115,17 +133,15 @@ const ModalMutator: React.FC<ModalMutatorProps> = (props) => {
         .filter(({ match }) => match.length > 1);
 
     return (
-        <Modal
-            show={props.show}
-            onClose={props.onClose}
-            onOpen={input.current?.focus}
-        >
+        <Modal>
             <h3>Add Node</h3>
             <input
                 className="textbox"
                 type="text"
                 placeholder="Filter"
                 onChange={handleChange}
+                onKeyDown={handleKey}
+                onKeyUp={cancel}
                 ref={input}
             />
             <hr/>
@@ -137,10 +153,13 @@ const ModalMutator: React.FC<ModalMutatorProps> = (props) => {
                         </Alert>
                     ) : (
                         filtered
-                            .map(({ match, entry }) => {
+                            .map(({ match, entry }, i) => {
                                 return (
                                     <Tooltip overlay={entry.description} key={entry.title} mouseEnterDelay={0.2}>
-                                        <div className="modal-mutator-entry" onClick={() => handleEntryClick(entry)}>
+                                        <div className={conditional({
+                                            "modal-mutator-entry": true,
+                                            "focused": i === current || (i === filtered.length - 1 && i < current)
+                                        })} onClick={() => handleEntryClick(entry)}>
                                             <i className={conditional({
                                                 "bi": true,
                                                 "bi-braces": entry.type === 'mutator',
@@ -165,6 +184,4 @@ const ModalMutator: React.FC<ModalMutatorProps> = (props) => {
             </div>
         </Modal>
     );
-}
-
-export default ModalMutator;
+});

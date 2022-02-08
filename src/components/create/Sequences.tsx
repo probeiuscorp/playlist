@@ -2,8 +2,8 @@ import React from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 import './Sequences.scss';
 import SequencesItem, { SequencesItemOption } from './SequencesItem';
-import ModalEdit from './ModalEdit';
 import { generateID } from '../../module/uid';
+import { Modals } from '@client/module/modal';
 
 export interface SequencesProps {
 
@@ -24,7 +24,6 @@ export default class Sequences extends React.Component<SequencesProps, Sequences
 
     constructor(props) {
         super(props);
-        document.title = 'Playlist | Dynascore';
 
         const source: ['file' | 'video', string[] | string][] = [
             ['video', 'Never gonna give you up'],
@@ -102,48 +101,24 @@ export default class Sequences extends React.Component<SequencesProps, Sequences
         })
     }
 
-    updateWithModal = (i: number, option: number) => {
-        this.setState({
-            modalEditOpen: true
-        });
-        this.modalEditOption = this.state.videos[i].options[option];
-        this.label = 'Edit Source';
-        this.modalEditRequest = newOption => {
-            const videoSet = this.state.videos[i];
-            videoSet.options[option] = newOption;
-            this.update(i, this.state.videos[i].options);
+    appendSource = async () => {
+        const source = await Modals.open('sequence/edit', { option: null });
+        if(source) {
+            this.setState(old => {
+                old.videos.push({
+                    id: generateID(),
+                    options: [source]
+                });
+
+                return {
+                    videos: old.videos
+                }
+            })
         }
-    }
-
-    createOption: () => Promise<SequencesItemOption> = () => {
-        return new Promise(resolve => {
-            this.setState({ modalEditOpen: true });
-            this.modalEditOption = {
-                id: Math.random().toString(),
-                title: '',
-                type: 'video',
-                weight: 1,
-                url: ''
-            };
-            this.label = 'New Source'
-            this.modalEditRequest = resolve;
-        })
-    }
-
-    createSource = async () => {
-        const option = await this.createOption();
-        this.setState(({ videos }) => {
-            videos.push({
-                id: Math.random().toString(),
-                options: [option]
-            });
-            return { videos };
-        })
     }
 
     render() {
         return (
-            <>
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <Droppable droppableId='sequences' direction='vertical'>
                     {provided => (
@@ -159,8 +134,6 @@ export default class Sequences extends React.Component<SequencesProps, Sequences
                                                         options={item.options}
                                                         delete={option => void this.delete(i, option)}
                                                         update={state => void this.update(i, state)}
-                                                        updateWithModal={index => void this.updateWithModal(i, index)}
-                                                        createOption={this.createOption}
                                                     />
                                                 </div>
                                             )}
@@ -169,20 +142,13 @@ export default class Sequences extends React.Component<SequencesProps, Sequences
                                 })
                             }
                             {provided.placeholder}
-                            <div className="sequences-item sequences-item-blank" onClick={this.createSource}>
+                            <div className="sequences-item sequences-item-blank" onClick={this.appendSource}>
                                 <i className="bi bi-plus-circle-fill"/>
                             </div>
                         </div>
                     )}
                 </Droppable>
             </DragDropContext>
-            <ModalEdit
-                label={this.label}
-                show={this.state.modalEditOpen}
-                onClose={() => void this.setState({ modalEditOpen: false })}
-                option={this.modalEditOption}
-                onChange={this.modalEditRequest}/>
-            </>
         );
     }
 }

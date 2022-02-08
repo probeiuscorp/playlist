@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
+import { cancel } from '@client/util';
 import './Modal.scss';
 
 const modals = document.getElementById('modals');
 
 export interface ModalProps {
-    show: boolean,
+    show?: boolean,
     onClose?: () => void,
     onKeyDown?: React.KeyboardEventHandler,
     onOpen?: () => void
@@ -80,13 +81,24 @@ export default class Modal extends React.Component<ModalProps> {
         this.ref = React.createRef();
     }
 
+    componentDidUpdate(prevProps: Readonly<ModalProps>, prevState: Readonly<{}>, snapshot?: any): void {
+        if(!prevProps.show && this.props.show) {
+            this.props.onOpen?.();
+        }
+    }
+
     render() {
-        const classes = this.props.show ? " show" : "";
+        const classes = this.props.show === false ? "" : " show";
         return ReactDOM.createPortal(
             (
                 <>
                 <div className={"modal-background" + classes} onClick={this.props.onClose}/>
-                <div className={"modal" + classes} ref={this.ref} onKeyDown={this.props.onKeyDown}>
+                <div
+                    className={"modal" + classes}
+                    ref={this.ref}
+                    onKeyDown={this.props.onKeyDown}
+                    onKeyUp={console.log}
+                >
                     {this.props.children}
                 </div>
                 </>
@@ -95,3 +107,6 @@ export default class Modal extends React.Component<ModalProps> {
         );
     }
 }
+
+import './ModalEdit';
+import './ModalMutator';

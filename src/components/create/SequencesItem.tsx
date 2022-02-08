@@ -1,6 +1,8 @@
 import Tooltip from 'rc-tooltip';
 import React from 'react';
 import { DraggableProvidedDragHandleProps } from 'react-beautiful-dnd';
+import { Modals } from '@client/module/modal';
+import { split } from '@client/util';
 import 'rc-tooltip/assets/bootstrap.css';
 
 export interface SequencesItemOption {
@@ -15,8 +17,6 @@ export interface SequencesItemProps {
     handleProps: DraggableProvidedDragHandleProps,
     delete: (option: number) => void,
     update: (newState: SequencesItemOption[]) => void,
-    updateWithModal: (option: number) => void,
-    createOption: () => Promise<SequencesItemOption>,
     options: SequencesItemOption[]
 }
 
@@ -36,10 +36,29 @@ export default class SequencesItem extends React.Component<SequencesItemProps> {
     }
 
     handleAdd = (i: number) => {
-        this.props.createOption().then(option => {
-            this.props.options.splice(i + 1, 0, option);
-            this.props.update(this.props.options);
+        Modals.open('sequence/edit', {
+            option: null
+        }).then(option => {
+            if(option) {
+                const [ before, after ] = split(this.props.options, i);
+                this.props.update([
+                    ...before,
+                    option,
+                    ...after
+                ]);
+            }
         });
+    }
+
+    handleEdit = (i: number) => {
+        Modals.open('sequence/edit', {
+            option: this.props.options[i]
+        }).then(option => {
+            if(option) {
+                this.props.options[i] = option;
+                this.props.update(this.props.options);
+            }
+        })
     }
 
     render() {
@@ -56,14 +75,11 @@ export default class SequencesItem extends React.Component<SequencesItemProps> {
                                 <div className="sequences-item-detail">
                                     <i className={"sequences-item-icon bi " + (type === 'video' ? "bi-youtube" : "bi-soundwave")}/>
                                     {title}
-                                    {/* <span className="sequences-item-duration">
-                                        {Math.floor(duration/60)}:{(duration%60).toString().padStart(2, '0')}
-                                    </span> */}
                                 </div>
                                 <div className="sequences-item-actions">
                                     <span className="sequences-item-actions-hide">
                                         <i className="bi bi-plus-circle-fill" onClick={() => void this.handleAdd(i)}/>
-                                        <i className="bi bi-pencil-fill" onClick={() => void this.props.updateWithModal(i)}/>
+                                        <i className="bi bi-pencil-fill" onClick={() => void this.handleEdit(i)}/>
                                         <i className="bi bi-trash-fill" onClick={() => void this.props.delete(i)}/>
                                     </span>
                                     {

@@ -13,14 +13,14 @@ export const mutators: Record<string, MutatorInfo> = {
         },
         params: [
             {
-                label: 'Shuffle',
+                label: '',
                 id: 'shuffle',
                 type: 'sequence'
             }
         ],
         outputs: [
             {
-                label: 'Shuffled',
+                label: '',
                 id: 'shuffled',
                 type: 'sequence'
             }
@@ -49,19 +49,19 @@ export const mutators: Record<string, MutatorInfo> = {
         ],
         outputs: [
             {
-                label: 'Output',
+                label: '',
                 id: 'output',
                 type: 'sequence'
             }
         ]
     },
-    splitter: {
-        display: 'Splitter',
+    duplicator: {
+        display: 'Duplicator',
         description: 'Takes one connection and turns it into 2',
         handler: ({ input }) => ({ a: input, b: input }),
         params: [
             {
-                label: 'Input',
+                label: '',
                 id: 'input',
                 type: 'any'
             }
@@ -78,13 +78,13 @@ export const mutators: Record<string, MutatorInfo> = {
             }
         ]
     },
-    splitter4: {
-        display: 'Splitter 4',
+    duplicator4: {
+        display: 'Duplicator 4',
         description: 'Takes one connection and turns it into 4',
         handler: ({ input }) => ({ a: input, b: input, c: input, d: input }),
         params: [
             {
-                label: 'Input',
+                label: '',
                 id: 'input',
                 type: 'any'
             }
@@ -138,6 +138,46 @@ export const mutators: Record<string, MutatorInfo> = {
             }
         ]
     },
+    insertAtIndex: {
+        display: 'Insert',
+        description: 'Inserts a sequence into another at a (0-indexed) index',
+        handler: params => {
+            const base = params.base as Sequence;
+            const inserted = params.inserted as Sequence;
+            const index = params.index as number;
+            const halfOne = base.slice(0, index);
+            const halfTwo = base.slice(index);
+            return {
+                output: [
+                    ...halfOne,
+                    ...inserted,
+                    ...halfTwo
+                ]
+            }
+        },
+        params: [
+            {
+                label: 'Base',
+                id: 'base',
+                type: 'sequence'
+            }, {
+                label: 'Inserted',
+                id: 'inserted',
+                type: 'sequence'
+            }, {
+                label: 'Index',
+                id: 'index',
+                type: 'number'
+            }
+        ],
+        outputs: [
+            {
+                label: '',
+                id: 'output',
+                type: 'sequence'
+            }
+        ]
+    },
     random: {
         display: 'Random',
         description: 'Randomly, with equal odds, outputs true or false',
@@ -151,15 +191,6 @@ export const mutators: Record<string, MutatorInfo> = {
             }
         ]
     },
-    // splice: {
-    //     display: 'Splice',
-    //     description: 'Inserts sequence into a random position in another sequence',
-    //     handler: () => {
-    //         return {
-    //             a: 5
-    //         };
-    //     }
-    // },
     oneIn: {
         display: 'One in',
         description: 'Outputs true one in N times',
@@ -298,11 +329,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ output: params.a && params.b }),
         params: [
             {
-                label: 'A',
+                label: '',
                 id: 'a',
                 type: 'boolean'
             }, {
-                label: 'B',
+                label: '',
                 id: 'b',
                 type: 'boolean'
             }
@@ -321,11 +352,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ output: params.a || params.b }),
         params: [
             {
-                label: 'A',
+                label: '',
                 id: 'a',
                 type: 'boolean'
             }, {
-                label: 'B',
+                label: '',
                 id: 'b',
                 type: 'boolean'
             }
@@ -344,11 +375,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ output: !(params.a && params.b) }),
         params: [
             {
-                label: 'A',
+                label: '',
                 id: 'a',
                 type: 'boolean'
             }, {
-                label: 'B',
+                label: '',
                 id: 'b',
                 type: 'boolean'
             }
@@ -367,11 +398,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ output: !(params.a || params.b) }),
         params: [
             {
-                label: 'A',
+                label: '',
                 id: 'a',
                 type: 'boolean'
             }, {
-                label: 'B',
+                label: '',
                 id: 'b',
                 type: 'boolean'
             }
@@ -390,11 +421,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ output: params.a !== params.b }),
         params: [
             {
-                label: 'A',
+                label: '',
                 id: 'a',
                 type: 'boolean'
             }, {
-                label: 'B',
+                label: '',
                 id: 'b',
                 type: 'boolean'
             }
@@ -413,11 +444,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ output: params.a !== params.b }),
         params: [
             {
-                label: 'A',
+                label: '',
                 id: 'a',
                 type: 'boolean'
             }, {
-                label: 'B',
+                label: '',
                 id: 'b',
                 type: 'boolean'
             }
@@ -427,6 +458,92 @@ export const mutators: Record<string, MutatorInfo> = {
                 label: 'Y',
                 id: 'output',
                 type: 'boolean'
+            }
+        ]
+    },
+    randomIndex: {
+        display: 'Random index',
+        description: 'Outputs a random index of sequence, respecting its length',
+        handler: params => ({
+            index: Math.floor((params.sequence as Sequence).length * Math.random())
+        }),
+        params: [
+            {
+                label: 'Sequence',
+                id: 'sequence',
+                type: 'sequence'
+            }
+        ],
+        outputs: [
+            {
+                label: 'Index',
+                id: 'index',
+                type: 'number'
+            }
+        ]
+    },
+    lengthOf: {
+        display: 'Length of',
+        description: 'Outputs length of sequence',
+        handler: params => ({ length: (params.sequene as Sequence).length }),
+        params: [
+            {
+                label: 'Sequence',
+                id: 'sequence',
+                type: 'sequence'
+            }
+        ],
+        outputs: [
+            {
+                label: 'Length',
+                id: 'length',
+                type: 'number'
+            }
+        ]
+    },
+    multiply: {
+        display: 'Multiply',
+        description: 'Multiplies A and B',
+        handler: params => ({ product: (params.a as number) * (params.b as number) }),
+        params: [
+            {
+                label: '',
+                id: 'a',
+                type: 'number'
+            }, {
+                label: '',
+                id: 'b',
+                type: 'number'
+            }
+        ],
+        outputs: [
+            {
+                label: '',
+                id: 'product',
+                type: 'number'
+            }
+        ]
+    },
+    add: {
+        display: 'Addition',
+        description: 'Adds A and B',
+        handler: params => ({ sum: (params.a as number) * (params.b as number) }),
+        params: [
+            {
+                label: '',
+                id: 'a',
+                type: 'number'
+            }, {
+                label: '',
+                id: 'b',
+                type: 'number'
+            }
+        ],
+        outputs: [
+            {
+                label: '',
+                id: 'sum',
+                type: 'number'
             }
         ]
     }

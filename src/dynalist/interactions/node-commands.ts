@@ -1,5 +1,11 @@
 import { ID } from '@client/types';
 import { Dynalist } from '../dynalist';
+export const arrows: [string, number, number][] = [
+    ['ArrowUp', 0, -1],
+    ['ArrowDown', 0, 1],
+    ['ArrowLeft', -1, 0],
+    ['ArrowRight', 1, 0]
+];
 
 Dynalist.onCreate(instance => {
     instance.when.key({
@@ -27,54 +33,38 @@ Dynalist.onCreate(instance => {
         instance.markDirty();
     });
 
-    const arrows = [
-        ['ArrowUp', 0, -1],
-        ['ArrowDown', 0, 1],
-        ['ArrowLeft', -1, 0],
-        ['ArrowRight', 1, 0]
-    ] as const;
+    function createHandler(dx: number, dy: number): () => void {
+        return () => {
+            const keys = Object.keys(instance.selected.nodes);
+            if(keys.length > 0) {
+                for(const key of keys) {
+                    const node = instance.nodes[key];
+                    node.x += dx;
+                    node.y += dy;
+                }
+
+                instance.markDirty();
+            }
+        }
+    }
 
     for(const [ key, dx, dy ] of arrows) {
-        instance.when.key({
+        instance.when.keydown({
             key,
             modifiers: {
                 ctrl: true
             }
-        }, () => {
-            for(const key in instance.selected.nodes) {
-                const node = instance.nodes[key];
-                node.x += dx * 50;
-                node.y += dy * 50;
-            }
+        }, createHandler(dx * 50, dy * 50));
 
-            instance.markDirty();
-        });
-
-        instance.when.key({
+        instance.when.keydown({
             key
-        }, () => {
-            for(const key in instance.selected.nodes) {
-                const node = instance.nodes[key];
-                node.x += dx * 10;
-                node.y += dy * 10;
-            }
+        }, createHandler(dx * 10, dy * 10));
 
-            instance.markDirty();
-        });
-
-        instance.when.key({
+        instance.when.keydown({
             key,
             modifiers: {
                 shift: true
             }
-        }, () => {
-            for(const key in instance.selected.nodes) {
-                const node = instance.nodes[key];
-                node.x += dx;
-                node.y += dy;
-            }
-
-            instance.markDirty();
-        });
+        }, createHandler(dx, dy));
     }
 });

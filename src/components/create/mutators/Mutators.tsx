@@ -1,10 +1,13 @@
 import { Dynalist, EventPayloadMap } from '@client/dynalist/dynalist';
 import { Path } from '@client/types';
 import React from 'react';
-import ModalMutator, { ModalMutatorProps } from './ModalMutator';
+import ModalMutator, { MutatorModal } from '../../modals/ModalMutator';
 import Nodes, { UpdatePaths } from './Nodes';
 import Paths from './Paths';
+import NiceModal from '@ebay/nice-modal-react';
 import './Mutators.scss';
+import { generateID } from '@client/module/uid';
+import { Modals } from '@client/module/modal';
 
 export interface MutatorsProps {
 
@@ -41,67 +44,48 @@ export default class Mutators extends React.Component<MutatorsProps, MutatorsSta
         });
 
         this.instance.public.camera = {
-            x: -100,
-            y: -100,
+            x: -(innerWidth / 2 - 250),
+            y: -(innerHeight / 2 - 50),
             zoom: 1
         };
 
+        const Sequence = generateID();
+        const Connection = generateID();
+        const Yield = generateID();
+
         this.instance.public.nodes = {
-            asd: {
-                id: 'asd',
-                type: 'mutator',
-                mutator: 'shuffle',
-                x: 0,
-                y: 50,
-                params: {
-                    shuffle: 'c'
-                },
-                outputs: {
-                    shuffled: 'a'
-                },
-                classes: {}
-            },
-            qwe: {
-                id: 'qwe',
-                type: 'mutator',
-                mutator: 'shuffle',
-                x: 285,
-                y: 125,
-                params: {
-                    shuffle: 'a'
-                },
-                outputs: {
-                    shuffled: 'e'
-                },
-                classes: {}
-            },
-            zxc: {
-                id: 'zxc',
-                type: 'mutator',
-                mutator: 'shuffle',
-                x: 600,
-                y: 200,
-                params: {
-                    shuffle: 'e'
-                },
-                outputs: {
-                    shuffled: null
-                },
-                classes: {}
-            },
-            rty: {
-                id: 'rty',
+            [Sequence]: {
+                id: Sequence,
+                x: -200,
+                y: -15,
                 type: 'primitive',
                 primitive: 'sequence',
-                x: 300,
-                y: 500,
                 params: {},
+                outputs: {
+                    sequence: Connection
+                },
+                classes: {},
+                state: 'Main'
+            },
+            [Yield]: {
+                id: Yield,
+                x: 35,
+                y: -40,
+                type: 'primitive',
+                primitive: 'yield',
+                params: {
+                    input: Connection
+                },
                 outputs: {},
                 classes: {},
-                state: {}
+                state: 'Main'
             }
         };
         this.forceUpdate();
+
+        this.instance.public.when.keydown({
+            key: 'Enter'
+        }, this.createNode);
     }
 
     updatePaths: UpdatePaths = (paths) => {
@@ -112,9 +96,15 @@ export default class Mutators extends React.Component<MutatorsProps, MutatorsSta
         this.instance.dispatch(type, data);
     }
 
-    handleNodeCreate: ModalMutatorProps["onCreate"] = (node) => {
-        this.instance.public.nodes[node.id] = node;
-        this.instance.public.markDirty();
+    createNode = async () => {
+        const node = await Modals.open('mutator/new', {});
+        if(node) {
+            const pub = this.instance.public;
+            node.x = pub.camera.x + innerWidth / 2 - 250;
+            node.y = pub.camera.y + innerHeight / 2 - 100;
+            pub.nodes[node.id] = node;
+            pub.markDirty();
+        }
     }
 
     render() {
@@ -123,7 +113,8 @@ export default class Mutators extends React.Component<MutatorsProps, MutatorsSta
                 ref={this.container}
                 className="mutators"
                 style={{
-                    cursor: this.instance?.public?.cursor ?? 'default'
+                    cursor: this.instance?.public?.cursor ?? 'default',
+                    backgroundPosition: `${(40-this.instance?.public?.camera?.x??0)%40}px ${(40-this.instance?.public?.camera?.y??0)%40}px`
                 }}
                 onMouseUp={e => void this.instance.dispatch('body.mouseup', e)}
                 onMouseDown={e => void this.instance.dispatch('body.mousedown', e)}
@@ -140,12 +131,7 @@ export default class Mutators extends React.Component<MutatorsProps, MutatorsSta
                             onEvent={this.onNodeEvent}
                             iteration={this.state.iteration}
                         />
-                        <ModalMutator
-                            show={this.state.showMutatorModal}
-                            onClose={() => void this.setState({ showMutatorModal: false })}
-                            onCreate={this.handleNodeCreate}
-                        />
-                        <i className="bi bi-plus-circle-fill add-mutators" onClick={() => void this.setState({ showMutatorModal: true })}/>
+                        <i className="bi bi-plus-circle-fill add-mutators" onClick={this.createNode}/>
                         </>
                     )
                 }

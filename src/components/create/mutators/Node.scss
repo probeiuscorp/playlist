@@ -31,6 +31,10 @@
 }
 
 $radius: 6px;
+$click-radius: 9px;
+$purple: #9c4cec;
+$orange: #ca3b3b;
+$blue:   #2782dd;
 
 .node {
     position: absolute;
@@ -60,6 +64,14 @@ $radius: 6px;
         i {
             margin-right: 0.6em;
             color: yellow;
+
+            &.purple {
+                color: $purple;
+            }
+
+            &.green {
+                color: colors.$success;
+            }
         }
     }
 
@@ -80,8 +92,8 @@ $radius: 6px;
     .node-inputs {
         padding: 15px 0 15px 0;
 
-        .node-input-connection {
-            left: -6px;
+        .node-input-click-target {
+            left: -$click-radius;
         }
 
         .node-input-label {
@@ -92,8 +104,8 @@ $radius: 6px;
     .node-outputs {
         padding: 15px 0;
         
-        .node-input-connection {
-            right: -6px;
+        .node-input-click-target {
+            right: -$click-radius;
         }
 
         .node-input-label {
@@ -111,49 +123,60 @@ $radius: 6px;
         position: relative;
     }
 
+    .node-input-label {
+        padding-bottom: 1px;
+    }
+}
+
+.node-input-click-target {
+    position: absolute;
+    cursor: crosshair;
+    padding: $click-radius - $radius;
+    
+    &:hover {
+        .node-input-connection {
+            transform: scale(1.25, 1.25);
+
+            &.connection-sequence {
+                background-color: rgba($purple, 0.5);  
+            }
+
+            &.connection-number {
+                background-color: rgba($orange, 0.5);
+            }
+
+            &.connection-boolean {
+                background-color: rgba($blue, 0.5);
+            }
+
+            &.connection-any {
+                background-color: rgba(gray, 0.5);
+            }
+        }   
+    }
+
     .node-input-connection {
         width: 12px;
         height: 12px;
         border-radius: 12px;
         border: 2px solid black;
         background-color: colors.$bg-light;
-        position: absolute;
-        cursor: crosshair;
-
+        transition: transform 140ms cubic-bezier(0.250, 0, 0.625, 0);
+        
         &.connection-sequence {
-            border-color: #9c4cec;
-
-            &:hover {
-                background-color: #9c4cec;
-            }
+            border-color: $purple;
         }
 
         &.connection-number {
-            border-color: #ca3b3b;
-
-            &:hover {
-                background-color: #ca3b3b;
-            }
+            border-color: $orange;
         }
 
         &.connection-boolean {
-            border-color: #2782dd;
-
-            &:hover {
-                background-color: #2782dd;
-            }
+            border-color: $blue;
         }
 
         &.connection-any {
             border-color: gray;
-
-            &:hover {
-                background-color: gray;
-            }
         }
-    }
-
-    .node-input-label {
-        padding-bottom: 1px;
     }
 }

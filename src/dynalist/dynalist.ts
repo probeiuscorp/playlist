@@ -209,8 +209,8 @@ export class Dynalist {
         const listeners = this.listeners[event];
         if(!listeners) return;
 
-        for(const { callback, filterer: filter } of listeners) {
-            if(filter(payload as any)) {
+        for(const { callback, filterer } of listeners) {
+            if(filterer(payload as any)) {
                 callback(payload as any);
             }
         }

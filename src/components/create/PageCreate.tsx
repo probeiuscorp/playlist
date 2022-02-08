@@ -3,6 +3,7 @@ import Sequences from './Sequences';
 import Mutators from './mutators/Mutators';
 import FileSystem from './sequences/FileSystem';
 import './PageCreate.scss';
+import { conditional } from '@client/util';
 
 export interface PageCreateProps {
 
@@ -15,6 +16,8 @@ interface PageCreateState {
 export default class PageCreate extends React.Component<PageCreateProps, PageCreateState> {
     constructor(props: PageCreateProps) {
         super(props);
+        
+        document.title = 'Playlist | Dynascore';
 
         this.state = {
             tab: 'mutators'
@@ -36,7 +39,11 @@ export default class PageCreate extends React.Component<PageCreateProps, PageCre
                             Mutators
                         </div>
                     </div>
-                    <div className="create-viewport">
+                    <div className={conditional({
+                        "create-viewport": true,
+                        "viewport-sequences": this.state.tab === 'sequences',
+                        "viewport-mutators":  this.state.tab === 'mutators'
+                    })}>
                         {this.state.tab === 'sequences' ? <Sequences/> : <Mutators/>}
                     </div>
                 </div>

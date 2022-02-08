@@ -4,8 +4,8 @@
     background-color: colors.$bg-light;
 
     h3 {
-        border-bottom: 1px solid colors.$bg-darker;
-        width: 80%;
+        border-bottom: 1px solid colors.$text-dim;
+        width: 60%;
         padding-bottom: 0.5em;
         margin: 1em auto 0 auto;
     }
@@ -40,7 +40,7 @@
 }
 
 .sequences-directory {
-    margin-left: 20px;
+    margin-left: 12px;
     padding-left: 5px;
     border-left: 2px solid colors.$accent;
     margin-top: 10px;

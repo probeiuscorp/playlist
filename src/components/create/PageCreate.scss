@@ -26,10 +26,6 @@
 }
 
 .create-viewport {
-    background-size: 40px 40px;
-    background-image:
-      linear-gradient(to right, colors.$bg-med 1px, transparent 1px),
-      linear-gradient(to bottom, colors.$bg-med 1px, transparent 1px);
     height: 100%;
     position: relative;
 }

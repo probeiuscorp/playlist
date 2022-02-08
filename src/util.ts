@@ -1,3 +1,4 @@
+import React from 'react';
 import { Dynalist } from './dynalist/dynalist';
 import { mutators } from './mutators';
 import { NodeAny, ParamSet } from './types';
@@ -61,3 +62,39 @@ export function shuffle<T>(array: T[]): T[] {
 
     return array;
 }
+
+export function cancel(e: React.BaseSyntheticEvent) {
+    e.stopPropagation();
+}
+
+export const textboxCancels = {
+    onMouseUp: cancel,
+    onMouseDown: cancel,
+    onKeyUp: cancel,
+    onKeyDown: cancel
+};
+
+/**
+ * Takes the first parameter and returns it as is if its magnitude is greater than 
+ */
+export function magmin(v: number, min: number): number {
+    if(Math.abs(v) > min) {
+        return min * Math.sign(v);
+    } else {
+        return v;
+    }
+}
+
+export function split<T>(arr: T[], index: number): [T[], T[]] {
+    return [
+        arr.slice(0, index),
+        arr.slice(index)
+    ];
+}
+
+export function setImmediateInterval(cb: () => void, ms: number): number {
+    cb();
+    return window.setInterval(cb, ms);
+}
+
+export type ModalProps = Record<string, unknown>;
