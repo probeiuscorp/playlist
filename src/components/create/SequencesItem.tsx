@@ -14,7 +14,7 @@ export interface SequencesItemOption {
 }
 
 export interface SequencesItemProps {
-    handleProps: DraggableProvidedDragHandleProps,
+    handleProps: DraggableProvidedDragHandleProps | undefined,
     delete: (option: number) => void,
     update: (newState: SequencesItemOption[]) => void,
     options: SequencesItemOption[]

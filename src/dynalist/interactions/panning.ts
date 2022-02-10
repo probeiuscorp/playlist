@@ -39,7 +39,7 @@ Dynalist.onCreate(instance => {
     let movement: Vector = [0, 0];
     let acceleration: Vector = [0, 0];
     const jerk = 2;
-    let movementInterval: number;
+    let movementInterval: number | null;
     
     function addMovement(dx: number, dy: number) {
         const [ x, y ] = movement;
@@ -64,7 +64,7 @@ Dynalist.onCreate(instance => {
                 acceleration[1] += jerk;
 
                 if(!movement[0] && !movement[1]) {
-                    clearInterval(movementInterval);
+                    movementInterval && clearInterval(movementInterval);
                     movementInterval = null;
                 }
 

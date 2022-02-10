@@ -5,7 +5,7 @@ import { mutators } from '@client/mutators';
 import { NodeAny } from '@client/types';
 import { conditional, ModalProps } from '@client/util';
 import Tooltip from 'rc-tooltip';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Modal from './Modal';
 import { cancel } from '@client/util';
 import { Modals, useTypedModal } from '@client/module/modal';
@@ -91,7 +91,7 @@ export default Modals.createModal('mutator/new', () => {
     }
 
     const handleChange = () => {
-        const v = input.current.value;
+        const v = input.current!.value;
         if(filter !== v) setFilter(v);
     }
 
@@ -131,9 +131,15 @@ export default Modals.createModal('mutator/new', () => {
             } as EntryMatch
         })
         .filter(({ match }) => match.length > 1);
+    
+    useEffect(() => {
+        input.current!.focus();
+    }, [input]);
 
     return (
-        <Modal>
+        <Modal
+            onClose={() => modal.resolve(null)}
+        >
             <h3>Add Node</h3>
             <input
                 className="textbox"

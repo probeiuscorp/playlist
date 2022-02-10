@@ -1,4 +1,4 @@
-import { Dynalist } from '@client/dynalist/dynalist';
+import { Dynalist, PrimitiveEntry } from '@client/dynalist/dynalist';
 import { mutators } from '@client/mutators';
 import { ID, NodeAny, NodeMutator, NodeParam, Point } from '@client/types';
 import { conditional, map, paramsOutputsOf } from '@client/util';
@@ -19,6 +19,12 @@ export interface NodeProps {
 
 type InputRefMap = Record<string, React.RefObject<HTMLDivElement>>;
 
+function stopPropagation<T extends React.BaseSyntheticEvent>(e: T) {
+    e.stopPropagation();
+    return e;
+}
+
+
 export default class Node extends React.Component<NodeProps> {
     private params: InputRefMap = {};
     private outputs: InputRefMap = {};
@@ -37,7 +43,7 @@ export default class Node extends React.Component<NodeProps> {
     }
 
     mapper(ref: React.RefObject<HTMLDivElement>): Point {
-        const boundingRect = ref.current.getBoundingClientRect();
+        const boundingRect = ref.current!.getBoundingClientRect();
         return {
             x: boundingRect.x + boundingRect.width / 2,
             y: boundingRect.y + boundingRect.height / 2
@@ -52,7 +58,7 @@ export default class Node extends React.Component<NodeProps> {
         this.updateParamPositions();
     }
 
-    componentDidUpdate(prevProps: Readonly<NodeProps>, prevState: Readonly<{}>, snapshot?: any): void {
+    componentDidUpdate(): void {
         this.updateParamPositions();
     }
 
@@ -62,14 +68,14 @@ export default class Node extends React.Component<NodeProps> {
                 <div
                     className="node-input-click-target"
                     onMouseDown={e => void this.props.onEvent('node.joint.mousedown', {
-                        e: e.stopPropagation() === undefined && e,
+                        e: stopPropagation(e),
                         node: this.props.id,
-                        target: this.props.node[input ? "params" : "outputs"][param.id]
+                        target: this.props.node[input ? "params" : "outputs"][param.id]!
                     })}
                     onMouseUp={e => void this.props.onEvent('node.joint.mouseup', {
-                        e: e.stopPropagation() === undefined && e,
+                        e: stopPropagation(e),
                         node: this.props.id,
-                        target: this.props.node[input ? "params" : "outputs"][param.id]
+                        target: this.props.node[input ? "params" : "outputs"][param.id]!
                     })}
                 >
                     <div
@@ -111,7 +117,7 @@ export default class Node extends React.Component<NodeProps> {
 
     render() {
         const { node, id } = this.props;
-        const entry = node.type === 'primitive' && Dynalist.primitives[node.primitive];
+        const entry = (node.type === 'primitive' && Dynalist.primitives[node.primitive]) as PrimitiveEntry;
 
         return (
             <div
@@ -121,11 +127,11 @@ export default class Node extends React.Component<NodeProps> {
                     ...node.classes
                 })}
                 onMouseDown={e => void this.props.onEvent('node.mousedown', {
-                    e: e.stopPropagation() === undefined && e,
+                    e: stopPropagation(e),
                     target: id
                 })}
                 onMouseUp={e => void this.props.onEvent('node.mouseup', {
-                    e: e.stopPropagation() === undefined && e,
+                    e: stopPropagation(e),
                     target: id
                 })}
                 style={{

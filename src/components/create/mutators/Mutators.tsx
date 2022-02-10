@@ -37,7 +37,7 @@ export default class Mutators extends React.Component<MutatorsProps, MutatorsSta
 
     componentDidMount(): void {
         this.instance = new Dynalist({
-            element: this.container.current,
+            element: this.container.current!,
             onIterationChange: iteration => {
                 this.setState({ iteration })
             }

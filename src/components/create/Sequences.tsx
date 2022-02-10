@@ -65,10 +65,11 @@ export default class Sequences extends React.Component<SequencesProps, Sequences
     }
 
     onDragEnd = (result: DropResult) => {
-        if(result.destination) {
+        const destination = result.destination;
+        if(destination) {
             this.setState(({ videos }) => {
                 const [ item ] = videos.splice(result.source.index, 1);
-                videos.splice(result.destination.index, 0, item);
+                videos.splice(destination.index, 0, item);
                 return {
                     videos
                 };

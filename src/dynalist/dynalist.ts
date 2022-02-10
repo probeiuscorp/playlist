@@ -2,7 +2,7 @@ import { NodesAny } from '@client/components/create/mutators/Nodes';
 import { Camera, ID, NodePrimitive, ParamSet, ParamValue, Path, Point, ValueType } from '@client/types';
 import React from 'react';
 
-function modifiersMatch(e: { ctrlKey: boolean, shiftKey: boolean, altKey: boolean }, mods: ModifiersOptions) {
+function modifiersMatch(e: { ctrlKey: boolean, shiftKey: boolean, altKey: boolean }, mods: ModifiersOptions | undefined) {
     return (
         (mods?.ctrl ?? false) === e.ctrlKey &&
         (mods?.shift ?? false) === e.shiftKey &&
@@ -14,11 +14,11 @@ export interface StateOptions {
     readonly save?: boolean
 }
 
-export interface ModifiersOptions {
+export type ModifiersOptions = {
     readonly ctrl?: boolean,
     readonly shift?: boolean,
     readonly alt?: boolean
-}
+} | null
 
 export interface ConstructorOptions {
     element: HTMLElement,
@@ -101,6 +101,11 @@ export interface PrimitiveEntry {
     info: PrimitiveInfo
 }
 
+export type DynalistListener<K extends keyof EventPayloadMap> = {
+    callback: (payload: EventPayloadMap[K]["payload"]) => void,
+    filterer: FilterCallback<K>
+}[];
+
 export class Dynalist {
     private static onCreateListeners: OnCreateCallback[] = [];
     public static readonly primitives: Record<string, PrimitiveEntry> = {};
@@ -121,10 +126,7 @@ export class Dynalist {
     public previewPaths: Path[];
 
     private listeners: {
-        [K in keyof EventPayloadMap]?: {
-            callback: (payload: EventPayloadMap[K]["payload"]) => void,
-            filterer: FilterCallback<K>
-        }[]
+        [K in keyof EventPayloadMap]?: DynalistListener<K>
     } = {};
 
     private createEventListener<K extends keyof EventPayloadMap>(id: K, filterMatches?: (filter: EventPayloadMap[K]["filter"]) => FilterCallback<K>): (filter: EventPayloadMap[K]["filter"], cb: (payload: EventPayloadMap[K]["payload"]) => void) => void {
@@ -136,7 +138,7 @@ export class Dynalist {
             } as any;
             
             if(v) {
-                this.listeners[id].push(obj);
+                v.push(obj);
             } else {
                 this.listeners[id] = [obj];
             }
@@ -209,7 +211,7 @@ export class Dynalist {
         const listeners = this.listeners[event];
         if(!listeners) return;
 
-        for(const { callback, filterer } of listeners) {
+        for(const { callback, filterer } of (listeners as DynalistListener<K>)) {
             if(filterer(payload as any)) {
                 callback(payload as any);
             }

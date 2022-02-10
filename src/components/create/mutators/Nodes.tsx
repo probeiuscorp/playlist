@@ -47,7 +47,7 @@ export default class Nodes extends React.Component<NodesProps> {
         const positions = this.positions;
         const nodes = this.props.nodes;
         const map: Record<ID, Point> = {};
-        const boundary: Point = this.container.current.getBoundingClientRect();
+        const boundary: Point = this.container.current!.getBoundingClientRect();
 
         // Steps
         //  - flatten all params into a dictionary of ID => Point

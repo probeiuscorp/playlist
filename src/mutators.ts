@@ -352,11 +352,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ output: params.a || params.b }),
         params: [
             {
-                label: '',
+                label: 'A',
                 id: 'a',
                 type: 'boolean'
             }, {
-                label: '',
+                label: 'B',
                 id: 'b',
                 type: 'boolean'
             }
@@ -375,11 +375,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ output: !(params.a && params.b) }),
         params: [
             {
-                label: '',
+                label: 'A',
                 id: 'a',
                 type: 'boolean'
             }, {
-                label: '',
+                label: 'B',
                 id: 'b',
                 type: 'boolean'
             }
@@ -398,11 +398,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ output: !(params.a || params.b) }),
         params: [
             {
-                label: '',
+                label: 'A',
                 id: 'a',
                 type: 'boolean'
             }, {
-                label: '',
+                label: 'B',
                 id: 'b',
                 type: 'boolean'
             }
@@ -421,11 +421,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ output: params.a !== params.b }),
         params: [
             {
-                label: '',
+                label: 'A',
                 id: 'a',
                 type: 'boolean'
             }, {
-                label: '',
+                label: 'B',
                 id: 'b',
                 type: 'boolean'
             }
@@ -444,11 +444,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ output: params.a !== params.b }),
         params: [
             {
-                label: '',
+                label: 'A',
                 id: 'a',
                 type: 'boolean'
             }, {
-                label: '',
+                label: 'B',
                 id: 'b',
                 type: 'boolean'
             }
@@ -507,11 +507,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ product: (params.a as number) * (params.b as number) }),
         params: [
             {
-                label: '',
+                label: 'A',
                 id: 'a',
                 type: 'number'
             }, {
-                label: '',
+                label: 'B',
                 id: 'b',
                 type: 'number'
             }
@@ -530,11 +530,11 @@ export const mutators: Record<string, MutatorInfo> = {
         handler: params => ({ sum: (params.a as number) * (params.b as number) }),
         params: [
             {
-                label: '',
+                label: 'A',
                 id: 'a',
                 type: 'number'
             }, {
-                label: '',
+                label: 'B',
                 id: 'b',
                 type: 'number'
             }

@@ -3,17 +3,16 @@ import ReactDOM, { render } from 'react-dom';
 import { cancel } from '@client/util';
 import './Modal.scss';
 
-const modals = document.getElementById('modals');
+const modals = document.getElementById('modals')!;
 
 export interface ModalProps {
     show?: boolean,
-    onClose?: () => void,
-    onKeyDown?: React.KeyboardEventHandler,
-    onOpen?: () => void
+    onClose: () => void,
+    onKeyDown?: React.KeyboardEventHandler
 }
 
 export interface NameProps extends ModalProps {
-    onChange?: (value: string) => void;
+    onChange?: (value: string | null) => void;
 }
 
 export default class Modal extends React.Component<ModalProps> {
@@ -28,8 +27,7 @@ export default class Modal extends React.Component<ModalProps> {
 
         componentDidUpdate(prevProps: Readonly<NameProps>, prevState: Readonly<{}>): void {
             if(this.props.show) {
-                this.ref.current.focus();
-                this.props.onOpen?.();
+                this.ref.current!.focus();
             }
         }
 
@@ -42,7 +40,7 @@ export default class Modal extends React.Component<ModalProps> {
         }
 
         create = () => {
-            this.props.onChange?.(this.ref.current.value);
+            this.props.onChange?.(this.ref.current!.value);
             this.props.onClose?.();
         }
 
@@ -81,12 +79,6 @@ export default class Modal extends React.Component<ModalProps> {
         this.ref = React.createRef();
     }
 
-    componentDidUpdate(prevProps: Readonly<ModalProps>, prevState: Readonly<{}>, snapshot?: any): void {
-        if(!prevProps.show && this.props.show) {
-            this.props.onOpen?.();
-        }
-    }
-
     render() {
         const classes = this.props.show === false ? "" : " show";
         return ReactDOM.createPortal(
@@ -97,7 +89,7 @@ export default class Modal extends React.Component<ModalProps> {
                     className={"modal" + classes}
                     ref={this.ref}
                     onKeyDown={this.props.onKeyDown}
-                    onKeyUp={console.log}
+                    onKeyUp={e => e.key === 'Escape' && this.props.onClose()}
                 >
                     {this.props.children}
                 </div>

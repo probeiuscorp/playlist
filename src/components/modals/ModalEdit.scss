@@ -25,3 +25,75 @@
         }
     }
 }
+
+$amplitude: 3px;
+
+@keyframes upset {
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-$amplitude);
+    }
+
+    40% {
+        transform: translateX($amplitude);
+    }
+
+    60% {
+        transform: translateX(-$amplitude);
+    }
+
+    80% {
+        transform: translateX($amplitude);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.video-input-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    .video-input.invalid {
+        border-color: rgb(248, 128, 112) !important;
+        animation: upset 400ms;
+    }
+
+    i {
+        font-size: 24px;
+        transition: color 100ms;
+
+        &.valid {
+            // color: rgb(79, 184, 116);
+            color: colors.$success;
+        }
+
+        &.invalid {
+            color: rgb(248, 128, 112);
+        }
+
+        &.unset {
+            color: colors.$accent;
+        }
+    }
+}
+
+.upload-audio {
+    border: 2px dashed colors.$outline;
+    padding: 30px 15px;
+    text-align: center;
+    border-radius: 3px;
+
+    &.invalid {
+        border-color: colors.$yt;
+    }
+
+    &.dropping {
+        border-color: colors.$accent;
+    }
+}

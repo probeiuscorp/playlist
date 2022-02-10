@@ -9,30 +9,42 @@ interface NodesSelected {
     type: JointType
 }
 
+interface DraggingState {
+    target: ID,
+    startedSelecting: number,
+    selecting: boolean,
+    oldX: number,
+    oldY: number
+}
+
 Dynalist.onCreate(instance => {
-    let state: NodesSelected = null;
-    let dragging: ID = null;
-    let startedSelecting: number = null;
-    let selecting: boolean = null;
-    let oldX: number = null;
-    let oldY: number = null;
+    let state: NodesSelected | null = null;
+    let draggingState: DraggingState | null = null;
+    // let dragging: ID | null = null;
+    // let startedSelecting: number | null = null;
+    // let selecting: boolean | null = null;
+    // let oldX: number | null = null;
+    // let oldY: number | null = null;
 
     instance.when.nodes.mousedown(null, ({ target }) => {
-        dragging = target;
         const node = instance.nodes[target];
-        oldX = node.x;
-        oldY = node.y;
-        startedSelecting = Date.now();
-        selecting = true;
+        draggingState = {
+            target,
+            oldX: node.x,
+            oldY: node.y,
+            startedSelecting: Date.now(),
+            selecting: true   
+        }
         instance.markDirty();
     });
 
     instance.when.move(null, ({ dx, dy }) => {
-        if(dragging) {
+        if(draggingState) {
+            const { startedSelecting, target } = draggingState;
             if(Date.now() - startedSelecting > 100) {
-                const node = instance.nodes[dragging];
+                const node = instance.nodes[target];
                 node.classes['dragging'] = true;
-                selecting = false;
+                draggingState.selecting = false;
                 node.x += dx;
                 node.y += dy;
                 instance.cursor = 'grabbing';
@@ -42,23 +54,22 @@ Dynalist.onCreate(instance => {
     });
 
     const stopDragging = () => {
-        if(dragging) {
+        if(draggingState) {
+            const { selecting, target } = draggingState;
             if(selecting) {
                 instance.selected = {
                     nodes: {
-                        [dragging]: true
+                        [target]: true
                     },
                     joints: {}
                 };
             }
-            delete instance.nodes[dragging].classes['dragging'];
+            delete instance.nodes[target].classes['dragging'];
             instance.cursor = 'default';
-            dragging = null;
-            startedSelecting = null;
-            oldX = null;
-            oldY = null;
+            draggingState = null;
         }
     };
+
     instance.when.nodes.mouseup(null, () => {
         stopDragging()
         instance.markDirty();
@@ -67,8 +78,9 @@ Dynalist.onCreate(instance => {
     instance.when.key({
         key: 'Escape'
     }, () => {
-        if(dragging) {
-            const node = instance.nodes[dragging];
+        if(draggingState) {
+            const { target, oldX, oldY } = draggingState;
+            const node = instance.nodes[target];
             node.x = oldX;
             node.y = oldY;
             stopDragging();
@@ -86,7 +98,7 @@ Dynalist.onCreate(instance => {
         if(state) {
             instance.selected.joints = {};
             const { selected, node: targettedNodeId, type } = state;
-            const targettedNode = instance.nodes[targettedNodeId];
+            const targettedNode = instance.nodes[targettedNodeId!];
             state = null;
             if(selected !== target && targettedNode !== node) {
                 const currentType: JointType = Object.entries(node.outputs).some(([ , value ]) => target === value) ? 'output' : 'param';
@@ -106,7 +118,7 @@ Dynalist.onCreate(instance => {
                         input: selected,
                         from: node
                     });
-                    const key = Object.entries(from.outputs).find(([, value]) => value === output)[0];
+                    const [ key ] = Object.entries(from.outputs).find(([, value]) => value === output)!;
                     from.outputs[key] = input;
                     instance.pushState();
                 }
@@ -120,7 +132,7 @@ Dynalist.onCreate(instance => {
         }
         instance.selected[target] = true;
         instance.markDirty();
-    })
+    });
 
     instance.when.nodes.joints.mouseup({ shift: true }, ({ target }) => {
         instance.selected = {

@@ -3,7 +3,7 @@ import { SequencesItemOption } from '../create/SequencesItem';
 
 export interface ModalTypeData {
     "sequence/edit": {
-        value: SequencesItemOption,
+        value: SequencesItemOption | null,
         props: {
             option: SequencesItemOption | null
         }

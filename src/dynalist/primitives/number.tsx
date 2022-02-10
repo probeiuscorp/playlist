@@ -21,7 +21,7 @@ Dynalist.registerPrimitive({
 }, function(props) {
     const ref = useRef<HTMLInputElement>(null);
     const handleInput = useCallback(() => {
-        props.setState(parseFloat(ref.current.value))
+        props.setState(parseFloat(ref.current!.value))
     }, []);
 
     return (

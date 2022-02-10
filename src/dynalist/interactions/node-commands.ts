@@ -24,8 +24,10 @@ Dynalist.onCreate(instance => {
         for(const node of nodes) {
             const entries = Object.entries(node.outputs);
             for(const [ id, to ] of entries) {
-                if(problemIds.indexOf(to) !== -1) {
-                    node.outputs[id] = null;
+                if(to) {
+                    if(problemIds.indexOf(to) !== -1) {
+                        node.outputs[id] = null;
+                    }
                 }
             }
         }

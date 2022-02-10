@@ -34,7 +34,7 @@ export interface NodeCommon {
      */
     outputs: Record<string, ID | null>,
     classes: Record<string, boolean>,
-    id: ID | null
+    id: ID
 }
 
 interface NodePrimitiveExclusive {

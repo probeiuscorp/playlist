@@ -5,6 +5,7 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "baseUrl": "..",
+        "strictNullChecks": true,
         "paths": {
             "@client/*": ["src/*"]
         }

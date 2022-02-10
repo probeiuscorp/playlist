@@ -11,12 +11,10 @@ Dynalist.onCreate(instance => {
             ctrl: true
         }
     }, () => {
-        console.log('copying');
-        
         clipboard = Object
             .entries(instance.selected.nodes)
-            .map(([ id, selected ]) => selected && instance.nodes[id])
-            .filter(item => item as NodeAny | boolean !== false);
+            .filter(([, selected ]) => selected)
+            .map(([ id ]) => instance.nodes[id]);
     });
 
     instance.when.key({
