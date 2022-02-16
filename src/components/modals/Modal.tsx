@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
-import { cancel } from '@client/util';
 import './Modal.scss';
 
 const modals = document.getElementById('modals')!;
@@ -99,6 +98,3 @@ export default class Modal extends React.Component<ModalProps> {
         );
     }
 }
-
-import './ModalEdit';
-import './ModalMutator';

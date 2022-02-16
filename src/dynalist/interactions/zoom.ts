@@ -1,10 +1,8 @@
 import { decreaseZoom, increaseZoom } from '@client/types';
-import { create } from 'domain';
-import React from 'react';
 import { Dynalist } from '../dynalist';
 
 Dynalist.onCreate(instance => {
-    instance.when.key({
+    instance.events.when.key({
         key: '0',
         modifiers: {
             ctrl: true
@@ -41,20 +39,20 @@ Dynalist.onCreate(instance => {
         instance.markDirty();
     };
 
-    instance.when.key({
+    instance.events.when.key({
         key: '-',
         // modifiers: {
         //     ctrl: true
         // }
     }, zoomout);
-    instance.when.key({
+    instance.events.when.key({
         key: '-',
         // modifiers: {
         //     ctrl: true
         // }
     }, zoomin);
 
-    instance.on('wheel', e => {
+    instance.events.on('wheel', e => {
         if(e.deltaY > 0) zoomout(e)
         else zoomin(e)
     }, false)

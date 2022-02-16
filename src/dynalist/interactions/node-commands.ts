@@ -8,11 +8,11 @@ export const arrows: [string, number, number][] = [
 ];
 
 Dynalist.onCreate(instance => {
-    instance.when.key({
+    instance.events.when.key({
         key: 'Backspace'
     }, () => {
         const problemIds: ID[] = [];
-        for(const id in instance.selected.nodes) {
+        for(const id in instance.selected) {
             const params = instance.nodes[id].params;
             for(const param in params) {
                 problemIds.push(params[param]);
@@ -51,18 +51,18 @@ Dynalist.onCreate(instance => {
     }
 
     for(const [ key, dx, dy ] of arrows) {
-        instance.when.keydown({
+        instance.events.when.keydown({
             key,
             modifiers: {
                 ctrl: true
             }
         }, createHandler(dx * 50, dy * 50));
 
-        instance.when.keydown({
+        instance.events.when.keydown({
             key
         }, createHandler(dx * 10, dy * 10));
 
-        instance.when.keydown({
+        instance.events.when.keydown({
             key,
             modifiers: {
                 shift: true

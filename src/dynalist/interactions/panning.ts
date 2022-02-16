@@ -5,7 +5,7 @@ import { arrows } from './node-commands';
 Dynalist.onCreate(instance => {
     let panning = false;
 
-    instance.when.key({
+    instance.events.when.key({
         key: ' '
     }, () => {
         panning = false;
@@ -13,7 +13,7 @@ Dynalist.onCreate(instance => {
         instance.markDirty();
     });
     
-    instance.when.keydown({
+    instance.events.when.keydown({
         key: ' '
     }, () => {
         panning = true;
@@ -21,7 +21,7 @@ Dynalist.onCreate(instance => {
         instance.markDirty();
     });
 
-    instance.when.move(null, ({ dx, dy }) => {
+    instance.events.when.move(null, ({ dx, dy }) => {
         if(panning) {
             const { x, y, zoom } = instance.camera;
             
@@ -74,19 +74,19 @@ Dynalist.onCreate(instance => {
     }
 
     for(const [ key, dx, dy ] of arrows) {
-        instance.when.keydown({
+        instance.events.when.keydown({
             key
         }, () => {
-            if(Object.keys(instance.selected.nodes).length === 0) {
+            if(Object.keys(instance.selected).length === 0) {
                 addMovement(dx * 15, dy * 15);
             }
         });
 
-        instance.when.keydown({
+        instance.events.when.keydown({
             key,
             modifiers: { ctrl: true }
         }, () => {
-            if(Object.keys(instance.selected.nodes).length === 0) {
+            if(Object.keys(instance.selected).length === 0) {
                 addMovement(dx * 75, dy * 75);
             }
         })

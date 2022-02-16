@@ -6,6 +6,7 @@
         "esModuleInterop": true,
         "baseUrl": "..",
         "strictNullChecks": true,
+        "module": "es6",
         "paths": {
             "@client/*": ["src/*"]
         }

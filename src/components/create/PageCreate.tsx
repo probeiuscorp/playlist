@@ -1,52 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sequences from './Sequences';
 import Mutators from './mutators/Mutators';
 import FileSystem from './sequences/FileSystem';
-import './PageCreate.scss';
 import { conditional } from '@client/util';
+import { Dynalist } from '@client/dynalist/dynalist';
+import './PageCreate.scss';
+import Editor from './Editor';
+import { generateID } from '@client/module/uid';
 
 export interface PageCreateProps {
-
-}
-
-interface PageCreateState {
-    tab: 'sequences' | 'mutators'
-}
-
-export default class PageCreate extends React.Component<PageCreateProps, PageCreateState> {
-    constructor(props: PageCreateProps) {
-        super(props);
-        
-        document.title = 'Playlist | Dynascore';
-
-        this.state = {
-            tab: 'mutators'
-        }
-    }
     
+}
+
+export default class PageCreate extends React.Component<PageCreateProps> {
+    private instance: Dynalist | null = null;
+
+    constructor(props) {
+        super(props);
+
+        this.instance = new Dynalist({
+            onNewIteration: console.log
+        });
+
+        this.instance.camera = {
+            x: -(innerWidth / 2 - 250),
+            y: -(innerHeight / 2 - 50),
+            zoom: 1
+        };
+
+        const Sequence = generateID();
+        const Connection = generateID();
+        const Yield = generateID();
+
+        this.instance.nodes = {
+            [Sequence]: {
+                id: Sequence,
+                x: -200,
+                y: -15,
+                type: 'primitive',
+                primitive: 'sequence',
+                params: {},
+                outputs: {
+                    sequence: Connection
+                },
+                classes: {},
+                state: 'Main'
+            },
+            [Yield]: {
+                id: Yield,
+                x: 35,
+                y: -40,
+                type: 'primitive',
+                primitive: 'yield',
+                params: {
+                    input: Connection
+                },
+                outputs: {},
+                classes: {},
+                state: 'Main'
+            }
+        };
+    }
+
     render() {
         return (
             <main className="page-create">
                 <div className="sidebar-main">
-
+    
                 </div>
-                <div className="create">
-                    <div className="tabs">
-                        <div className={`tab${this.state.tab === 'sequences' ? " active" : ""}`} onClick={() => void this.setState({ tab: 'sequences' })}>
-                            Sequences
-                        </div>
-                        <div className={`tab${this.state.tab === 'mutators' ? " active" : ""}`} onClick={() => void this.setState({ tab: 'mutators' })}>
-                            Mutators
-                        </div>
-                    </div>
-                    <div className={conditional({
-                        "create-viewport": true,
-                        "viewport-sequences": this.state.tab === 'sequences',
-                        "viewport-mutators":  this.state.tab === 'mutators'
-                    })}>
-                        {this.state.tab === 'sequences' ? <Sequences/> : <Mutators/>}
-                    </div>
-                </div>
+                <Editor instance={this.instance}/>
                 <div className="sidebar-sequences">
                     <FileSystem
                         directory={[
@@ -103,6 +125,6 @@ export default class PageCreate extends React.Component<PageCreateProps, PageCre
                     />
                 </div>
             </main>
-        );
+        )
     }
 }

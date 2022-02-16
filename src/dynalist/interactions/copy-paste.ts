@@ -1,11 +1,11 @@
+import { Dynalist } from '../dynalist';
 import { generateID } from '@client/module/uid';
 import { ID, NodeAny } from '@client/types';
-import { Dynalist } from '../dynalist';
 
 Dynalist.onCreate(instance => {
     let clipboard: NodeAny[];
     
-    instance.when.key({
+    instance.events.when.key({
         key: 'c',
         modifiers: {
             ctrl: true
@@ -17,7 +17,7 @@ Dynalist.onCreate(instance => {
             .map(([ id ]) => instance.nodes[id]);
     });
 
-    instance.when.key({
+    instance.events.when.key({
         key: 'v',
         modifiers: {
             ctrl: true
@@ -29,18 +29,19 @@ Dynalist.onCreate(instance => {
         for(const node of clipboard) {
             const id = generateID();
             ids.push(id);
-            const { id: _, outputs, params, x, y, ...rest } = node;
+            const { id: _, outputs, params, x, y, classes, ...rest } = node;
             instance.nodes[id] = {
                 id,
                 x: x + 50,
                 y: y + 50,
                 outputs: {},
                 params: {},
+                classes: {},
                 ...rest
             };
         }
 
-        instance.selected.nodes = {};
+        instance.selected = {};
         for(const id of ids) instance.selected.nodes[id] = true;
 
         instance.markDirty();

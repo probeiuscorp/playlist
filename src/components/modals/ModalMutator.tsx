@@ -1,5 +1,6 @@
-import Alert from '@client/components/Alert';
 import { Dynalist } from '@client/dynalist/dynalist';
+import { Modals, useTypedModal } from '@client/module/modal';
+import Alert from '@client/components/Alert';
 import { generateID } from '@client/module/uid';
 import { mutators } from '@client/mutators';
 import { NodeAny } from '@client/types';
@@ -8,7 +9,6 @@ import Tooltip from 'rc-tooltip';
 import React, { useEffect, useRef, useState } from 'react';
 import Modal from './Modal';
 import { cancel } from '@client/util';
-import { Modals, useTypedModal } from '@client/module/modal';
 import './ModalMutator.scss';
 
 const replaceUnsafeCharsRegex = /[-[\]{}()*+?.,\\^$|#\s]/g;
@@ -63,14 +63,7 @@ interface EntryMatch {
     match: string[]
 }
 
-export namespace MutatorModal {
-    export interface Props extends ModalProps {
-        props: string
-    }
-
-    export type Value = NodeAny;
-}
-
+console.log(Modals);
 export default Modals.createModal('mutator/new', () => {
     const modal = useTypedModal('mutator/new');
     const [ filter, setFilter ] = useState('');

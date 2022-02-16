@@ -38,6 +38,12 @@ module.exports = {
             '@client': path.join(__dirname, 'src')
         }
     },
+    plugins: [
+        new (require('circular-dependency-plugin'))({
+            exclude: /node_modules/,
+            cwd: process.cwd()
+        })
+    ],
     devtool: 'source-map',
     watch: true
 }

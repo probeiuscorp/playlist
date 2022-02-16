@@ -1,24 +1,19 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import PageCreate from './components/create/PageCreate';
+import NiceModal from '@ebay/nice-modal-react';
+import './components/modals/ModalEdit';
+import './components/modals/ModalEdit';
 import './mutators';
 import './styles/load';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Sequences from './components/create/Sequences';
-import PageCreate from './components/create/PageCreate';
-import Home from './components/home/Home';
-import NiceModal from '@ebay/nice-modal-react';
-import './components/modals/Modal';
 
 ReactDOM.render(
     <NiceModal.Provider>
         <BrowserRouter>
-            <Route path="*" render={() => 
-                // <Provider store={store}>
-                //     <App/>
-                // </Provider>}>
-                <PageCreate/>
-                // <Home/>
-            }>
+            <Route path="*" render={() => {
+                return <PageCreate/>
+            }}>
             </Route>
         </BrowserRouter>
     </NiceModal.Provider>,

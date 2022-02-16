@@ -1,5 +1,6 @@
 import { ID } from '@client/types';
 import { Dynalist } from '../dynalist';
+import { MutatorsEventLayer } from '../mutators-event-layer';
 
 type JointType = 'param' | 'output';
 
@@ -20,25 +21,20 @@ interface DraggingState {
 Dynalist.onCreate(instance => {
     let state: NodesSelected | null = null;
     let draggingState: DraggingState | null = null;
-    // let dragging: ID | null = null;
-    // let startedSelecting: number | null = null;
-    // let selecting: boolean | null = null;
-    // let oldX: number | null = null;
-    // let oldY: number | null = null;
 
-    instance.when.nodes.mousedown(null, ({ target }) => {
+    instance.events.when.nodes.mousedown(null, ({ target }) => {
         const node = instance.nodes[target];
         draggingState = {
             target,
             oldX: node.x,
             oldY: node.y,
             startedSelecting: Date.now(),
-            selecting: true   
+            selecting: true
         }
         instance.markDirty();
     });
 
-    instance.when.move(null, ({ dx, dy }) => {
+    instance.events.when.move(null, ({ dx, dy }) => {
         if(draggingState) {
             const { startedSelecting, target } = draggingState;
             if(Date.now() - startedSelecting > 100) {
@@ -58,10 +54,7 @@ Dynalist.onCreate(instance => {
             const { selecting, target } = draggingState;
             if(selecting) {
                 instance.selected = {
-                    nodes: {
-                        [target]: true
-                    },
-                    joints: {}
+                    [target]: true
                 };
             }
             delete instance.nodes[target].classes['dragging'];
@@ -70,12 +63,12 @@ Dynalist.onCreate(instance => {
         }
     };
 
-    instance.when.nodes.mouseup(null, () => {
+    instance.events.when.nodes.mouseup(null, () => {
         stopDragging()
         instance.markDirty();
     });
 
-    instance.when.key({
+    instance.events.when.key({
         key: 'Escape'
     }, () => {
         if(draggingState) {
@@ -87,16 +80,14 @@ Dynalist.onCreate(instance => {
         }
     })
     
-    instance.when.nodes.mousedown({ shift: true }, ({ target }) => {
-        instance.selected.joints = {};
-        instance.selected.nodes[target] = !instance.selected.nodes[target];
+    instance.events.when.nodes.mousedown({ shift: true }, ({ target }) => {
+        instance.selected[target] = !instance.selected.nodes[target];
         instance.markDirty();
     });
 
-    instance.when.nodes.joints.mousedown(null, ({ node: nodeId, target }) => {
+    instance.events.when.nodes.joints.mousedown(null, ({ node: nodeId, target }) => {
         const node = instance.nodes[nodeId];
         if(state) {
-            instance.selected.joints = {};
             const { selected, node: targettedNodeId, type } = state;
             const targettedNode = instance.nodes[targettedNodeId!];
             state = null;
@@ -134,26 +125,18 @@ Dynalist.onCreate(instance => {
         instance.markDirty();
     });
 
-    instance.when.nodes.joints.mouseup({ shift: true }, ({ target }) => {
-        instance.selected = {
-            joints: {
-                [target]: true
-            },
-            nodes: {}
-        };
+    instance.events.when.nodes.joints.mouseup({ shift: true }, ({ target }) => {
+        instance.selected = {};
         instance.markDirty();
     });
 
-    instance.when.mouseup(null, () => {
+    instance.events.when.mouseup(null, () => {
         stopDragging();
-        instance.selected = {
-            joints: {},
-            nodes: {}
-        }
+        instance.selected = {};
         instance.markDirty();
     })
 
-    instance.when.key({
+    instance.events.when.key({
         key: 'Escape'
     }, () => {
         state = null;

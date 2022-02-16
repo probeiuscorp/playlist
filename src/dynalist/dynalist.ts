@@ -1,84 +1,13 @@
-import { NodesAny } from '@client/components/create/mutators/Nodes';
-import { Camera, ID, NodePrimitive, ParamSet, ParamValue, Path, Point, ValueType } from '@client/types';
-import React from 'react';
+import type { Camera, NodeAny, NodePrimitive, ParamSet, ParamValue, Sequence } from '@client/types';
+import type { CSSProperties } from 'react';
+import { MutatorsEventLayer } from './mutators-event-layer';
 
-function modifiersMatch(e: { ctrlKey: boolean, shiftKey: boolean, altKey: boolean }, mods: ModifiersOptions | undefined) {
-    return (
-        (mods?.ctrl ?? false) === e.ctrlKey &&
-        (mods?.shift ?? false) === e.shiftKey &&
-        (mods?.alt ?? false) === e.altKey
-    );
+export interface DynalistConstructorOptions {
+    onNewIteration: (iteration: number) => void
 }
 
-export interface StateOptions {
-    readonly save?: boolean
-}
-
-export type ModifiersOptions = {
-    readonly ctrl?: boolean,
-    readonly shift?: boolean,
-    readonly alt?: boolean
-} | null
-
-export interface ConstructorOptions {
-    element: HTMLElement,
-    onIterationChange: (iteration: number) => void
-}
-
-export interface ClickPayload {
-    filter: ModifiersOptions,
-    payload: React.MouseEvent
-}
-
-export interface NodeClickPayload {
-    filter: ModifiersOptions,
-    payload: {
-        target: ID,
-        e: React.MouseEvent
-    }
-};
-
-export interface JointClickPayload {
-    filter: ModifiersOptions,
-    payload: {
-        target: ID,
-        node: ID,
-        e: React.MouseEvent
-    }
-}
-
-export interface EventPayloadMap {
-    "key": {
-        filter: {
-            key: string,
-            modifiers?: ModifiersOptions
-        },
-        payload: KeyboardEvent
-    },
-    "keydown": {
-        filter: {
-            key: string,
-            modifiers?: ModifiersOptions
-        },
-        payload: KeyboardEvent
-    },
-    "mousemove": {
-        filter: ModifiersOptions,
-        payload: {
-            dx: number,
-            dy: number
-        }
-    },
-    "node.mousedown": NodeClickPayload,
-    "node.mouseup": NodeClickPayload,
-    "node.joint.mousedown": JointClickPayload,
-    "node.joint.mouseup": JointClickPayload,
-    "body.mousedown": ClickPayload,
-    "body.mouseup": ClickPayload
-}
-
-export type OnCreateCallback = (instance: Dynalist["public"]) => void;
-export type FilterCallback<K extends keyof EventPayloadMap> = (payload: EventPayloadMap[K]["payload"]) => boolean;
+export type OnCreateCallback = (instance: Dynalist) => void;
+export type SetElementCallback = (cb: (element: HTMLElement) => void) => void;
 
 export interface PrimitiveInfo<T = any> {
     id: string,
@@ -101,123 +30,86 @@ export interface PrimitiveEntry {
     info: PrimitiveInfo
 }
 
-export type DynalistListener<K extends keyof EventPayloadMap> = {
-    callback: (payload: EventPayloadMap[K]["payload"]) => void,
-    filterer: FilterCallback<K>
-}[];
+interface State {
+    nodes: IDMap<NodeAny>,
+    selected: IDMap<boolean>,
+    sequences: IDMap<Sequence>
+}
 
-export class Dynalist {
-    private static onCreateListeners: OnCreateCallback[] = [];
-    public static readonly primitives: Record<string, PrimitiveEntry> = {};
+interface IDMap<T> {
+    [id: string]: T
+}
 
-    public static onCreate(cb: OnCreateCallback) {
-        this.onCreateListeners.push(cb);
-    }
+class Dynalist implements State {
+    static readonly createCallbacks: OnCreateCallback[] = [];
+    static onCreate(cb: OnCreateCallback) {
+        Dynalist.createCallbacks.push(cb);
+    };
 
-    public static registerPrimitive<T = any>(info: PrimitiveInfo<T>, component: PrimitiveComponent) {
+    static readonly primitives: Record<string, PrimitiveEntry> = {};
+    static registerPrimitive<T = any>(info: PrimitiveInfo<T>, component: PrimitiveComponent) {
         this.primitives[info.id] = {
             component,
             info
         }
     }
 
-    // ===
+    private undoStack: State[];
+    private redoStack: State[];
+    private onNewIteration: (iteration: number) => void
 
-    public previewPaths: Path[];
+    public readonly events: MutatorsEventLayer;
+    public nodes: IDMap<NodeAny> = {};
+    public selected: IDMap<boolean> = {};
+    public sequences: IDMap<Sequence> = {};
+    public camera: Camera;
+    public iteration = 0;
+    public cursor: CSSProperties["cursor"] = 'default';
 
-    private listeners: {
-        [K in keyof EventPayloadMap]?: DynalistListener<K>
-    } = {};
+    constructor(options: DynalistConstructorOptions) {
+        this.events = new MutatorsEventLayer();
+        this.onNewIteration = options.onNewIteration;
+    }
 
-    private createEventListener<K extends keyof EventPayloadMap>(id: K, filterMatches?: (filter: EventPayloadMap[K]["filter"]) => FilterCallback<K>): (filter: EventPayloadMap[K]["filter"], cb: (payload: EventPayloadMap[K]["payload"]) => void) => void {
-        return (filter, cb) => {
-            let v = this.listeners[id];
-            const obj = {
-                callback: cb,
-                filterer: filterMatches ? filterMatches(filter) : () => true
-            } as any;
-            
-            if(v) {
-                v.push(obj);
-            } else {
-                this.listeners[id] = [obj];
-            }
+    public addNode(node: NodeAny) {
+        this.nodes[node.id] = node;
+    }
+
+    public undo() {
+        const state = this.undoStack.pop();
+        if(state) {
+            const { nodes, selected, sequences } = state;
+            this.nodes = nodes;
+            this.selected = selected;
+            this.sequences = sequences;
+            this.redoStack.push(state);
         }
     }
 
-    public readonly public = {
-        camera: { x: 0, y: 0, zoom: 1 } as Camera,
-        cursor: 'default' as React.CSSProperties["cursor"],
-        selected: {
-            nodes: {} as Record<string, boolean>,
-            joints: {} as Record<string, boolean>
-        },
-        nodes: {} as NodesAny,
-        when: {
-            key: this.createEventListener('key', filter => payload => filter.key === payload.key && modifiersMatch(payload, filter.modifiers)),
-            keydown: this.createEventListener('keydown', filter => payload => filter.key === payload.key && modifiersMatch(payload, filter.modifiers)),
-            move: this.createEventListener('mousemove'),
-            mousedown: this.createEventListener('body.mousedown', filter => payload => modifiersMatch(payload, filter)),
-            mouseup: this.createEventListener('body.mouseup', filter => payload => modifiersMatch(payload, filter)),
-            nodes: {
-                mousedown: this.createEventListener('node.mousedown', filter => payload => modifiersMatch(payload.e, filter)),
-                mouseup: this.createEventListener('node.mouseup', filter => payload => modifiersMatch(payload.e, filter)),
-                joints: {
-                    mousedown: this.createEventListener('node.joint.mousedown', filter => payload => modifiersMatch(payload.e, filter)),
-                    mouseup: this.createEventListener('node.joint.mousedown', filter => payload => modifiersMatch(payload.e, filter))
-                }
-            }
-        } as const,
-        createPreviewPath: (path: Path) => {
-            return 5;
-        },
-        destroyPreviewPath: (id: number) => {
-
-        },
-        updatePreviewPath: (id: number, path: Path) => {
-
-        },
-        on: <K extends keyof WindowEventMap>(e: K, handler: (e: WindowEventMap[K]) => void, passive?: boolean) => {
-            this.el.addEventListener(e, handler, { passive });
-        },
-        markDirty: () => {
-            this.onIterationChange(this.iteration++);
-        },
-        pushState: () => {
-
+    public redo() {
+        const state = this.redoStack.pop();
+        if(state) {
+            const { nodes, selected, sequences } = state;
+            this.nodes = nodes;
+            this.selected = selected;
+            this.sequences = sequences;
         }
     }
 
-    private el: HTMLElement;
-    private iteration: number = 0;
-    private onIterationChange: (iteration: number) => void;
-    private stack: [] = [];
-    constructor(options: ConstructorOptions) {
-        this.el = options.element;
-        this.onIterationChange = options.onIterationChange;
-        for(const listener of Dynalist.onCreateListeners) {
-            listener(this.public);
-        }
+    public markDirty() {
+        this.onNewIteration(this.iteration++);
+    }
 
-        document.addEventListener('keyup', e => {
-            this.dispatch('key', e);
+    public pushState() {
+        this.undoStack.push({
+            nodes: this.nodes,
+            selected: this.selected,
+            sequences: this.sequences
         });
-        document.addEventListener('keydown', e => {
-            this.dispatch('keydown', e);
-        })
-    }
-
-    public dispatch<K extends keyof EventPayloadMap>(event: K, payload: EventPayloadMap[K]["payload"]) {
-        const listeners = this.listeners[event];
-        if(!listeners) return;
-
-        for(const { callback, filterer } of (listeners as DynalistListener<K>)) {
-            if(filterer(payload as any)) {
-                callback(payload as any);
-            }
-        }
     }
 }
+
+export { Dynalist };
 
 function importAll(r) {
     r.keys().forEach(r)

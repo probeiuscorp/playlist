@@ -1,5 +1,5 @@
 import NiceModal, { useModal as useNiceModal } from '@ebay/nice-modal-react';
-import { ModalTypeData } from '@client/components/modals/DataModalTypes';
+import type { ModalTypeData } from '@client/components/modals/DataModalTypes';
 
 interface ModalController<T extends keyof ModalTypeData> {
     resolve: (value: ModalTypeData[T]["value"]) => void
