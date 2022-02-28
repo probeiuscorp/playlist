@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
-import Sequences from './Sequences';
-import Mutators from './mutators/Mutators';
-import FileSystem from './sequences/FileSystem';
-import { conditional } from '@client/util';
-import { Dynalist } from '@client/dynalist/dynalist';
+import React from 'react';
+import { Dynalist, DynalistFiles } from '@client/dynalist/dynalist';
 import './PageCreate.scss';
 import Editor from './Editor';
 import { generateID } from '@client/module/uid';
+import SideBar from './sequences/SideBar';
 
 export interface PageCreateProps {
     
@@ -18,9 +15,7 @@ export default class PageCreate extends React.Component<PageCreateProps> {
     constructor(props) {
         super(props);
 
-        this.instance = new Dynalist({
-            onNewIteration: console.log
-        });
+        this.instance = new Dynalist({});
 
         this.instance.camera = {
             x: -(innerWidth / 2 - 250),
@@ -60,6 +55,65 @@ export default class PageCreate extends React.Component<PageCreateProps> {
                 state: 'Main'
             }
         };
+
+        (this.instance.files as DynalistFiles) = {
+            top: ['000', '001'],
+            items: {
+                '000': {
+                    display: 'Main',
+                    id: '000',
+                    type: 'sequence',
+                    container: null
+                },
+                '001': {
+                    display: 'Folder',
+                    id: '001',
+                    type: 'collection',
+                    contents: [
+                        '004',
+                        '003',
+                        '002'
+                    ],
+                    container: null,
+                    expanded: true
+                },
+                '002': {
+                    display: 'Starcraft II',
+                    id: '002',
+                    type: 'collection',
+                    contents: [
+                        '005',
+                        '006'
+                    ],
+                    container: '001',
+                    expanded: true
+                },
+                '003': {
+                    display: 'Terran themes',
+                    id: '003',
+                    type: 'routine',
+                    container: '001'
+                },
+                '004': {
+                    display: 'Protoss themes',
+                    id: '004',
+                    type: 'sequence',
+                    container: '001'
+                },
+                '005': {
+                    display: 'Blades of Justice',
+                    id: '005',
+                    type: 'sequence',
+                    container: '004'
+                },
+                '006': {
+                    display: 'Heaven\'s devils',
+                    id: '006',
+                    type: 'sequence',
+                    container: '004'
+                }
+            }
+        }
     }
 
     render() {
@@ -69,61 +123,7 @@ export default class PageCreate extends React.Component<PageCreateProps> {
     
                 </div>
                 <Editor instance={this.instance}/>
-                <div className="sidebar-sequences">
-                    <FileSystem
-                        directory={[
-                            '000',
-                            '001'
-                        ]}
-                        sequences={{
-                            '000': {
-                                display: 'Main',
-                                id: '000',
-                                type: 'sequence'
-                            },
-                            '001': {
-                                display: 'Folder',
-                                id: '001',
-                                type: 'directory',
-                                contents: [
-                                    '004',
-                                    '003',
-                                    '002'
-                                ]
-                            },
-                            '002': {
-                                display: 'Starcraft II',
-                                id: '002',
-                                type: 'directory',
-                                contents: [
-                                    '005',
-                                    '006',
-                                    '006'
-                                ]
-                            },
-                            '003': {
-                                display: 'Terran themes',
-                                id: '003',
-                                type: 'sequence'
-                            },
-                            '004': {
-                                display: 'Protoss themes',
-                                id: '004',
-                                type: 'sequence'
-                            },
-                            '005': {
-                                display: 'Blades of Justice',
-                                id: '005',
-                                type: 'sequence'
-                            },
-                            '006': {
-                                display: 'Heaven\'s devils',
-                                id: '006',
-                                type: 'sequence'
-                            }
-                        }}
-                    />
-                </div>
+                <SideBar instance={this.instance!}/>
             </main>
         )
     }

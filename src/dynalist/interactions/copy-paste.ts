@@ -12,7 +12,7 @@ Dynalist.onCreate(instance => {
         }
     }, () => {
         clipboard = Object
-            .entries(instance.selected.nodes)
+            .entries(instance.selected)
             .filter(([, selected ]) => selected)
             .map(([ id ]) => instance.nodes[id]);
     });
@@ -42,7 +42,7 @@ Dynalist.onCreate(instance => {
         }
 
         instance.selected = {};
-        for(const id of ids) instance.selected.nodes[id] = true;
+        for(const id of ids) instance.selected[id] = true;
 
         instance.markDirty();
     });

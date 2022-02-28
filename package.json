@@ -6,6 +6,7 @@
         "watch": "npx webpack-cli bundle"
     },
     "dependencies": {
+        "@atlaskit/tree": "^8.6.0",
         "@babel/preset-react": "^7.16.0",
         "@babel/preset-typescript": "^7.16.0",
         "@ebay/nice-modal-react": "^1.2.0",

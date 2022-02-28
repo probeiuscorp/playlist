@@ -37,7 +37,7 @@ Dynalist.onCreate(instance => {
 
     function createHandler(dx: number, dy: number): () => void {
         return () => {
-            const keys = Object.keys(instance.selected.nodes);
+            const keys = Object.keys(instance.selected);
             if(keys.length > 0) {
                 for(const key of keys) {
                     const node = instance.nodes[key];

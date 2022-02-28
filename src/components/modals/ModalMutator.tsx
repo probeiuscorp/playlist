@@ -63,7 +63,6 @@ interface EntryMatch {
     match: string[]
 }
 
-console.log(Modals);
 export default Modals.createModal('mutator/new', () => {
     const modal = useTypedModal('mutator/new');
     const [ filter, setFilter ] = useState('');

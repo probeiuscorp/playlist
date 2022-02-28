@@ -4,9 +4,10 @@ import './Sequences.scss';
 import SequencesItem, { SequencesItemOption } from './SequencesItem';
 import { generateID } from '../../module/uid';
 import { Modals } from '@client/module/modal';
+import { conditional } from '@client/util';
 
 export interface SequencesProps {
-
+    hidden: boolean
 }
 
 interface SequencesState {
@@ -18,10 +19,6 @@ interface SequencesState {
 }
 
 export default class Sequences extends React.Component<SequencesProps, SequencesState> {
-    private modalEditRequest: (option: SequencesItemOption) => void;
-    private modalEditOption: SequencesItemOption;
-    private label: string;
-
     constructor(props) {
         super(props);
 
@@ -123,7 +120,7 @@ export default class Sequences extends React.Component<SequencesProps, Sequences
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <Droppable droppableId='sequences' direction='vertical'>
                     {provided => (
-                        <div className="sequences-list" {...provided.droppableProps} ref={provided.innerRef}>
+                        <div className={conditional({ "sequences-list": true, "hide": this.props.hidden })} {...provided.droppableProps} ref={provided.innerRef}>
                             {
                                 this.state.videos.map((item, i) => {
                                     return (

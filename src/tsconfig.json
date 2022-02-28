@@ -9,6 +9,7 @@
         "module": "es6",
         "paths": {
             "@client/*": ["src/*"]
-        }
+        },
+        "moduleResolution": "node"
     }
 }

@@ -1,7 +1,7 @@
 import { Dynalist, PrimitiveEntry } from '@client/dynalist/dynalist';
 import { MutatorsEventLayer } from '@client/dynalist/mutators-event-layer';
 import { mutators } from '@client/mutators';
-import { ID, NodeAny, NodeMutator, NodeParam, Point } from '@client/types';
+import { Camera, ID, NodeAny, NodeMutator, NodeParam, Point } from '@client/types';
 import { conditional, map, paramsOutputsOf } from '@client/util';
 import React from 'react';
 import './Node.scss';
@@ -15,7 +15,8 @@ export interface NodeProps {
     updateParamPositions: UpdateParamsPosition,
     onEvent: OnNodesEvent,
     id: ID,
-    selected: boolean
+    selected: boolean,
+    camera: Camera
 }
 
 type InputRefMap = Record<string, React.RefObject<HTMLDivElement>>;
@@ -117,7 +118,7 @@ export default class Node extends React.Component<NodeProps> {
     }
 
     render() {
-        const { node, id } = this.props;
+        const { node, id, camera } = this.props;
         const entry = (node.type === 'primitive' && Dynalist.primitives[node.primitive]) as PrimitiveEntry;
 
         return (
@@ -136,8 +137,8 @@ export default class Node extends React.Component<NodeProps> {
                     target: id
                 })}
                 style={{
-                    top: `${node.y}px`,
-                    left: `${node.x}px`,
+                    top: `${node.y - camera.y}px`,
+                    left: `${node.x - camera.x}px`,
                 }}
             >
                 {

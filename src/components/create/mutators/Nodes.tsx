@@ -108,7 +108,7 @@ export default class Nodes extends React.Component<NodesProps> {
     }
 
     handleMouseMove = (e: React.MouseEvent) => {
-        this.props.onEvent('mousemove', { dx: e.movementX, dy: e.movementY })
+        this.props.onEvent('mousemove', { dx: e.movementX, dy: e.movementY, x: e.pageX, y: e.pageY })
     };
 
     render() {
@@ -117,9 +117,6 @@ export default class Nodes extends React.Component<NodesProps> {
                 className="nodes"
                 ref={this.container}
                 onMouseMove={this.handleMouseMove}
-                style={{
-                    transform: `translate(${0-this.props.camera.x}px, ${0-this.props.camera.y}px) scale(${this.props.camera.zoom})`
-                }}
             >
                 {
                     Object.keys(this.props.nodes).map(key => {
@@ -127,6 +124,7 @@ export default class Nodes extends React.Component<NodesProps> {
                         return (
                             <Node
                                 node={node}
+                                camera={this.props.camera}
                                 selected={!!this.props.selected[key]}
                                 key={node.id}
                                 updateParamPositions={this.updateParamPositions}

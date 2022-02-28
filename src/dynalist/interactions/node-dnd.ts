@@ -1,6 +1,5 @@
 import { ID } from '@client/types';
 import { Dynalist } from '../dynalist';
-import { MutatorsEventLayer } from '../mutators-event-layer';
 
 type JointType = 'param' | 'output';
 
@@ -81,52 +80,7 @@ Dynalist.onCreate(instance => {
     })
     
     instance.events.when.nodes.mousedown({ shift: true }, ({ target }) => {
-        instance.selected[target] = !instance.selected.nodes[target];
-        instance.markDirty();
-    });
-
-    instance.events.when.nodes.joints.mousedown(null, ({ node: nodeId, target }) => {
-        const node = instance.nodes[nodeId];
-        if(state) {
-            const { selected, node: targettedNodeId, type } = state;
-            const targettedNode = instance.nodes[targettedNodeId!];
-            state = null;
-            if(selected !== target && targettedNode !== node) {
-                const currentType: JointType = Object.entries(node.outputs).some(([ , value ]) => target === value) ? 'output' : 'param';
-                if(currentType === type) {
-                    return; // Deselect everything when the user clicks the node twice
-                } else {
-                    const {
-                        output,
-                        input,
-                        from
-                    } = type === 'output' ? ({
-                        output: selected,
-                        input: target,
-                        from: targettedNode
-                    }) : ({
-                        output: target,
-                        input: selected,
-                        from: node
-                    });
-                    const [ key ] = Object.entries(from.outputs).find(([, value]) => value === output)!;
-                    from.outputs[key] = input;
-                    instance.pushState();
-                }
-            }
-        } else {
-            state = {
-                selected: target,
-                node: nodeId,
-                type: Object.entries(node.outputs).some(([ , value ]) => target === value) ? 'output' : 'param'
-            }
-        }
-        instance.selected[target] = true;
-        instance.markDirty();
-    });
-
-    instance.events.when.nodes.joints.mouseup({ shift: true }, ({ target }) => {
-        instance.selected = {};
+        instance.selected[target] = !instance.selected[target];
         instance.markDirty();
     });
 
@@ -134,11 +88,5 @@ Dynalist.onCreate(instance => {
         stopDragging();
         instance.selected = {};
         instance.markDirty();
-    })
-
-    instance.events.when.key({
-        key: 'Escape'
-    }, () => {
-        state = null;
     })
 });

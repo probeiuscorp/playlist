@@ -40,16 +40,10 @@ Dynalist.onCreate(instance => {
     };
 
     instance.events.when.key({
-        key: '-',
-        // modifiers: {
-        //     ctrl: true
-        // }
+        key: '-'
     }, zoomout);
     instance.events.when.key({
-        key: '-',
-        // modifiers: {
-        //     ctrl: true
-        // }
+        key: '='
     }, zoomin);
 
     instance.events.on('wheel', e => {

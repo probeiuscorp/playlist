@@ -29,7 +29,7 @@ Dynalist.registerPrimitive({
             <i className="bi bi-check-circle-fill green"/>
             Yield
         </div>
-        <div className="node-body round-all">
+        <div className="node-body">
             {props.params}
             <div className="yield-container">
                 Name

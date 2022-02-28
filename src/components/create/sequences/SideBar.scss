@@ -1,6 +1,7 @@
 @use "../../../styles/colors";
 
 .sidebar-sequences {
+    display: flex;
     background-color: colors.$bg-light;
 
     h3 {
@@ -12,15 +13,30 @@
 }
 
 .sequences {
-    max-height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    padding: 6px 12px;
 }
 
 .sequences-content {
-    padding: 12px;
     overflow: auto;
     flex-grow: 1;
+}
+
+.sequences-toolbar {
+    display: flex;
+    gap: 0.75em;
+    border-top: 1px solid colors.$text-dim;
+    padding: 10px;
+    transition: transform 80ms ease-in;
+    font-size: x-large;
+
+    i:hover {
+        cursor: pointer;
+        color: colors.$accent-light;
+        transform: scale(1.2);
+    }
 }
 
 .sequences-file {
@@ -28,7 +44,11 @@
     padding: 8px 12px;
     border-radius: 2px;
     cursor: pointer;
-
+    transition: opacity 100ms ease-in-out;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    
     i {
         margin-right: 0.5em;
     }
@@ -37,6 +57,13 @@
         background-color: colors.$bg-lighter;
         box-shadow: 0 3px colors.$bg-darker;
     }
+}
+
+[style*="box-sizing"] > .sequences-file {
+    border: 2px solid colors.$accent;
+    background-color: colors.$bg-lighter;
+    opacity: 0.5;
+    box-shadow: 0 3px colors.$bg-darker;
 }
 
 .sequences-directory {

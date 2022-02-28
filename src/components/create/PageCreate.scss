@@ -28,6 +28,10 @@
 .create-viewport {
     height: 100%;
     position: relative;
+
+    .hide {
+        display: none !important;
+    }
 }
 
 .tabs {

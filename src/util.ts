@@ -3,7 +3,7 @@ import { Dynalist } from './dynalist/dynalist';
 import { mutators } from './mutators';
 import { NodeAny, ParamSet } from './types';
 
-export function conditional(names: Record<string, boolean>): string {
+export function conditional(names: Record<string, boolean | null | undefined>): string {
     let resolved: string[] = [];
     for(const className in names) {
         if(names[className]) {

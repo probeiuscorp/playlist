@@ -6,9 +6,11 @@ import Paths from './Paths';
 import { Modals } from '@client/module/modal';
 import { Dynalist } from '@client/dynalist/dynalist';
 import './Mutators.scss';
+import { conditional } from '@client/util';
 
 export interface MutatorsProps {
-    instance: Dynalist
+    instance: Dynalist,
+    hidden: boolean
 }
 
 interface MutatorsState {
@@ -30,6 +32,8 @@ export default class Mutators extends React.Component<MutatorsProps, MutatorsSta
         this.props.instance.events.when.keydown({
             key: 'Enter'
         }, this.createNode);
+
+        props.instance.onNewIteration(iteration => void this.setState({ iteration }));
     }
 
     setContainer = (element: HTMLElement | null) => {
@@ -59,12 +63,15 @@ export default class Mutators extends React.Component<MutatorsProps, MutatorsSta
     }
 
     render() {
-        const { cursor, events, nodes, selected, camera } = this.props.instance;
-
+        const { cursor, events, nodes, selected, camera, previewPath } = this.props.instance;
+        
         return (
             <div
                 ref={this.setContainer}
-                className="mutators"
+                className={conditional({
+                    "mutators": true,
+                    "hide": this.props.hidden
+                })}
                 style={{
                     cursor,
                     backgroundPosition: `${(40 - camera.x) % 40}px ${(40 - camera.y) % 40}px`
@@ -72,7 +79,13 @@ export default class Mutators extends React.Component<MutatorsProps, MutatorsSta
                 onMouseUp={e => void events.dispatch('body.mouseup', e)}
                 onMouseDown={e => void events.dispatch('body.mousedown', e)}
             >
-                <Paths paths={this.state.paths}/>
+                <Paths
+                    camera={camera}
+                    paths={[
+                        ...this.state.paths,
+                        ...(previewPath ? [previewPath] : [])
+                    ]}
+                />
                 <Nodes
                     camera={camera}
                     nodes={nodes}

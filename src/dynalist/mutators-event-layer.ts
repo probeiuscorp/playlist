@@ -37,7 +37,7 @@ export interface JointClickPayload {
     payload: {
         target: ID,
         node: ID,
-        e: React.MouseEvent
+        e: React.MouseEvent<HTMLElement>
     }
 }
 
@@ -60,7 +60,9 @@ export interface EventPayloadMap {
         filter: ModifiersOptions,
         payload: {
             dx: number,
-            dy: number
+            dy: number,
+            x: number,
+            y: number
         }
     },
     "node.mousedown": NodeClickPayload,
@@ -121,7 +123,9 @@ export class MutatorsEventLayer {
         }
     }
 
+    public element: HTMLElement;
     public setElement(element: HTMLElement) {
+        this.element = element;
         for(const { e, handler, passive } of this.eventListeners) {
             element.addEventListener(e, handler, { passive });
         }

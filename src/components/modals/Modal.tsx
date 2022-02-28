@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import './Modal.scss';
+import './ModalEdit';
+import './ModalMutator';
 
 const modals = document.getElementById('modals')!;
 

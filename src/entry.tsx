@@ -3,8 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import PageCreate from './components/create/PageCreate';
 import NiceModal from '@ebay/nice-modal-react';
-import './components/modals/ModalEdit';
-import './components/modals/ModalEdit';
+import './components/modals/Modal';
 import './mutators';
 import './styles/load';
 
