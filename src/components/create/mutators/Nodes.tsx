@@ -15,6 +15,14 @@ export interface NodesProps {
     selected: Record<string, boolean>
 }
 
+const DEBOUNCE_TIME = 24;
+interface MouseState {
+    lastTime: number,
+    timeout: number | null,
+    dx: number,
+    dy: number
+}
+
 function subtract(p1: Point, p2: Point): Point {
     return {
         x: p1.x - p2.x,
@@ -107,8 +115,30 @@ export default class Nodes extends React.Component<NodesProps> {
         return this.props.iteration !== nextProps.iteration;
     }
 
+    private mouseState: MouseState = {
+        dx: 0,
+        dy: 0,
+        lastTime: 0,
+        timeout: null
+    };
     handleMouseMove = (e: React.MouseEvent) => {
-        this.props.onEvent('mousemove', { dx: e.movementX, dy: e.movementY, x: e.pageX, y: e.pageY })
+        const state = this.mouseState;
+        if(Date.now() - DEBOUNCE_TIME < state.lastTime) {
+            // has already activated recently
+            state.dx += e.movementX;
+            state.dy += e.movementY;
+            window.clearInterval(state.timeout!);
+            state.timeout = window.setTimeout(() => {
+                this.props.onEvent('mousemove', { dx: state.dx, dy: state.dy, x: e.pageX, y: e.pageY });
+            }, DEBOUNCE_TIME);
+        } else {
+            // has not recently activated
+            this.props.onEvent('mousemove', { dx: e.movementX, dy: e.movementY, x: e.pageX, y: e.pageY });
+            state.dx = 0;
+            state.dy = 0;
+            state.timeout = null;
+            state.lastTime = Date.now();
+        }
     };
 
     render() {
