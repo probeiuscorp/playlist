@@ -72,12 +72,14 @@ export default class Node extends React.Component<NodeProps> {
                     onMouseDown={e => void this.props.onEvent('node.joint.mousedown', {
                         e: stopPropagation(e),
                         node: this.props.id,
-                        target: this.props.node[input ? "params" : "outputs"][param.id]!
+                        id: param.id,
+                        isParam: input
                     })}
                     onMouseUp={e => void this.props.onEvent('node.joint.mouseup', {
                         e: stopPropagation(e),
                         node: this.props.id,
-                        target: this.props.node[input ? "params" : "outputs"][param.id]!
+                        id: param.id,
+                        isParam: input
                     })}
                 >
                     <div

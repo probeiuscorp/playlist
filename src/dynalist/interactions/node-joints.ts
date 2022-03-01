@@ -3,9 +3,10 @@ import { Dynalist } from '../dynalist';
 
 interface SelectState {
     node: ID,
-    joint: string,
+    id: string,
     origin: Point,
-    current: Point
+    current: Point,
+    isParam: boolean
 }
 
 Dynalist.onCreate(instance => {
@@ -15,7 +16,7 @@ Dynalist.onCreate(instance => {
         y: 0
     }
 
-    instance.events.when.nodes.joints.mouseup(null, ({ target: joint, node, e }) => {
+    instance.events.when.nodes.joints.mouseup(null, ({ id, node, e, isParam }) => {
         const element = e.target as HTMLElement;
         
         if(state !== null) {
@@ -23,61 +24,45 @@ Dynalist.onCreate(instance => {
             const current = instance.nodes[node];
 
             if(other === current) return;
+            if(state.isParam === isParam) return;
 
-            let idfrom: ID;
-            let from: NodeAny;
-            let jidfrom: ID;
-            let idto: ID;
-            let to: NodeAny;
-            let jidto: ID;
+            let target: NodeAny;
+            let idFrom: string;
+            let jointTo: ID;
 
-            if(joint in current.outputs) {
-                // must be in outputs, so its a target current -> other
-                idfrom = node;
-                idto = state.node;
-                from = current;
-                to = other;
-                jidfrom = joint;
-                jidto = state.joint;
+            if(isParam) {
+                target = other;
+                jointTo = instance.nodes[node].params[id];
+                idFrom = state.id;
             } else {
-                // must be in inputs, so its a target other -> current
-                idfrom = state.node;
-                idto = node;
-                from = other;
-                to = current;
-                jidfrom = state.joint;
-                jidto = joint;
+                target = current;
+                jointTo = instance.nodes[state.node].params[state.id];
+                idFrom = id;
             }
 
-            // const [ jFrom ] = Object.entries(from.outputs).find(([ , value ]) => value === jidfrom)!;
-            // from.outputs[jFrom] = idto;
-            for(const [ connection, to ] of Object.entries(from.outputs)) {
-                if(to === jidfrom) {
-                    from.outputs[connection] = jidto;
-                }
-            }
+            target.outputs[idFrom] = jointTo;
 
             state = null;
             instance.cursor = 'default';
             instance.previewPath = null;
             instance.markDirty();
         } else {
+            const box = element.getBoundingClientRect();
             const wrapperBox = instance.events.element.getBoundingClientRect();
             pageOffset = wrapperBox;
             const origin: Point = {
-                x: e.pageX - wrapperBox.x - instance.camera.x,
-                y: e.pageY - wrapperBox.y - instance.camera.y
+                x: box.x - wrapperBox.x + box.width / 2 + instance.camera.x,
+                y: box.y - wrapperBox.y + box.height / 2 + instance.camera.y
             }
-
-            console.log(origin);
 
             instance.pushState();
 
             state = {
                 node,
-                joint,
+                id,
                 origin,
-                current: origin
+                current: origin,
+                isParam
             }
 
             instance.cursor = 'crosshair';
@@ -86,15 +71,21 @@ Dynalist.onCreate(instance => {
 
     instance.events.when.move(null, ({ x, y }) => {
         if(state) {
-            state.current = {
-                x: x - pageOffset.x - instance.camera.x,
-                y: y - pageOffset.y - instance.camera.y
-            }
+            state.current = { x, y };
             instance.previewPath = {
                 from: state.origin,
                 to: state.current
             }
             instance.markDirty();
         }
+    });
+
+    instance.events.when.key({
+        key: 'Escape'
+    }, () => {
+        state = null;
+        instance.previewPath = null;
+        instance.cursor = 'default';
+        instance.markDirty();
     });
 });

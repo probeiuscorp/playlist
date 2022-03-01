@@ -32,8 +32,8 @@ function subtract(p1: Point, p2: Point): Point {
 
 function untransform(p: Point, camera: Camera): Point {
     return {
-        x: (p.x - camera.x*camera.zoom),
-        y: (p.y - camera.y*camera.zoom)
+        x: (p.x + camera.x*camera.zoom),
+        y: (p.y + camera.y*camera.zoom)
     }
 }
 
@@ -115,6 +115,12 @@ export default class Nodes extends React.Component<NodesProps> {
         return this.props.iteration !== nextProps.iteration;
     }
 
+    dispatchMouseMove = (dx: number, dy: number, e: React.MouseEvent) => {
+        const camera = this.props.camera;
+        const { x, y } = this.container.current!.getBoundingClientRect();
+        this.props.onEvent('mousemove', { dx, dy, x: e.pageX - x + camera.x, y: e.pageY - y + camera.y });
+    }
+
     private mouseState: MouseState = {
         dx: 0,
         dy: 0,
@@ -129,11 +135,13 @@ export default class Nodes extends React.Component<NodesProps> {
             state.dy += e.movementY;
             window.clearInterval(state.timeout!);
             state.timeout = window.setTimeout(() => {
-                this.props.onEvent('mousemove', { dx: state.dx, dy: state.dy, x: e.pageX, y: e.pageY });
+                this.dispatchMouseMove(state.dx, state.dy, e);
+                state.dx = 0;
+                state.dy = 0;
             }, DEBOUNCE_TIME);
         } else {
             // has not recently activated
-            this.props.onEvent('mousemove', { dx: e.movementX, dy: e.movementY, x: e.pageX, y: e.pageY });
+            this.dispatchMouseMove(e.movementX + state.dx, e.movementY + state.dy, e);
             state.dx = 0;
             state.dy = 0;
             state.timeout = null;

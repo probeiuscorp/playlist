@@ -1,47 +1,45 @@
 import { ID } from '@client/types';
 import { Dynalist } from '../dynalist';
 
-type JointType = 'param' | 'output';
-
-interface NodesSelected {
-    node: ID | null,
-    selected: ID | null,
-    type: JointType
-}
-
 interface DraggingState {
     target: ID,
     startedSelecting: number,
     selecting: boolean,
     oldX: number,
-    oldY: number
+    oldY: number,
+    offsetX: number,
+    offsetY: number
 }
 
 Dynalist.onCreate(instance => {
-    let state: NodesSelected | null = null;
     let draggingState: DraggingState | null = null;
 
-    instance.events.when.nodes.mousedown(null, ({ target }) => {
+    instance.events.when.nodes.mousedown(null, ({ target, e }) => {
+        const element = (e.target as HTMLElement).closest('.node')!;
+        console.log(element);
+        const box = element.getBoundingClientRect();
         const node = instance.nodes[target];
         draggingState = {
             target,
             oldX: node.x,
             oldY: node.y,
+            offsetX: box.width / 2,
+            offsetY: box.height / 2,
             startedSelecting: Date.now(),
             selecting: true
         }
         instance.markDirty();
     });
 
-    instance.events.when.move(null, ({ dx, dy }) => {
+    instance.events.when.move(null, ({ x, y }) => {
         if(draggingState) {
-            const { startedSelecting, target } = draggingState;
+            const { startedSelecting, target, offsetX, offsetY } = draggingState;
             if(Date.now() - startedSelecting > 100) {
                 const node = instance.nodes[target];
                 node.classes['dragging'] = true;
                 draggingState.selecting = false;
-                node.x += dx;
-                node.y += dy;
+                node.x = x - offsetX;
+                node.y = y - offsetY;
                 instance.cursor = 'grabbing';
                 instance.markDirty();
             }

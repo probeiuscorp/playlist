@@ -72,8 +72,8 @@ export const mutators: Record<string, MutatorInfo> = {
             }
         ]
     },
-    duplicator: {
-        display: 'Duplicator',
+    copy: {
+        display: 'Copy',
         description: 'Takes one connection and turns it into 2',
         handler: ({ input }) => ({ a: input, b: input }),
         params: [
@@ -95,8 +95,8 @@ export const mutators: Record<string, MutatorInfo> = {
             }
         ]
     },
-    duplicator4: {
-        display: 'Duplicator 4',
+    copy4: {
+        display: 'Copy (4)',
         description: 'Takes one connection and turns it into 4',
         handler: ({ input }) => ({ a: input, b: input, c: input, d: input }),
         params: [

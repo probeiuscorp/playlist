@@ -35,7 +35,8 @@ export interface NodeClickPayload {
 export interface JointClickPayload {
     filter: ModifiersOptions,
     payload: {
-        target: ID,
+        id: string,
+        isParam: boolean,
         node: ID,
         e: React.MouseEvent<HTMLElement>
     }
