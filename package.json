@@ -3,5 +3,8 @@
   "name": "playlistjs-sample",
   "dependencies": {
     "playlistjs-types": "^0.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
   }
 }
