@@ -49,16 +49,11 @@ function* randomized(): Generator<song> {
         if(legendary(2e3)) yield thirteen;
 
         yield allVideos.pick()!;
+        yield silence(Math.random(1, 8) + Math.random(4, 10));
     }
 };
 
-Playlist.yield('randomized', function*() {
-    const x = randomized();
-    while(true) {
-        yield x.next().value;
-        yield silence(Math.random(1, 8) + Math.random(4, 10));
-    }
-});
+Playlist.yield('randomized', randomized);
 
 Playlist.yield('dancing mad', function*() {
     yield dancingMad;
@@ -100,8 +95,6 @@ Playlist.yield('minecraft', function*() {
 Object.entries(videos).mapsort(([name]) => name).map(([name, id]) => {
     Playlist.yield(name, function*() {
         yield id;
-        while(true) {
-            yield allVideos.pick()!;
-        }
+        yield* randomized();
     });
 });
