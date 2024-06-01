@@ -95,6 +95,8 @@ Playlist.yield('minecraft', function*() {
 Object.entries(videos).mapsort(([name]) => name).map(([name, id]) => {
     Playlist.yield(name, function*() {
         yield id;
-        yield* randomized();
+        const iterator = randomized();
+        iterator.next();
+        yield* iterator;
     });
 });
