@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "target": "ESNext",
+        "strict": true,
         "types": [
             "playlistjs-types"
         ]
