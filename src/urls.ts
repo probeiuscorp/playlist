@@ -64,6 +64,7 @@ export const ff6Shadow = 'vdBzHamb2v0';
 export const superMetroid = 'Xpb1hpJrYXM?start=10&end=215';
 export const technoMetroid = 'dkDR5OckDfA';
 export const whatLanaSays = 'mJdwDjUqAMQ';
+export const linger = 'PXDlU0YDQ6U';
 
 export const lifeIsAHighway = 'CppR1HQtqmU';
 export const whereTheRiverFlows = 'tX57jqetDGA';
