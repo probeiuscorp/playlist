@@ -183,6 +183,7 @@ export const pigstep = 'oDZK3_c-Vkc';
 export const ward = 'f4pY_oF2_lc';
 export const alpha = 'uNCGM7FJ8wQ';
 export const meltdown = 'EDmXfQ1VqAY';
+export const battleBox = 'vRyZGz4hWfo';
 
 export const publicEnemy = 'Ls_nDYHEZcw';
 export const broodwarAria = 'CuNkuhMA5pY';
