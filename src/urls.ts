@@ -66,6 +66,7 @@ export const technoMetroid = 'dkDR5OckDfA';
 export const whatLanaSays = 'mJdwDjUqAMQ';
 export const linger = 'PXDlU0YDQ6U';
 export const armsOfGold = 'vU59QIJlGzI';
+export const goodLuckBabe = '1RKqOmSkGgM';
 
 export const lifeIsAHighway = 'CppR1HQtqmU';
 export const whereTheRiverFlows = 'tX57jqetDGA';
