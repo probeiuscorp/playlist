@@ -8,7 +8,7 @@ const dancingMad = 'DMDcL0reo5Y';
 const noOneLivesForever = 't55nKXBAMPo?start=62&end=64';
 const readyForDustOff = 'avN7vICX208?start=0&end=2';
 const allVideos: song[] = Object.values({ ...videos, noOneLivesForever, readyForDustOff });
-Playlist.yield('mood', () => runSources(Object.values(sources), {
+Playlist.yield('mood', runSources(Object.values(sources), {
     replayUnplayable: 30,
     replayHalfway: 42,
     soulPower: 2,
@@ -37,11 +37,8 @@ const fromThatDayOn = `${ff6piano}?start=${time(67, 32)}&end=${time(68, 48)}`;
 const epitaph = `${ff6piano}?start=${time(68, 48)}&end=${time(70, 0)}`;
 const searchingForFriends = `${ff6piano}?start=${time(70, 0)}&end=${time(71, 15)}`;
 
-function legendary(chance: number) {
-    return Date.now() % (chance + 1) === 0;
-}
-
 const themeTerraRetro = 'SrDiiVn1VCk';
+const legendary = (chance: number) => Date.now() % (chance + 1) === 0;
 function* randomized(): Generator<song> {
     while(true) {
         if(legendary(10e3)) yield dancingMad;

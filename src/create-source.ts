@@ -29,9 +29,8 @@ function makeGaussian(standardDeviation: number) {
     const denominator = (2 * standardDeviation ** 2);
     return (x: number) => Math.pow(Math.E, -x * x / denominator);
 }
-function makeSigmoid(spread: number) {
-    return (x: number) => 1 / (1 + Math.exp(-spread * x));
-}
+const makeSigmoid = (spread: number) =>
+    (x: number) => 1 / (1 + Math.exp(-spread * x));
 
 // If intensityDeltaDeviation is equal to or greater than intensityDeltaIdeal, then there is no inclined motion
 interface RunSetup {
@@ -52,7 +51,7 @@ interface RunSetup {
     replayUnplayable: number;
 }
 interface Source {
-    play(): song;
+    play: () => song;
     mood: Mood;
     labels: Set<Label>;
     weight: number;
@@ -69,7 +68,7 @@ export function* runSources(sources: Source[], setup: RunSetup): Generator<song>
     const replayRadius = setup.replayHalfway - setup.replayUnplayable;
     const replayMemory = Math.ceil(setup.replayHalfway + replayRadius);
     const history = new Array<Source>(replayMemory);
-    const sampleReplayWeight = ((sampleSigmoid) => (x: number) =>  sampleSigmoid(x - setup.replayHalfway))(makeSigmoid(-Math.log(1 / 0.001) / (setup.replayUnplayable + replayRadius)));
+    const sampleReplayWeight = ((sampleSigmoid) => (x: number) => sampleSigmoid(x - setup.replayHalfway))(makeSigmoid(-Math.log(1 / 0.001) / (setup.replayUnplayable + replayRadius)));
 
     let x=0;
     while(true) {
