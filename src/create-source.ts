@@ -31,6 +31,7 @@ function makeGaussian(standardDeviation: number) {
 }
 const makeSigmoid = (spread: number) =>
     (x: number) => 1 / (1 + Math.exp(-spread * x));
+const sampleSigmoid = makeSigmoid(1);
 
 // If intensityDeltaDeviation is equal to or greater than intensityDeltaIdeal, then there is no inclined motion
 interface RunSetup {
@@ -68,7 +69,12 @@ export function* runSources(sources: Source[], setup: RunSetup): Generator<song>
     const replayRadius = setup.replayHalfway - setup.replayUnplayable;
     const replayMemory = Math.ceil(setup.replayHalfway + replayRadius);
     const history = new Array<Source>(replayMemory);
-    const sampleReplayWeight = ((sampleSigmoid) => (x: number) => sampleSigmoid(x - setup.replayHalfway))(makeSigmoid(-Math.log(1 / 0.001) / (setup.replayUnplayable + replayRadius)));
+    const sampleReplayWeight = (x: number) => {
+        if(x === -1 || x > replayMemory) return 1;
+        if(x < setup.replayUnplayable) return 0;
+        // consider to be unplayable when |δ| ≥ 5 if σ(δ)
+        return sampleSigmoid((x - setup.replayHalfway) / replayRadius * 5);
+    }
 
     let x=0;
     while(true) {
@@ -81,7 +87,7 @@ export function* runSources(sources: Source[], setup: RunSetup): Generator<song>
             const soulWeight = (soul / soulBudget) ** setup.soulPower;
             const intensityWeight = sampleIntensity(intensity - targetIntensity);
             const replayOffset = history.indexOf(source);
-            const replayWeight = replayOffset === -1 ? 1 : sampleReplayWeight(replayOffset);
+            const replayWeight = sampleReplayWeight(replayOffset);
             const weight = soulWeight * intensityWeight * replayWeight * source.weight;
             const data = { setup: { targetIntensity, replayOffset, soulBudget, currentGravity }, soulWeight, intensityWeight, replayWeight, sourceWeight: source.weight, weight };
             replayWeights.set(source, data);
