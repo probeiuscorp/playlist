@@ -77,6 +77,7 @@ export function* runSources(sources: Source[], setup: RunSetup): Generator<song>
     }
 
     let x=0;
+    let lastIntensity: number | undefined;
     while(true) {
         const targetIntensity = Math.cos(x / (2 * Math.PI * setup.intensityPeriod) + setup.intensityCosPhaseRadians) + intensityOffset;
         const replayWeights = new Map<Source, object>();
@@ -99,6 +100,12 @@ export function* runSources(sources: Source[], setup: RunSetup): Generator<song>
         currentGravity = mood.gravity;
         soulBudget -= mood.soul;
         soulBudget += setup.soulAccumulate;
+        const thisIntensity = mood.intensity;
+        if(lastIntensity) {
+            const duration = 8 * (1 - Math.pow(thisIntensity / 76, 0.8));
+            yield silence(duration * Math.random(0.85, 1.15));
+        }
+        lastIntensity = thisIntensity;
         yield source.play();
 
         history.unshift(source);
