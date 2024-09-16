@@ -188,6 +188,7 @@ export const battleBox = 'vRyZGz4hWfo';
 export const aceRace = 'VC6ZQ5BjLPU';
 export const buildMart = 'uDpKd3rqAZE';
 export const terraSwoopForce = 'P2BzAvI3FX8';
+export const rocketSpleefRush = 'y8zVzYnDEDc';
 
 export const publicEnemy = 'Ls_nDYHEZcw';
 export const broodwarAria = 'CuNkuhMA5pY';
