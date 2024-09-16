@@ -36,3 +36,13 @@ export const coins420 = createSource({
     soul: Soul.LITTLE,
     gravity: Gravity.LIGHT + A_LOT,
 });
+
+export const whatWasIMadeFor = createSource({
+    play: 'FcXRwUsA6xs',
+    labels: 'voice',
+    weight: 14,
+}, {
+    intensity: 4,
+    soul: 60,
+    gravity: 65,
+});
