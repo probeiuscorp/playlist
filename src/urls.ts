@@ -187,6 +187,7 @@ export const meltdown = 'EDmXfQ1VqAY';
 export const battleBox = 'vRyZGz4hWfo';
 export const aceRace = 'VC6ZQ5BjLPU';
 export const buildMart = 'uDpKd3rqAZE';
+export const terraSwoopForce = 'P2BzAvI3FX8';
 
 export const publicEnemy = 'Ls_nDYHEZcw';
 export const broodwarAria = 'CuNkuhMA5pY';
