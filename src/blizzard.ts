@@ -16,6 +16,14 @@ export const sc2terran1 = createSource({
     intensity: Intensity.INTENSE + A_LOT,
 });
 
+export const sc2terran1guitar = createSource({
+    play: v.sc2terran1guitar,
+    labels: 'instrumental sc2 terran',
+}, {
+    soul: 28,
+    intensity: 20,
+});
+
 export const sc2terran2 = createSource({
     play: v.sc2terran2,
     labels: 'instrumental sc2 terran',
@@ -23,6 +31,14 @@ export const sc2terran2 = createSource({
 }, {
     soul: Soul.MUCH,
     intensity: Intensity.STANDARD,
+});
+
+export const sc2terran2guitar = createSource({
+    play: v.sc2terran2guitar,
+    labels: 'instrumental sc2 terran',
+}, {
+    soul: 32,
+    intensity: 18,
 });
 
 export const sc2terran3 = createSource({
@@ -34,6 +50,14 @@ export const sc2terran3 = createSource({
     intensity: Intensity.STANDARD,
 });
 
+export const sc2terran3guitar = createSource({
+    play: v.sc2terran3guitar,
+    labels: 'instrumental sc2 terran',
+}, {
+    soul: 38,
+    intensity: 20,
+});
+
 export const sc2terran4 = createSource({
     play: v.sc2terran4,
     labels: 'instrumental sc2 terran',
@@ -43,6 +67,14 @@ export const sc2terran4 = createSource({
     intensity: Intensity.SOOTHING - A_BIT,
 });
 
+export const sc2terran4guitar = createSource({
+    play: v.sc2terran4guitar,
+    labels: 'instrumental sc2 terran',
+}, {
+    soul: 28,
+    intensity: 8,
+});
+
 export const sc2terran5 = createSource({
     play: v.sc2terran5,
     labels: 'instrumental sc2 terran',
@@ -50,6 +82,14 @@ export const sc2terran5 = createSource({
 }, {
     soul: Soul.MORE,
     intensity: Intensity.SOOTHING,
+});
+
+export const sc2terran5guitar = createSource({
+    play: v.sc2terran5guitar,
+    labels: 'instrumental sc2 terran',
+}, {
+    soul: 32,
+    intensity: 14,
 });
 
 export const rhythmicTension = createSource({
