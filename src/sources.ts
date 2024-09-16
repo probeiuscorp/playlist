@@ -6,11 +6,11 @@ import * as enya from './enya';
 import * as blizzard from './blizzard';
 import * as subnautica from './subnautica';
 import * as vgm from './video-game';
-import * as pop from './pop';
+import * as electronic from './electronic';
 import * as rock from './rock';
 import * as other from './other';
 export const sourceByGenre = {
-    minecraft, enya, blizzard, subnautica, vgm, pop, rock, other,
+    minecraft, enya, blizzard, subnautica, vgm, electronic, rock, other,
 };
 export const sources = {
     ...minecraft,
@@ -18,7 +18,7 @@ export const sources = {
     ...blizzard,
     ...subnautica,
     ...vgm,
-    ...pop,
+    ...electronic,
     ...rock,
     ...other,
 };
