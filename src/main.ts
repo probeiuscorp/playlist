@@ -43,6 +43,7 @@ function* randomized(): Generator<song> {
     while(true) {
         if(legendary(10e3)) yield dancingMad;
         if(legendary(6e3)) yield themeTerraRetro;
+        if(legendary(3e3)) yield 'SCD2tB1qILc';
         if(legendary(2e3)) yield thirteen;
 
         yield allVideos.pick()!;
