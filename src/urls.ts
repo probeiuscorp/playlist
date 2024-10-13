@@ -116,6 +116,8 @@ export const btsButterfly = 'Z4o7-6cFUF8';
 export const btsBoyWithLuv = 'XsX3ATc3FbA';
 export const btsPiedPiper = 'VEZ_Ui6d9AM';
 
+export const rewriteTheStars = '9k-ZinhuF9g';
+
 export const theHumming = 'FOP_PPavoLA';
 export const wildChild = 'Wkk0puI6NfA';
 export const florasSecret = 'gObUqHsxc5A';
