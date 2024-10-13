@@ -117,6 +117,7 @@ export const btsBoyWithLuv = 'XsX3ATc3FbA';
 export const btsPiedPiper = 'VEZ_Ui6d9AM';
 
 export const rewriteTheStars = '9k-ZinhuF9g';
+export const pianoLoveStory = 'SojAkORca9g?end=238';
 
 export const theHumming = 'FOP_PPavoLA';
 export const wildChild = 'Wkk0puI6NfA';
