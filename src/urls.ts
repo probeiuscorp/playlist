@@ -90,6 +90,7 @@ export const hello = 'yjo_aXygRDI';
 export const skyfall = 'DeumyOzKqgI';
 export const summertimeSadness = 'fRQg_9ulGuI';
 export const iLoveYouImSorry = 'jmzAf54Re8A';
+export const chihiro = 'e_AZJzYe7CU';
 
 export const pager = 'OZdICyrtpJs';
 export const infinite = 'qdjJPBPMvlc';
