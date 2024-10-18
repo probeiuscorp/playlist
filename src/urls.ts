@@ -241,6 +241,7 @@ export const theHive = 'zEkhIfr_XyM';
 export const nightElf = 'q6_d1fhEXTY';
 export const nightElfArrival = 'Qg8ET9AESNs';
 export const nightElfAwakening = '63M6fnIj_gY';
+export const nightElfAncients = 'GQEWlHxZtlI';
 export const undeadVictory = 'scxMUFCGEGs';
 export const darkCovenant = 'JVJUUe3cYN8';
 
