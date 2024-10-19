@@ -228,6 +228,7 @@ export const sc2terran4guitar = 'K14RnTVt194';
 export const sc2terran5guitar = '6ypc_fRTyrc';
 export const sc1protoss1 = '5yXSKc1vFyY';
 export const sc1protoss2 = 'AbtwqqhtpOw';
+export const sc1protoss3 = 'WDgt-jyH4r0';
 export const sc1protoss4 = 'kKXOpL-rhN0';
 export const ncoEpic = 'pEzqeb0CCwA'; // oaUmCO3IqbE, ZDzE5dLN2E4 zA3_WH2rHL0
 export const ncoBoss = 'p5DOzmkcfVg'; // 4e3d--yVMuI KNOKSYwtF9A kyjsEmWzdwA
