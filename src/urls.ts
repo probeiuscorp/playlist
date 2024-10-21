@@ -96,6 +96,7 @@ export const sofia = 'L9l8zCOwEII';
 export const iLoveYouImSorry = 'jmzAf54Re8A';
 export const chihiro = 'e_AZJzYe7CU';
 export const wildflower = 'l08Zw-RY__Q';
+export const lAmourDeMaVie = 'am5FI9DkO80';
 
 export const pager = 'OZdICyrtpJs';
 export const infinite = 'qdjJPBPMvlc';
