@@ -211,6 +211,7 @@ export const publicEnemy = 'Ls_nDYHEZcw';
 export const broodwarAria = 'CuNkuhMA5pY';
 export const heavensDevils = 'qDKQj7xdFsA';
 export const rawPower = '-2oQ39Sck8s';
+export const sc2menu = 'cdIF8SrFANc';
 export const sc1terran1 = 'LmZPi_1vlW4';
 export const sc1terran2 = 'wX6uEqFAXWw';
 export const sc1terran3 = '3xP_sKtq-us';
