@@ -281,6 +281,7 @@ export const sunAndMoon = 'faChDQaewjA';
 export const intoTheUnknown = 'aZe4IQnhS5Y';
 export const godRays = 'DgvgM135rqQ';
 export const amidTheKelp = '41SpQ3rNWnY';
+export const alienExpanse = 'zlLPH1-ds2M';
 export const kelpCaves = 'QOEoS7G4vxw';
 export const arcticPeeper = 'SyNiDh7fEYE';
 export const deepBlue = 'dUHp7N8BVyo';
