@@ -125,6 +125,7 @@ export const btsPiedPiper = 'VEZ_Ui6d9AM';
 
 export const rewriteTheStars = '9k-ZinhuF9g';
 export const pianoLoveStory = 'SojAkORca9g?end=238';
+export const pianoTheScientist = '7BAB1Qv-OIU?end=262';
 
 export const theHumming = 'FOP_PPavoLA';
 export const wildChild = 'Wkk0puI6NfA';
