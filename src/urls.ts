@@ -62,6 +62,7 @@ export const whatLanaSays = 'mJdwDjUqAMQ';
 export const linger = 'PXDlU0YDQ6U';
 export const armsOfGold = 'vU59QIJlGzI';
 export const needAFriend = 'PEmWG9PgdX0';
+export const howling = 'O4Lsah7bEJY';
 export const goodLuckBabe = '1RKqOmSkGgM';
 
 export const lifeIsAHighway = 'CppR1HQtqmU';
