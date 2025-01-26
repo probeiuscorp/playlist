@@ -69,6 +69,7 @@ export const somethingOldSomethingNew = '9oyPenibKTs';
 export const prismarine = 'Tjwhp1IPauE';
 
 export const callMeMaybe = 'eHx--ZtG_Ds';
+export const littleTalks = 'gSdjztTxYgk';
 
 export const lifeIsAHighway = 'CppR1HQtqmU';
 export const whereTheRiverFlows = 'tX57jqetDGA';
