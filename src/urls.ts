@@ -71,6 +71,7 @@ export const fireflies = 'KWLGyeg74es';
 export const chandelier = '2vjPBrBU-TM';
 export const somebodyThatIUsedToKnow = '8UVNT4wvIGY';
 export const lucky = '5NV6Rdv1a3I';
+export const aThousandMiles = 'NpNi7Gsz8_Q';
 
 export const lifeIsAHighway = 'CppR1HQtqmU';
 export const whereTheRiverFlows = 'tX57jqetDGA';
