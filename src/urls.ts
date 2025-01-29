@@ -69,6 +69,7 @@ export const safeAndSound = 'jWpZuFM0Qtk';
 export const paradise = '1G4isv_Fylg';
 export const fireflies = 'KWLGyeg74es';
 export const chandelier = '2vjPBrBU-TM';
+export const royals = 'ncgsL1GCFms';
 export const somebodyThatIUsedToKnow = '8UVNT4wvIGY';
 export const lucky = '5NV6Rdv1a3I';
 export const aThousandMiles = 'NpNi7Gsz8_Q';
