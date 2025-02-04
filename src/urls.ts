@@ -313,6 +313,7 @@ export const twistyBridges = 'YOdLbcKHAk0';
 export const mirageMachine = 'FgmQXiz0BFA';
 export const iceFloes = 'D42iEo6IdGw';
 export const aContinuousThrum = '_ZNueK9YS_8';
+export const cathedral = 'p7ycNPlm4fw';
 
 export const usAgainstTheWorld = 'eVQ0DbgKw_w';
 export const neverLetMeDown = 'TudUfOJYn7k';
