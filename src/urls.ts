@@ -255,6 +255,7 @@ export const sc2terran5guitar = '6ypc_fRTyrc';
 export const sc1zerg1 = 'jrbN2y5r-vU';
 export const sc1zerg2 = 'dh3og5wKB1c';
 export const sc1zerg3 = 'Vh9N7132uwY';
+export const sc1zerg4 = '__3eZfU8tjA';
 export const sc1protoss1 = '5yXSKc1vFyY';
 export const sc1protoss2 = 'AbtwqqhtpOw';
 export const sc1protoss3 = 'WDgt-jyH4r0';
