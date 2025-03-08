@@ -23,6 +23,7 @@ export const stopTheCavalry = 'mrkfJZQ4Hjw';
 export const balanceWhine = 'TtNbt4Qo9wA';
 export const brinstarRemix = 'xucW1TxlB1k';
 export const brinstarRemaster = 'GfCHqIVwlZI';
+export const brinstarGuitar = 'rojS2mxVC5Q?end=200';
 export const lightningCrashes = 'xsJ4O-nSveg';
 export const losingMyReligion = 'xwtdhWltSIg';
 export const nightFever = 'SkypZuY6ZvA';
