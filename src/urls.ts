@@ -66,6 +66,7 @@ export const somethingOldSomethingNew = '9oyPenibKTs';
 export const prismarine = 'Tjwhp1IPauE';
 export const darkSide = 'cyvENT2H0V4';
 export const theUpside = 'ORbUHy_JHCI';
+export const innerGold = 'g98Gy3nLpWE';
 
 export const callMeMaybe = 'eHx--ZtG_Ds';
 export const littleTalks = 'gSdjztTxYgk';
