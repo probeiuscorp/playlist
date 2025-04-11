@@ -148,6 +148,7 @@ export const btsPiedPiper = 'VEZ_Ui6d9AM';
 export const rewriteTheStars = '9k-ZinhuF9g';
 export const pianoLoveStory = 'SojAkORca9g?end=238';
 export const pianoTheScientist = '7BAB1Qv-OIU?end=262';
+export const pianoFixYou = 'wrmvKRZlhsU?end=260';
 export const laVieEnRose = 'HjxzuiOGMRA?end=162';
 
 export const theHumming = 'FOP_PPavoLA';
