@@ -49,6 +49,7 @@ export const ff6SlamShuffle = 'Ptef8e_ZGic';
 export const ff6SlamShufflePR = 'YUk4ai6krwU?start=3454&end=3597';
 export const ff6WorldOfBalanceTown = 'ZyYYUyMDMlc';
 export const ff6MinesOfNarshe = 'bemRmNuZ-Uw';
+export const ff6MinesOfNarshePR = 'YUk4ai6krwU?start=259&end=480';
 export const ff6PhantomForest = '5-1Vm75O3Yw';
 export const ff6Cyan = '-ol1qnMdapY';
 export const ff6Shadow = 'vdBzHamb2v0';
