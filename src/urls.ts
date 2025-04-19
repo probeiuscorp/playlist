@@ -46,6 +46,7 @@ export const themeKefka = '7qDvRlqylTs?end=195';
 export const ff6Veldt = 'jrJ44BjBRFI';
 export const ff6TheDecisiveBattle = 'dAx-roc295g';
 export const ff6SlamShuffle = 'Ptef8e_ZGic';
+export const ff6SlamShufflePR = 'YUk4ai6krwU?start=3454&end=3597';
 export const ff6WorldOfBalanceTown = 'ZyYYUyMDMlc';
 export const ff6MinesOfNarshe = 'bemRmNuZ-Uw';
 export const ff6PhantomForest = '5-1Vm75O3Yw';
