@@ -69,6 +69,7 @@ export const somethingOldSomethingNew = '9oyPenibKTs';
 export const prismarine = 'Tjwhp1IPauE';
 export const darkSide = 'cyvENT2H0V4';
 export const theUpside = 'ORbUHy_JHCI';
+export const foreverglow = '8HSa3OfqTVs';
 export const innerGold = 'g98Gy3nLpWE';
 export const unfolding = 'FqZ2P6scvr8';
 export const transcendence = 'lS5oATMGm8M';
