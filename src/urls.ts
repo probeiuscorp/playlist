@@ -267,6 +267,7 @@ export const sc2terran2guitar = 'd1o6BZgWdwA';
 export const sc2terran3guitar = 'a7Fbwu47ZdI';
 export const sc2terran4guitar = 'K14RnTVt194';
 export const sc2terran5guitar = '6ypc_fRTyrc';
+export const sc2terranHotSguitar = '4iZpSRrYkhY';
 export const sc1zerg1 = 'jrbN2y5r-vU';
 export const sc1zerg2 = 'dh3og5wKB1c';
 export const sc1zerg3 = 'Vh9N7132uwY';
