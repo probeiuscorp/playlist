@@ -61,6 +61,7 @@ export const kraid = 'BZeGC7e9M_w';
 export const whatLanaSays = 'mJdwDjUqAMQ';
 export const linger = 'PXDlU0YDQ6U';
 export const armsOfGold = 'vU59QIJlGzI';
+export const nowYouSailAway = 'UrS3tzaVGGY';
 export const needAFriend = 'PEmWG9PgdX0';
 export const howling = 'O4Lsah7bEJY';
 export const goodLuckBabe = '1RKqOmSkGgM';
