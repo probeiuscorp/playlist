@@ -140,6 +140,7 @@ export const iGuessThatWasGoobye = '9AivsD14tHw';
 export const tf2main = 'PDM2qukzKwg';
 export const tf2rocketJumpWaltz = 'kbdtBLD8Lbg';
 export const tf2scout = 'hA9XFzxTTOQ';
+export const firstSteps = 'N8OHSXvneOE';
 export const reachForTheSummit = 'qx1PcEgmFHY';
 export const scatteredAndLost = '0etenwnI1wo';
 export const inTheMirror = 'bXfHKEaDg4s';
