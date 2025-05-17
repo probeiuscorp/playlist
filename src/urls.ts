@@ -144,6 +144,7 @@ export const firstSteps = 'N8OHSXvneOE';
 export const reachForTheSummit = 'qx1PcEgmFHY';
 export const scatteredAndLost = '0etenwnI1wo';
 export const inTheMirror = 'bXfHKEaDg4s';
+export const mirrorMagic = 'iKnwVvXkWq0';
 export const quietAndFalling = 'FjG0ivBT4lQ';
 export const reflection = 'QfhUSYq7jEs';
 export const confrontingMyself = 'b_oEDGONSc4';
