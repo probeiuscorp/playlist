@@ -11,8 +11,8 @@ starcraft warcraft sc1[starcraft] sc2[starcraft] wc3[warcraft] starcraft-jukebox
 
 export type ComputeLabels<TLabel extends string> = Split<Split<Trim<TLabel>, '\n'>, ' '>;
 export type WithIsLabelValid<TLabel extends string> = Show<And<
-    MustIncludeRequired<TLabel>,
-    MustOnlyIncludeKnown<Exclude<TLabel, Label>>
+  MustIncludeRequired<TLabel>,
+  MustOnlyIncludeKnown<Exclude<TLabel, Label>>
 >>;
 type Replace<T extends string, Char extends string> = T extends `${infer Begin}${Char}${infer End}` ? `${Begin} ${Replace<End, Char>}` : T;
 type ReplaceBracketsWithWhitespace<T extends string> = Replace<Replace<T, '['>, ']'>;
