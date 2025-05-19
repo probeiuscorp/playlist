@@ -42,11 +42,11 @@ const legendary = (chance: number) => Date.now() % (chance + 1) === 0;
 function* randomized(): Generator<song> {
     while(true) {
         if(legendary(10e3)) yield dancingMad;
-        if(legendary(6e3)) yield themeTerraRetro;
-        if(legendary(3e3)) yield 'SCD2tB1qILc';
-        if(legendary(2e3)) yield thirteen;
+        else if(legendary(6e3)) yield themeTerraRetro;
+        else if(legendary(3e3)) yield 'SCD2tB1qILc';
+        else if(legendary(2e3)) yield thirteen;
+        else yield allVideos.pick()!;
 
-        yield allVideos.pick()!;
         yield silence(Math.random(1, 8) + Math.random(4, 10));
     }
 };
