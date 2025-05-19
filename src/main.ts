@@ -1,5 +1,5 @@
-import { videos, sources } from './sources';
 import { runSources, s, Source } from './create-source';
+import * as videos from './urls';
 import * as Mood from './mood';
 
 const thirteen = 'VZA4luIhcu8';
@@ -12,7 +12,7 @@ const allSources = Object.values({ ...videos, noOneLivesForever, readyForDustOff
     ? s(entry)
     : entry;
 });
-Playlist.yield('mood', runSources(Object.values(sources), {
+Playlist.yield('mood', runSources(Object.values(allSources), {
   replayUnplayable: 30,
   replayHalfway: 42,
   soulPower: 2,
