@@ -1,26 +1,32 @@
 import { ComputeLabels, WithIsLabelValid, Label } from './labels';
-import { Mood, Gravity, Weight } from './mood';
+import { Mood, Gravity, Weight, Intensity, Soul } from './mood';
 export * from './mood';
 export * as v from './urls';
 
 export type SetOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
-export function createSource<TLabel extends string>(descriptor: {
-  play: song | (() => song);
-  labels: TLabel;
-  weight?: number;
-}, mood: SetOptional<Mood, 'gravity'>, ...isValid: WithIsLabelValid<ComputeLabels<TLabel>>): Source {
-  const rawLabels = descriptor.labels.split(' ').filter(Boolean);
+export function s<TLabel extends string = 'voice'>(
+  play: song | (() => song),
+  ...[mood = {}, isValid]: [mood?: Partial<{
+    w: number,
+    s: number,
+    i: number,
+    g: number,
+    l: TLabel,
+  }>, ...WithIsLabelValid<ComputeLabels<TLabel>>]
+): Source {
+  const rawLabels = (mood.l ?? '').split(' ').filter(Boolean);
   // @eslint-disable-no-type-assertion: createSource validates that its inputs are Label
   const labels = rawLabels as Label[];
 
   return {
-    play: ((play) => play instanceof Function ? play : () => play)(descriptor.play),
+    play: play instanceof Function ? play : () => play,
     labels: new Set(labels),
-    weight: descriptor.weight ?? Weight.STANDARD,
+    weight: mood.w ?? Weight.STANDARD,
     mood: {
-      gravity: Gravity.STANDARD,
-      ...mood,
+      soul: mood.s ?? Soul.STANDARD,
+      intensity: mood.i ?? Intensity.STANDARD,
+      gravity: mood.g ?? Gravity.STANDARD,
     },
   }
 }
@@ -51,7 +57,7 @@ interface RunSetup {
   replayHalfway: number;
   replayUnplayable: number;
 }
-interface Source {
+export interface Source {
   play: () => song;
   mood: Mood;
   labels: Set<Label>;

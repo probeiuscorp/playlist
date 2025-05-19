@@ -1,5 +1,5 @@
 import { videos, sources } from './sources';
-import { runSources } from './create-source';
+import { runSources, s, Source } from './create-source';
 import * as Mood from './mood';
 
 const thirteen = 'VZA4luIhcu8';
@@ -7,7 +7,11 @@ const dancingMad = 'DMDcL0reo5Y';
 
 const noOneLivesForever = 't55nKXBAMPo?start=62&end=64';
 const readyForDustOff = 'avN7vICX208?start=0&end=2';
-const allVideos: song[] = Object.values({ ...videos, noOneLivesForever, readyForDustOff });
+const allSources = Object.values({ ...videos, noOneLivesForever, readyForDustOff }).map((entry): Source => {
+  return typeof entry === 'string'
+    ? s(entry)
+    : entry;
+});
 Playlist.yield('mood', runSources(Object.values(sources), {
   replayUnplayable: 30,
   replayHalfway: 42,
@@ -45,7 +49,7 @@ function* randomized(): Generator<song> {
     else if(legendary(6e3)) yield themeTerraRetro;
     else if(legendary(3e3)) yield 'SCD2tB1qILc';
     else if(legendary(2e3)) yield thirteen;
-    else yield allVideos.pick()!;
+    else yield allSources.pick(x => x.weight)!.play();
 
     yield silence(Math.random(1, 8) + Math.random(4, 10));
   }
@@ -56,15 +60,6 @@ Playlist.yield('randomized', randomized);
 Playlist.yield('dancing mad', function*() {
   yield dancingMad;
   yield* randomized();
-});
-
-Playlist.yield('patrick', function*() {
-  while(true) {
-    yield videos.flyMeToTheMoon;
-    if(chance(1 / 8)) {
-      yield allVideos.pick()!;
-    }
-  }
 });
 
 // also calming: terran4 sunandmoon lilypads studyinparhelionred
@@ -90,9 +85,9 @@ Playlist.yield('minecraft', function*() {
   }
 });
 
-Object.entries(videos).mapsort(([name]) => name).map(([name, id]) => {
+Object.entries(allSources).mapsort(([name]) => name).map(([name, id]) => {
   Playlist.yield(name, function*() {
-    yield id;
+    yield id.play();
     const iterator = randomized();
     iterator.next();
     yield* iterator;
