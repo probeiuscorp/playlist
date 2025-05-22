@@ -233,6 +233,10 @@ export const dragonfish = s('RxHgq2w-RsY', {
   l: 'instrumental minecraft',
   i: 8, s: 18, g: 24,
 });
+export const axolotl = s('f-y4SusrNeU', {
+  l: 'instrumental minecraft',
+  i: 4, s: 16, g: 24,
+});
 export const chrysopoeia = 'qHDuedbZYbc';
 export const rubedo = 'HcvKHX6kK6M';
 export const soBelow = '32jUaAgflXc';
