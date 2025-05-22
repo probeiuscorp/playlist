@@ -237,6 +237,10 @@ export const axolotl = s('f-y4SusrNeU', {
   l: 'instrumental minecraft',
   i: 4, s: 16, g: 24,
 });
+export const shuniji = s('WmYTrtu-25A', {
+  l: 'instrumental minecraft',
+  i: 2, s: 24, g: 24,
+});
 export const chrysopoeia = 'qHDuedbZYbc';
 export const rubedo = 'HcvKHX6kK6M';
 export const soBelow = '32jUaAgflXc';
