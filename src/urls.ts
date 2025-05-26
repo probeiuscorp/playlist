@@ -255,7 +255,10 @@ export const leftToBloom = 'hb5TsZcAiJQ';
 export const oneMoreDay = 'Y5KFnQYCdsk';
 export const pigstep = 'oDZK3_c-Vkc';
 export const ward = 'f4pY_oF2_lc';
-export const alpha = 'uNCGM7FJ8wQ';
+export const alpha = s('uNCGM7FJ8wQ', {
+  l: 'instrumental minecraft',
+  i: 1, s: 4, g: 4, w: 4,
+});
 export const meltdown = 'EDmXfQ1VqAY';
 export const battleBox = 'vRyZGz4hWfo';
 export const aceRace = 'VC6ZQ5BjLPU';
