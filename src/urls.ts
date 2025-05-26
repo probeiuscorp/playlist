@@ -357,52 +357,150 @@ export const iceFloes = 'D42iEo6IdGw';
 export const aContinuousThrum = '_ZNueK9YS_8';
 export const cathedral = 'p7ycNPlm4fw';
 
-export const usAgainstTheWorld = 'eVQ0DbgKw_w';
-export const neverLetMeDown = 'TudUfOJYn7k';
-export const toTheTop = 'JmDM58kwEHY';
-export const rippedToPieces = '0UP125YaDsc';
-export const movingOn = 'LyJfCbnCmj0';
-export const skyIsFalling = 'YZqFCUH6rTY';
-export const breakTheSilence = 'aUGA-RJoqNA';
-export const stronger = 'a0wgfGbzeSM';
-export const strengthUnknown = 'mi2-OSYg-PE';
-export const letYouDown = 'vZ21hu7_9eE';
-export const disappear = 'vthrUrR31xs';
-export const dontWantToGo = 'm_ojDPxreB4';
-export const thisIsUsToo = 'nZONu2BumG0';
-export const weWontBeAlone = 'SItIaWAjI_4';
-export const laszloHome = 'kPveq0RmjNU';
-export const littleTooClose = 'CQFGAmiWQmg';
-export const hangUp = 'KZD-zUQ1JEs';
-export const byDesign = '677Pbd9wPWs';
-export const glide = '_43in4pUL-M';
-export const dadsInSpace = 'LeJEgEDROSY';
-export const fighters = '8UvX79zAt4k';
-export const close = 'Tv2aov5WxUE';
-export const allEyesOnMe = 'nE_zFlX73zY';
-export const conroAllIWant = 'ZjiYEqmAXDA';
-export const youAndMe = 'JhIEsQ15sSI';
-export const onlyYou = 'Rc_UhG29TNs';
-export const anticipation = 'Wg29EDit-EI';
-export const someKindOfMagic = 'L4nWWWIDlfg';
-export const imHere = 'xG8--_OOWE0';
-export const differentStory = 'zo7a_yK_rtw';
-export const setMeFree = 'XvEtJ6zbzyw';
-export const makeItThere = 'Nc6MDm89By0';
-export const whereMyHeartIs = '0FH_j2Mg5IQ';
-export const stay = '7sbw__MsJZ0';
-export const betterWithTime = '4Yiapv-xdSg';
-export const shiawase = 'N-V3zqvtbCM';
-export const myPrayersHaveBecomeGhosts = 'RV2V4WEg5Hc';
-export const leftBehind = 'T2oenlKefT0';
-export const japan = 'Ex2safEMRPU';
-export const feelingStronger = 'BUV2sRIcnqw';
-export const fusion = 'jOkKt245cTA';
-export const oceans = 'XoEGhCCcabo';
-export const killingGiants = '7gJMDu_wdio';
-export const boneDry = 'i7F2CgO25vg';
-export const tillItsOver = 'usXhiWE2Uc0';
-export const breathe = 'yOcnsPD2H4c';
-export const silhouette = 'GMb02tAqDRM';
-export const chasingClouds = 'E7930iaAcfc';
-export const walkThruFire = 'vZkExPWt3ig';
+export const usAgainstTheWorld = s('eVQ0DbgKw_w', {
+  l: 'voice edm', i: 6,
+});
+export const neverLetMeDown = s('TudUfOJYn7k', {
+  l: 'voice edm', i: 6,
+});
+export const toTheTop = s('JmDM58kwEHY', {
+  l: 'voice edm', i: 6,
+});
+export const rippedToPieces = s('0UP125YaDsc', {
+  l: 'voice edm', i: 6,
+});
+export const movingOn = s('LyJfCbnCmj0', {
+  l: 'voice edm', i: 6,
+});
+export const skyIsFalling = s('YZqFCUH6rTY', {
+  l: 'voice edm', i: 6,
+});
+export const breakTheSilence = s('aUGA-RJoqNA', {
+  l: 'voice edm', i: 6,
+});
+export const stronger = s('a0wgfGbzeSM', {
+  l: 'voice edm', i: 6,
+});
+export const strengthUnknown = s('mi2-OSYg-PE', {
+  l: 'voice edm', i: 6,
+});
+export const letYouDown = s('vZ21hu7_9eE', {
+  l: 'voice edm', i: 6,
+});
+export const disappear = s('vthrUrR31xs', {
+  l: 'voice edm', i: 6,
+});
+export const dontWantToGo = s('m_ojDPxreB4', {
+  l: 'voice edm', i: 6,
+});
+export const thisIsUsToo = s('nZONu2BumG0', {
+  l: 'voice edm', i: 6,
+});
+export const weWontBeAlone = s('SItIaWAjI_4', {
+  l: 'voice edm', i: 6,
+});
+export const laszloHome = s('kPveq0RmjNU', {
+  l: 'voice edm', i: 6,
+});
+export const littleTooClose = s('CQFGAmiWQmg', {
+  l: 'voice edm', i: 6,
+});
+export const hangUp = s('KZD-zUQ1JEs', {
+  l: 'voice edm', i: 6,
+});
+export const byDesign = s('677Pbd9wPWs', {
+  l: 'voice edm', i: 6,
+});
+export const glide = s('_43in4pUL-M', {
+  l: 'voice edm', i: 6,
+});
+export const dadsInSpace = s('LeJEgEDROSY', {
+  l: 'voice edm', i: 6,
+});
+export const fighters = s('8UvX79zAt4k', {
+  l: 'voice edm', i: 6,
+});
+export const close = s('Tv2aov5WxUE', {
+  l: 'voice edm', i: 6,
+});
+export const allEyesOnMe = s('nE_zFlX73zY', {
+  l: 'voice edm', i: 6,
+});
+export const conroAllIWant = s('ZjiYEqmAXDA', {
+  l: 'voice edm', i: 6,
+});
+export const youAndMe = s('JhIEsQ15sSI', {
+  l: 'voice edm', i: 6,
+});
+export const onlyYou = s('Rc_UhG29TNs', {
+  l: 'voice edm', i: 6,
+});
+export const anticipation = s('Wg29EDit-EI', {
+  l: 'voice edm', i: 6,
+});
+export const someKindOfMagic = s('L4nWWWIDlfg', {
+  l: 'voice edm', i: 6,
+});
+export const imHere = s('xG8--_OOWE0', {
+  l: 'voice edm', i: 6,
+});
+export const differentStory = s('zo7a_yK_rtw', {
+  l: 'voice edm', i: 6,
+});
+export const setMeFree = s('XvEtJ6zbzyw', {
+  l: 'voice edm', i: 6,
+});
+export const makeItThere = s('Nc6MDm89By0', {
+  l: 'voice edm', i: 6,
+});
+export const whereMyHeartIs = s('0FH_j2Mg5IQ', {
+  l: 'voice edm', i: 6,
+});
+export const stay = s('7sbw__MsJZ0', {
+  l: 'voice edm', i: 6,
+});
+export const betterWithTime = s('4Yiapv-xdSg', {
+  l: 'voice edm', i: 6,
+});
+export const shiawase = s('N-V3zqvtbCM', {
+  l: 'voice edm', i: 6,
+});
+export const myPrayersHaveBecomeGhosts = s('RV2V4WEg5Hc', {
+  l: 'instrumental edm', i: 6,
+});
+export const leftBehind = s('T2oenlKefT0', {
+  l: 'voice edm', i: 6,
+});
+export const japan = s('Ex2safEMRPU', {
+  l: 'voice edm', i: 6,
+});
+export const feelingStronger = s('BUV2sRIcnqw', {
+  l: 'voice edm', i: 6,
+});
+export const fusion = s('jOkKt245cTA', {
+  l: 'voice edm', i: 6,
+});
+export const oceans = s('XoEGhCCcabo', {
+  l: 'voice edm', i: 6,
+});
+export const killingGiants = s('7gJMDu_wdio', {
+  l: 'voice edm', i: 6,
+});
+export const boneDry = s('i7F2CgO25vg', {
+  l: 'voice edm', i: 6,
+});
+export const tillItsOver = s('usXhiWE2Uc0', {
+  l: 'voice edm', i: 6,
+});
+export const breathe = s('yOcnsPD2H4c', {
+  l: 'voice edm', i: 6,
+});
+export const silhouette = s('GMb02tAqDRM', {
+  l: 'voice edm', i: 6,
+});
+export const chasingClouds = s('E7930iaAcfc', {
+  l: 'voice edm', i: 6,
+});
+export const walkThruFire = s('vZkExPWt3ig', {
+  l: 'voice edm', i: 6,
+});
