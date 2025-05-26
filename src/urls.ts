@@ -231,15 +231,15 @@ export const concreteHalls = 'DwXtbA64lHE';
 export const baladOfTheCats = 'ozqEMxlEnDg';
 export const dragonfish = s('RxHgq2w-RsY', {
   l: 'instrumental minecraft',
-  i: 8, s: 18, g: 24,
+  i: -1, s: 1, g: 2,
 });
 export const axolotl = s('f-y4SusrNeU', {
   l: 'instrumental minecraft',
-  i: 4, s: 16, g: 24,
+  i: -3, s: 0.5, g: 2,
 });
 export const shuniji = s('WmYTrtu-25A', {
   l: 'instrumental minecraft',
-  i: 2, s: 24, g: 24,
+  i: -4, s: 2, g: 2,
 });
 export const chrysopoeia = 'qHDuedbZYbc';
 export const rubedo = 'HcvKHX6kK6M';

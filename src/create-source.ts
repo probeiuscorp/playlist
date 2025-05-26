@@ -24,9 +24,9 @@ export function s<TLabel extends string = 'voice'>(
     labels: new Set(labels),
     weight: mood.w ?? Weight.STANDARD,
     mood: {
-      soul: mood.s ?? Soul.STANDARD,
-      intensity: mood.i ?? Intensity.STANDARD,
-      gravity: mood.g ?? Gravity.STANDARD,
+      soul: mood.s ?? 0,
+      intensity: mood.i ?? 0,
+      gravity: mood.g ?? 0,
     },
   }
 }
