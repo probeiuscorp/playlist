@@ -7,12 +7,14 @@ const dancingMad = 'DMDcL0reo5Y';
 
 const noOneLivesForever = 't55nKXBAMPo?start=62&end=64';
 const readyForDustOff = 'avN7vICX208?start=0&end=2';
-const allSources = Object.values({ ...videos, noOneLivesForever, readyForDustOff }).map((entry): Source => {
-  return typeof entry === 'string'
+const sourceByName = Object.fromEntries(Object.entries({ ...videos, noOneLivesForever, readyForDustOff }).map(([key, entry]) => {
+  const source = typeof entry === 'string'
     ? s(entry)
     : entry;
-});
-Playlist.yield('mood', runSources(Object.values(allSources), {
+  return [key, source];
+}));
+const allSources = Object.values(sourceByName);
+Playlist.yield('mood', runSources(allSources, {
   replayUnplayable: 30,
   replayHalfway: 42,
   soulPower: 2,
@@ -85,7 +87,7 @@ Playlist.yield('minecraft', function*() {
   }
 });
 
-Object.entries(allSources).mapsort(([name]) => name).map(([name, id]) => {
+Object.entries(sourceByName).mapsort(([name]) => name).map(([name, id]) => {
   Playlist.yield(name, function*() {
     yield id.play();
     const iterator = randomized();
