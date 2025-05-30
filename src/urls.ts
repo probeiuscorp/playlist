@@ -39,6 +39,9 @@ export const themeTerra = 'TbYmZSOnyuk';
 export const themeTerraOrchestral = 'nAGT7oZUHGY';
 export const themeTerraPiano = 'o25_6i4jS2k';
 export const searchingForFriendsPiano = 'mVIsHD3Pt6w';
+export const searchingForFriendsPR = s('KziLSwUf_X8', {
+  l: 'instrumental ff6', s: 2,
+});
 export const blackjack = 'J5mOs7O1dvg?start=3397&end=3474';
 export const fromThatDayOnGuitar = 'a13r_DnCh-4';
 export const fromThatDayOnMelancholy = 'GUzuAYo4XgQ';
