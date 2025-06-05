@@ -12,7 +12,10 @@ export const vivaLaMiku = 'LocruwYJrGw';
 export const somebodyThatMikuUsedToKnow = 'XkugpuoXsjo';
 export const bohemikuRhapsody = '0pCznUUkY6k';
 export const flyMeToTheMoon = 'DtL_giO-EB8';
-export const fieldsOfGold = '9UVjjcOUJLE';
+export const fieldsOfGold = s('9UVjjcOUJLE', {
+  l: 'voice serious',
+  s: 2, i: -1, g: 6, w: 4,
+});
 export const sleepingSatellite = 'MqRoSjzzATE';
 export const dreams = '5oWyMakvQew';
 export const freeBird = 'scdpqgS0zj4';
