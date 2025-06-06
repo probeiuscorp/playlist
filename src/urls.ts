@@ -66,6 +66,10 @@ export const superMetroid = 'Xpb1hpJrYXM?start=10&end=215';
 export const metroidFusionSRX = 'N2hgVSJ7VBs';
 export const technoMetroid = 'dkDR5OckDfA';
 export const kraid = 'BZeGC7e9M_w';
+export const peetasSong = s('_hGyjAFOhL0', {
+  l: 'voice meme',
+  s: 3, g: -2, w: 6,
+});
 export const whatLanaSays = 'mJdwDjUqAMQ';
 export const linger = 'PXDlU0YDQ6U';
 export const armsOfGold = 'vU59QIJlGzI';
