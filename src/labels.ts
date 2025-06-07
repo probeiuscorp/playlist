@@ -1,13 +1,13 @@
 export type Label = ComputeLabels<ReplaceBracketsWithWhitespace<typeof labels>>;
 type RequiredLabels = ['instrumental voice'];
 export const labels = `
-instrumental voice rain repeatable
-guitar piano beyond-earth[civ] civ5[civ] rock pop
+instrumental voice rain repeatable meme serious
+guitar piano beyond-earth[civ] civ5[civ[vgm]] rock pop
 no-car japanese
-enya below-zero[subnautica] ff6
+enya below-zero[subnautica[vgm]] ff6 celeste[vgm]
 edm[electronic]
-minecraft minecraft-alpha[minecraft] minecraft-beta[minecraft] minecraft-new[minecraft]
-starcraft warcraft sc1[starcraft] sc2[starcraft] wc3[warcraft] starcraft-jukebox[starcraft] terran zerg protoss
+minecraft[vgm] minecraft-alpha[minecraft] minecraft-beta[minecraft] minecraft-new[minecraft]
+starcraft[vgm] warcraft[vgm] sc1[starcraft] sc2[starcraft] wc3[warcraft] starcraft-jukebox[starcraft] terran zerg protoss
 `;
 
 export type ComputeLabels<TLabel extends string> = Split<Split<Trim<TLabel>, '\n'>, ' '>;
