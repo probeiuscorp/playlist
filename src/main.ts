@@ -45,15 +45,44 @@ const searchingForFriends = `${ff6piano}?start=${time(70, 0)}&end=${time(71, 15)
 
 const themeTerraRetro = 'SrDiiVn1VCk';
 const legendary = (chance: number) => Date.now() % (chance + 1) === 0;
-function* randomized(): Generator<song> {
+export type SimpleWeigher = (source: Source) => number;
+export type StatefulWeigher = {
+  onStart: () => {
+    weigh?: (source: Source) => number;
+    notifyChosen?: (source: Source) => number | undefined;
+  };
+};
+type Weigher = SimpleWeigher | StatefulWeigher;
+function beginWeigher(weigher: Weigher): ReturnType<StatefulWeigher['onStart']> {
+  if(typeof weigher === 'function') {
+    return {
+      weigh: weigher,
+    };
+  } else {
+    return weigher.onStart();
+  }
+}
+function product(weights: (number | undefined)[]): number {
+  return weights.reduce<number>((a, b) => a * (b ?? 1), 1);
+}
+
+function* randomized(unnormalizedWeighers: Weigher[] = []): Generator<song> {
+  const weighers = unnormalizedWeighers.map(beginWeigher);
   while(true) {
+    let silenceWeight = 1;
     if(legendary(10e3)) yield dancingMad;
     else if(legendary(6e3)) yield themeTerraRetro;
     else if(legendary(3e3)) yield 'SCD2tB1qILc';
     else if(legendary(2e3)) yield thirteen;
-    else yield allSources.pick(x => x.weight)!.play();
+    else {
+      const chosenSong = allSources.pick(source => {
+        return product(weighers.map(({ weigh }) => weigh?.(source))) * source.weight;
+      })!;
+      silenceWeight = product(weighers.map(({ notifyChosen }) => notifyChosen?.(chosenSong)));
+      yield chosenSong.play();
+    };
 
-    yield silence(Math.random(1, 8) + Math.random(4, 10));
+    yield silence((Math.random(1, 8) + Math.random(4, 10) * silenceWeight));
   }
 };
 
@@ -86,6 +115,8 @@ Playlist.yield('minecraft', function*() {
     yield silence(waitMinutes * 60);
   }
 });
+
+Playlist.yield('instrumental', () => randomized([(source) => source.labels.has('voice') ? 0.05 : 1]));
 
 Object.entries(sourceByName).mapsort(([name]) => name).map(([name, id]) => {
   Playlist.yield(name, function*() {
