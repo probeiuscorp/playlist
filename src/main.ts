@@ -116,7 +116,7 @@ Playlist.yield('minecraft', function*() {
   }
 });
 
-Playlist.yield('instrumental', () => randomized([(source) => source.labels.has('voice') ? 0.05 : 1]));
+Playlist.yield('instrumental', () => randomized([({ labels }) => (labels.has('voice') && !labels.has('edm')) ? 0.05 : 1]));
 
 Object.entries(sourceByName).mapsort(([name]) => name).map(([name, id]) => {
   Playlist.yield(name, function*() {
