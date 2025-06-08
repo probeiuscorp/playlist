@@ -1,9 +1,40 @@
-import { ComputeLabels, WithIsLabelValid, Label } from './labels';
+import { ComputeLabels, WithIsLabelValid, Label, labels } from './labels';
 import { Mood, Gravity, Weight, Intensity, Soul } from './mood';
 export * from './mood';
 export * as v from './urls';
 
 export type SetOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+
+export function getLabelsImpliedByLabel(labels: string) {
+  const allLabels = labels.split(/\s+/).filter(Boolean);
+  const impliedByLabel = new Map<string, Set<string>>();
+  const getBy = (key: string) => {
+    if(impliedByLabel.has(key)) return impliedByLabel.get(key)!;
+    const set = new Set<string>();
+    impliedByLabel.set(key, set);
+    return set;
+  };
+  // dreadful
+  for(const label of allLabels) {
+    const breadcrumbs = [];
+    let subject = '';
+    for(const c of label) {
+      if(c === '[') {
+        breadcrumbs.push(subject);
+        subject = '';
+      } else if(c === ']') {
+        const target = breadcrumbs.pop()!;
+        getBy(target).add(subject);
+        subject = target;
+      } else {
+        subject += c;
+      }
+    }
+  }
+  return impliedByLabel;
+}
+// Because TDZ
+s.labelsImpliedByLabel = undefined as undefined | ReturnType<typeof getLabelsImpliedByLabel>;
 
 export function s<TLabel extends string = 'voice'>(
   play: song | (() => song),
@@ -16,12 +47,17 @@ export function s<TLabel extends string = 'voice'>(
   }>, ...WithIsLabelValid<ComputeLabels<TLabel>>]
 ): Source {
   const rawLabels = (mood.l ?? '').split(' ').filter(Boolean);
-  // @eslint-disable-no-type-assertion: createSource validates that its inputs are Label
-  const labels = rawLabels as Label[];
+  const labelSet = new Set<Label>();
+  function addImplied(label: string) {
+    labelSet.add(label as Label);
+    const implied = (s.labelsImpliedByLabel ??= getLabelsImpliedByLabel(labels)).get(label);
+    implied?.forEach(addImplied);
+  }
+  rawLabels.forEach(addImplied);
 
   return {
     play: play instanceof Function ? play : () => play,
-    labels: new Set(labels),
+    labels: labelSet,
     weight: mood.w ?? Weight.STANDARD,
     mood: {
       soul: mood.s ?? 0,
