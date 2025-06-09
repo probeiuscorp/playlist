@@ -171,7 +171,7 @@ export const confrontingMyself = 'b_oEDGONSc4';
 export const fearOfTheUnknown = s('PSQXl2G6m-4', {
   l: 'instrumental celeste', s: 1, g: 3
 });
-export const cityOfTears = 'KkVwuWH-woA?end=178';
+export const cityOfTears = 'KkVwuWH-woA?end=357';
 
 export const racingIntoTheNight = 'xtfXl7TZTac';
 export const bakaMitai = 'g3jCAyPai2Y';
@@ -340,8 +340,14 @@ export const undeadVictory = 'scxMUFCGEGs';
 export const darkCovenant = 'JVJUUe3cYN8';
 
 export const babaYetu = 'IJiHDmyhE1A';
-export const englandPeace = '30r_1NoKldo';
-export const englandWar = 'U5oO6wBrp8s';
+export const englandPeace = s('30r_1NoKldo', {
+  l: 'instrumental civ5',
+  i: -2, g: 3, s: 2,
+});
+export const englandWar = s('U5oO6wBrp8s', {
+  l: 'instrumental civ5',
+  i: 4, g: 2, s: 3,
+});
 export const ceddinDeden = '-AB0k4Itneg';
 export const chegaDeSausade = 'E4vlAsnvinA';
 export const angryCatherine = 'IptPXxtWrEQ';
