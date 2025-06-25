@@ -282,6 +282,10 @@ export const echoInTheWind = s('Uu3dshFseaU', {
   l: 'instrumental minecraft-new',
   i: -6,
 });
+export const aFamiliarRoom = s('ec9dLqGOcg0', {
+  l: 'instrumental minecraft-new',
+  i: -6,
+});
 export const pigstep = 'oDZK3_c-Vkc';
 export const ward = 'f4pY_oF2_lc';
 export const alpha = s('uNCGM7FJ8wQ', {
