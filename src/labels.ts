@@ -6,7 +6,7 @@ guitar piano beyond-earth[civ] civ5[civ[vgm]] rock pop
 no-car japanese
 enya below-zero[subnautica[vgm]] ff6 celeste[vgm]
 edm[electronic]
-minecraft[vgm] minecraft-alpha[minecraft] minecraft-beta[minecraft] minecraft-new[minecraft]
+minecraft[vgm] minecraft-alpha[minecraft] minecraft-beta[minecraft] minecraft-new[minecraft] music-disk[minecraft]
 starcraft[vgm] warcraft[vgm] sc1[starcraft] sc2[starcraft] wc3[warcraft] starcraft-jukebox[starcraft] terran zerg protoss
 `;
 

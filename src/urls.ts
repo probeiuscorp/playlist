@@ -291,7 +291,13 @@ export const featherfall = s('SLS9tUa2GXI', {
   i: -4,
 });
 export const pigstep = 'oDZK3_c-Vkc';
-export const ward = 'f4pY_oF2_lc';
+export const ward = s('f4pY_oF2_lc', {
+  l: 'instrumental music-disk',
+});
+export const stal = s('0E5l2GHBxB8', {
+  l: 'instrumental music-disk',
+  s: 2, g: -4,
+});
 export const alpha = s('uNCGM7FJ8wQ', {
   l: 'instrumental minecraft',
   i: 1, s: 4, g: 4, w: 4,
