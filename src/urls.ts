@@ -278,6 +278,10 @@ export const bromeliad = s('TaXlw0OmSOg', {
   l: 'instrumental minecraft-new',
   i: -3,
 });
+export const echoInTheWind = s('Uu3dshFseaU', {
+  l: 'instrumental minecraft-new',
+  i: -6,
+});
 export const pigstep = 'oDZK3_c-Vkc';
 export const ward = 'f4pY_oF2_lc';
 export const alpha = s('uNCGM7FJ8wQ', {
