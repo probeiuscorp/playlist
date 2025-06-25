@@ -235,7 +235,6 @@ export const racingIntoTheNight = s('xtfXl7TZTac', {
 });
 export const bakaMitai = 'g3jCAyPai2Y';
 export const plasticLove = 'T_lC2O1oIew';
-export const stayWithMe = 'moR4uw-NWLY';
 export const btsON = s('mPVDGOVjRQ0', {
   l: 'voice',
   w: 8,
