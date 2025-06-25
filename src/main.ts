@@ -88,6 +88,17 @@ function* randomized(unnormalizedWeighers: Weigher[] = []): Generator<song> {
 
 const standardWeighers: Weigher[] = [({ labels }) => labels.has('f') ? 1.2 : labels.has('m') ? 0.75 : 1];
 Playlist.yield('randomized', () => randomized(standardWeighers));
+function* skipFirst<T>(gen: Generator<T>) {
+  gen.next();
+  yield* gen;
+}
+Playlist.yield('work', function*() {
+  yield videos.featherfall.play();
+  yield* skipFirst(randomized(standardWeighers.concat([
+    ({ labels }) => labels.has('edm') ? 1.25 : 1,
+    ({ mood }) => mood.intensity <= 0 ? 1.25 : 1,
+  ])));
+});
 
 Playlist.yield('dancing mad', function*() {
   yield dancingMad;
@@ -122,8 +133,6 @@ Playlist.yield('instrumental', () => randomized([({ labels }) => (labels.has('vo
 Object.entries(sourceByName).mapsort(([name]) => name).map(([name, id]) => {
   Playlist.yield(name, function*() {
     yield id.play();
-    const iterator = randomized(standardWeighers);
-    iterator.next();
-    yield* iterator;
+    yield* skipFirst(randomized(standardWeighers));
   });
 });
