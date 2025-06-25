@@ -455,6 +455,10 @@ export const stal = s('0E5l2GHBxB8', {
   l: 'instrumental music-disk',
   s: 2, g: -4,
 });
+export const otherside = s('kK81m-A3qpU', {
+  l: 'instrumental music-disk minecraft-new',
+  i: -2, s: 4,
+});
 export const alpha = s('uNCGM7FJ8wQ', {
   l: 'instrumental minecraft',
   i: 1, s: 4, g: 4, w: 4,
