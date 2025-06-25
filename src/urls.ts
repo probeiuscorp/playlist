@@ -24,15 +24,22 @@ export const excuseMeForScribbling = 'muUQqtqU6GY';
 export const portal1 = 'Y6ljFaKRTrI';
 export const portal2 = 'dVVZaZ8yO6o';
 export const coins420 = 'u7mmM3tDtfY';
-export const stopTheCavalry = 'mrkfJZQ4Hjw';
+export const stopTheCavalry = s('mrkfJZQ4Hjw', {
+  l: 'voice meme',
+  w: 8,
+});
 export const balanceWhine = 'TtNbt4Qo9wA';
 export const brinstarRemix = 'xucW1TxlB1k';
 export const brinstarRemaster = 'GfCHqIVwlZI';
 export const brinstarGuitar = 'rojS2mxVC5Q?end=200';
 export const lightningCrashes = 'xsJ4O-nSveg';
 export const losingMyReligion = 'xwtdhWltSIg';
-export const nightFever = 'SkypZuY6ZvA';
-export const howDeepIsYourLove = 'XpqqjU7u5Yc';
+export const nightFever = s('SkypZuY6ZvA', {
+  l: 'voice m',
+});
+export const howDeepIsYourLove = s('XpqqjU7u5Yc', {
+  l: 'voice m',
+});
 export const tooMuchHeaven = 'i6iBAuwBODA';
 export const dancingQueen = 'OGHZ0a82nwA';
 export const takeMeHomeCountryRoads = 'c0dvabcWVo0';
@@ -43,7 +50,7 @@ export const themeTerraOrchestral = 'nAGT7oZUHGY';
 export const themeTerraPiano = 'o25_6i4jS2k';
 export const searchingForFriendsPiano = 'mVIsHD3Pt6w';
 export const searchingForFriendsPR = s('KziLSwUf_X8', {
-  l: 'instrumental ff6', s: 2,
+  l: 'instrumental ff6 f', s: 2,
 });
 export const blackjack = 'J5mOs7O1dvg?start=3397&end=3474';
 export const fromThatDayOnGuitar = 'a13r_DnCh-4';
@@ -54,14 +61,22 @@ export const themeKefka = '7qDvRlqylTs?end=195';
 export const ff6Veldt = 'jrJ44BjBRFI';
 export const ff6TheDecisiveBattle = 'dAx-roc295g';
 export const ff6SlamShuffle = 'Ptef8e_ZGic';
-export const ff6SlamShufflePR = 'YUk4ai6krwU?start=3454&end=3597';
+export const ff6SlamShufflePR = s('YUk4ai6krwU?start=3454&end=3597', {
+  l: 'instrumental ff6',
+  w: 18,
+});
 export const ff6WorldOfBalanceTown = 'ZyYYUyMDMlc';
 export const ff6MinesOfNarshe = 'bemRmNuZ-Uw';
-export const ff6MinesOfNarshePR = 'YUk4ai6krwU?start=259&end=480';
+export const ff6MinesOfNarshePR = s('YUk4ai6krwU?start=259&end=480', {
+  l: 'instrumental ff6 f',
+  w: 18,
+});
 export const ff6PhantomForest = '5-1Vm75O3Yw';
 export const ff6Cyan = '-ol1qnMdapY';
 export const ff6Shadow = 'vdBzHamb2v0';
-export const ff6Relm = 'nPJS_-OJMMk';
+export const ff6Relm = s('nPJS_-OJMMk', {
+  l: 'instrumental ff6 f',
+});
 export const superMetroid = 'Xpb1hpJrYXM?start=10&end=215';
 export const metroidFusionSRX = 'N2hgVSJ7VBs';
 export const technoMetroid = 'dkDR5OckDfA';
@@ -78,10 +93,16 @@ export const galesSong = s('TXeypQZ-CjY', {
   l: 'voice meme',
   s: 3, g: -2, w: 6,
 });
-export const whatLanaSays = 'mJdwDjUqAMQ';
+export const whatLanaSays = s('mJdwDjUqAMQ', {
+  l: 'voice f',
+});
 export const linger = 'PXDlU0YDQ6U';
-export const armsOfGold = 'vU59QIJlGzI';
-export const nowYouSailAway = 'UrS3tzaVGGY';
+export const armsOfGold = s('vU59QIJlGzI', {
+  l: 'voice f',
+});
+export const nowYouSailAway = s('UrS3tzaVGGY', {
+  l: 'voice f',
+});
 export const needAFriend = 'PEmWG9PgdX0';
 export const howling = 'O4Lsah7bEJY';
 export const goodLuckBabe = '1RKqOmSkGgM';
@@ -93,7 +114,10 @@ export const theUpside = 'ORbUHy_JHCI';
 export const foreverglow = '8HSa3OfqTVs';
 export const innerGold = 'g98Gy3nLpWE';
 export const unfolding = 'FqZ2P6scvr8';
-export const transcendence = 'lS5oATMGm8M';
+export const transcendence = s('lS5oATMGm8M', {
+  l: 'instrumental',
+  w: 18,
+});
 export const elements = '3y3RnaJc7es';
 export const mirrorMirror = '4xtwc33lXfI';
 export const dogDaysAreOver = 'v3cgdlHzQDQ';
@@ -110,7 +134,9 @@ export const somebodyThatIUsedToKnow = '8UVNT4wvIGY';
 export const lucky = '5NV6Rdv1a3I';
 export const aThousandMiles = 'NpNi7Gsz8_Q';
 
-export const lifeIsAHighway = 'CppR1HQtqmU';
+export const lifeIsAHighway = s('CppR1HQtqmU', {
+  l: 'voice m',
+});
 export const whereTheRiverFlows = 'tX57jqetDGA';
 export const december = 'O1kbMfVv_vs';
 export const theWorldIKnow = '14tCNJhVoIA';
@@ -121,7 +147,10 @@ export const trembleForMyBeloved = 'vH69rh3nZIs';
 export const heavy = 'VjTnYSlXQMM';
 export const shine = '7mICybM1sRY';
 export const bringMeToLife = 'Yhwal9i1uyw';
-export const twentyTwo = 'AgFeZr5ptV8?end=231';
+export const twentyTwo = s('AgFeZr5ptV8?end=231', {
+  l: 'voice',
+  g: -6, w: 6,
+});
 export const cruelSummer = 'ic8j13piAhQ';
 export const lastGreatAmericanDynasty = '5dOAUYf_Ksk';
 export const cardigan = 'M7D-A1QgR1w';
@@ -135,8 +164,12 @@ export const someoneLikeYou = '22c3_LoIfZQ';
 export const summertimeSadness = 'fRQg_9ulGuI';
 export const doingTime = 'b6UazdAlqhs';
 export const borderline = '2g5xkLqIElU';
-export const thePerfectPair = 'HwtEBQiuX-c';
-export const sofia = 'L9l8zCOwEII';
+export const thePerfectPair = s('HwtEBQiuX-c', {
+  l: 'voice f',
+});
+export const sofia = s('L9l8zCOwEII', {
+  l: 'voice f',
+});
 export const iLoveYouImSorry = 'jmzAf54Re8A';
 export const blue = '_IjWFq1c5M4';
 export const chihiro = 'e_AZJzYe7CU';
@@ -160,24 +193,53 @@ export const iGuessThatWasGoobye = '9AivsD14tHw';
 export const tf2main = 'PDM2qukzKwg';
 export const tf2rocketJumpWaltz = 'kbdtBLD8Lbg';
 export const tf2scout = 'hA9XFzxTTOQ';
-export const firstSteps = 'N8OHSXvneOE';
-export const reachForTheSummit = 'qx1PcEgmFHY';
-export const scatteredAndLost = '0etenwnI1wo';
-export const inTheMirror = 'bXfHKEaDg4s';
-export const mirrorMagic = 'iKnwVvXkWq0';
-export const quietAndFalling = 'FjG0ivBT4lQ';
-export const reflection = 'QfhUSYq7jEs';
-export const confrontingMyself = 'b_oEDGONSc4';
+export const firstSteps = s('N8OHSXvneOE', {
+  l: 'instrumental celeste',
+  w: 15,
+});
+export const reachForTheSummit = s('qx1PcEgmFHY', {
+  l: 'instrumental celeste',
+  s: 4, i: 4, g: 3,
+});
+export const scatteredAndLost = s('0etenwnI1wo', {
+  l: 'instrumental celeste',
+  s: 2, i: 3,
+});
+export const inTheMirror = s('bXfHKEaDg4s', {
+  l: 'instrumental celeste',
+  s: 4, g: 4,
+});
+export const mirrorMagic = s('iKnwVvXkWq0', {
+  l: 'instrumental celeste',
+  s: 4, g: 4, w: 18,
+});
+export const quietAndFalling = s('FjG0ivBT4lQ', {
+  l: 'instrumental celeste',
+  s: 6, i: -2, g: 6, w: 18,
+});
+export const reflection = s('QfhUSYq7jEs', {
+  l: 'instrumental celeste',
+});
+export const confrontingMyself = s('b_oEDGONSc4', {
+  l: 'instrumental celeste',
+  s: 2, i: 2,
+});
 export const fearOfTheUnknown = s('PSQXl2G6m-4', {
   l: 'instrumental celeste', s: 1, g: 3
 });
 export const cityOfTears = 'KkVwuWH-woA?end=357';
 
-export const racingIntoTheNight = 'xtfXl7TZTac';
+export const racingIntoTheNight = s('xtfXl7TZTac', {
+  l: 'instrumental anime',
+  w: 8,
+});
 export const bakaMitai = 'g3jCAyPai2Y';
 export const plasticLove = 'T_lC2O1oIew';
 export const stayWithMe = 'moR4uw-NWLY';
-export const btsON = 'mPVDGOVjRQ0';
+export const btsON = s('mPVDGOVjRQ0', {
+  l: 'voice',
+  w: 8,
+});
 export const btsRun = 'BiPKFk85iF4';
 export const btsButterfly = 'Z4o7-6cFUF8';
 export const btsBoyWithLuv = 'XsX3ATc3FbA';
@@ -189,38 +251,134 @@ export const pianoTheScientist = '7BAB1Qv-OIU?end=262';
 export const pianoFixYou = 'wrmvKRZlhsU?end=260';
 export const laVieEnRose = 'HjxzuiOGMRA?end=162';
 
-export const theHumming = 'FOP_PPavoLA';
-export const wildChild = 'Wkk0puI6NfA';
-export const florasSecret = 'gObUqHsxc5A';
-export const exile = 'DHvdkvtZvZ8';
-export const lazyDays = 'DjjatoPgCEE';
-export const stormsInAfrica = 'vWeU-lKBvBg';
-export const orinocoFlow = 'LTrk4X9ACtw';
-export const watermark = 'bPCdsa7hS7M';
-export const marbleHalls = '2p9CZyRdKEU';
-export const oneByOne = 'hXDEtkwyiV0';
-export const darkSkyIsland = 'lAX65y4f3eI';
-export const bookOfDays = 'LiBwr4U59EI';
-export const onlyTime = 'YArQ641o8V8';
-export const amarantine = 'IQU4DoE1eBg';
-export const echoesInRain = '8DDHulO485k';
-export const caribbeanBlue = '-MWZenptplY';
-export const mayItBe = 'nt3Ggo1CE3g';
-export const anywhereIs = 'EZ98IJ0usoE';
-export const onMyWayHome = 'pVS6OLQ53dM';
-export const athairArNeamh = 'GC5WWaBsHh4';
-export const paleGrassBlue = '1RelA6asnQw';
-export const chinaRoses = 'ci9JqMEyyys';
-export const aDayWithoutRain = '81gfs4sd76E';
-export const lothlorien = 'jSsLHfsr5ZI';
-export const soICouldFindMyWay = 'aLDLpqZdhX0';
-export const theMemoryOfTrees = '1MMmWDCDUpk';
-export const fallenEmbers = '3du5xoCVSQg';
-export const eveningFalls = 'MhMJ78-Szi8';
-export const onYourShore = 'aoXtc2prg84';
-export const evenInTheShadows = '2e8iRKReYPo';
-export const theForgeOfTheAngels = 'MSRcZKpAlss';
-export const shepherdMoons = 'aIOpLsG2UZg';
+export const theHumming = s('FOP_PPavoLA', {
+  l: 'voice enya',
+  i: -4,
+});
+export const wildChild = s('Wkk0puI6NfA', {
+  l: 'voice enya f',
+  i: -4,
+});
+export const florasSecret = s('gObUqHsxc5A', {
+  l: 'voice enya f',
+  i: -4,
+});
+export const exile = s('DHvdkvtZvZ8', {
+  l: 'voice enya',
+  i: -4,
+});
+export const lazyDays = s('DjjatoPgCEE', {
+  l: 'voice enya',
+  i: -4,
+});
+export const stormsInAfrica = s('vWeU-lKBvBg', {
+  l: 'voice enya',
+  i: -4,
+});
+export const orinocoFlow = s('LTrk4X9ACtw', {
+  l: 'voice enya',
+  i: -4,
+});
+export const watermark = s('bPCdsa7hS7M', {
+  l: 'instrumental enya',
+  i: -4,
+});
+export const marbleHalls = s('2p9CZyRdKEU', {
+  l: 'voice enya',
+  i: -4,
+});
+export const oneByOne = s('hXDEtkwyiV0', {
+  l: 'voice enya',
+  i: -4,
+});
+export const darkSkyIsland = s('lAX65y4f3eI', {
+  l: 'voice enya',
+  i: -4,
+});
+export const bookOfDays = s('LiBwr4U59EI', {
+  l: 'voice enya',
+  i: -4,
+});
+export const onlyTime = s('YArQ641o8V8', {
+  l: 'voice enya',
+  i: -4,
+});
+export const amarantine = s('IQU4DoE1eBg', {
+  l: 'voice enya',
+  i: -4,
+});
+export const echoesInRain = s('8DDHulO485k', {
+  l: 'voice enya',
+  i: -4,
+});
+export const caribbeanBlue = s('-MWZenptplY', {
+  l: 'voice enya',
+  i: -4,
+});
+export const mayItBe = s('nt3Ggo1CE3g', {
+  l: 'voice enya',
+  i: -4,
+});
+export const anywhereIs = s('EZ98IJ0usoE', {
+  l: 'voice enya',
+  i: -4,
+});
+export const onMyWayHome = s('pVS6OLQ53dM', {
+  l: 'voice enya',
+  i: -4,
+});
+export const athairArNeamh = s('GC5WWaBsHh4', {
+  l: 'voice enya',
+  i: -4,
+});
+export const paleGrassBlue = s('1RelA6asnQw', {
+  l: 'voice enya',
+  i: -4,
+});
+export const chinaRoses = s('ci9JqMEyyys', {
+  l: 'voice enya',
+  i: -4,
+});
+export const aDayWithoutRain = s('81gfs4sd76E', {
+  l: 'instrumental enya',
+  i: -4,
+});
+export const lothlorien = s('jSsLHfsr5ZI', {
+  l: 'instrumental enya',
+  i: -4,
+});
+export const soICouldFindMyWay = s('aLDLpqZdhX0', {
+  l: 'voice enya',
+  i: -4,
+});
+export const theMemoryOfTrees = s('1MMmWDCDUpk', {
+  l: 'instrumental enya',
+  i: -4,
+});
+export const fallenEmbers = s('3du5xoCVSQg', {
+  l: 'voice enya',
+  i: -4,
+});
+export const eveningFalls = s('MhMJ78-Szi8', {
+  l: 'voice enya',
+  i: -4,
+});
+export const onYourShore = s('aoXtc2prg84', {
+  l: 'voice enya',
+  i: -4,
+});
+export const evenInTheShadows = s('2e8iRKReYPo', {
+  l: 'voice enya',
+  i: -4,
+});
+export const theForgeOfTheAngels = s('MSRcZKpAlss', {
+  l: 'instrumental enya',
+  i: -4,
+});
+export const shepherdMoons = s('aIOpLsG2UZg', {
+  l: 'instrumental enya',
+  i: -4,
+});
 
 export const wethands = 'MSepOYJxB64';
 export const wethandsIbi = '-KNglfziUtw';
@@ -323,11 +481,26 @@ export const sc1terran1 = 'LmZPi_1vlW4';
 export const sc1terran2 = 'wX6uEqFAXWw';
 export const sc1terran3 = '3xP_sKtq-us';
 export const sc1terran4 = 'VZYRNBHnv68';
-export const sc2terran1 = 'zAS8KivZX5s';
-export const sc2terran2 = 'sNbTg0Li36k';
-export const sc2terran3 = 'dssNa11htIM';
-export const sc2terran4 = '4YfQjho2IOk';
-export const sc2terran5 = 'fQluJBSXM5I';
+export const sc2terran1 = s('zAS8KivZX5s', {
+  l: 'instrumental sc2 terran',
+  w: 30,
+});
+export const sc2terran2 = s('sNbTg0Li36k', {
+  l: 'instrumental sc2 terran',
+  w: 30,
+});
+export const sc2terran3 = s('dssNa11htIM', {
+  l: 'instrumental sc2 terran',
+  w: 30,
+});
+export const sc2terran4 = s('4YfQjho2IOk', {
+  l: 'instrumental sc2 terran',
+  w: 30,
+});
+export const sc2terran5 = s('fQluJBSXM5I', {
+  l: 'instrumental sc2 terran',
+  w: 30,
+});
 export const sc1terran2guitar = 'XFeu8McBl-s';
 export const sc2terran1guitar = 'VQYSgVFZ7Nc';
 export const sc2terran2guitar = 'd1o6BZgWdwA';
@@ -431,13 +604,13 @@ export const breakTheSilence = s('aUGA-RJoqNA', {
   l: 'voice edm', i: 6,
 });
 export const stronger = s('a0wgfGbzeSM', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });
 export const strengthUnknown = s('mi2-OSYg-PE', {
   l: 'voice edm', i: 6,
 });
 export const letYouDown = s('vZ21hu7_9eE', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });
 export const disappear = s('vthrUrR31xs', {
   l: 'voice edm', i: 6,
@@ -455,7 +628,7 @@ export const laszloHome = s('kPveq0RmjNU', {
   l: 'voice edm', i: 6,
 });
 export const littleTooClose = s('CQFGAmiWQmg', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });
 export const hangUp = s('KZD-zUQ1JEs', {
   l: 'voice edm', i: 6,
@@ -497,19 +670,19 @@ export const imHere = s('xG8--_OOWE0', {
   l: 'voice edm', i: 6,
 });
 export const differentStory = s('zo7a_yK_rtw', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });
 export const setMeFree = s('XvEtJ6zbzyw', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });
 export const makeItThere = s('Nc6MDm89By0', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });
 export const whereMyHeartIs = s('0FH_j2Mg5IQ', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });
 export const stay = s('7sbw__MsJZ0', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });
 export const betterWithTime = s('4Yiapv-xdSg', {
   l: 'voice edm', i: 6,
@@ -527,7 +700,7 @@ export const japan = s('Ex2safEMRPU', {
   l: 'voice edm', i: 6,
 });
 export const feelingStronger = s('BUV2sRIcnqw', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });
 export const fusion = s('jOkKt245cTA', {
   l: 'voice edm', i: 6,
@@ -545,14 +718,14 @@ export const tillItsOver = s('usXhiWE2Uc0', {
   l: 'voice edm', i: 6,
 });
 export const breathe = s('yOcnsPD2H4c', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });
 export const silhouette = s('GMb02tAqDRM', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });
 export const chasingClouds = s('E7930iaAcfc', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });
 export const walkThruFire = s('vZkExPWt3ig', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm f', i: 6,
 });

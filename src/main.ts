@@ -86,7 +86,8 @@ function* randomized(unnormalizedWeighers: Weigher[] = []): Generator<song> {
   }
 };
 
-Playlist.yield('randomized', randomized);
+const standardWeighers: Weigher[] = [({ labels }) => labels.has('f') ? 1.2 : labels.has('m') ? 0.75 : 1];
+Playlist.yield('randomized', () => randomized(standardWeighers));
 
 Playlist.yield('dancing mad', function*() {
   yield dancingMad;
@@ -121,7 +122,7 @@ Playlist.yield('instrumental', () => randomized([({ labels }) => (labels.has('vo
 Object.entries(sourceByName).mapsort(([name]) => name).map(([name, id]) => {
   Playlist.yield(name, function*() {
     yield id.play();
-    const iterator = randomized();
+    const iterator = randomized(standardWeighers);
     iterator.next();
     yield* iterator;
   });
