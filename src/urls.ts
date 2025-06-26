@@ -447,6 +447,10 @@ export const featherfall = s('SLS9tUa2GXI', {
   l: 'instrumental minecraft-new',
   i: -4,
 });
+export const puzzlebox = s('ray1Svv6Sl8', {
+  l: 'instrumental minecraft-new',
+  i: -3,
+});
 export const pigstep = 'oDZK3_c-Vkc';
 export const ward = s('fV29b0PmkJU', {
   l: 'instrumental music-disk',
