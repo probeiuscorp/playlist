@@ -112,16 +112,28 @@ export const goodLuckBabe = '1RKqOmSkGgM';
 export const waterYouThinking = 'gYlSEVJ1SSY';
 export const somethingOldSomethingNew = '9oyPenibKTs';
 export const prismarine = 'Tjwhp1IPauE';
-export const darkSide = 'cyvENT2H0V4';
-export const theUpside = 'ORbUHy_JHCI';
-export const foreverglow = '8HSa3OfqTVs';
-export const innerGold = 'g98Gy3nLpWE';
-export const unfolding = 'FqZ2P6scvr8';
+export const darkSide = s('cyvENT2H0V4', {
+  l: 'instrumental f stirling',
+});
+export const theUpside = s('ORbUHy_JHCI', {
+  l: 'instrumental f stirling',
+});
+export const foreverglow = s('8HSa3OfqTVs', {
+  l: 'voice f stirling',
+});
+export const innerGold = s('g98Gy3nLpWE', {
+  l: 'voice f stirling',
+});
+export const unfolding = s('FqZ2P6scvr8', {
+  l: 'voice f stirling',
+});
 export const transcendence = s('lS5oATMGm8M', {
-  l: 'instrumental',
+  l: 'instrumental f stirling',
   w: 18,
 });
-export const elements = '3y3RnaJc7es';
+export const elements = s('3y3RnaJc7es', {
+  l: 'instrumental f stirling',
+});
 export const mirrorMirror = '4xtwc33lXfI';
 export const dogDaysAreOver = 'v3cgdlHzQDQ';
 export const sevenDevils = 'eI9PwtY8gTA';

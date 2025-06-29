@@ -86,7 +86,10 @@ function* randomized(unnormalizedWeighers: Weigher[] = []): Generator<song> {
   }
 };
 
-const standardWeighers: Weigher[] = [({ labels }) => labels.has('f') ? 1.2 : labels.has('m') ? 0.75 : 1];
+const standardWeighers: Weigher[] = [
+  ({ labels }) => labels.has('f') ? 1.2 : labels.has('m') ? 0.75 : 1,
+  ({ labels }) => labels.has('stirling') ? 2 : 1,
+];
 Playlist.yield('randomized', () => randomized(standardWeighers));
 function* skipFirst<T>(gen: Generator<T>) {
   gen.next();
