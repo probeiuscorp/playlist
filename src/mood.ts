@@ -20,6 +20,7 @@ export interface Mood {
    * Songs with different gravity should not mix.
    */
   gravity: number;
+  sentimental: number;
 }
 
 export const A_LOT = 4;

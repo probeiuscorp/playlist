@@ -43,6 +43,7 @@ export function s<TLabel extends string = 'voice'>(
     s: number,
     i: number,
     g: number,
+    m: number,
     l: TLabel,
   }>, ...WithIsLabelValid<ComputeLabels<TLabel>>]
 ): Source {
@@ -63,6 +64,7 @@ export function s<TLabel extends string = 'voice'>(
       soul: mood.s ?? 0,
       intensity: mood.i ?? 0,
       gravity: mood.g ?? 0,
+      sentimental: mood.m ?? 0,
     },
   }
 }
