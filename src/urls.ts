@@ -212,6 +212,10 @@ export const firstSteps = s('N8OHSXvneOE', {
   l: 'instrumental celeste',
   w: 15,
 });
+export const golden = s('mr-SWzqNpM0', {
+  l: 'instrumental celeste f',
+  i: -1, g: 3,
+});
 export const reachForTheSummit = s('qx1PcEgmFHY', {
   l: 'instrumental celeste',
   s: 4, i: 4, g: 3,
