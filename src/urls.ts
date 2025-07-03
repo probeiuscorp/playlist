@@ -470,6 +470,10 @@ export const puzzlebox = s('ray1Svv6Sl8', {
   l: 'instrumental minecraft-new',
   i: -3,
 });
+export const lilypad = s('URr3lmSj9g4', {
+  l: 'instrumental minecraft-new',
+  i: -6, w: 18,
+});
 export const pigstep = 'oDZK3_c-Vkc';
 export const ward = s('fV29b0PmkJU', {
   l: 'instrumental music-disk',
