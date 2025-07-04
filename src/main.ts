@@ -103,6 +103,13 @@ Playlist.yield('work', function*() {
   ])));
 });
 
+Playlist.yield('thinking', function*() {
+  yield* randomized(standardWeighers.concat([
+    ({ labels }) => labels.has('instrumental') ? 1 : labels.has('voice') ? 0.1 : 0.2,
+    ({ mood }) => Math.pow(1.2, -mood.intensity),
+  ]));
+});
+
 Playlist.yield('dancing mad', function*() {
   yield dancingMad;
   yield* randomized();
