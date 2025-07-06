@@ -86,9 +86,44 @@ function* randomized(unnormalizedWeighers: Weigher[] = []): Generator<song> {
   }
 };
 
+function makeGaussian(standardDeviation: number) {
+  const denominator = (2 * standardDeviation ** 2);
+  return (x: number) => Math.pow(Math.E, -x * x / denominator);
+}
+const makeSigmoid = (spread: number) =>
+  (x: number) => 1 / (1 + Math.exp(-spread * x));
+const sampleSigmoid = makeSigmoid(1);
+
+type RepeatsWeighInit = {
+  nUnplayable: number;
+  nHalfway: number;
+};
+const weighAgainstRepeats = ({ nUnplayable, nHalfway }: RepeatsWeighInit): StatefulWeigher => ({
+  onStart: () => {
+    const radius = nHalfway - nUnplayable;
+    const nMemory = Math.ceil(nHalfway + radius);
+    const history = new Array<Source>(nMemory);
+    return {
+      notifyChosen: (source) => {
+        history.unshift(source);
+        history.length = nMemory;
+        return undefined;
+      },
+      weigh: (source) => {
+        const x = history.indexOf(source);
+        if(x === -1 || x > nMemory) return 1;
+        if(x < nUnplayable) return 0;
+        // consider to be unplayable when |δ| ≥ 5 if σ(δ)
+        return sampleSigmoid((x - nHalfway) / radius * 5);
+      },
+    };
+  },
+});
+const repeatsWeigher = weighAgainstRepeats({ nUnplayable: 18, nHalfway: 24 });
 const standardWeighers: Weigher[] = [
   ({ labels }) => labels.has('f') ? 1.2 : labels.has('m') ? 0.75 : 1,
   ({ labels }) => labels.has('stirling') ? 2 : 1,
+  repeatsWeigher,
 ];
 Playlist.yield('randomized', () => randomized(standardWeighers));
 function* skipFirst<T>(gen: Generator<T>) {
