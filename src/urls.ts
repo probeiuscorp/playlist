@@ -478,6 +478,10 @@ export const osPiano = s('3vrNJ88Aiww', {
   l: 'instrumental minecraft-new',
   i: -4,
 });
+export const brokenClocks = s('bDIsDGxeg9c', {
+  l: 'instrumental minecaft-new',
+  i: -6, s: 2, w: 14,
+});
 export const pigstep = 'oDZK3_c-Vkc';
 export const ward = s('fV29b0PmkJU', {
   l: 'instrumental music-disk',
