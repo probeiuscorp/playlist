@@ -570,7 +570,7 @@ export const nightElfArrival = '6TwV-11hzkk';
 export const nightElfAwakening = '63M6fnIj_gY';
 export const nightElfAncients = 'GQEWlHxZtlI';
 export const undeadVictory = 'scxMUFCGEGs';
-export const darkCovenant = 'JVJUUe3cYN8';
+export const darkCovenant = '0ZWQIj8CYwM';
 
 export const babaYetu = 'IJiHDmyhE1A';
 export const englandPeace = s('30r_1NoKldo', {
