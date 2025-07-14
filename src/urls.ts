@@ -767,3 +767,6 @@ export const chasingClouds = s('E7930iaAcfc', {
 export const walkThruFire = s('vZkExPWt3ig', {
   l: 'voice edm f', i: 6,
 });
+export const dontShootMeDown = s('a9FLd7AkxgI', {
+  l: 'voice edm', i: 4,
+});
