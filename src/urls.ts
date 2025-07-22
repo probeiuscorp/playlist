@@ -594,6 +594,10 @@ export const chanson = s('-J6-bTZUKow', {
   l: 'instrumental civ5',
   i: -3, g: 3, s: 2,
 });
+export const foxtonLock = s('OgvksB59bHs', {
+  l: 'instrumental civ5',
+  i: -3, g: 2,
+});
 export const destroyer = 'mXgyqtED_50';
 export const promethean = '7bHd6yJFbEs';
 export const deepSpace = 'f2HCQjw84qc';
