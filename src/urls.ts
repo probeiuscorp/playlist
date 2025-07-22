@@ -590,6 +590,10 @@ export const elegy = 'Rn2TN-ApyvE';
 export const ourTown = 'cv9e2RiagT8';
 export const elipse = '3LeAjt82f8U';
 export const ourNewHome = 'BprUlu1j3cE';
+export const chanson = s('-J6-bTZUKow', {
+  l: 'instrumental civ5',
+  i: -3, g: 3, s: 2,
+});
 export const destroyer = 'mXgyqtED_50';
 export const promethean = '7bHd6yJFbEs';
 export const deepSpace = 'f2HCQjw84qc';
