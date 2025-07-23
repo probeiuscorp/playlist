@@ -602,6 +602,10 @@ export const op16 = s('ilc4dKzYUPY', {
   l: 'instrumental civ5',
   i: -5,
 });
+export const questForPeaceB = s('EvH2CPEeIHU', {
+  l: 'instrumental civ5',
+  i: 2, g: 6, s: 4, m: 4,
+});
 export const destroyer = 'mXgyqtED_50';
 export const promethean = '7bHd6yJFbEs';
 export const deepSpace = 'f2HCQjw84qc';
