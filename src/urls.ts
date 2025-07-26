@@ -246,6 +246,9 @@ export const confrontingMyself = s('b_oEDGONSc4', {
 export const fearOfTheUnknown = s('PSQXl2G6m-4', {
   l: 'instrumental celeste', s: 1, g: 3
 });
+export const beyondTheHeart = s('K3HzzcI1cxE', {
+  l: 'instrumental celeste', i: 2,
+});
 export const cityOfTears = 'KkVwuWH-woA?end=357';
 
 export const racingIntoTheNight = s('xtfXl7TZTac', {
