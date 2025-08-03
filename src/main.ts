@@ -43,8 +43,6 @@ const fromThatDayOn = `${ff6piano}?start=${time(67, 32)}&end=${time(68, 48)}`;
 const epitaph = `${ff6piano}?start=${time(68, 48)}&end=${time(70, 0)}`;
 const searchingForFriends = `${ff6piano}?start=${time(70, 0)}&end=${time(71, 15)}`;
 
-const themeTerraRetro = 'SrDiiVn1VCk';
-const legendary = (chance: number) => Date.now() % (chance + 1) === 0;
 export type SimpleWeigher = (source: Source) => number;
 export type StatefulWeigher = {
   onStart: () => {
@@ -66,6 +64,8 @@ function product(weights: (number | undefined)[]): number {
   return weights.reduce<number>((a, b) => a * (b ?? 1), 1);
 }
 
+const themeTerraRetro = 'SrDiiVn1VCk';
+const legendary = (p: number) => chance(1 / p);
 function* randomized(unnormalizedWeighers: Weigher[] = []): Generator<song> {
   const weighers = unnormalizedWeighers.map(beginWeigher);
   while(true) {
