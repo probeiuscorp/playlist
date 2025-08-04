@@ -244,10 +244,16 @@ export const confrontingMyself = s('b_oEDGONSc4', {
   s: 2, i: 2,
 });
 export const fearOfTheUnknown = s('PSQXl2G6m-4', {
-  l: 'instrumental celeste', s: 1, g: 3
+  l: 'instrumental celeste',
+  s: 1, g: 3
 });
 export const beyondTheHeart = s('K3HzzcI1cxE', {
-  l: 'instrumental celeste', i: 2,
+  l: 'instrumental celeste',
+  i: 2,
+});
+export const farewell = s('VXIqXaX1blY', {
+  l: 'instrumental celeste',
+  i: 3, g: 4, s: 2,
 });
 export const cityOfTears = 'KkVwuWH-woA?end=357';
 
