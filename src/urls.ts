@@ -488,7 +488,7 @@ export const osPiano = s('3vrNJ88Aiww', {
   i: -4,
 });
 export const brokenClocks = s('bDIsDGxeg9c', {
-  l: 'instrumental minecaft-new',
+  l: 'instrumental minecraft-new',
   i: -6, s: 2, w: 14,
 });
 export const pigstep = 'oDZK3_c-Vkc';
