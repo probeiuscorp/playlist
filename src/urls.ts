@@ -108,6 +108,10 @@ export const nowYouSailAway = s('UrS3tzaVGGY', {
 });
 export const needAFriend = 'PEmWG9PgdX0';
 export const howling = 'O4Lsah7bEJY';
+export const cyberRail = s('PKz4f_6n390', {
+  l: 'instrumental',
+  i: 4,
+});
 export const goodLuckBabe = '1RKqOmSkGgM';
 export const waterYouThinking = 'gYlSEVJ1SSY';
 export const somethingOldSomethingNew = '9oyPenibKTs';
