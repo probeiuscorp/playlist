@@ -71,6 +71,10 @@ export const ff6MinesOfNarshePR = s('YUk4ai6krwU?start=259&end=480', {
   l: 'instrumental ff6 f',
   w: 18,
 });
+export const ff6FloatingContinentPR = s('YUk4ai6krwU?start=5760&end=5852', {
+  l: 'instrumental ff6',
+  i: 2, g: 4, s: 2,
+});
 export const ff6PhantomForest = '5-1Vm75O3Yw';
 export const ff6Cyan = '-ol1qnMdapY';
 export const ff6Shadow = 'vdBzHamb2v0';
