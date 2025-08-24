@@ -169,6 +169,10 @@ export const listen = '8WAn6xeqgWQ';
 export const trembleForMyBeloved = 'vH69rh3nZIs';
 export const heavy = 'VjTnYSlXQMM';
 export const shine = '7mICybM1sRY';
+export const whyPt2 = s('iml4uynpJ9Q', {
+  l: 'voice',
+  i: 3, g: 2, w: 6,
+});
 export const bringMeToLife = 'Yhwal9i1uyw';
 export const twentyTwo = s('AgFeZr5ptV8?end=231', {
   l: 'voice',
