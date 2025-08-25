@@ -145,6 +145,10 @@ export const elements = s('3y3RnaJc7es', {
 export const mirrorMirror = '4xtwc33lXfI';
 export const dogDaysAreOver = 'v3cgdlHzQDQ';
 export const sevenDevils = 'eI9PwtY8gTA';
+export const chasingCars = s('SEeTaF7unrc?start=5&end=405', {
+  l: 'voice',
+  g: 4, w: 2,
+});
 
 export const callMeMaybe = 'eHx--ZtG_Ds';
 export const littleTalks = 'gSdjztTxYgk';
