@@ -495,6 +495,10 @@ export const puzzlebox = s('ray1Svv6Sl8', {
   l: 'instrumental minecraft-new',
   i: -3,
 });
+export const watcher = s('CcAV71mXg_8', {
+  l: 'instrumental minecraft-new',
+  i: -2,
+});
 export const eldUnknown = s('G49EncT1T14', {
   l: 'instrumental minecraft-new',
 });
