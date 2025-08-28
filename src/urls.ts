@@ -495,6 +495,9 @@ export const puzzlebox = s('ray1Svv6Sl8', {
   l: 'instrumental minecraft-new',
   i: -3,
 });
+export const eldUnknown = s('G49EncT1T14', {
+  l: 'instrumental minecraft-new',
+});
 export const lilypad = s('URr3lmSj9g4', {
   l: 'instrumental minecraft-new',
   i: -6, w: 18,
