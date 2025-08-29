@@ -617,6 +617,10 @@ export const englandWar = s('U5oO6wBrp8s', {
   l: 'instrumental civ5',
   i: 4, g: 2, s: 3,
 });
+export const arabiaWar = s('MfkZm4wWbdY', {
+  l: 'instrumental civ5',
+  i: 2, w: 8,
+});
 export const romeWar = s('TbbYKif8Tnk', {
   l: 'instrumental civ5',
   i: 2,
