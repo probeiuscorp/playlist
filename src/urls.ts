@@ -621,6 +621,10 @@ export const mongoliaWar = s('aHbXHIrpq6s', {
   l: 'instrumental civ5',
   i: 2, w: 8,
 });
+export const chinaWar = s('Hfi3-9R6Obk', {
+  l: 'instrumental civ5',
+  i: 2, w: 8,
+});
 export const ceddinDeden = '-AB0k4Itneg';
 export const chegaDeSausade = 'E4vlAsnvinA';
 export const angryCatherine = 'IptPXxtWrEQ';
