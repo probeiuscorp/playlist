@@ -502,6 +502,10 @@ export const watcher = s('CcAV71mXg_8', {
 export const eldUnknown = s('G49EncT1T14', {
   l: 'instrumental minecraft-new',
 });
+export const deeper = s('6B7PqW2NKeQ', {
+  l: 'instrumental minecraft-new',
+  i: 2, g: 2, s: 2, m: 2,
+});
 export const lilypad = s('URr3lmSj9g4', {
   l: 'instrumental minecraft-new',
   i: -6, w: 18,
