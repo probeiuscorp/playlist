@@ -142,6 +142,10 @@ export const transcendence = s('lS5oATMGm8M', {
 export const elements = s('3y3RnaJc7es', {
   l: 'instrumental f stirling',
 });
+export const shatterMe = s('aA_mowpNlyc', {
+  l: 'voice f stirling',
+  s: 4, m: 4,
+});
 export const mirrorMirror = '4xtwc33lXfI';
 export const dogDaysAreOver = 'v3cgdlHzQDQ';
 export const sevenDevils = 'eI9PwtY8gTA';
