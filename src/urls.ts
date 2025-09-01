@@ -153,6 +153,9 @@ export const masterOfTides = s('GX9o9yqYcaM', {
 export const shadows = s('Xyvuu4dNAWc', {
   l: 'instrumental f stirling',
 });
+export const roundtableRival = s('83eTbLzmZzo', {
+  l: 'instrumental f stirling',
+});
 export const mirrorMirror = '4xtwc33lXfI';
 export const dogDaysAreOver = 'v3cgdlHzQDQ';
 export const sevenDevils = 'eI9PwtY8gTA';
