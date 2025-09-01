@@ -146,6 +146,10 @@ export const shatterMe = s('aA_mowpNlyc', {
   l: 'voice f stirling',
   s: 4, m: 4,
 });
+export const masterOfTides = s('GX9o9yqYcaM', {
+  l: 'instrumental f stirling',
+  m: 6,
+});
 export const mirrorMirror = '4xtwc33lXfI';
 export const dogDaysAreOver = 'v3cgdlHzQDQ';
 export const sevenDevils = 'eI9PwtY8gTA';
