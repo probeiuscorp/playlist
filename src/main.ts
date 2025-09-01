@@ -122,7 +122,7 @@ const weighAgainstRepeats = ({ nUnplayable, nHalfway }: RepeatsWeighInit): State
 const repeatsWeigher = weighAgainstRepeats({ nUnplayable: 18, nHalfway: 24 });
 const standardWeighers: Weigher[] = [
   ({ labels }) => labels.has('f') ? 1.2 : labels.has('m') ? 0.75 : 1,
-  ({ labels }) => labels.has('stirling') ? 2 : 1,
+  ({ labels }) => (labels.has('stirling') && labels.has('instrumental')) ? 2 : 1,
   repeatsWeigher,
 ];
 Playlist.yield('randomized', () => randomized(standardWeighers));
