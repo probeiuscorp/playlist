@@ -21,8 +21,14 @@ export const dreams = '5oWyMakvQew';
 export const freeBird = 'scdpqgS0zj4';
 export const suspiciousMinds = '5RmM57wicb4';
 export const excuseMeForScribbling = 'muUQqtqU6GY';
-export const portal1 = 'Y6ljFaKRTrI';
-export const portal2 = 'dVVZaZ8yO6o';
+export const portal1 = s('Y6ljFaKRTrI', {
+  l: 'voice',
+  m: 4, w: 6,
+});
+export const portal2 = s('dVVZaZ8yO6o', {
+  l: 'voice',
+  m: 4, w: 6,
+});
 export const coins420 = 'u7mmM3tDtfY';
 export const stopTheCavalry = s('mrkfJZQ4Hjw', {
   l: 'voice meme',
