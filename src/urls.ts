@@ -863,3 +863,6 @@ export const walkThruFire = s('vZkExPWt3ig', {
 export const dontShootMeDown = s('a9FLd7AkxgI', {
   l: 'voice edm', i: 4,
 });
+export const outbreak = s('2PD1I5k0-ZY', {
+  l: 'voice edm', i: 6,
+});
