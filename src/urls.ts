@@ -288,7 +288,7 @@ export const farewell = s('VXIqXaX1blY', {
   l: 'instrumental celeste',
   i: 3, g: 4, s: 2,
 });
-export const cityOfTears = 'KkVwuWH-woA?end=357';
+export const cityOfTears = '5oj_1wAETSA?end=833';
 
 export const racingIntoTheNight = s('xtfXl7TZTac', {
   l: 'instrumental anime',
