@@ -183,6 +183,10 @@ export const royals = 'ncgsL1GCFms';
 export const somebodyThatIUsedToKnow = '8UVNT4wvIGY';
 export const lucky = '5NV6Rdv1a3I';
 export const aThousandMiles = 'NpNi7Gsz8_Q';
+export const numbLittleBug = s('Mi5rkJUoqn0', {
+  l: 'voice',
+  w: 7,
+});
 
 export const lifeIsAHighway = s('CppR1HQtqmU', {
   l: 'voice m',
