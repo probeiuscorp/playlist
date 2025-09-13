@@ -299,6 +299,10 @@ export const farewell = s('VXIqXaX1blY', {
   i: 3, g: 4, s: 2,
 });
 export const cityOfTears = '5oj_1wAETSA?end=833';
+export const hornet = s('7xkM8mWC4Kk', {
+  l: 'instrumental',
+  s: 3, i: 4,
+});
 
 export const racingIntoTheNight = s('xtfXl7TZTac', {
   l: 'instrumental anime',
