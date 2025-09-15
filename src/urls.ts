@@ -303,6 +303,10 @@ export const hornet = s('7xkM8mWC4Kk', {
   l: 'instrumental',
   s: 3, i: 4,
 });
+export const mantisLords = s('Lp5M2BAXwSo', {
+  l: 'instrumental',
+  i: 4, s: 3,
+});
 
 export const racingIntoTheNight = s('xtfXl7TZTac', {
   l: 'instrumental anime',
