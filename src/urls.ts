@@ -307,6 +307,10 @@ export const mantisLords = s('Lp5M2BAXwSo', {
   l: 'instrumental',
   i: 4, s: 3,
 });
+export const greymoor = s('iBlPiGByuWs', {
+  l: 'instrumental',
+  i: -4, s: 3,
+});
 
 export const racingIntoTheNight = s('xtfXl7TZTac', {
   l: 'instrumental anime',
