@@ -307,6 +307,10 @@ export const mantisLords = s('Lp5M2BAXwSo', {
   l: 'instrumental',
   i: 4, s: 3,
 });
+export const lace = s('zRs58D34OLY', {
+  l: 'instrumental',
+  i: 3, s: 2,
+});
 export const greymoor = s('iBlPiGByuWs', {
   l: 'instrumental',
   i: -4, s: 3,
