@@ -315,6 +315,10 @@ export const greymoor = s('iBlPiGByuWs', {
   l: 'instrumental',
   i: -4, s: 3,
 });
+export const bellhart = s('xyFIQ3crD6o', {
+  l: 'instrumental',
+  i: 1, s: 3,
+});
 
 export const racingIntoTheNight = s('xtfXl7TZTac', {
   l: 'instrumental anime',
