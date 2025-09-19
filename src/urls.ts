@@ -793,6 +793,9 @@ export const hangUp = s('KZD-zUQ1JEs', {
 export const byDesign = s('677Pbd9wPWs', {
   l: 'voice edm', i: 6,
 });
+export const driftAway = s('fxOjcjl3TFU', {
+  l: 'instrumental edm', i: 6,
+});
 export const glide = s('_43in4pUL-M', {
   l: 'voice edm', i: 6,
 });
