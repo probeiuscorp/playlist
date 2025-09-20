@@ -122,6 +122,10 @@ export const cyberRail = s('PKz4f_6n390', {
   l: 'instrumental',
   i: 4,
 });
+export const battleCry = s('YpCpqkQ9hjw', {
+  l: 'voice',
+  i: 4, s: 6, g: 2,  w: 4,
+});
 export const goodLuckBabe = '1RKqOmSkGgM';
 export const waterYouThinking = 'gYlSEVJ1SSY';
 export const somethingOldSomethingNew = '9oyPenibKTs';
