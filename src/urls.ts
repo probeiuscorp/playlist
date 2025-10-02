@@ -302,29 +302,32 @@ export const farewell = s('VXIqXaX1blY', {
   l: 'instrumental celeste',
   i: 3, g: 4, s: 2,
 });
-export const cityOfTears = '5oj_1wAETSA?end=833';
+export const cityOfTears = s('5oj_1wAETSA?end=833', {
+  l: 'instrumental hollowknight',
+  s: 4, i: -2, g: 3, m: 8,
+});
 export const hornet = s('7xkM8mWC4Kk', {
-  l: 'instrumental',
+  l: 'instrumental hollowknight f',
   s: 3, i: 4,
 });
 export const mantisLords = s('Lp5M2BAXwSo', {
-  l: 'instrumental',
+  l: 'instrumental hollowknight',
   i: 4, s: 3,
 });
 export const boneBottom = s('e6b-lWhn8pg', {
-  l: 'instrumental',
+  l: 'instrumental silksong',
   i: -2, s: 4, m: 4,
 });
 export const lace = s('zRs58D34OLY', {
-  l: 'instrumental',
+  l: 'instrumental silksong',
   i: 3, s: 2,
 });
 export const greymoor = s('iBlPiGByuWs', {
-  l: 'instrumental',
+  l: 'instrumental silksong',
   i: -4, s: 3,
 });
 export const bellhart = s('xyFIQ3crD6o', {
-  l: 'instrumental',
+  l: 'instrumental silksong',
   i: 1, s: 3,
 });
 
