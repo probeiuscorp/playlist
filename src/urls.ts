@@ -330,6 +330,10 @@ export const bellhart = s('xyFIQ3crD6o', {
   l: 'instrumental silksong',
   i: 1, s: 3,
 });
+export const choralChambers = s('FTicXQYw2ts', {
+  l: 'instrumental silksong',
+  s: 5, i: -2, g: 4, m: 6,
+});
 
 export const racingIntoTheNight = s('xtfXl7TZTac', {
   l: 'instrumental anime',
