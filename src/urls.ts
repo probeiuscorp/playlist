@@ -311,15 +311,15 @@ export const hornet = s('7xkM8mWC4Kk', {
   s: 3, i: 4,
 });
 export const mantisLords = s('Lp5M2BAXwSo', {
-  l: 'instrumental hollowknight',
+  l: 'instrumental hollowknight f',
   i: 4, s: 3,
 });
 export const boneBottom = s('e6b-lWhn8pg', {
-  l: 'instrumental silksong',
+  l: 'instrumental silksong f',
   i: -2, s: 4, m: 4,
 });
 export const lace = s('zRs58D34OLY', {
-  l: 'instrumental silksong',
+  l: 'instrumental silksong f',
   i: 3, s: 2,
 });
 export const greymoor = s('iBlPiGByuWs', {
@@ -327,11 +327,11 @@ export const greymoor = s('iBlPiGByuWs', {
   i: -4, s: 3,
 });
 export const bellhart = s('xyFIQ3crD6o', {
-  l: 'instrumental silksong',
+  l: 'instrumental silksong f',
   i: 1, s: 3,
 });
 export const choralChambers = s('FTicXQYw2ts', {
-  l: 'instrumental silksong',
+  l: 'instrumental silksong f',
   s: 5, i: -2, g: 4, m: 6,
 });
 
