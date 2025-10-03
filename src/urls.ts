@@ -314,6 +314,10 @@ export const mantisLords = s('Lp5M2BAXwSo', {
   l: 'instrumental hollowknight f',
   i: 4, s: 3,
 });
+export const queensGarden = s('O_g-JmMfpF4', {
+  l: 'instrumental hollowknight',
+  i: -4, m: 2,
+});
 export const boneBottom = s('e6b-lWhn8pg', {
   l: 'instrumental silksong f',
   i: -2, s: 4, m: 4,
