@@ -149,7 +149,7 @@ Playlist.yield('thinking', function*() {
 Playlist.yield('edm', function*() {
   yield* randomized(standardWeighers.concat([
     ({ labels }) => labels.has('edm') ? 2 : 1,
-    ({ mood }) => 3 * (1 - 1 / (1 + Math.exp(mood.intensity - 3))),
+    ({ mood }) => 3 * (1 - 1 / (1 + Math.exp(Math.max(mood.intensity, mood.soul) - 3))),
   ]));
 });
 
