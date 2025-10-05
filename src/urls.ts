@@ -338,6 +338,10 @@ export const choralChambers = s('FTicXQYw2ts', {
   l: 'instrumental silksong f',
   s: 5, i: -2, g: 4, m: 6,
 });
+export const bilewater = s('_hM_Hp37By0', {
+  l: 'instrumental silksong',
+  i: -2, s: 3, g: 4, m: 4,
+});
 
 export const racingIntoTheNight = s('xtfXl7TZTac', {
   l: 'instrumental anime',
