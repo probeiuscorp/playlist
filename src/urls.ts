@@ -322,6 +322,10 @@ export const queensGarden = s('O_g-JmMfpF4', {
   l: 'instrumental hollowknight',
   i: -4, m: 2,
 });
+export const mossGrotto = s('JDsllbOlucw', {
+  l: 'instrumental silksong',
+  i: -4,
+});
 export const boneBottom = s('e6b-lWhn8pg', {
   l: 'instrumental silksong f',
   i: -2, s: 4, m: 4,
