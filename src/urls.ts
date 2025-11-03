@@ -354,6 +354,10 @@ export const bilewater = s('_hM_Hp37By0', {
   l: 'instrumental silksong',
   i: -2, s: 3, g: 4, m: 4,
 });
+export const lostVerdania = s('ddAJYVLa0bM', {
+  l: 'instrumental silksong',
+  s: 4, g: 2, m: 6,
+});
 
 export const racingIntoTheNight = s('xtfXl7TZTac', {
   l: 'instrumental anime',
