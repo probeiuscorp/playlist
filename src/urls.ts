@@ -693,6 +693,10 @@ export const nightElfAwakening = '63M6fnIj_gY';
 export const nightElfAncients = 'GQEWlHxZtlI';
 export const undeadVictory = 'scxMUFCGEGs';
 export const darkCovenant = '0ZWQIj8CYwM?end=240';
+export const human2 = s('OO677Agkmpg', {
+  l: 'instrumental wc3',
+  m: 2,
+});
 
 export const babaYetu = 'IJiHDmyhE1A';
 export const englandPeace = s('30r_1NoKldo', {
