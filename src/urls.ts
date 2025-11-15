@@ -310,6 +310,10 @@ export const cityOfTears = s('5oj_1wAETSA?end=833', {
   l: 'instrumental hollowknight',
   s: 4, i: -2, g: 3, m: 8,
 });
+export const cityOfTearsPiano = s('EGAzTv4qMY8', {
+  l: 'instrumental hollowknight',
+  s: 4, i: -2, g: 3, m: 8,
+});
 export const hornet = s('7xkM8mWC4Kk', {
   l: 'instrumental hollowknight f',
   s: 3, i: 4,
