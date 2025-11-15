@@ -356,7 +356,7 @@ export const choralChambers = s('FTicXQYw2ts', {
 });
 export const choralChambersPiano = s('U017ODG2gRU', {
   l: 'instrumental silksong',
-  s: 5, i: -2, g: 4, m: i6,
+  s: 5, i: -2, g: 4, m: 6,
 });
 export const highHallsPiano = s('EDBRCS3JaH8', {
   l: 'instrumental silksong',
