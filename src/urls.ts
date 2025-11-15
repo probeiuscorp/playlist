@@ -364,7 +364,11 @@ export const highHallsPiano = s('EDBRCS3JaH8', {
 });
 export const bilewater = s('_hM_Hp37By0', {
   l: 'instrumental silksong',
-  i: -2, s: 3, g: 4, m: 4,
+  i: -2, s: 3, g: 4, m: 4, w: 16,
+});
+export const bilewaterPiano = s('j_t_ujG2QTg', {
+  l: 'instrumental silksong',
+  i: -2, s: 3, g: 4, m: 4, w: 16,
 });
 export const lostVerdania = s('ddAJYVLa0bM', {
   l: 'instrumental silksong',
