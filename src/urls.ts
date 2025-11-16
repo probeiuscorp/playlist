@@ -6,12 +6,22 @@ export const neverGonnaGiveYouUpAnime = 'lpiB2wMc49g';
 export const misereMani = '5AtMKJHHxyo';
 export const divano = 'QllvHZW33dE';
 export const ifYoureGone = 'clKAdQnwJ7A';
-export const circles = 'wXhTHyIgQ_U';
-export const fallenKingdom = 'I-sH53vXP2A';
+export const circles = s('wXhTHyIgQ_U', {
+  w: 6,
+});
+export const fallenKingdom = s('I-sH53vXP2A', {
+  w: 6,
+});
 export const vivaLaMiku = 'LocruwYJrGw';
-export const somebodyThatMikuUsedToKnow = 'XkugpuoXsjo';
-export const bohemikuRhapsody = '0pCznUUkY6k';
-export const flyMeToTheMoon = 'DtL_giO-EB8';
+export const somebodyThatMikuUsedToKnow = s('XkugpuoXsjo', {
+  w: 4,
+});
+export const bohemikuRhapsody = s('0pCznUUkY6k', {
+  w: 4,
+});
+export const flyMeToTheMoon = s('DtL_giO-EB8', {
+  w: 16,
+});
 export const fieldsOfGold = s('9UVjjcOUJLE', {
   l: 'voice serious',
   s: 2, i: -1, g: 6, w: 4,
@@ -48,8 +58,13 @@ export const howDeepIsYourLove = s('XpqqjU7u5Yc', {
 });
 export const tooMuchHeaven = 'i6iBAuwBODA';
 export const dancingQueen = 'OGHZ0a82nwA';
-export const takeMeHomeCountryRoads = 'c0dvabcWVo0';
-export const takeMikuHomeCountryRoads = 'iu88uIvwpgg';
+export const takeMeHomeCountryRoads = s('c0dvabcWVo0', {
+  l: 'voice m',
+});
+export const takeMikuHomeCountryRoads = s('iu88uIvwpgg', {
+  l: 'voice',
+  w: 6,
+});
 export const takeOnMiku = 'whKNCs1nym4';
 export const themeTerra = 'TbYmZSOnyuk';
 export const themeTerraOrchestral = 'nAGT7oZUHGY';
@@ -185,7 +200,6 @@ export const fireflies = 'KWLGyeg74es';
 export const chandelier = '2vjPBrBU-TM';
 export const royals = 'ncgsL1GCFms';
 export const somebodyThatIUsedToKnow = '8UVNT4wvIGY';
-export const lucky = '5NV6Rdv1a3I';
 export const aThousandMiles = 'NpNi7Gsz8_Q';
 export const numbLittleBug = s('Mi5rkJUoqn0', {
   l: 'voice',
