@@ -772,16 +772,36 @@ export const questForPeaceB = s('EvH2CPEeIHU', {
   l: 'instrumental civ5',
   i: 2, g: 6, s: 4, m: 4,
 });
-export const destroyer = 'mXgyqtED_50';
-export const promethean = '7bHd6yJFbEs';
-export const deepSpace = 'f2HCQjw84qc';
-export const aNewBeginning = 'MgBX-7SDitw';
-export const theFutureOfMankind = '5B9h5TiiKSM';
-export const earthsAmbassadors = '0g3qMux2F2o';
-export const lushPlanet = '9ozQ3BLGj98';
-export const lushPlanetEarly = 'XRLQhNXhhxw';
-export const benedicite = 'UKuf7qEw5AY';
-export const skyMine = 'XE9vmDNUrVE';
+export const destroyer = s('mXgyqtED_50', {
+  l: 'instrumental beyond-earth',
+});
+export const promethean = s('7bHd6yJFbEs', {
+  l: 'instrumental beyond-earth',
+});
+export const deepSpace = s('f2HCQjw84qc', {
+  l: 'instrumental beyond-earth',
+});
+export const aNewBeginning = s('MgBX-7SDitw', {
+  l: 'instrumental beyond-earth',
+});
+export const theFutureOfMankind = s('5B9h5TiiKSM', {
+  l: 'instrumental beyond-earth',
+});
+export const earthsAmbassadors = s('0g3qMux2F2o', {
+  l: 'instrumental beyond-earth',
+});
+export const lushPlanet = s('9ozQ3BLGj98', {
+  l: 'instrumental beyond-earth',
+});
+export const lushPlanetEarly = s('XRLQhNXhhxw', {
+  l: 'instrumental beyond-earth',
+});
+export const benedicite = s('UKuf7qEw5AY', {
+  l: 'instrumental beyond-earth',
+});
+export const skyMine = s('XE9vmDNUrVE', {
+  l: 'instrumental beyond-earth',
+});
 
 export const parhelionRed = '-V60SWqpDDs';
 export const lilyPads = 'sG4drWQWYZQ';
