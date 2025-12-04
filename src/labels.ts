@@ -10,7 +10,8 @@ edm[electronic]
 minecraft[vgm] minecraft-alpha[minecraft] minecraft-beta[minecraft] minecraft-new[minecraft] music-disk[minecraft]
 starcraft[vgm] warcraft[vgm] sc1[starcraft] sc2[starcraft] wc3[warcraft] starcraft-jukebox[starcraft] terran zerg protoss
 silksong[hollowknight[vgm]]
-stirling
+undertale[vgm]
+stirling eilish
 `;
 
 export type ComputeLabels<TLabel extends string> = Split<Split<Trim<TLabel>, '\n'>, ' '>;
