@@ -251,6 +251,10 @@ export const blue = '_IjWFq1c5M4';
 export const chihiro = 'e_AZJzYe7CU';
 export const wildflower = 'l08Zw-RY__Q';
 export const lAmourDeMaVie = 'am5FI9DkO80';
+export const birdsOfFeather = s('WKZO-CWeOVA', {
+  l: 'voice eilish',
+  s: 2,
+});
 export const everythingIWanted = 'qCTMq7xvdXU';
 export const bigYellowTaxi = 'H4QSblte5cw';
 export const allIWant = 'gxuXq52oLxY';
