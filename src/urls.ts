@@ -352,6 +352,10 @@ export const boneBottom = s('e6b-lWhn8pg', {
   l: 'instrumental silksong f',
   i: -2, s: 4, m: 4,
 });
+export const huntersMarch = s('D6024lm2tGA', {
+  l: 'instrumental silksong',
+  s: 2, m: 2,
+});
 export const deepDocks = s('A2ueo9ZondY', {
   l: 'instrumental silksong',
   i: 2,
