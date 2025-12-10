@@ -28,6 +28,9 @@ export const fieldsOfGold = s('9UVjjcOUJLE', {
 });
 export const sleepingSatellite = 'MqRoSjzzATE';
 export const dreams = '5oWyMakvQew';
+export const theChain = s('FhgFtXESdPk', {
+  l: 'voice',
+});
 export const freeBird = 'scdpqgS0zj4';
 export const suspiciousMinds = '5RmM57wicb4';
 export const excuseMeForScribbling = 'muUQqtqU6GY';
