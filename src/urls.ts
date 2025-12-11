@@ -351,6 +351,10 @@ export const mossGrotto = s('JDsllbOlucw', {
   l: 'instrumental silksong',
   i: -4,
 });
+export const strive = s('vick40gW0mE', {
+  l: 'instrumental silksong',
+  i: 3,
+});
 export const boneBottom = s('e6b-lWhn8pg', {
   l: 'instrumental silksong f',
   i: -2, s: 4, m: 4,
