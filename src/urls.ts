@@ -391,6 +391,10 @@ export const highHallsPiano = s('EDBRCS3JaH8', {
   l: 'instrumental silksong',
   s: 5, i: -2, g: 2, m: 6,
 });
+export const highHallsInstrumental = s('qtrGC1aH_uM', {
+  l: 'instrumental silksong',
+  s: 5, i: -2, g: 2, m: 6,
+});
 export const bilewater = s('_hM_Hp37By0', {
   l: 'instrumental silksong',
   i: -2, s: 3, g: 4, m: 4, w: 16,
