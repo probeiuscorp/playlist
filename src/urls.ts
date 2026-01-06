@@ -379,6 +379,10 @@ export const bellhart = s('xyFIQ3crD6o', {
   l: 'instrumental silksong f',
   i: 1, s: 3,
 });
+export const phantom = s('UAq9Af1Koj0', {
+  l: 'instrumental silksong',
+  i: 4,
+});
 export const choralChambers = s('FTicXQYw2ts', {
   l: 'instrumental silksong f',
   s: 5, i: -2, g: 4, m: 6,
