@@ -43,6 +43,9 @@ export const portal2 = s('dVVZaZ8yO6o', {
   m: 4, w: 6,
 });
 export const coins420 = 'u7mmM3tDtfY';
+export const momImSad = s('rA8HTC1GxV0', {
+  l: 'instrumental',
+});
 export const stopTheCavalry = s('mrkfJZQ4Hjw', {
   l: 'voice meme',
   w: 8,
