@@ -42,8 +42,13 @@ export const portal2 = s('dVVZaZ8yO6o', {
   l: 'voice',
   m: 4, w: 6,
 });
-export const coins420 = 'u7mmM3tDtfY';
+export const coins420 = s('u7mmM3tDtfY', {
+  l: 'instrumental',
+});
 export const momImSad = s('rA8HTC1GxV0', {
+  l: 'instrumental',
+});
+export const runningInThe80s = s('LAW8uRPX2Rw', {
   l: 'instrumental',
 });
 export const stopTheCavalry = s('mrkfJZQ4Hjw', {
