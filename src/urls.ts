@@ -3,6 +3,7 @@ import { s, Gravity as G, Intensity as I, Soul as S, Weight as W, A_BIT, A_LOT }
 export const neverGonnaGiveYouUp = 'dQw4w9WgXcQ';
 export const neverGonnaGiveYouUpJapanese = 'mW61VTLhNjQ';
 export const neverGonnaGiveYouUpAnime = 'lpiB2wMc49g';
+export const lonelyRollingStar = 'pI5-LvbE4AE';
 export const misereMani = '5AtMKJHHxyo';
 export const divano = 'QllvHZW33dE';
 export const ifYoureGone = 'clKAdQnwJ7A';
