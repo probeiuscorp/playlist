@@ -594,7 +594,13 @@ export const dryhands = 'w_vk7UwFBhc';
 export const danny = 'SznnVAnkv3c';
 export const clark = 'UhWjWdlnmEw';
 export const sweden = 'aBkTkxKDduc';
-export const swedenIbi = 'gVYjlmB81Hc';
+export const swedenIbi = s('gVYjlmB81Hc', {
+  l: 'instrumental minecraft',
+  w: 6,
+});
+export const swedenSmashBros = s('2JTDpXpzl0o', {
+  l: 'instrumental minecraft',
+});
 export const chris = '197X5CGHEZQ';
 export const excuse = 'dx_rYqJ5hNQ';
 export const equinoxe = 'j4EeT-jzo3c';
