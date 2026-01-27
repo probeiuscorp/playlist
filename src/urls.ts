@@ -452,6 +452,9 @@ export const btsRun = 'BiPKFk85iF4';
 export const btsButterfly = 'Z4o7-6cFUF8';
 export const btsBoyWithLuv = 'XsX3ATc3FbA';
 export const btsPiedPiper = 'VEZ_Ui6d9AM';
+export const btsSeoul = s('F8wI5ZosdRA', {
+  l: 'voice',
+});
 
 export const rewriteTheStars = '9k-ZinhuF9g';
 export const pianoLoveStory = 'SojAkORca9g?end=238';
