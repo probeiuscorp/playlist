@@ -55,6 +55,9 @@ export const runningInThe80s = s('LAW8uRPX2Rw', {
 export const crabRave = s('KwY-lRc8AFQ', {
   l: 'instrumental',
 });
+export const divingForGold = s('N2t-OHTRqf0', {
+  l: 'instrumental',
+});
 export const stopTheCavalry = s('mrkfJZQ4Hjw', {
   l: 'voice meme',
   w: 8,
