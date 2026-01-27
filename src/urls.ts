@@ -58,6 +58,9 @@ export const crabRave = s('KwY-lRc8AFQ', {
 export const divingForGold = s('N2t-OHTRqf0', {
   l: 'instrumental',
 });
+export const up = s('aRkv_WrlUzA', {
+  l: 'instrumental',
+});
 export const stopTheCavalry = s('mrkfJZQ4Hjw', {
   l: 'voice meme',
   w: 8,
