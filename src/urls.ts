@@ -624,7 +624,7 @@ export const pianoHauntMuskie = 'pn7k0DYGy3w?start=3';
 export const biomeFest = '8sglGXAfHLc';
 export const deadVoxel = 'wGQDJNksrAM';
 export const concreteHalls = 'DwXtbA64lHE';
-export const baladOfTheCats = 'ozqEMxlEnDg';
+export const balladOfTheCats = 'a_ivGUneSVo';
 export const dragonfish = s('RxHgq2w-RsY', {
   l: 'instrumental minecraft',
   i: -1, s: 1, g: 2,
