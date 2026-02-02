@@ -163,7 +163,7 @@ export const cyberRail = s('PKz4f_6n390', {
 });
 export const battleCry = s('YpCpqkQ9hjw', {
   l: 'voice',
-  i: 4, s: 6, g: 2,  w: 4,
+  i: 4, s: 6, g: 2,  w: 8,
 });
 export const goodLuckBabe = '1RKqOmSkGgM';
 export const waterYouThinking = 'gYlSEVJ1SSY';
@@ -213,7 +213,7 @@ export const dogDaysAreOver = 'v3cgdlHzQDQ';
 export const sevenDevils = 'eI9PwtY8gTA';
 export const chasingCars = s('SEeTaF7unrc?start=5&end=405', {
   l: 'voice',
-  g: 4, w: 2,
+  g: 4, w: 4,
 });
 
 export const callMeMaybe = 'eHx--ZtG_Ds';
@@ -244,7 +244,7 @@ export const heavy = 'VjTnYSlXQMM';
 export const shine = '7mICybM1sRY';
 export const whyPt2 = s('iml4uynpJ9Q', {
   l: 'voice',
-  i: 3, g: 2, w: 6,
+  i: 3, g: 2, w: 8,
 });
 export const bringMeToLife = 'Yhwal9i1uyw';
 export const twentyTwo = s('AgFeZr5ptV8?end=231', {
