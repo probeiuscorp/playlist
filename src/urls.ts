@@ -146,6 +146,9 @@ export const linger = 'PXDlU0YDQ6U';
 export const pomPom = s('1y8D6Smn6AQ', {
   l: 'voice f',
 });
+export const neverLoveAnAnchor = s('kkrYVWncJ5U', {
+  l: 'voice f',
+});
 export const armsOfGold = s('vU59QIJlGzI', {
   l: 'voice f',
 });
