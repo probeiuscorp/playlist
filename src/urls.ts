@@ -1,4 +1,4 @@
-import { s, Gravity as G, Intensity as I, Soul as S, Weight as W, A_BIT, A_LOT } from './create-source';
+import { s, Gravity as G, Intensity as I, Soul as S, A_BIT, A_LOT } from './create-source';
 
 export const neverGonnaGiveYouUp = 'dQw4w9WgXcQ';
 export const neverGonnaGiveYouUpJapanese = 'mW61VTLhNjQ';

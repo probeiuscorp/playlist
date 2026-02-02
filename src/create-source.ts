@@ -59,7 +59,7 @@ export function s<TLabel extends string = 'voice'>(
   return {
     play: play instanceof Function ? play : () => play,
     labels: labelSet,
-    weight: mood.w ?? Weight.STANDARD,
+    weight: mood.w ?? 12,
     mood: {
       soul: mood.s ?? 0,
       intensity: mood.i ?? 0,
