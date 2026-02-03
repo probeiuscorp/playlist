@@ -609,7 +609,9 @@ export const swedenSmashBros = s('2JTDpXpzl0o', {
 });
 export const chris = '197X5CGHEZQ';
 export const excuse = 'dx_rYqJ5hNQ';
-export const equinoxe = 'j4EeT-jzo3c';
+export const equinoxe = s('VkynjYWG9ac', {
+  l: 'instrumental minecraft-alpha',
+});
 export const miceOnVenus = 'DZ47H84Bc_Q';
 export const livingMice = 'aQKGqzjno2g';
 export const haggstrom = 'D09Okc11afI';
