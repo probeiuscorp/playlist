@@ -713,7 +713,7 @@ export const otherside = s('kK81m-A3qpU', {
   l: 'instrumental music-disk minecraft-new',
   i: -2, s: 4,
 });
-export const alpha = s('uNCGM7FJ8wQ', {
+export const alpha = s('q6o7qpPHd7g', {
   l: 'instrumental minecraft',
   i: 1, s: 4, g: 4, w: 4,
 });
