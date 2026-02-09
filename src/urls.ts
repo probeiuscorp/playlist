@@ -1065,3 +1065,6 @@ export const outbreak = s('2PD1I5k0-ZY', {
 export const theCalling = s('KR-eV7fHNbM', {
   l: 'voice edm', i: 4,
 });
+export const skyHigh = s('TW9d8vYrVFQ', {
+  l: 'instrumental edm', i: 6,
+});
