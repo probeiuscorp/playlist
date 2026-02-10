@@ -1026,6 +1026,9 @@ export const leftBehind = s('T2oenlKefT0', {
 export const japan = s('Ex2safEMRPU', {
   l: 'voice edm', i: 6,
 });
+export const dreamer = s('yCzlKA5EajQ', {
+  l: 'voice edm', i: 4,
+});
 export const feelingStronger = s('BUV2sRIcnqw', {
   l: 'voice edm f', i: 6,
 });
