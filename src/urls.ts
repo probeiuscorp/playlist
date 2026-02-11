@@ -436,6 +436,10 @@ export const bilewaterPiano = s('j_t_ujG2QTg', {
   l: 'instrumental silksong',
   i: -2, s: 3, g: 4, m: 4, w: 16,
 });
+export const cutThrough = s('M-z6fPrpg-k', {
+  l: 'instrumental silksong',
+  i: 6, s: 2,
+});
 export const lostVerdania = s('ddAJYVLa0bM', {
   l: 'instrumental silksong',
   s: 4, g: 2, m: 6,
