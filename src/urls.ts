@@ -790,7 +790,7 @@ export const rhythmicTension = 'qhj8VNXlN5g';
 export const theHive = 'zEkhIfr_XyM';
 export const nightElf = 'q6_d1fhEXTY';
 export const nightElfArrival = '6TwV-11hzkk';
-export const nightElfAwakening = '63M6fnIj_gY';
+export const nightElfAwakening = 'GT1SRzowDU0';
 export const nightElfAncients = 'GQEWlHxZtlI';
 export const undeadVictory = 'scxMUFCGEGs';
 export const darkCovenant = '0ZWQIj8CYwM?end=240';
