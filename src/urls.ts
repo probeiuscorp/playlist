@@ -1012,6 +1012,9 @@ export const whereMyHeartIs = s('0FH_j2Mg5IQ', {
 export const silence = s('OT9tqddn9PY', {
   l: 'voice edm f', i: 6,
 });
+export const myLove = s('H3G00wbuG5k', {
+  l: 'voice edm f', i: 6,
+});
 export const stay = s('7sbw__MsJZ0', {
   l: 'voice edm f', i: 6,
 });
