@@ -3,6 +3,7 @@ import { s, Gravity as G, Intensity as I, Soul as S, A_BIT, A_LOT } from './crea
 export const wokeUp = s('oCF-fK_jV30', {
   l: 'voice ff',
 });
+export const monster = s('V3L14JhF1uI', { l: 'voice f' });
 export const neverGonnaGiveYouUp = 'dQw4w9WgXcQ';
 export const neverGonnaGiveYouUpJapanese = 'mW61VTLhNjQ';
 export const neverGonnaGiveYouUpAnime = 'lpiB2wMc49g';
