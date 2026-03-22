@@ -2,7 +2,7 @@ export type Label = ComputeLabels<ReplaceBracketsWithWhitespace<typeof labels>>;
 type RequiredLabels = ['instrumental voice'];
 export const labels = `
 instrumental voice rain repeatable meme serious
-f m
+ff[f] m
 guitar piano beyond-earth[civ] civ5[civ[vgm]] rock pop
 no-car japanese anime
 enya below-zero[subnautica[vgm]] ff6 celeste[vgm]

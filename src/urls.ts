@@ -1,5 +1,8 @@
 import { s, Gravity as G, Intensity as I, Soul as S, A_BIT, A_LOT } from './create-source';
 
+export const wokeUp = s('oCF-fK_jV30', {
+  l: 'voice ff',
+});
 export const neverGonnaGiveYouUp = 'dQw4w9WgXcQ';
 export const neverGonnaGiveYouUpJapanese = 'mW61VTLhNjQ';
 export const neverGonnaGiveYouUpAnime = 'lpiB2wMc49g';
