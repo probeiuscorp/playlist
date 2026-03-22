@@ -7,7 +7,12 @@ const dancingMad = 'DMDcL0reo5Y';
 
 const noOneLivesForever = 't55nKXBAMPo?start=62&end=64';
 const readyForDustOff = 'avN7vICX208?start=0&end=2';
-const sourceByName = Object.fromEntries(Object.entries({ ...videos, noOneLivesForever, readyForDustOff }).map(([key, entry]) => {
+const sourceByName = Object.fromEntries(Object.entries({
+  ...videos,
+  noOneLivesForever,
+  readyForDustOff,
+  notInYourLifetime: 'qQJcbTHptks?start=258&end=261',
+}).map(([key, entry]) => {
   const source = typeof entry === 'string'
     ? s(entry)
     : entry;
