@@ -121,7 +121,7 @@ const weighAgainstRepeats = ({ nUnplayable, nHalfway }: RepeatsWeighInit): State
 });
 const repeatsWeigher = weighAgainstRepeats({ nUnplayable: 18, nHalfway: 24 });
 const standardWeighers: Weigher[] = [
-  ({ labels }) => labels.has('f') ? 1.2 : labels.has('m') ? 0.75 : 1,
+  ({ labels }) => labels.has('f') ? 1.2 : labels.has('m') ? 0.5 : 1,
   ({ labels }) => (labels.has('stirling') && labels.has('instrumental')) ? 2 : 1,
   ({ labels }) => labels.has('silksong') ? 2 : labels.has('hollowknight') ? 1.5 : 1,
   ({ labels }) => labels.has('celeste') ? 1.75 : 1,

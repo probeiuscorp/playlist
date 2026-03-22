@@ -70,7 +70,7 @@ export const up = s('aRkv_WrlUzA', {
 });
 export const stopTheCavalry = s('mrkfJZQ4Hjw', {
   l: 'voice meme',
-  w: 8,
+  w: 6,
 });
 export const balanceWhine = 'TtNbt4Qo9wA';
 export const brinstarRemix = 'xucW1TxlB1k';
@@ -945,7 +945,7 @@ export const letYouDown = s('vZ21hu7_9eE', {
   l: 'voice edm f', i: 6,
 });
 export const disappear = s('vthrUrR31xs', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm m', i: 6,
 });
 export const dontWantToGo = s('m_ojDPxreB4', {
   l: 'voice edm', i: 6,
@@ -1050,7 +1050,7 @@ export const fusion = s('jOkKt245cTA', {
   l: 'voice edm', i: 6,
 });
 export const oceans = s('XoEGhCCcabo', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm m', i: 6,
 });
 export const killingGiants = s('7gJMDu_wdio', {
   l: 'voice edm', i: 6,
