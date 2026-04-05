@@ -344,6 +344,10 @@ export const quietAndFalling = s('FjG0ivBT4lQ', {
   l: 'instrumental celeste',
   s: 6, i: -2, g: 6, w: 18,
 });
+export const madelineAndTheoAndStarjump = s('BePeW4g266U', {
+  l: 'instrumental celeste',
+  s: 6, i: 3, g: 6,
+});
 export const reflection = s('QfhUSYq7jEs', {
   l: 'instrumental celeste',
 });
