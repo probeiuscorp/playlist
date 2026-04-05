@@ -423,6 +423,10 @@ export const greymoor = s('iBlPiGByuWs', {
   l: 'instrumental silksong',
   i: -4, s: 3,
 });
+export const needolin = s('0k4j0kEX6dI', {
+  l: 'instrumental silksong',
+  i: -4, s: 4,
+});
 export const bellhart = s('xyFIQ3crD6o', {
   l: 'instrumental silksong f',
   i: 1, s: 3,
