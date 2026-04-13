@@ -417,8 +417,12 @@ export const deepDocks = s('A2ueo9ZondY', {
   i: 2,
 });
 export const lace = s('zRs58D34OLY', {
-  l: 'instrumental silksong f',
+  l: 'instrumental silksong',
   i: 3, s: 2,
+});
+export const lostLace = s('YgSXvOsCCCw', {
+  l: 'instrumental silksong',
+  i: 3, s: 4,
 });
 export const greymoor = s('iBlPiGByuWs', {
   l: 'instrumental silksong',
