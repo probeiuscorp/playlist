@@ -885,6 +885,10 @@ export const questForPeaceB = s('EvH2CPEeIHU', {
   l: 'instrumental civ5',
   i: 2, g: 6, s: 4, m: 4,
 });
+export const darkVoyage = s('ifrH9qJrEU0', {
+  l: 'instrumental civ5',
+  i: 2, g: 3, s: 2,
+});
 export const destroyer = s('mXgyqtED_50', {
   l: 'instrumental beyond-earth',
 });
