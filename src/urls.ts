@@ -883,7 +883,7 @@ export const op16 = s('ilc4dKzYUPY', {
 });
 export const suiteNo5 = s('cBLoAqgV0NI', {
   l: 'instrumental civ5',
-  i: -2, g: 6:, s: 2, m: 4,
+  i: -2, g: 6, s: 2, m: 4,
 });
 export const questForPeaceB = s('EvH2CPEeIHU', {
   l: 'instrumental civ5',
