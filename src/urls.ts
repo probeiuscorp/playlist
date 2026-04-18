@@ -7,6 +7,7 @@ export const monster = s('V3L14JhF1uI', { l: 'voice f' });
 export const eternityWithYou = s('xq81nOI8hs8', {
   l: 'voice ff',
 });
+export const sapphism = s('DY-KqtFQRZc', { l: 'instrumental ff' });
 export const neverGonnaGiveYouUp = 'dQw4w9WgXcQ';
 export const neverGonnaGiveYouUpJapanese = 'mW61VTLhNjQ';
 export const neverGonnaGiveYouUpAnime = 'lpiB2wMc49g';
