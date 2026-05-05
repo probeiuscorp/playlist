@@ -88,6 +88,10 @@ export const brinstarGuitar = 'rojS2mxVC5Q?end=200';
 export const darkWorldPiano = '36DcUL_qiQk';
 export const lightningCrashes = 'xsJ4O-nSveg';
 export const losingMyReligion = 'xwtdhWltSIg';
+export const theWay = s('3ZolDgbV6qI', {
+  l: 'voice',
+  i: 2, m: 3, g: 2,
+});
 export const nightFever = s('SkypZuY6ZvA', {
   l: 'voice m',
 });
