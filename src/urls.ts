@@ -776,6 +776,10 @@ export const survivalGames = '-MN0ePC82ks';
 export const publicEnemy = 'Ls_nDYHEZcw';
 export const broodwarAria = 'CuNkuhMA5pY';
 export const heavensDevils = 'qDKQj7xdFsA';
+export const darkVictory = s('ImoPmBw0CIU', {
+  l: 'instrumental sc2 terran stinger',
+  i: 2,
+});
 export const rawPower = '-2oQ39Sck8s';
 export const sc2menu = 'cdIF8SrFANc';
 // export const sc2wolColonist = 'Qy7f0yPeOdE?end=80';
