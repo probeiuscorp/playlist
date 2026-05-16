@@ -47,6 +47,10 @@ export const theChain = s('FhgFtXESdPk', {
 export const freeBird = 'scdpqgS0zj4';
 export const suspiciousMinds = '5RmM57wicb4';
 export const excuseMeForScribbling = 'muUQqtqU6GY';
+export const americanTrilogy = s('-XVBOCVBniI', {
+  l: 'voice sc2 terran jukebox',
+  s: 4, i: -2, g: 6, w: 8
+});
 export const jemsSong = s('iv-m2RDJadk', {
   l: 'instrumental sc2 terran jukebox',
   s: 2, i: 2, g: -2,
