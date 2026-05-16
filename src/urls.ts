@@ -780,6 +780,10 @@ export const darkVictory = s('ImoPmBw0CIU', {
   l: 'instrumental sc2 terran stinger',
   i: 2,
 });
+export const sc2ColonistStinger = s('Nr1IJIV23kY?start=8476&end=8512', {
+  l: 'instrumental sc2 terran stinger',
+  i: 2, s: 2, g: 2,
+});
 export const rawPower = '-2oQ39Sck8s';
 export const sc2menu = 'cdIF8SrFANc';
 // export const sc2wolColonist = 'Qy7f0yPeOdE?end=80';

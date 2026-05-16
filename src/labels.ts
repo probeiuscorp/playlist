@@ -1,14 +1,14 @@
 export type Label = ComputeLabels<ReplaceBracketsWithWhitespace<typeof labels>>;
 type RequiredLabels = ['instrumental voice'];
 export const labels = `
-instrumental voice rain repeatable meme serious
+instrumental voice rain repeatable meme serious stinger
 ff[f] m
 guitar piano beyond-earth[civ] civ5[civ[vgm]] rock pop
 no-car japanese anime
 enya below-zero[subnautica[vgm]] ff6 celeste[vgm]
 edm[electronic]
 minecraft[vgm] minecraft-alpha[minecraft] minecraft-beta[minecraft] minecraft-new[minecraft] music-disk[minecraft]
-starcraft[vgm] warcraft[vgm] sc1[starcraft] sc2[starcraft] wc3[warcraft] starcraft-jukebox[starcraft] terran zerg protoss
+starcraft[vgm] warcraft[vgm] sc1[starcraft] sc2[starcraft] wc3[warcraft] jukebox[starcraft] terran zerg protoss
 silksong[hollowknight[vgm]]
 undertale[vgm]
 stirling eilish
