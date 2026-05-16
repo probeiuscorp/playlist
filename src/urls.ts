@@ -405,7 +405,7 @@ export const brokenVessel = s('dyHn4980MPY', {
   l: 'instrumental hollowknight',
   i: 4, m: 4,
 });
-export const whitePalace = s('JWANCA-Pbw', {
+export const whitePalace = s('4JWANCA-Pbw', {
   l: 'instrumental hollowknight',
   i: -2,
 });
