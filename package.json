@@ -2,7 +2,8 @@
   "private": true,
   "name": "playlistjs-sample",
   "dependencies": {
-    "playlistjs-types": "^0.0.3"
+    "@types/node": "^24.0.12",
+    "playlistjs-types": "^0.0.4"
   },
   "devDependencies": {
     "typescript": "^5.4.5"

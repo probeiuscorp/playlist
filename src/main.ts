@@ -133,6 +133,7 @@ const standardWeighers: Weigher[] = [
   ({ labels }) => labels.has('beyond-earth') ? 0.5 : 1,
   repeatsWeigher,
 ];
+export const simpleRandomized = randomized(standardWeighers);
 Playlist.yield('randomized', () => randomized(standardWeighers));
 function* skipFirst<T>(gen: Generator<T>) {
   gen.next();
