@@ -902,6 +902,10 @@ export const op16 = s('ilc4dKzYUPY', {
   l: 'instrumental civ5',
   i: -5,
 });
+export const panisAngelicus = s('JLjo-eJS3uw', {
+  l: 'instrumental civ5',
+  i: -6, s: 2,
+});
 export const suiteNo5 = s('cBLoAqgV0NI', {
   l: 'instrumental civ5',
   i: -2, g: 6, s: 2, m: 4,
