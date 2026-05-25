@@ -177,6 +177,11 @@ export const pomPom = s('1y8D6Smn6AQ', {
 });
 export const neverLoveAnAnchor = s('kkrYVWncJ5U', {
   l: 'voice f',
+  s: 4,
+});
+export const theMoonWillSing = s('BGztdO-GWsw', {
+  l: 'voice f',
+  s: 2,
 });
 export const armsOfGold = s('vU59QIJlGzI', {
   l: 'voice f',
