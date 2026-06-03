@@ -1,5 +1,9 @@
 import { s, Gravity as G, Intensity as I, Soul as S, A_BIT, A_LOT } from './create-source';
 
+export const imJustYourProblem = s('mqjC3ZXPe-Q', {
+  l: 'voice ff',
+  s: 6,
+});
 export const wokeUp = s('oCF-fK_jV30', {
   l: 'voice ff',
 });
