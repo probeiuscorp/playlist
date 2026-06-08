@@ -654,7 +654,7 @@ export const shepherdMoons = s('aIOpLsG2UZg', {
 
 export const wethands = 'MSepOYJxB64';
 export const wethandsIbi = '-KNglfziUtw';
-export const dryhands = 'w_vk7UwFBhc';
+export const dryhands = '2j8im-7KS9Y';
 export const danny = 'SznnVAnkv3c';
 export const clark = 'UhWjWdlnmEw';
 export const sweden = 'aBkTkxKDduc';
