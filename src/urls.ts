@@ -4,6 +4,10 @@ export const imJustYourProblem = s('mqjC3ZXPe-Q', {
   l: 'voice ff',
   s: 6,
 });
+export const slowDanceWithYou = s('qZEQsUf2Ulk', {
+  l: 'voice ff',
+  s: 6, i: -4,
+});
 export const wokeUp = s('oCF-fK_jV30', {
   l: 'voice ff',
 });
