@@ -30,6 +30,10 @@ export const ifYoureGone = 'clKAdQnwJ7A';
 export const circles = s('wXhTHyIgQ_U', {
   w: 6,
 });
+export const iAintWorried = s('5WKAMKVPZ7o', {
+  l: 'voice',
+  s: 2, i: 2, g: -3,
+});
 export const fallenKingdom = s('I-sH53vXP2A', {
   w: 6,
 });
