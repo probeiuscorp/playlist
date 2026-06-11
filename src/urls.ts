@@ -20,6 +20,10 @@ export const signOfTheTimesKaraoke = s('uUtUkUSvJdE', {
   l: 'voice',
   s: 4, g: 4, w: 8,
 });
+export const timeGoFishing = s('OsSRIjgJDnI', {
+  l: 'instrumental',
+  s: 4, g: 4, i: 4,
+});
 export const neverGonnaGiveYouUp = 'dQw4w9WgXcQ';
 export const neverGonnaGiveYouUpJapanese = 'mW61VTLhNjQ';
 export const neverGonnaGiveYouUpAnime = 'lpiB2wMc49g';
