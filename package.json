@@ -3,7 +3,7 @@
   "name": "playlistjs-sample",
   "dependencies": {
     "@types/node": "^24.0.12",
-    "playlistjs-types": "^0.0.4"
+    "playlistjs-types": "^0.0.7"
   },
   "devDependencies": {
     "typescript": "^5.4.5"
