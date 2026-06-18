@@ -38,6 +38,10 @@ export const iAintWorried = s('5WKAMKVPZ7o', {
   l: 'voice',
   s: 2, i: 2, g: -3,
 });
+export const myWay = s('eV1pNBwHSdc', {
+  l: 'voice',
+  s: 4, i: 3, w: 8, g: 2,
+});
 export const fallenKingdom = s('I-sH53vXP2A', {
   w: 6,
 });
