@@ -418,6 +418,10 @@ export const midnightMonsoon = s('e-BqjN0Jof0', {
   l: 'instrumental celeste',
   i: 2, s: 2,
 });
+export const cyberstriderMadeline = s('iTqwuQOqBmg', {
+  l: 'instrumental celeste',
+  i: 3, w: 8,
+});
 export const lowGBotany = s('WLbYaIsC9qA', {
   l: 'instrumental celeste',
   i: -2, s: 2,
