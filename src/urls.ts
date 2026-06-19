@@ -414,6 +414,10 @@ export const beesWoo = s('kcknhYeaYCY', {
   l: 'instrumental celeste',
   i: 2,
 });
+export const deepBlue = s('bAVIe6TK5Q8', {
+  l: 'instrumental celeste',
+  i: -2,
+});
 export const midnightMonsoon = s('e-BqjN0Jof0', {
   l: 'instrumental celeste',
   i: 2, s: 2,
