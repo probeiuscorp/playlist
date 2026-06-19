@@ -410,6 +410,10 @@ export const gymJams = s('md1qsjAHNGk', {
   l: 'instrumental celeste',
   i: 1,
 });
+export const beesWoo = s('kcknhYeaYCY', {
+  l: 'instrumental celeste',
+  i: 2,
+});
 export const midnightMonsoon = s('e-BqjN0Jof0', {
   l: 'instrumental celeste',
   i: 2, s: 2,
