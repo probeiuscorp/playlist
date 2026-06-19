@@ -406,6 +406,10 @@ export const farewell = s('VXIqXaX1blY', {
   l: 'instrumental celeste',
   i: 3, g: 4, s: 2,
 });
+export const midnightMonsoon = s('e-BqjN0Jof0', {
+  l: 'instrumental celeste',
+  i: 2, s: 2,
+});
 export const cityOfTears = s('5oj_1wAETSA?end=833', {
   l: 'instrumental hollowknight',
   s: 4, i: -2, g: 3, m: 8,
