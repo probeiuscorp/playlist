@@ -3,20 +3,24 @@ import * as videos from './urls';
 import * as Mood from './mood';
 import { Label, labelsSet } from './labels';
 
-const eLabelPlayButton = Playlist.input.button('Play label');
-const bLabelToPlay = Playlist.input.select('Label', Array.from(labelsSet) as [string, ...string[]]);
 const bLabelPlayMode = Playlist.input.select('Mode', ['Short', 'Default', 'Long', 'Custom'], 'Default');
 const bLabelPlayLength = Playlist.input.number('# songs', 6);
-const ePlayLabels = eLabelPlayButton.map(() => {
-  const nSongs = ({
+const bEventLength = Behavior.join(bLabelPlayMode.map((playMode) => bLabelPlayLength.map((length) => {
+  return ({
     Short: 4,
     Default: 6,
     Long: 10,
-    Custom: bLabelPlayLength.current,
-  })[bLabelPlayMode.current];
+    Custom: length,
+  })[playMode];
+})));
+const eIdleQueueButton = Playlist.input.button('Event idle');
+const eLabelPlayButton = Playlist.input.button('Event label');
+const bLabelToPlay = Playlist.input.select('Label', Array.from(labelsSet) as [string, ...string[]]);
+const eIdleQueue = eIdleQueueButton.map(() => bEventLength.current);
+const ePlayLabels = eLabelPlayButton.map(() => {
   return {
     label: bLabelToPlay.current,
-    length: nSongs,
+    length: bEventLength.current,
   };
 });
 
@@ -119,6 +123,7 @@ const makeSigmoid = (spread: number) =>
 const sampleSigmoid = makeSigmoid(1);
 
 type PlaylistEvent =
+  | { type: 'idle'; nRemaining: number }
   | { type: 'labels'; label: string; nRemaining: number }
 const eventWeigher: StatefulWeigher = {
   onStart: () => {
@@ -134,11 +139,14 @@ const eventWeigher: StatefulWeigher = {
     function dequeue() {
       activeEvent = queue.shift();
     }
-    const unsub1 = ePlayLabels.on(({ label, length }) => enqueue({ type: 'labels', label, nRemaining: length }));
+    const unsubs = [
+      eIdleQueue.on((length) => enqueue({ type: 'idle', nRemaining: length })),
+      ePlayLabels.on(({ label, length }) => enqueue({ type: 'labels', label, nRemaining: length })),
+    ];
 
     return {
       notifyChosen: () => {
-        if (activeEvent?.type === 'labels') {
+        if (activeEvent?.type === 'idle' || activeEvent?.type === 'labels') {
           activeEvent.nRemaining--;
           if (activeEvent.nRemaining <= 0) {
             dequeue();
@@ -154,7 +162,7 @@ const eventWeigher: StatefulWeigher = {
         }
         return 1;
       },
-      onDone: unsub1,
+      onDone: () => unsubs.forEach((callback) => callback()),
     };
   },
 };
