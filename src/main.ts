@@ -1,10 +1,10 @@
-import { allLabels, runSources, s, Source } from './create-source';
+import { runSources, s, Source } from './create-source';
 import * as videos from './urls';
 import * as Mood from './mood';
-import { Label } from './labels';
+import { Label, labelsSet } from './labels';
 
 const eLabelPlayButton = Playlist.input.button('Labels');
-const bLabelToPlay = Playlist.input.select('Label', allLabels as [string, ...string[]]);
+const bLabelToPlay = Playlist.input.select('Label', Array.from(labelsSet) as [string, ...string[]]);
 const bLabelPlayMode = Playlist.input.select('Mode', ['Short', 'Default', 'Long', 'Custom'], 'Default');
 const bLabelPlayLength = Playlist.input.number('# songs', 6);
 

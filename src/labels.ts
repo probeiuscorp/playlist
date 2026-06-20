@@ -13,6 +13,7 @@ silksong[hollowknight[vgm]]
 undertale[vgm]
 stirling eilish
 `;
+export const labelsSet = new Set(labels.split(/\s+/).filter(Boolean));
 
 export type ComputeLabels<TLabel extends string> = Split<Split<Trim<TLabel>, '\n'>, ' '>;
 export type WithIsLabelValid<TLabel extends string> = Show<And<
