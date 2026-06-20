@@ -260,9 +260,9 @@ Playlist.yield('minecraft', function*() {
 Playlist.yield('edm instrumental', () => randomized([({ labels }) => (labels.has('voice') && !labels.has('edm')) ? 0.05 : 1]));
 Playlist.yield('instrumental', () => randomized([({ labels }) => labels.has('voice') ? 0.05 : 1]));
 
-Object.entries(sourceByName).mapsort(([name]) => name).map(([name, id]) => {
-  Playlist.yield(name, function*() {
-    yield id.play();
-    yield* skipFirst(randomized(standardWeighers));
-  });
-});
+// Object.entries(sourceByName).mapsort(([name]) => name).map(([name, id]) => {
+//   Playlist.yield(name, function*() {
+//     yield id.play();
+//     yield* skipFirst(randomized(standardWeighers));
+//   });
+// });
