@@ -3,7 +3,7 @@ type RequiredLabels = ['instrumental voice'];
 export const labels = `
 instrumental voice rain repeatable meme serious stinger
 ff[f] m adventure-time project-hail-mary
-collective-soul[rock] fleetwood-mac[rock] crane-wives[folk] crane-waves[f] adele[2010s] lana-del-rey tame-impala[electronic]
+collective-soul[rock] fleetwood-mac[rock] crane-wives[folk] crane-wives[f] adele[2010s] lana-del-rey tame-impala[electronic]
 taylor-swift[pop] stirling eilish joni-mitchell[folk] moby[electronic] lyn-lapid[pop]
 guitar piano beyond-earth[civ] concerto[civ5[civ[vgm]]] rock pop disco 2010s
 no-car bts[korean] japanese anime
