@@ -2,16 +2,18 @@ export type Label = ComputeLabels<ReplaceBracketsWithWhitespace<typeof labels>>;
 type RequiredLabels = ['instrumental voice'];
 export const labels = `
 instrumental voice rain repeatable meme serious stinger
-ff[f] m
-guitar piano beyond-earth[civ] civ5[civ[vgm]] rock pop
-no-car japanese anime
-enya below-zero[subnautica[vgm]] ff6 celeste[vgm]
-edm[electronic]
-minecraft[vgm] minecraft-alpha[minecraft] minecraft-beta[minecraft] minecraft-new[minecraft] music-disk[minecraft]
-starcraft[vgm] warcraft[vgm] sc1[starcraft] sc2[starcraft] wc3[warcraft] jukebox[starcraft] terran zerg protoss
+ff[f] m adventure-time project-hail-mary
+collective-soul[rock] fleetwood-mac[rock] crane-wives[folk] crane-waves[f] adele[2010s] lana-del-rey tame-impala[electronic]
+taylor-swift[pop] stirling eilish joni-mitchell[folk] moby[electronic] lyn-lapid[pop]
+guitar piano beyond-earth[civ] concerto[civ5[civ[vgm]]] rock pop disco 2010s
+no-car bts[korean] japanese anime
+enya below-zero[subnautica[vgm]] subnautica1 ff6[snes[vgm]] sschafi[ff6] ff6pr[ff6] strawberry-jam[celeste[vgm]] tf2[vgm]
+edm[electronic] lofi[electronic] vocaloid[electronic]
+minecraft[vgm] minecraft-alpha[minecraft] minecraft-beta[minecraft] minecraft-middle-ages[minecraft]
+minecraft-18[minecraft] minecraft-19+[minecraft] mcc[minecraft] music-disk[minecraft] hermitcraft[minecraft]
+starcraft[vgm] warcraft[vgm] sc1[starcraft] sc2[starcraft] wc3[warcraft] night-elf[wc3] jukebox[starcraft] nco[terran] zerg protoss
 silksong[hollowknight[vgm]]
 undertale[vgm]
-stirling eilish
 `;
 export const labelsSet = new Set(labels.split(/[\s\[\]]+/).filter(Boolean));
 

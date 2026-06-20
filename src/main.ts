@@ -3,11 +3,10 @@ import * as videos from './urls';
 import * as Mood from './mood';
 import { Label, labelsSet } from './labels';
 
-const eLabelPlayButton = Playlist.input.button('Labels');
+const eLabelPlayButton = Playlist.input.button('Play label');
 const bLabelToPlay = Playlist.input.select('Label', Array.from(labelsSet) as [string, ...string[]]);
 const bLabelPlayMode = Playlist.input.select('Mode', ['Short', 'Default', 'Long', 'Custom'], 'Default');
 const bLabelPlayLength = Playlist.input.number('# songs', 6);
-
 const ePlayLabels = eLabelPlayButton.map(() => {
   const nSongs = ({
     Short: 4,
