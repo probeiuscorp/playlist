@@ -5,8 +5,8 @@ export * as v from './urls';
 
 export type SetOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
+export const allLabels = labels.split(/\s+/).filter(Boolean);
 export function getLabelsImpliedByLabel(labels: string) {
-  const allLabels = labels.split(/\s+/).filter(Boolean);
   const impliedByLabel = new Map<string, Set<string>>();
   const getBy = (key: string) => {
     if(impliedByLabel.has(key)) return impliedByLabel.get(key)!;

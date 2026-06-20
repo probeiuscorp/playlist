@@ -1,6 +1,25 @@
-import { runSources, s, Source } from './create-source';
+import { allLabels, runSources, s, Source } from './create-source';
 import * as videos from './urls';
 import * as Mood from './mood';
+import { Label } from './labels';
+
+const eLabelPlayButton = Playlist.input.button('Labels');
+const bLabelToPlay = Playlist.input.select('Label', allLabels as [string, ...string[]]);
+const bLabelPlayMode = Playlist.input.select('Mode', ['Short', 'Default', 'Long', 'Custom'], 'Default');
+const bLabelPlayLength = Playlist.input.number('# songs', 6);
+
+const ePlayLabels = eLabelPlayButton.map(() => {
+  const nSongs = ({
+    Short: 4,
+    Default: 6,
+    Long: 10,
+    Custom: bLabelPlayLength.current,
+  })[bLabelPlayMode.current];
+  return {
+    label: bLabelToPlay.current,
+    length: nSongs,
+  };
+});
 
 const thirteen = 'VZA4luIhcu8';
 const dancingMad = 'DMDcL0reo5Y';
@@ -53,6 +72,7 @@ export type StatefulWeigher = {
   onStart: () => {
     weigh?: (source: Source) => number;
     notifyChosen?: (source: Source) => number | undefined;
+    onDone?: () => void;
   };
 };
 type Weigher = SimpleWeigher | StatefulWeigher;
@@ -99,6 +119,46 @@ const makeSigmoid = (spread: number) =>
   (x: number) => 1 / (1 + Math.exp(-spread * x));
 const sampleSigmoid = makeSigmoid(1);
 
+type PlaylistEvent =
+  | { type: 'labels'; label: string; nRemaining: number }
+const eventWeigher: StatefulWeigher = {
+  onStart: () => {
+    let activeEvent: PlaylistEvent | undefined;
+    const queue: PlaylistEvent[] = [];
+    function enqueue(event: PlaylistEvent) {
+      if (activeEvent === undefined) {
+        activeEvent = event;
+      } else {
+        queue.push(event);
+      }
+    }
+    function dequeue() {
+      activeEvent = queue.shift();
+    }
+    const unsub1 = ePlayLabels.on(({ label, length }) => enqueue({ type: 'labels', label, nRemaining: length }));
+
+    return {
+      notifyChosen: () => {
+        if (activeEvent?.type === 'labels') {
+          activeEvent.nRemaining--;
+          if (activeEvent.nRemaining <= 0) {
+            dequeue();
+          }
+        }
+        return undefined;
+      },
+      weigh: (source) => {
+        if (activeEvent?.type === 'labels') {
+          return source.labels.has(activeEvent.label as string as Label)
+            ? 10e3
+            : 0.05;
+        }
+        return 1;
+      },
+      onDone: unsub1,
+    };
+  },
+};
 type RepeatsWeighInit = {
   nUnplayable: number;
   nHalfway: number;
@@ -132,6 +192,7 @@ const standardWeighers: Weigher[] = [
   ({ labels }) => labels.has('celeste') ? 1.75 : 1,
   ({ labels }) => labels.has('beyond-earth') ? 0.5 : 1,
   repeatsWeigher,
+  eventWeigher,
 ];
 export const simpleRandomized = randomized(standardWeighers);
 Playlist.yield('randomized', () => randomized(standardWeighers));
