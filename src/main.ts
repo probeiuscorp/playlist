@@ -3,6 +3,7 @@ import * as videos from './urls';
 import * as Mood from './mood';
 import { Label, labelsSet } from './labels';
 
+const bShowFullStatus = Playlist.input.boolean('Show full status', false);
 const bLabelPlayMode = Playlist.input.select('Mode', ['Short', 'Default', 'Long', 'Custom'], 'Default');
 const bLabelPlayLength = Playlist.input.number('# songs', 6);
 const bEventLength = Behavior.join(bLabelPlayMode.map((playMode) => bLabelPlayLength.map((length) => {
@@ -16,13 +17,45 @@ const bEventLength = Behavior.join(bLabelPlayMode.map((playMode) => bLabelPlayLe
 const eIdleQueueButton = Playlist.input.button('Event idle');
 const eLabelPlayButton = Playlist.input.button('Event label');
 const bLabelToPlay = Playlist.input.select('Label', Array.from(labelsSet) as [string, ...string[]]);
-const eIdleQueue = eIdleQueueButton.map(() => bEventLength.current);
-const ePlayLabels = eLabelPlayButton.map(() => {
-  return {
-    label: bLabelToPlay.current,
-    length: bEventLength.current,
-  };
-});
+eIdleQueueButton.on(() => enqueue({ type: 'idle' }));
+eLabelPlayButton.on(() => enqueue({
+  type: 'labels',
+  label: bLabelToPlay.current,
+}));
+
+type PlaylistEventKind =
+| { type: 'idle' }
+| { type: 'labels'; label: string }
+type PlaylistEvent = {
+  kind: PlaylistEventKind;
+  duration: number;
+};
+const [bEventProgression, setEventProgression] = Behavior.exec(0);
+const [bQueue, setQueue] = Behavior.exec<PlaylistEvent[]>([]);
+function enqueue(kind: PlaylistEventKind) {
+  const withNewPush = bQueue.current.slice();
+  withNewPush.push({
+    kind,
+    duration: bEventLength.current,
+  });
+  setQueue(withNewPush);
+}
+const bActiveEvent = bQueue.map((queue): PlaylistEvent | undefined => queue[0]);
+Playlist.setStatus(Behavior.join(Behavior.join(bQueue.map((events) => bShowFullStatus.map((showFullStatus) => bEventProgression.map((progress) => {
+  return events.map(({ duration, kind }, i) => {
+    let label: string;
+    if (kind.type === 'idle') {
+      label = '-';
+    } else {
+      label = `L(${kind.label})`;
+    }
+    if (i === 0 && showFullStatus) {
+      label = `${label}${progress}/`;
+    }
+    label += duration;
+    return label;
+  }).join(' ');
+}))))));
 
 const thirteen = 'VZA4luIhcu8';
 const dancingMad = 'DMDcL0reo5Y';
@@ -122,47 +155,32 @@ const makeSigmoid = (spread: number) =>
   (x: number) => 1 / (1 + Math.exp(-spread * x));
 const sampleSigmoid = makeSigmoid(1);
 
-type PlaylistEvent =
-  | { type: 'idle'; nRemaining: number }
-  | { type: 'labels'; label: string; nRemaining: number }
 const eventWeigher: StatefulWeigher = {
   onStart: () => {
-    let activeEvent: PlaylistEvent | undefined;
-    const queue: PlaylistEvent[] = [];
-    function enqueue(event: PlaylistEvent) {
-      if (activeEvent === undefined) {
-        activeEvent = event;
-      } else {
-        queue.push(event);
-      }
-    }
-    function dequeue() {
-      activeEvent = queue.shift();
-    }
-    const unsubs = [
-      eIdleQueue.on((length) => enqueue({ type: 'idle', nRemaining: length })),
-      ePlayLabels.on(({ label, length }) => enqueue({ type: 'labels', label, nRemaining: length })),
-    ];
-
     return {
       notifyChosen: () => {
-        if (activeEvent?.type === 'idle' || activeEvent?.type === 'labels') {
-          activeEvent.nRemaining--;
-          if (activeEvent.nRemaining <= 0) {
-            dequeue();
-          }
+        const activeEvent = bActiveEvent.current;
+        if (activeEvent === undefined) return;
+        const progress = bEventProgression.current + 1;
+        if (progress > activeEvent.duration) {
+          const withoutHead = bQueue.current.slice();
+          withoutHead.shift();
+          setQueue(withoutHead);
+          setEventProgression(0);
+        } else {
+          setEventProgression(progress);
         }
         return undefined;
       },
       weigh: (source) => {
-        if (activeEvent?.type === 'labels') {
-          return source.labels.has(activeEvent.label as string as Label)
+        const activeEvent = bActiveEvent.current;
+        if (activeEvent?.kind.type === 'labels') {
+          return source.labels.has(activeEvent.kind.label as string as Label)
             ? 10e3
             : 0.05;
         }
         return 1;
       },
-      onDone: () => unsubs.forEach((callback) => callback()),
     };
   },
 };
@@ -235,7 +253,7 @@ Playlist.yield('dancing mad', function*() {
 });
 
 // also calming: terran4 sunandmoon lilypads studyinparhelionred
-const minecraftSongs: [song, number][] = [
+const minecraftSongs: [Source, number][] = [
   [videos.hauntMuskie, 12], [videos.pianoHauntMuskie, 10],
   [videos.dreiton, 12], [videos.pianoDreiton, 10],
   [videos.blindSpots, 12], [videos.pianoBlindSpots, 10],
@@ -245,12 +263,12 @@ const minecraftSongs: [song, number][] = [
 ];
 
 Playlist.yield('minecraft', function*() {
-  let previousSongs: song[] = [];
+  let previousSongs: Source[] = [];
   while(true) {
     const song = minecraftSongs.filter(([song]) => !previousSongs.includes(song)).pick(([, weight]) => weight)![0];
     previousSongs.unshift(song);
     previousSongs = previousSongs.slice(0, 4);
-    yield song;
+    yield song.play();
 
     const waitMinutes = Math.random(2, 6) + Math.random(0, 10);
     yield silence(waitMinutes * 60);
