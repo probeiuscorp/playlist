@@ -16,7 +16,7 @@ const bEventLength = Behavior.join(bLabelPlayMode.map((playMode) => bLabelPlayLe
 })));
 const eIdleQueueButton = Playlist.input.button('Event idle');
 const eLabelPlayButton = Playlist.input.button('Event label');
-const bLabelToPlay = Playlist.input.select('Label', Array.from(labelsSet) as [string, ...string[]]);
+const bLabelToPlay = Playlist.input.select('Label', Array.from(labelsSet).sort() as [string, ...string[]]);
 eIdleQueueButton.on(() => enqueue({ type: 'idle' }));
 eLabelPlayButton.on(() => enqueue({
   type: 'labels',
