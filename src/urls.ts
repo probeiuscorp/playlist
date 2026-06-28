@@ -142,6 +142,10 @@ export const balanceWhine = s('TtNbt4Qo9wA', {
   l: 'voice meme',
   w: 9,
 });
+export const fairyFountain = s('qybRwNOQqGM', {
+  l: 'instrumental snes',
+  s: 3, m: 3,
+});
 export const brinstarRemix = s('xucW1TxlB1k', {
   l: 'instrumental snes',
   w: 9,
