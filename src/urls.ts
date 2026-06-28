@@ -404,6 +404,10 @@ export const paradise = s('1G4isv_Fylg', {
 export const fireflies = s('KWLGyeg74es', {
   l: 'voice 2010s',
 });
+export const indila = s('JVptsZJjAHo', {
+  l: 'voice f 2010s',
+  i: 3, s: 3, g: 2, m: 4,
+});
 export const chandelier = s('2vjPBrBU-TM', {
   l: 'voice 2010s',
 });
