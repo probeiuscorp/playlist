@@ -663,6 +663,10 @@ export const lowGBotany = s('WLbYaIsC9qA', {
   l: 'instrumental strawberry-jam',
   i: -2, s: 2,
 });
+export const belatedValentines = s('fhzhSHEXxrE', {
+  l: 'instrumental strawberry-jam',
+  s: 2, m: 3,
+});
 export const cityOfTears = s('5oj_1wAETSA?end=833', {
   l: 'instrumental hollowknight',
   s: 4, i: -2, g: 3, m: 8,
