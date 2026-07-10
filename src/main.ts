@@ -3,6 +3,7 @@ import * as videos from './urls';
 import * as Mood from './mood';
 import { Label, labelsSet } from './labels';
 
+const bSkipVideoSongs = Playlist.input.boolean('Skip videos', false);
 const bShowFullStatus = Playlist.input.boolean('Show full status', false);
 const bLabelPlayMode = Playlist.input.select('Mode', ['Short', 'Default', 'Long', 'Custom'], 'Default');
 const bLabelPlayLength = Playlist.input.number('# songs', 6);
@@ -216,6 +217,7 @@ const standardWeighers: Weigher[] = [
   ({ labels }) => labels.has('silksong') ? 2 : labels.has('hollowknight') ? 1.5 : 1,
   ({ labels }) => labels.has('celeste') ? 1.75 : 1,
   ({ labels }) => labels.has('beyond-earth') ? 0.5 : 1,
+  ({ labels }) => labels.has('video') && bSkipVideoSongs.current ? 0 : 1,
   repeatsWeigher,
   eventWeigher,
 ];
