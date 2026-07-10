@@ -5,7 +5,7 @@ export const imJustYourProblem = s('mqjC3ZXPe-Q', {
   s: 6,
 });
 export const slowDanceWithYou = s('qZEQsUf2Ulk', {
-  l: 'voice ff adventure-time',
+  l: 'voice ff adventure-time video-lite',
   s: 6, i: -4,
 });
 export const wokeUp = s('oCF-fK_jV30', {
@@ -15,9 +15,9 @@ export const monster = s('V3L14JhF1uI', { l: 'voice f adventure-time' });
 export const eternityWithYou = s('xq81nOI8hs8', {
   l: 'voice ff adventure-time',
 });
-export const sapphism = s('DY-KqtFQRZc', { l: 'instrumental ff' });
+export const sapphism = s('DY-KqtFQRZc', { l: 'instrumental ff video' });
 export const signOfTheTimesKaraoke = s('uUtUkUSvJdE', {
-  l: 'voice project-hail-mary',
+  l: 'voice project-hail-mary video',
   s: 4, g: 4, w: 8,
 });
 export const timeGoFishing = s('OsSRIjgJDnI', {
@@ -25,11 +25,11 @@ export const timeGoFishing = s('OsSRIjgJDnI', {
   s: 4, g: 4, i: 4,
 });
 export const neverGonnaGiveYouUp = s('dQw4w9WgXcQ', {
-  l: 'voice meme',
+  l: 'voice meme video',
   w: 6,
 });
 export const neverGonnaGiveYouUpJapanese = s('mW61VTLhNjQ', {
-  l: 'voice meme japanese',
+  l: 'voice meme japanese video',
 });
 export const neverGonnaGiveYouUpAnime = s('lpiB2wMc49g', {
   l: 'voice meme f japanese',
@@ -39,20 +39,20 @@ export const lonelyRollingStar = s('pI5-LvbE4AE', {
   l: 'voice f japanese',
 });
 export const misereMani = s('5AtMKJHHxyo', {
-  l: 'voice f',
+  l: 'voice f video',
 });
 export const divano = s('QllvHZW33dE', {
-  l: 'voice f',
+  l: 'voice f video',
 });
 export const ifYoureGone = s('clKAdQnwJ7A', {
-  l: 'voice rock',
+  l: 'voice rock video',
 });
 export const circles = s('wXhTHyIgQ_U', {
-  l: 'voice m pop',
+  l: 'voice m pop video',
   w: 6,
 });
 export const iAintWorried = s('5WKAMKVPZ7o', {
-  l: 'voice f',
+  l: 'voice f video',
   s: 2, i: 2, g: -3,
 });
 export const myWay = s('eV1pNBwHSdc', {
@@ -60,14 +60,14 @@ export const myWay = s('eV1pNBwHSdc', {
   s: 4, i: 3, w: 8, g: 2,
 });
 export const fallenKingdom = s('I-sH53vXP2A', {
-  l: 'voice meme',
+  l: 'voice meme video',
   w: 6,
 });
 export const vivaLaMiku = s('LocruwYJrGw', {
-  l: 'voice vocaloid',
+  l: 'voice vocaloid video-lite',
 });
 export const somebodyThatMikuUsedToKnow = s('XkugpuoXsjo', {
-  l: 'voice vocaloid',
+  l: 'voice vocaloid video-lite',
   w: 4,
 });
 export const bohemikuRhapsody = s('0pCznUUkY6k', {
@@ -75,7 +75,7 @@ export const bohemikuRhapsody = s('0pCznUUkY6k', {
   w: 4,
 });
 export const flyMeToTheMoon = s('DtL_giO-EB8', {
-  l: 'voice meme',
+  l: 'voice meme video-lite',
   w: 16,
 });
 export const fieldsOfGold = s('9UVjjcOUJLE', {
@@ -109,75 +109,75 @@ export const jemsSong = s('iv-m2RDJadk', {
   s: 2, i: 2, g: -2,
 });
 export const portal1 = s('Y6ljFaKRTrI', {
-  l: 'voice',
+  l: 'voice video-lite',
   m: 4, w: 6,
 });
 export const portal2 = s('dVVZaZ8yO6o', {
-  l: 'voice',
+  l: 'voice video-lite',
   m: 4, w: 6,
 });
 export const coins420 = s('u7mmM3tDtfY', {
-  l: 'instrumental lofi',
+  l: 'instrumental lofi video',
 });
 export const momImSad = s('rA8HTC1GxV0', {
-  l: 'instrumental lofi',
+  l: 'instrumental lofi video',
 });
 export const runningInThe80s = s('LAW8uRPX2Rw', {
-  l: 'instrumental lofi',
+  l: 'instrumental lofi video',
 });
 export const crabRave = s('KwY-lRc8AFQ', {
-  l: 'instrumental lofi',
+  l: 'instrumental lofi video',
 });
 export const divingForGold = s('N2t-OHTRqf0', {
-  l: 'instrumental lofi',
+  l: 'instrumental lofi video',
 });
 export const up = s('aRkv_WrlUzA', {
-  l: 'instrumental lofi',
+  l: 'instrumental lofi video',
 });
 export const stopTheCavalry = s('mrkfJZQ4Hjw', {
-  l: 'voice meme',
+  l: 'voice meme video',
   w: 6,
 });
 export const balanceWhine = s('TtNbt4Qo9wA', {
-  l: 'voice meme',
+  l: 'voice meme video',
   w: 9,
 });
 export const fairyFountain = s('qybRwNOQqGM', {
-  l: 'instrumental snes',
+  l: 'instrumental snes video',
   s: 3, m: 3,
 });
 export const brinstarRemix = s('xucW1TxlB1k', {
-  l: 'instrumental snes',
+  l: 'instrumental snes video',
   w: 9,
 });
 export const brinstarRemaster = s('GfCHqIVwlZI', {
-  l: 'instrumental snes',
+  l: 'instrumental snes video',
   w: 9,
 });
 export const brinstarGuitar = s('rojS2mxVC5Q?end=200', {
-  l: 'instrumental snes rock',
+  l: 'instrumental snes rock video',
 });
 export const darkWorldPiano = s('36DcUL_qiQk', {
-  l: 'instrumental snes',
+  l: 'instrumental snes video',
 });
 export const lightningCrashes = s('xsJ4O-nSveg', {
-  l: 'voice m rock'
+  l: 'voice m rock video'
 });
 export const losingMyReligion = s('xwtdhWltSIg', {
-  l: 'voice m rock',
+  l: 'voice m rock video',
 });
 export const theWay = s('3ZolDgbV6qI', {
   l: 'voice rock',
   i: 2, m: 3, g: 2,
 });
 export const nightFever = s('SkypZuY6ZvA', {
-  l: 'voice m disco',
+  l: 'voice m disco video',
 });
 export const howDeepIsYourLove = s('XpqqjU7u5Yc', {
-  l: 'voice m disco',
+  l: 'voice m disco video',
 });
 export const tooMuchHeaven = s('i6iBAuwBODA', {
-  l: 'voice m disco',
+  l: 'voice m disco video',
 });
 export const dancingQueen = s('OGHZ0a82nwA', {
   l: 'voice disco',
@@ -187,16 +187,18 @@ export const takeMeHomeCountryRoads = s('c0dvabcWVo0', {
   w: 9,
 });
 export const takeMikuHomeCountryRoads = s('iu88uIvwpgg', {
-  l: 'voice vocaloid',
+  l: 'voice vocaloid video',
   w: 6,
 });
 export const takeOnMiku = s('whKNCs1nym4', {
-  l: 'voice vocaloid',
+  l: 'voice vocaloid video-lite',
 });
 export const themeTerra = s('TbYmZSOnyuk', {
   l: 'instrumental ff6 sschafi',
 });
-export const themeTerraOrchestral = 'nAGT7oZUHGY';
+export const themeTerraOrchestral = s('nAGT7oZUHGY', {
+  l: 'instrumental ff6 video',
+});
 export const themeTerraPiano = s('o25_6i4jS2k', {
   l: 'instrumental ff6 piano',
 });
@@ -204,13 +206,13 @@ export const searchingForFriendsPiano = s('mVIsHD3Pt6w', {
   l: 'instrumental ff6 piano',
 });
 export const searchingForFriendsPR = s('KziLSwUf_X8', {
-  l: 'instrumental ff6pr f', s: 2,
+  l: 'instrumental ff6pr f video', s: 2,
 });
 export const blackjack = s('J5mOs7O1dvg?start=3397&end=3474', {
-  l: 'instrumental ff6',
+  l: 'instrumental ff6 video',
 });
 export const fromThatDayOnGuitar = s('a13r_DnCh-4', {
-  l: 'instrumental ff6',
+  l: 'instrumental ff6 video',
 });
 export const fromThatDayOnMelancholy = s('GUzuAYo4XgQ', {
   l: 'instrumental ff6'
@@ -219,10 +221,10 @@ export const worldOfRuinMelancholy = s('cO1esYke3ks', {
   l: 'instrumental ff6',
 });
 export const cyansThemeGuitar = s('nhIKToxR3PE', {
-  l: 'instrumental ff6',
+  l: 'instrumental ff6 video'
 });
 export const themeKefka = s('7qDvRlqylTs?end=195', {
-  l: 'instrumental ff6 piano',
+  l: 'instrumental ff6 piano video',
 });
 export const ff6Veldt = s('jrJ44BjBRFI', {
   l: 'instrumental ff6 sschafi',
@@ -234,7 +236,7 @@ export const ff6SlamShuffle = s('Ptef8e_ZGic', {
   l: 'instrumental ff6 sschafi',
 });
 export const ff6SlamShufflePR = s('YUk4ai6krwU?start=3454&end=3597', {
-  l: 'instrumental ff6pr',
+  l: 'instrumental ff6pr video',
   w: 18,
 });
 export const ff6WorldOfBalanceTown = s('ZyYYUyMDMlc', {
@@ -244,11 +246,11 @@ export const ff6MinesOfNarshe = s('bemRmNuZ-Uw', {
   l: 'instrumental ff6 sschafi',
 });
 export const ff6MinesOfNarshePR = s('YUk4ai6krwU?start=259&end=480', {
-  l: 'instrumental ff6pr f',
+  l: 'instrumental ff6pr f video',
   w: 18,
 });
 export const ff6FloatingContinentPR = s('YUk4ai6krwU?start=5760&end=5852', {
-  l: 'instrumental ff6pr',
+  l: 'instrumental ff6pr video',
   i: 2, g: 4, s: 2,
 });
 export const ff6PhantomForest = s('5-1Vm75O3Yw', {
@@ -264,7 +266,7 @@ export const ff6Relm = s('nPJS_-OJMMk', {
   l: 'instrumental ff6 f',
 });
 export const superMetroid = s('Xpb1hpJrYXM?start=10&end=215', {
-  l: 'instrumental snes piano',
+  l: 'instrumental snes piano video',
 });
 export const metroidFusionSRX = s('N2hgVSJ7VBs', {
   l: 'instrumental snes',
@@ -329,7 +331,7 @@ export const battleCry = s('YpCpqkQ9hjw', {
   i: 4, s: 6, g: 2,  w: 8,
 });
 export const goodLuckBabe = s('1RKqOmSkGgM', {
-  l: 'voice f',
+  l: 'voice f video',
 });
 export const waterYouThinking = s('gYlSEVJ1SSY', {
   l: 'voice f hermitcraft',
@@ -380,7 +382,7 @@ export const moonTrance = s('euvjO4padAw', {
   l: 'instrumental f stirling',
 });
 export const mirrorMirror = s('4xtwc33lXfI', {
-  l: 'instrumental electronic',
+  l: 'instrumental electronic video-lite',
 });
 export const dogDaysAreOver = s('v3cgdlHzQDQ', {
   l: 'voice fleetwood-mac',
@@ -389,7 +391,7 @@ export const sevenDevils = s('eI9PwtY8gTA', {
   l: 'voice fleetwood-mac',
 });
 export const chasingCars = s('SEeTaF7unrc?start=5&end=405', {
-  l: 'voice rock',
+  l: 'voice rock video',
   g: 4, w: 4,
 });
 
@@ -413,13 +415,13 @@ export const indila = s('JVptsZJjAHo', {
   i: 3, s: 3, g: 2, m: 4,
 });
 export const chandelier = s('2vjPBrBU-TM', {
-  l: 'voice 2010s',
+  l: 'voice 2010s video',
 });
 export const royals = s('ncgsL1GCFms', {
   l: 'voice f 2010s',
 });
 export const somebodyThatIUsedToKnow = s('8UVNT4wvIGY', {
-  l: 'voice 2010s',
+  l: 'voice 2010s video',
 });
 export const aThousandMiles = s('NpNi7Gsz8_Q', {
   l: 'voice f piano',
@@ -467,7 +469,7 @@ export const bringMeToLife = s('Yhwal9i1uyw', {
   l: 'voice rock',
 });
 export const twentyTwo = s('AgFeZr5ptV8?end=231', {
-  l: 'voice 2010s taylor-swift',
+  l: 'voice 2010s taylor-swift video',
   g: -6, w: 6,
 });
 export const cruelSummer = s('ic8j13piAhQ', {
@@ -516,7 +518,7 @@ export const sofia = s('L9l8zCOwEII', {
   l: 'voice f',
 });
 export const iLoveYouImSorry = s('jmzAf54Re8A', {
-  l: 'voice f'
+  l: 'voice f video',
 });
 export const blue = s('_IjWFq1c5M4', {
   l: 'voice eilish',
@@ -553,26 +555,26 @@ export const extremeWays = s('ftm1hiXgYsA', {
   l: 'voice moby',
 });
 export const allTheThingsSheSaid = s('YTvIG6gHMh0', {
-  l: 'voice f',
+  l: 'voice f video',
 });
 
 export const infinite = s('qdjJPBPMvlc', {
-  l: 'voice lyn-lapid',
+  l: 'voice lyn-lapid video',
 });
 export const theOutsider = s('IKSW7M7jJlE', {
-  l: 'voice lyn-lapid',
+  l: 'voice lyn-lapid video',
 });
 export const inMyMind = s('nVrhvzY6Cf0', {
   l: 'voice lyn-lapid',
 });
 export const offDay = s('px-DdSTu5Cs', {
-  l: 'voice lyn-lapid',
+  l: 'voice lyn-lapid video',
 });
 export const sad = s('pQY7P5PeV5w?end=195', {
-  l: 'voice lyn-lapid',
+  l: 'voice lyn-lapid video',
 });
 export const iGuessThatWasGoobye = s('9AivsD14tHw', {
-  l: 'voice lyn-lapid',
+  l: 'voice lyn-lapid video',
 });
 
 export const tf2main = s('PDM2qukzKwg', {
@@ -668,11 +670,11 @@ export const belatedValentines = s('fhzhSHEXxrE', {
   s: 2, m: 3,
 });
 export const cityOfTears = s('5oj_1wAETSA?end=833', {
-  l: 'instrumental hollowknight',
+  l: 'instrumental hollowknight video',
   s: 4, i: -2, g: 3, m: 8,
 });
 export const cityOfTearsPiano = s('EGAzTv4qMY8', {
-  l: 'instrumental hollowknight',
+  l: 'instrumental hollowknight video',
   s: 4, i: -2, g: 3, m: 8,
 });
 export const hornet = s('7xkM8mWC4Kk', {
@@ -728,7 +730,7 @@ export const greymoor = s('iBlPiGByuWs', {
   i: -4, s: 3,
 });
 export const needolin = s('0k4j0kEX6dI', {
-  l: 'instrumental silksong',
+  l: 'instrumental silksong video',
   i: -4, s: 4,
 });
 export const bellhart = s('xyFIQ3crD6o', {
@@ -744,15 +746,15 @@ export const choralChambers = s('FTicXQYw2ts', {
   s: 5, i: -2, g: 4, m: 6,
 });
 export const choralChambersPiano = s('U017ODG2gRU', {
-  l: 'instrumental silksong',
+  l: 'instrumental silksong video',
   s: 5, i: -2, g: 4, m: 6,
 });
 export const highHallsPiano = s('EDBRCS3JaH8', {
-  l: 'instrumental silksong',
+  l: 'instrumental silksong video',
   s: 5, i: -2, g: 2, m: 6,
 });
 export const highHallsInstrumental = s('qtrGC1aH_uM', {
-  l: 'instrumental silksong',
+  l: 'instrumental silksong video',
   s: 5, i: -2, g: 2, m: 6,
 });
 export const bilewater = s('_hM_Hp37By0', {
@@ -760,11 +762,11 @@ export const bilewater = s('_hM_Hp37By0', {
   i: -2, s: 3, g: 4, m: 4, w: 16,
 });
 export const bilewaterPiano = s('j_t_ujG2QTg', {
-  l: 'instrumental silksong',
+  l: 'instrumental silksong video',
   i: -2, s: 3, g: 4, m: 4, w: 16,
 });
 export const cutThrough = s('M-z6fPrpg-k', {
-  l: 'instrumental silksong',
+  l: 'instrumental silksong video',
   i: 6, s: 2,
 });
 export const lostVerdania = s('ddAJYVLa0bM', {
@@ -777,27 +779,27 @@ export const home = s('0UkRqMFMZic', {
 });
 
 export const racingIntoTheNight = s('xtfXl7TZTac', {
-  l: 'instrumental anime',
+  l: 'instrumental anime video',
   w: 8,
 });
 export const bakaMitai = s('g3jCAyPai2Y', {
   l: 'voice anime',
 });
 export const plasticLove = s('T_lC2O1oIew', {
-  l: 'voice japanese',
+  l: 'voice japanese video',
 });
 export const btsON = s('mPVDGOVjRQ0', {
-  l: 'voice bts',
+  l: 'voice bts video',
   w: 8,
 });
 export const btsRun = s('BiPKFk85iF4', {
-  l: 'voice bts',
+  l: 'voice bts video',
 });
 export const btsButterfly = s('Z4o7-6cFUF8', {
   l: 'voice bts',
 });
 export const btsBoyWithLuv = s('XsX3ATc3FbA', {
-  l: 'voice bts',
+  l: 'voice bts video',
 });
 export const btsPiedPiper = s('VEZ_Ui6d9AM', {
   l: 'voice bts',
@@ -807,27 +809,27 @@ export const btsSeoul = s('F8wI5ZosdRA', {
 });
 
 export const rewriteTheStars = s('9k-ZinhuF9g', {
-  l: 'instrumental piano',
+  l: 'instrumental piano video',
 });
 export const pianoLoveStory = s('SojAkORca9g?end=238', {
-  l: 'instrumental piano',
+  l: 'instrumental piano video',
 });
 export const pianoTheScientist = s('7BAB1Qv-OIU?end=262', {
-  l: 'instrumental piano',
+  l: 'instrumental piano video',
 });
 export const pianoFixYou = s('wrmvKRZlhsU?end=260', {
-  l: 'instrumental piano',
+  l: 'instrumental piano video',
 });
 export const laVieEnRose = s('HjxzuiOGMRA?end=162', {
-  l: 'instrumental piano',
+  l: 'instrumental piano video',
 });
 
 export const theHumming = s('FOP_PPavoLA', {
-  l: 'voice enya',
+  l: 'voice enya video',
   i: -4,
 });
 export const wildChild = s('Wkk0puI6NfA', {
-  l: 'voice enya f',
+  l: 'voice enya f video',
   i: -4,
 });
 export const florasSecret = s('gObUqHsxc5A', {
@@ -847,7 +849,7 @@ export const stormsInAfrica = s('vWeU-lKBvBg', {
   i: -4,
 });
 export const orinocoFlow = s('LTrk4X9ACtw', {
-  l: 'voice enya',
+  l: 'voice enya video',
   i: -4,
 });
 export const watermark = s('bPCdsa7hS7M', {
@@ -867,7 +869,7 @@ export const darkSkyIsland = s('lAX65y4f3eI', {
   i: -4,
 });
 export const bookOfDays = s('LiBwr4U59EI', {
-  l: 'voice enya',
+  l: 'voice enya video',
   i: -4,
 });
 export const onlyTime = s('YArQ641o8V8', {
@@ -875,11 +877,11 @@ export const onlyTime = s('YArQ641o8V8', {
   i: -4,
 });
 export const amarantine = s('IQU4DoE1eBg', {
-  l: 'voice enya',
+  l: 'voice enya video',
   i: -4,
 });
 export const echoesInRain = s('8DDHulO485k', {
-  l: 'voice enya',
+  l: 'voice enya video',
   i: -4,
 });
 export const caribbeanBlue = s('-MWZenptplY', {
@@ -887,7 +889,7 @@ export const caribbeanBlue = s('-MWZenptplY', {
   i: -4,
 });
 export const mayItBe = s('nt3Ggo1CE3g', {
-  l: 'voice enya',
+  l: 'voice enya video',
   i: -4,
 });
 export const anywhereIs = s('EZ98IJ0usoE', {
@@ -919,7 +921,7 @@ export const lothlorien = s('jSsLHfsr5ZI', {
   i: -4,
 });
 export const soICouldFindMyWay = s('aLDLpqZdhX0', {
-  l: 'voice enya',
+  l: 'voice enya video',
   i: -4,
 });
 export const theMemoryOfTrees = s('1MMmWDCDUpk', {
@@ -931,7 +933,7 @@ export const fallenEmbers = s('3du5xoCVSQg', {
   i: -4,
 });
 export const eveningFalls = s('MhMJ78-Szi8', {
-  l: 'voice enya',
+  l: 'voice enya video',
   i: -4,
 });
 export const onYourShore = s('aoXtc2prg84', {
@@ -955,7 +957,7 @@ export const wethands = s('MSepOYJxB64', {
   l: 'instrumental minecraft-alpha',
 });
 export const wethandsIbi = s('-KNglfziUtw', {
-  l: 'instrumental minecraft-alpha',
+  l: 'instrumental minecraft-alpha video',
 });
 export const dryhands = s('2j8im-7KS9Y', {
   l: 'instrumental minecraft-alpha',
@@ -998,34 +1000,34 @@ export const dreiton = s('VRYs-QfdToc', {
   l: 'instrumental minecraft-beta',
 });
 export const pianoDreiton = s('u1dBpYd_w1s?start=3', {
-  l: 'instrumental minecraft-beta',
+  l: 'instrumental minecraft-beta video',
 });
 export const ariaMath = s('atgjKEgSqSU', {
   l: 'instrumental minecraft-beta',
 });
 export const pianoAriaMath = s('tUMu3R4vNMM?start=3', {
-  l: 'instrumental minecraft-beta',
+  l: 'instrumental minecraft-beta video',
 });
 export const ariaMathOud = s('Q3auCeKDB4c', {
-  l: 'instrumental minecraft-beta',
+  l: 'instrumental minecraft-beta video',
 });
 export const taswell = s('kXPNWJtC7gs', {
   l: 'instrumental minecraft-beta',
 });
 export const pianoTaswell = s('7PK73U5TjJ0?start=3', {
-  l: 'instrumental minecraft-beta',
+  l: 'instrumental minecraft-beta video',
 });
 export const blindSpots = s('77Fv8gtZyuA', {
   l: 'instrumental minecraft-beta',
 });
 export const pianoBlindSpots = s('ckX3ZZGru44?start=3', {
-  l: 'instrumental minecraft-beta',
+  l: 'instrumental minecraft-beta video',
 });
 export const hauntMuskie = s('YYfBJBj3emg', {
   l: 'instrumental minecraft-beta',
 });
 export const pianoHauntMuskie = s('pn7k0DYGy3w?start=3', {
-  l: 'instrumental minecraft-beta',
+  l: 'instrumental minecraft-beta video',
 });
 export const biomeFest = s('8sglGXAfHLc', {
   l: 'instrumental minecraft-beta',
@@ -1236,25 +1238,25 @@ export const sc2terran5 = s('fQluJBSXM5I', {
   w: 30,
 });
 export const sc1terran2guitar = s('XFeu8McBl-s', {
-  l: 'instrumental sc1 terran',
+  l: 'instrumental sc1 terran video',
 });
 export const sc2terran1guitar = s('VQYSgVFZ7Nc', {
-  l: 'instrumental sc2 terran',
+  l: 'instrumental sc2 terran video',
 });
 export const sc2terran2guitar = s('d1o6BZgWdwA', {
-  l: 'instrumental sc2 terran',
+  l: 'instrumental sc2 terran video',
 });
 export const sc2terran3guitar = s('a7Fbwu47ZdI', {
-  l: 'instrumental sc2 terran',
+  l: 'instrumental sc2 terran video',
 });
 export const sc2terran4guitar = s('K14RnTVt194', {
-  l: 'instrumental sc2 terran',
+  l: 'instrumental sc2 terran video',
 });
 export const sc2terran5guitar = s('6ypc_fRTyrc', {
-  l: 'instrumental sc2 terran',
+  l: 'instrumental sc2 terran video',
 });
 export const sc2terranHotSguitar = s('4iZpSRrYkhY', {
-  l: 'instrumental sc2 terran guitar',
+  l: 'instrumental sc2 terran guitar video',
 });
 export const sc1zerg1 = s('jrbN2y5r-vU', {
   l: 'instrumental sc1 zerg',
@@ -1337,7 +1339,7 @@ export const human2 = s('OO677Agkmpg', {
 });
 
 export const babaYetu = s('IJiHDmyhE1A', {
-  l: 'voice serious civ',
+  l: 'voice serious civ video',
   i: 2, g: 6, s: 6,
 });
 export const englandPeace = s('30r_1NoKldo', {
@@ -1500,7 +1502,7 @@ export const arcticPeeper = s('SyNiDh7fEYE', {
   l: 'instrumental below-zero',
 });
 export const deepBlue = s('dUHp7N8BVyo', {
-  l: 'instrumental below-zero',
+  l: 'instrumental below-zero video',
 });
 export const belowZero = s('FvAc2H8rncs', {
   l: 'instrumental below-zero',
@@ -1522,7 +1524,7 @@ export const cathedral = s('p7ycNPlm4fw', {
 });
 
 export const usAgainstTheWorld = s('eVQ0DbgKw_w', {
-  l: 'voice edm', i: 6,
+  l: 'voice edm video', i: 6,
 });
 export const neverLetMeDown = s('TudUfOJYn7k', {
   l: 'voice edm', i: 6,

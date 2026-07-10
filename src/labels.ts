@@ -1,7 +1,7 @@
 export type Label = ComputeLabels<ReplaceBracketsWithWhitespace<typeof labels>>;
 type RequiredLabels = ['instrumental voice'];
 export const labels = `
-instrumental voice rain repeatable meme serious stinger
+instrumental voice rain repeatable meme serious stinger video[video-lite]
 ff[f] m adventure-time project-hail-mary
 collective-soul[rock] fleetwood-mac[rock] crane-wives[folk] crane-wives[f] adele[2010s] lana-del-rey tame-impala[electronic]
 taylor-swift[pop] stirling eilish joni-mitchell[folk] moby[electronic] lyn-lapid[pop]
