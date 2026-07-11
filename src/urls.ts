@@ -307,7 +307,7 @@ export const neverLoveAnAnchor = s('kkrYVWncJ5U', {
   s: 4,
 });
 export const theMoonWillSing = s('BGztdO-GWsw', {
-  l: 'voice f crane-wives',
+  l: 'voice f crane-wives video-lite',
   s: 2,
 });
 export const armsOfGold = s('vU59QIJlGzI', {
@@ -657,7 +657,7 @@ export const midnightMonsoon = s('e-BqjN0Jof0', {
   l: 'instrumental strawberry-jam',
   i: 2, s: 2,
 });
-export const cyberstriderMadeline = s('iTqwuQOqBmg', {
+export const cyberstriderMadeline = s('rnbXze7uvjw', {
   l: 'instrumental strawberry-jam',
   i: 3, w: 8,
 });
