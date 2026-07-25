@@ -1661,6 +1661,9 @@ export const fusion = s('jOkKt245cTA', {
 export const oceans = s('XoEGhCCcabo', {
   l: 'voice edm m', i: 6,
 });
+export const rattlesnake = s('uIh0PI8Nw-k', {
+  l: 'instrumental edm', i: 6,
+});
 export const killingGiants = s('7gJMDu_wdio', {
   l: 'voice edm', i: 6,
 });
