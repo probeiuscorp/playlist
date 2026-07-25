@@ -757,6 +757,10 @@ export const highHallsInstrumental = s('qtrGC1aH_uM', {
   l: 'instrumental silksong video',
   s: 5, i: -2, g: 2, m: 6,
 });
+export const sandsOfKarak = s('5xTZYWo1kT8', {
+  l: 'instrumental silksong guitar',
+  s: 2, i: 3, m: 2,
+});
 export const bilewater = s('_hM_Hp37By0', {
   l: 'instrumental silksong',
   i: -2, s: 3, g: 4, m: 4, w: 16,
