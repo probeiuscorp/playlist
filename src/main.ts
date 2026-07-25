@@ -60,6 +60,7 @@ Playlist.setStatus(Behavior.join(Behavior.join(bQueue.map((events) => bShowFullS
 
 const thirteen = 'VZA4luIhcu8';
 const dancingMad = 'DMDcL0reo5Y';
+const noOneMournsTheWicked = 'Fe9N3Xcwtso';
 
 const noOneLivesForever = 't55nKXBAMPo?start=62&end=64';
 const readyForDustOff = 'avN7vICX208?start=0&end=2';
@@ -136,6 +137,7 @@ function* randomized(unnormalizedWeighers: Weigher[] = []): Generator<song> {
     else if(legendary(6e3)) yield themeTerraRetro;
     else if(legendary(3e3)) yield 'SCD2tB1qILc';
     else if(legendary(2e3)) yield thirteen;
+    else if(legendary(2e3 + 2)) yield noOneMournsTheWicked;
     else {
       const chosenSong = allSources.pick(source => {
         return product(weighers.map(({ weigh }) => weigh?.(source))) * source.weight;
