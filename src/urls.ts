@@ -28,6 +28,10 @@ export const odysseus = s('WCxx_OVOVUw', {
   l: 'instrumental',
   s: 4, g: 4, i: 3, m: 2,
 });
+export const wonderEye = s('soHjLec5PiU', {
+  l: 'voice ff',
+  s: 5, g: 3, i: 3, m: 6,
+});
 export const neverGonnaGiveYouUp = s('dQw4w9WgXcQ', {
   l: 'voice meme video',
   w: 6,
