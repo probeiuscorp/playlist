@@ -174,6 +174,10 @@ export const theWay = s('3ZolDgbV6qI', {
   l: 'voice rock',
   i: 2, m: 3, g: 2,
 });
+export const followYouDown = s('KvpeR8n6OI8', {
+  l: 'voice rock',
+  i: 3, m: 3,
+});
 export const nightFever = s('SkypZuY6ZvA', {
   l: 'voice m disco video',
 });
