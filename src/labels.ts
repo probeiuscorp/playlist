@@ -1,11 +1,12 @@
-export type Label = ComputeLabels<ReplaceBracketsWithWhitespace<typeof labels>>;
+export type Label =
+  | ComputeLabels<ReplaceBracketsWithWhitespace<typeof labels1>>
+  | ComputeLabels<ReplaceBracketsWithWhitespace<typeof labels2>>;
 type RequiredLabels = ['instrumental voice'];
-export const labels = `
+const labels1 = `
 instrumental voice rain repeatable meme serious stinger video[video-lite]
 ff[f] m adventure-time project-hail-mary
-collective-soul[rock] fleetwood-mac[rock] crane-wives[folk] crane-wives[f] adele[2010s] lana-del-rey tame-impala[electronic]
 taylor-swift[pop] stirling eilish joni-mitchell[folk] moby[electronic] lyn-lapid[pop]
-guitar piano beyond-earth[civ] concerto[civ5[civ[vgm]]] rock pop disco 2010s
+guitar piano beyond-earth[civ] concerto[civ5[civ[vgm]]]
 no-car bts[korean] japanese anime
 enya below-zero[subnautica[vgm]] subnautica1 ff6[snes[vgm]] sschafi[ff6] ff6pr[ff6] strawberry-jam[celeste[vgm]] tf2[vgm]
 edm[electronic] lofi[electronic] vocaloid[electronic]
@@ -15,6 +16,11 @@ starcraft[vgm] warcraft[vgm] sc1[starcraft] sc2[starcraft] wc3[warcraft] night-e
 silksong[hollowknight[vgm]]
 undertale[vgm]
 `;
+const labels2 = `
+collective-soul[rock] fleetwood-mac[rock] crane-wives[folk] crane-wives[f] adele[2010s] lana-del-rey tame-impala[electronic]
+rock pop disco 2010s emo
+`;
+export const labels = labels1 + labels2;
 export const labelsSet = new Set(labels.split(/[\s\[\]]+/).filter(Boolean));
 
 export type ComputeLabels<TLabel extends string> = Split<Split<Trim<TLabel>, '\n'>, ' '>;
