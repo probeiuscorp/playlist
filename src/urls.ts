@@ -206,6 +206,9 @@ export const takeMeHomeCountryRoads = s('c0dvabcWVo0', {
   l: 'voice m',
   w: 9,
 });
+export const takeMeHomeCountryRoadsScottish = s('0Xa9Q2U1X2w', {
+  l: 'voice ff', w: 4,
+});
 export const takeMikuHomeCountryRoads = s('iu88uIvwpgg', {
   l: 'voice vocaloid video',
   w: 6,
