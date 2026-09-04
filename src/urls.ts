@@ -1733,6 +1733,9 @@ export const xenogenesis = s('2Ax_EIb1zks', {
 export const neverBeAlone = s('Ic-gZlPFTkQ', {
   l: 'voice edm', i: 3, g: -2,
 });
+export const timelapse = s('3fxq7kqyWO8', {
+  l: 'instrumental edm', i: 6,
+});
 export const good4me = s('_VfBtNcatEA', {
   l: 'instrumental edm', i: 6,
 });
