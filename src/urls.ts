@@ -1727,6 +1727,9 @@ export const unity = s('n8X9_MgEdCg', {
 export const xenogenesis = s('2Ax_EIb1zks', {
   l: 'instrumental edm', i: 6, w: 7, g: -4,
 });
+export const neverBeAlone = s('Ic-gZlPFTkQ', {
+  l: 'voice edm', i: 3, g: -2,
+});
 export const good4me = s('_VfBtNcatEA', {
   l: 'instrumental edm', i: 6,
 });
