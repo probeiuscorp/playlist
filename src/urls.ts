@@ -792,7 +792,7 @@ export const bilewaterPiano = s('j_t_ujG2QTg', {
   l: 'instrumental silksong video',
   i: -2, s: 3, g: 4, m: 4, w: 16,
 });
-export const cutThrough = s('M-z6fPrpg-k', {
+export const cutThrough = s('oW73hxz0oF8', {
   l: 'instrumental silksong video',
   i: 6, s: 2,
 });
