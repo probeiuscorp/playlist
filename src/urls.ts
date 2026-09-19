@@ -796,6 +796,10 @@ export const cutThrough = s('M-z6fPrpg-k', {
   l: 'instrumental silksong video',
   i: 6, s: 2,
 });
+export const crustKingKhannPiano = s('90Ag-US36HI?start=28&end=133', {
+  l: 'instrumental silksong video piano',
+  i: 4, s: 3,
+});
 export const lostVerdania = s('ddAJYVLa0bM', {
   l: 'instrumental silksong',
   s: 4, g: 2, m: 6,
