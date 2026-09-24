@@ -821,6 +821,9 @@ export const racingIntoTheNight = s('xtfXl7TZTac', {
   l: 'instrumental anime video',
   w: 8,
 });
+export const takeAHint = s('cyW2ajAVyfA', {
+  l: 'voice anime video-lite',
+});
 export const bakaMitai = s('g3jCAyPai2Y', {
   l: 'voice anime',
 });
