@@ -796,6 +796,10 @@ export const cutThrough = s('oW73hxz0oF8', {
   l: 'instrumental silksong video',
   i: 6, s: 2,
 });
+export const mountFay = s('JYRQRo58mDk', {
+  l: 'instrumental silksong video',
+  i: 3, s: 2,
+});
 export const crustKingKhannPiano = s('90Ag-US36HI?start=28&end=133', {
   l: 'instrumental silksong video piano',
   i: 4, s: 3,
