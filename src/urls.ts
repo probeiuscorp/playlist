@@ -30,6 +30,10 @@ export const odysseus = s('WCxx_OVOVUw', {
 });
 export const wonderEye = s('soHjLec5PiU', {
   l: 'voice ff',
+  s: 3, g: 3, i: 3, m: 6,
+});
+export const lineWithoutAHook = s('XSqx8Ibkzrk', {
+  l: 'voice liz',
   s: 5, g: 3, i: 3, m: 6,
 });
 export const neverGonnaGiveYouUp = s('dQw4w9WgXcQ', {
