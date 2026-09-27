@@ -816,6 +816,10 @@ export const home = s('0UkRqMFMZic', {
   l: 'instrumental undertale',
   i: -6, s: 4, g: 3, m: 3,
 });
+export const undertale = s('8CeYNJ-s0Kw', {
+  l: 'instrumental undertale',
+  s: 4, g: 4, m: 4,
+});
 
 export const racingIntoTheNight = s('xtfXl7TZTac', {
   l: 'instrumental anime video',
