@@ -1749,6 +1749,9 @@ export const blank = s('p7ZsBPK656s', {
 export const onAndOn = s('K4DyBUG242c', {
   l: 'instrumental edm', i: 6,
 });
+export const myHeart = s('jK2aIUmmdP4', {
+  l: 'instrumental edm', i: 6,
+});
 export const unity = s('n8X9_MgEdCg', {
   l: 'voice edm', i: 6,
 });
