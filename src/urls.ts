@@ -1743,6 +1743,9 @@ export const theCalling = s('KR-eV7fHNbM', {
 export const skyHigh = s('TW9d8vYrVFQ', {
   l: 'instrumental edm', i: 6,
 });
+export const blank = s('p7ZsBPK656s', {
+  l: 'instrumental edm', i: 6,
+});
 export const unity = s('n8X9_MgEdCg', {
   l: 'voice edm', i: 6,
 });
