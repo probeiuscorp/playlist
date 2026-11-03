@@ -1741,28 +1741,28 @@ export const theCalling = s('KR-eV7fHNbM', {
   l: 'voice edm', i: 4,
 });
 export const skyHigh = s('TW9d8vYrVFQ', {
-  l: 'instrumental edm', i: 6,
+  l: 'instrumental edm ncs', i: 6,
 });
 export const energy = s('fzNMd3Tu1Zw', {
-  l: 'instrumental edm', i: 6,
+  l: 'instrumental edm ncs', i: 6,
 });
 export const blank = s('p7ZsBPK656s', {
-  l: 'instrumental edm', i: 6,
+  l: 'instrumental edm ncs', i: 6,
 });
 export const onAndOn = s('K4DyBUG242c', {
-  l: 'instrumental edm', i: 6,
+  l: 'instrumental edm ncs', i: 6,
 });
 export const myHeart = s('jK2aIUmmdP4', {
-  l: 'instrumental edm', i: 6,
+  l: 'instrumental edm ncs', i: 6,
 });
 export const heroesTonight = s('3nQNiWdeH2Q', {
-  l: 'instrumental edm', i: 6,
+  l: 'instrumental edm ncs', i: 6,
 });
 export const ncsFirefly = s('x_OwcYTNbHs', {
-  l: 'instrumental edm', i: 6,
+  l: 'instrumental edm ncs', i: 6,
 });
 export const limitless = s('cNcy3J4x62M', {
-  l: 'instrumental edm', i: 6,
+  l: 'instrumental edm ncs', i: 6,
 });
 export const unity = s('n8X9_MgEdCg', {
   l: 'voice edm', i: 6,

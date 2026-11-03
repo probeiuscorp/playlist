@@ -20,6 +20,7 @@ const labels2 = `
 collective-soul[rock] fleetwood-mac[rock] crane-wives[folk] crane-wives[f] adele[2010s] lana-del-rey tame-impala[electronic]
 rock pop disco 2010s emo
 liz
+ncs[edm]
 `;
 export const labels = labels1 + labels2;
 export const labelsSet = new Set(labels.split(/[\s\[\]]+/).filter(Boolean));
